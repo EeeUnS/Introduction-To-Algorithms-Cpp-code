@@ -1,4 +1,9 @@
 
+```
+#include<iostream>
+#include<algorithm> // std::max
+```
+
 완전 탐색 $O(2^n)$//수식안되네..
 ```
 int CUT_ROD(int p[], int n) // p는 index 1부터 저장되어있다.
@@ -15,7 +20,7 @@ int CUT_ROD(int p[], int n) // p는 index 1부터 저장되어있다.
 }
 ```
 
-
+O(n)
 
 메모라이즈 방법 
 ```
@@ -77,5 +82,21 @@ int BOTTOM_UP_CUT_ROD(int p[], int n)
 	}
 	delete[]r;
 	return r[n];
+}
+```
+
+입력
+```
+int main()
+{
+	int n;
+	std::cin >> n;
+	int* p = new int[n+1];
+	p[0] = 0;
+	for (int i = 1; i <= n; i++)
+	{
+		std::cin >> p[i];
+	}
+	// function(p,n);
 }
 ```

@@ -25,7 +25,39 @@ void DFS(int x)
 	}
 }
 ```
+with recursion
+```
+void DFS_TS(int x)
+{
+	visit[x] = true;
 
+	std::stack<int> sub_s;
+	sub_s.push(x);
+	//std::cout << sub_s.top() << ' '; // 순회출력
+
+	while (!sub_s.empty())
+	{
+		int y = sub_s.top();
+		for (std::size_t i = 0; i < Graph[y].size(); i++)
+		{
+			int next = Graph[y][i];
+			if (visit[next] != true)
+			{
+				visit[next] = true;
+				sub_s.push(next);
+				//std::cout << sub_s.top() << ' '; // 순회출력
+				i = -1;
+				y = sub_s.top();
+			}
+
+		}
+		S.push(sub_s.top());
+		sub_s.pop();
+		
+	}
+}
+```
+with stack
 ## Breath first search
 
 ```

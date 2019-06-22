@@ -1,18 +1,24 @@
 
-
+# topological sort
+# Directed acyclic graph
+```
+ios_base::sync_with_stdio(false); cin.tie(NULL);
 
 ```
-#include<queue>
+https://www.acmicpc.net/problem/2252
+
+## 책안의 구조
+ Cormen et al. (2001); Tarjan (1976)이 제안
+```
 #include<iostream>
 #include<stack>
 #include<algorithm>
 using namespace std;
-queue<int> Q;
-const int MAX = 100000;
+constexpr int MAX = 320000;
 stack<int> S; // 실제 정렬된값이 역순으로 들어가있다.
 
 std::vector<std::vector<int>> Graph; // 인접 노드
-bool visit[32002] = { 0, };
+bool visit[MAX+2] = { 0, };
 ```
 
 
@@ -93,4 +99,85 @@ int main()
 }
 //앆
 ```
+## Kahn's algorithm
 
+
+
+
+```
+
+#include<iostream>
+#include<algorithm>
+#include<vector>
+
+using namespace std;
+std::vector<std::vector<int>> Graph; // 인접 노드
+std::vector<int> DAG; // 위상정렬
+```
+
+
+```
+
+void topologicalsort(int v)
+{
+	std::vector<int> indegree;
+	indegree.resize(v + 1);
+	for (int i = 1; i <= v; i++)
+	{
+		int e = Graph[i].size();
+		for (int j = 0; j < e; j++)
+		{
+			indegree[Graph[i][j]]++;
+		}
+	}
+	for (int r = 1; r <= v; r++)
+	{
+		for (int i = 1; i <= v; i++) //n^2
+		{
+			if (indegree[i] == 0)
+			{
+				DAG.push_back(i);
+				int e = Graph[i].size();
+				--indegree[i];
+				for (int j = 0; j < e; j++)
+				{
+					--indegree[Graph[i][j]];
+				}
+
+			}
+		}
+	}
+}
+
+
+```
+정점v와 indegree를 넣은 minheap을 사용하면
+n에 구현할수있다.
+
+```
+
+int main()
+{
+	int n, m;
+	std::cin >> n >> m;
+	Graph.resize(n + 1);
+	for (int i = 0; i < m; i++)
+	{
+		int u, v;
+		std::cin >> u >> v;
+		Graph[u].push_back(v);
+	}
+
+	for (int i = 1; i <= n; i++)  // 리스트 넘버순 정렬
+		std::sort(Graph[i].begin(), Graph[i].end());
+	topologicalsort(n);
+
+	for (auto a: DAG)
+	{
+		std::cout << a << ' ';
+	}
+	
+	return 0;
+}
+//앆
+```

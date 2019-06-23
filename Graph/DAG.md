@@ -1,6 +1,7 @@
 
 # topological sort
 # Directed acyclic graph
+
 ```
 ios_base::sync_with_stdio(false); cin.tie(NULL);
 
@@ -8,6 +9,7 @@ ios_base::sync_with_stdio(false); cin.tie(NULL);
 https://www.acmicpc.net/problem/2252
 
 ## 책안의 구조
+DFS 사용
  Cormen et al. (2001); Tarjan (1976)이 제안
 ```
 #include<iostream>
@@ -99,10 +101,8 @@ int main()
 }
 //앆
 ```
+
 ## Kahn's algorithm
-
-
-
 
 ```
 

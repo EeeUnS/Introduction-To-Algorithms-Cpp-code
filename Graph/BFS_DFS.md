@@ -27,7 +27,7 @@ void DFS(int x)
 ```
 with recursion
 ```
-void DFS_TS(int x)
+void DFS(int x)
 {
 	visit[x] = true;
 
@@ -38,7 +38,8 @@ void DFS_TS(int x)
 	while (!sub_s.empty())
 	{
 		int y = sub_s.top();
-		for (std::size_t i = 0; i < Graph[y].size(); i++)
+		std::size_t Graph_size = Graph[y].size();
+		for (std::size_t i = 0; i < Graph_size ; i++)
 		{
 			int next = Graph[y][i];
 			if (visit[next] != true)
@@ -48,10 +49,10 @@ void DFS_TS(int x)
 				//std::cout << sub_s.top() << ' '; // 순회출력
 				i = -1;
 				y = sub_s.top();
+				Graph_size = Graph[y].size();
 			}
 
 		}
-		S.push(sub_s.top());
 		sub_s.pop();
 		
 	}

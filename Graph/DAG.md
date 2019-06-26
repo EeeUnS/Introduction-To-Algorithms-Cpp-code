@@ -1,5 +1,5 @@
 
-# topological sort
+# Topological Sort
 # Directed acyclic graph
 
 ```

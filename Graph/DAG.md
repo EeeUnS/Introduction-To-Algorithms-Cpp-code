@@ -24,8 +24,6 @@ std::vector<std::vector<int>> Graph; // 인접 노드
 bool visit[MAX+2] = { 0, };
 ```
 
-
-
 ```
 void topologicalsort()
 {
@@ -125,13 +123,14 @@ int main()
 ```
 
 ## Kahn's algorithm
+참고 : https://blog.naver.com/PostView.nhn?blogId=ndb796&logNo=221236874984&proxyReferer=https%3A%2F%2Fwww.google.com%2F
+
 
 ```
-
 #include<iostream>
 #include<algorithm>
 #include<vector>
-
+#include<queue>
 using namespace std;
 std::vector<std::vector<int>> Graph; // 인접 노드
 std::vector<int> DAG; // 위상정렬
@@ -144,6 +143,7 @@ void topologicalsort(int v)
 {
 	std::vector<int> indegree;
 	indegree.resize(v + 1);
+	std::queue<int> qu;
 	for (int i = 1; i <= v; i++)
 	{
 		int e = Graph[i].size();
@@ -152,20 +152,31 @@ void topologicalsort(int v)
 			indegree[Graph[i][j]]++;
 		}
 	}
-	for (int r = 1; r <= v; r++)
-	{
-		for (int i = 1; i <= v; i++) //n^2
-		{
-			if (indegree[i] == 0)
-			{
-				DAG.push_back(i);
-				int e = Graph[i].size();
-				--indegree[i];
-				for (int j = 0; j < e; j++)
-				{
-					--indegree[Graph[i][j]];
-				}
 
+	for (int i = 1; i <= v; i++)
+	{
+		if (indegree[i] == 0)
+		{
+			qu.push(i);
+		}
+	}
+	for (int i = 1; i <= v; i++)
+	{
+		if (qu.empty())
+		{
+			return;
+		}
+		int x = qu.front();
+		qu.pop();
+		DAG.push_back(x);
+		int x_size = Graph[x].size();
+		for (int i = 0; i < x_size ; i++)
+		{
+			int y = Graph[x][i];
+			indegree[y]--;
+			if (indegree[y] == 0)
+			{
+				qu.push(y);
 			}
 		}
 	}
@@ -173,8 +184,7 @@ void topologicalsort(int v)
 
 
 ```
-정점v와 indegree를 넣은 minheap을 사용하면
-n에 구현할수있다.
+
 
 ```
 

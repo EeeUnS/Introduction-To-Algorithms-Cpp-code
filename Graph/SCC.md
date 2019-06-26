@@ -156,8 +156,8 @@ void TDFS(int x,int n)
 {
 	visit[x] = true;
 	//std::cout << x << ' '; // 순회출력
-
-	for (std::size_t i = 0; i < TGraph[x].size(); i++)
+	std::size_t x_size = TGraph[x].size()
+	for (std::size_t i = 0; i < x_size ; i++)
 	{
 		int next = TGraph[x][i];
 		if (visit[next] != true)

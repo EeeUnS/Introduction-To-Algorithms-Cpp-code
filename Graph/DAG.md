@@ -15,6 +15,7 @@ DFS 사용
 #include<iostream>
 #include<stack>
 #include<algorithm>
+#include<vector>
 using namespace std;
 constexpr int MAX = 320000;
 stack<int> S; // 실제 정렬된값이 역순으로 들어가있다.
@@ -72,6 +73,27 @@ void DFS_TS(int x)
 	}
 }
 ```
+
+```
+void DFS_TS(int x)
+{
+	visit[x] = true;
+	//std::cout << x << ' '; // 순회출력
+
+	for (std::size_t i = 0; i < Graph[x].size(); i++)
+	{
+		int next = Graph[x][i];
+		if (visit[next] != true)
+		{
+			DFS_TS(next);
+			
+		}
+	}
+	S.push(x);
+}
+```
+함수 스택이 가장 빠르다.
+
 기존 DFS와 차이는 마지막 sub_s.pop()하기전에 
 값을 S에 넣는 것이다.
 

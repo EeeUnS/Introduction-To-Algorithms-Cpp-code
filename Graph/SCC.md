@@ -16,7 +16,9 @@ O(V+E)
 #include<iostream>
 #include<stack>
 #include<algorithm>
+#include<vector>
 using namespace std;
+
 constexpr int MAX = 10000;
 
 std::vector<std::vector<int>> Graph; //G 인접 노드
@@ -97,7 +99,25 @@ void DFS(int x,std::stack<int> &DFSf)
 	}
 }
 ```
-기존 DFS와는 DFSf에 각 종료 부분을 저장한다
+```
+
+void DFS(int x, std::stack<int>& DFSf)
+{
+	visit[x] = true;
+	//std::cout << x << ' '; // 순회출력
+
+	for (std::size_t i = 0; i < Graph[x].size(); i++)
+	{
+		int next = Graph[x][i];
+		if (visit[next] != true)
+		{
+			DFS(next,DFSf);
+		}
+	}
+	DFSf.push(x);//기존 DFS와 차이 STACK에 종료 순서 저장
+}
+```
+기존 DFS와는 DFSf에 각 종료 부분을 저장한다(위상정렬과같다.)
 
 ```
 void TDFS(int x, int n)//G^T탐색
@@ -130,6 +150,26 @@ void TDFS(int x, int n)//G^T탐색
 	}
 }
 ```
+```
+
+void TDFS(int x,int n)
+{
+	visit[x] = true;
+	//std::cout << x << ' '; // 순회출력
+
+	for (std::size_t i = 0; i < TGraph[x].size(); i++)
+	{
+		int next = TGraph[x][i];
+		if (visit[next] != true)
+		{
+			TDFS(next, n);
+		}
+	}
+	SSC[n].push_back(x);
+}
+
+```
+
 
 ```
 int main()

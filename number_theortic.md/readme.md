@@ -2,7 +2,7 @@
 ## GCD
 
 ```
-unsigned long long int gcd(const unsigned long long int a, const unsigned long long int b)
+int gcd(const int a,int b)
 {
 	if (b == 0)
 		return a;
@@ -83,9 +83,9 @@ CLRS에 소개된 의사코드는 잘못되어있다
 
 코드를 살펴보면 c를 사용하지않음
 ```
-int64_t MODULAR_EXPONENTIATION(int64_t a, int64_t b, int64_t n)//a^b mod n
+int MODULAR_EXPONENTIATION(int a, int b, int n)//a^b mod n
 {
-	int64_t x = a, y = 1;
+	int x = a, y = 1;
 	while(b != 0)
 	{
 		if (b & 1)

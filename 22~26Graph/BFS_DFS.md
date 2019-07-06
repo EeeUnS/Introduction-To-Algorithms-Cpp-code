@@ -124,13 +124,13 @@ int main()
 https://www.acmicpc.net/problem/1260
 
 
-## 최단경로
+## 최단 경로 출력
 
 참고문제 백준 숨바꼭질4 :
 https://www.acmicpc.net/problem/13913
 
 ```
-int predecessor_subgraph[100001];//직전원소 그래프
+int predecessor_subgraph[100001];//직전원소 그래프 v.pi
 void PRINT_PATH(int s,int v)
 {
 	if (v == s)

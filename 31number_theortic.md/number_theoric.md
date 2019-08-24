@@ -30,7 +30,7 @@ std::tuple<int, int, int> EXTENDED_EUCLID(int a, int b)
 }
 ```
 
-#31.4
+# 31.4
 
 ### MODULAR_LINEAR_EQUATION_SOLVER
 
@@ -172,6 +172,10 @@ bool PSEUDOPRIME(int n)
 }
 ```
 ## MILLER_RABIN_primality_test
+https://casterian.net/archives/396
+
+https://www.acmicpc.net/problem/5615
+
 
 O(k log^3 n)
 
@@ -207,6 +211,9 @@ bool WITNESS(int a, int n)
 }
 ```
 
+a = 2,3,5,7,11,13,17, 31,61 ,73
+정도로할때 정수표현가능한 모든 소수를 판ㄴ별할수있다.
+
 ```
 constexpr bool PRIME = true;
 constexpr bool COMPOSITE = false;
@@ -223,7 +230,7 @@ bool MILLER_RABIN(int n, int s)
 
 	}
 	int a = 1;
-	for (int j = 1; j <= (n-1)/2 ; j++)
+	for (int j = 0; j < (n-1)/2 ; j++)
 	{
 		a++;
 		if (WITNESS(a, n)) //합성수일시 true 반환
@@ -237,6 +244,41 @@ bool MILLER_RABIN(int n, int s)
 ```
 전체적으로 소수들을 구할때는 에라토스테네스의 체가 효율적이라고 생각.
 
+
+
+# 31.9 Integer factorization
+
+https://www.acmicpc.net/problem/4149
+
+
+test X
+```
+void POLLARED_RHO(int n)
+{
+	int i = 1;
+	int x = 2;// random n
+	int y = x;
+	int k = 2;
+	int x_n = 0;
+	int d = 0;
+	while (1)
+	{
+		i++;
+		x_n = (x * x - 1) % n;
+		d = EUCLID(y - x, n);
+		if (d != 1 && d != n)
+		{
+			std::cout << d << '\n';
+		}
+		if (i == k)
+		{
+			y = x_n;
+			k = 2 * k;
+		}
+	}
+}
+
+```
 
 # Problems
 
@@ -283,7 +325,8 @@ unsigned int gcd(unsigned int u, unsigned int v)
 
 ### 31-3 Three algorighms for Fibonacci numbers
 
-a O(2^n)
+
+(a) O(2^n)
 ```
 int Fibonacci_numbers(int n)
 {
@@ -296,7 +339,7 @@ int Fibonacci_numbers(int n)
 ```
 
 
-b
+(b)
 memoization
 
 O(n)
@@ -325,6 +368,7 @@ int Fibonacci_numbers(int n)
 ```
 
 
+(c)
 O(log n)
 
 ```

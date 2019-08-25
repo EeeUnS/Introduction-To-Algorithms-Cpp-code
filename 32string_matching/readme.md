@@ -74,6 +74,9 @@ void RABIN_KARP_MATCHER(char T[], char* P, int m, int n, int d, int q)
 
 https://www.acmicpc.net/problem/1786
 
+Preprocessing time : O(m^3 *sigma)
+
+Matching time O(m)
 
 
 ```
@@ -116,7 +119,6 @@ std::vector<std::vector<int>> COMPUTE_TRANSITION_FUNCTION(char P[],int sigma, in
 				}
 				if (P[k-1] != a+'A') // 접미사 매칭
 				{
-					//matching = false;
 					continue;
 				}
 				for(int i = 0; i < k ; i++)
@@ -128,7 +130,6 @@ std::vector<std::vector<int>> COMPUTE_TRANSITION_FUNCTION(char P[],int sigma, in
 					}
 					if (P[k - 1 - i] != P[q-i])
 					{
-						//matching = false;
 						break;
 					}
 				}

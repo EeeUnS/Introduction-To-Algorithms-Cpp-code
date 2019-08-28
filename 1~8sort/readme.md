@@ -11,7 +11,7 @@
 
 + merge (chapter 2.3)
 
-+ quick (chapter 7)
++ quick (chapter 7) chapter 7의 problemd은 [여기](https://github.com/EeeUnS/Introduction_to_quicksort/blob/master/quick_sort.pdf)
 
 + shell
 

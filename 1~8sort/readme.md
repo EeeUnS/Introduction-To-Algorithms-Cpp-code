@@ -1,23 +1,23 @@
 
 ### simple sort  n2
 
-+ bubble 
++ bubble (chapter2 Problem)
 
-+ selction
++ selection 
 
-+ insert
++ insertion (chapter 2.1)
 
 ### nlogn 
 
-+ merge 
++ merge (chapter 2.3)
 
-+ quick
++ quick (chapter 7)
 
 + shell
 
-+ heap
++ heap (chapter 6)
 
-### n
+### n (chapter 8)
 
 + radix
 

@@ -83,6 +83,11 @@ int extended_Euclid_for_multiple_inverse(const int a, const int mod_n)
 }
 
 ```
+
+# 31.5 The Chinese remainder theorem
+
+https://www.acmicpc.net/problem/1476
+
 # 31.6
 ## 고속 거듭제곱 모듈러 연산
 
@@ -251,7 +256,6 @@ bool MILLER_RABIN(int n, int s)
 https://www.acmicpc.net/problem/4149
 
 
-test X
 ```
 void POLLARED_RHO(int n)
 {
@@ -265,7 +269,7 @@ void POLLARED_RHO(int n)
 	{
 		i++;
 		x_n = (x * x - 1) % n;
-		d = EUCLID(y - x, n);
+		d = EUCLID(abs(y - x_n), n); 
 		if (d != 1 && d != n)
 		{
 			std::cout << d << '\n';
@@ -275,10 +279,11 @@ void POLLARED_RHO(int n)
 			y = x_n;
 			k = 2 * k;
 		}
+		x = x_n;
 	}
 }
-
 ```
+
 
 # Problems
 

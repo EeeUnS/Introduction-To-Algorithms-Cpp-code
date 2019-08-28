@@ -1,9 +1,11 @@
 # 32.1 The naive string matching algorithm
 
+m = T.length
+n = P.length
 
 O((n-m+1)m)
 ```
-void NAIVE_STRING_MATCHER(char* T, char* P, int n, int m )
+void NAIVE_STRING_MATCHER(char* T, int m , char* P, int n )
 {
 	for (int s = 0; s <= n - m; s++)
 	{
@@ -28,9 +30,13 @@ Preprocessing time : O(m)
 
 Matching time O((n-m+1)m)
 평균 O(m)
-```
 
-void RABIN_KARP_MATCHER(char T[], char* P, int m, int n, int d, int q)
+q = prime
+
+d = sigma star
+
+```
+void RABIN_KARP_MATCHER(char T[], int n , char P[], int m, int d, int q)
 {
 	int h = MODULAR_EXPONENTIATION(d, n - 1, q);
 	int p = 0;
@@ -80,7 +86,7 @@ Matching time O(m)
 
 
 ```
-void FINITE_AUTOMATON_MATCHER(char T[], std::vector<std::vector<int>> equation, int n, int m )
+void FINITE_AUTOMATON_MATCHER(char T[], int n , std::vector<std::vector<int>> equation, int m )
 {
 	int q = 0;
 	for (int i = 0; i < n ; i++)
@@ -138,5 +144,57 @@ std::vector<std::vector<int>> COMPUTE_TRANSITION_FUNCTION(char P[],int sigma, in
 		}
 	}
 	return transition_function;
+}
+```
+
+
+
+# 32.4 The Knuth-Morris-Pratt algorithm
+
+```
+void KMP_MATCHER(char T[], int n, char P[], int m)
+{
+	std::vector<int> pi = COMPUTE_PREFIX_FUNCTION(P, m);
+	int q = -1;
+	for (int i = 0; i < n; i++)
+	{
+		while (q >= 0 && P[q + 1] != T[i])
+		{
+			q = pi[q];
+		}
+		if (P[q + 1] == T[i])
+		{
+			q++;
+		}
+		if (q+1 == m)
+		{
+			std::cout << "Pattern occurs with shift" << i - m + 1 << '\n';
+			q = pi[q];
+		}
+	}
+}
+```
+
+
+```
+std::vector<int> COMPUTE_PREFIX_FUNCTION(char P[], int m)
+{
+	std::vector<int> pi;
+	pi.resize(m);
+	pi[0] = -1;
+	int k = -1; 
+	for (int q = 1; q < m; q++)
+	{
+		while (k >= 0 && P[k+1] != P[q])
+		{
+			k = pi[k];
+		}
+		if (P[k + 1] == P[q])
+		{
+			k++;
+		}
+		pi[q] = k;
+	}
+	return pi;
 }
 ```

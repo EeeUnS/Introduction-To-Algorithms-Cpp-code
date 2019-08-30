@@ -1,4 +1,4 @@
-## 16.1활동 선택 문제(activity selection problem)
+# 16.1활동 선택 문제(activity selection problem)
 
 
 main함수

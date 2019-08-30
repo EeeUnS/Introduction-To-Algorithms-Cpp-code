@@ -91,7 +91,7 @@ https://www.acmicpc.net/problem/1476
 # 31.6
 ## 고속 거듭제곱 모듈러 연산
 
-CLRS에 소개된 의사코드는 잘못되어있다
+CLRS에 소개된 의사코드는 잘 작동하지 않는다.
 
 코드를 살펴보면 c를 사용하지않음
 d - bit 
@@ -115,8 +115,7 @@ int MODULAR_EXPONENTIATION(int a, int b, int n)//a^b mod n
 
 
 ```
-int MODULAR_EXPONENTIATION(int a, int b)//a^b mod n
-{
+int EXPONENTIATION(int a, int b)//a^b
 	int x = a, y = 1;
 	while(b != 0)
 	{

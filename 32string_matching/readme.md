@@ -80,11 +80,10 @@ void RABIN_KARP_MATCHER(char T[], int n , char P[], int m, int d, int q)
 
 https://www.acmicpc.net/problem/1786
 
-Preprocessing time : O(m^3 *sigma)
+Preprocessing time : O(m^3 *sigma) 
+뒤의 kmp를 응용해서 해당 복잡도를 O(m*sigma)로 줄일 수 있다.
 
-Matching time O(m)
-
-
+Matching time O(n)
 ```
 void FINITE_AUTOMATON_MATCHER(char T[], int n , std::vector<std::vector<int>> equation, int m )
 {
@@ -150,6 +149,11 @@ std::vector<std::vector<int>> COMPUTE_TRANSITION_FUNCTION(char P[],int sigma, in
 
 
 # 32.4 The Knuth-Morris-Pratt algorithm
+
+
+Preprocessing time : O(m) 
+
+Matching time O(n)
 
 ```
 void KMP_MATCHER(char T[], int n, char P[], int m)

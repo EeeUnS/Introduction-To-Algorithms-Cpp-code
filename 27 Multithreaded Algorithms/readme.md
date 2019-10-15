@@ -62,3 +62,22 @@ std::vector<int> MAT_VEC(std::vector<std::vector<int>> &A , std::vector<int> &x)
 
 
 
+
+# 27.3 Multithreaded merge sort
+
+```
+
+void MERGE_SORT_PRIME(int A[], int p, int r)
+{
+	if (p >= r)
+	{
+		return;
+	}
+	int q = (p + r) / 2;
+	std::thread _thread = std::thread(MERGE_SORT_PRIME, A, p, q);
+	MERGE_SORT_PRIME(A, q + 1, r);
+	_thread.join();
+	MERGE(A, p, q, r);
+	return;
+}
+```

@@ -40,10 +40,69 @@ std::vector<std::vector<double>> &U, std::vector<int> &PI,std::vector<std::vecto
 void LU_DECOMPOSITION(std::vector<std::vector<int>> &A)
 {
     const int n = A.size() - 1;
+    std::vector<std::vector<double>> L,U;
+
+    L.resize(n+1);
+    U.resize(n+1);
+    for(int i = 1 ; i<= n ; i++)
+    {
+        L[i].resize(n+1);
+        U[i].resize(n+1);
+    }
 
 
+    for(int k = 1; k <= n ; k++)
+    {
+        for(int i = k+1 ; i <= n ;i++)
+        {
+            L[i][k] = A[i][k]/U[k][k] ;
+            U[k][i] = A[k][i];
+        }
 
+        for(int i = k+1 ; i <= n ;i++)
+        {
+            for(int j = k+1 ; j<=n;j++)
+            {
+                A[i][j] = A[i][j] - L[i][k]*U[k][j];
+            }
+            
+        }
 
+    }
+    return L,U;
+}
 
-    return 
+//미
+void LUP_DECOMPOSITION(std::vector<std::vector<int>> &A)
+{
+    const int n = A.size() - 1;
+    pi[]
+    for(int i = 1 ; i <= n; i++)
+    {
+        pi[i] = i;
+    }
+    for(int k = 1 ; k<n ;k++)
+    {
+        int k_prime;
+        int p = 0 ;
+        for(int i = k ; i <= n ; i++)
+        {
+            if(A[i][k] > p)
+            {
+                p = A[i][k];
+                k_prime = i;
+            }
+        }
+        if(p==0)
+        {
+            std::cout << "singular matrix" << std::endl;
+        }
+        int sub = pi[k];
+        pi[k] = pi[k_prime];
+        pi[k_prime] = sub;
+        for(int i = 1 ; i <= n ; i++)
+        {
+            int sub = 
+        }
+    }
 }

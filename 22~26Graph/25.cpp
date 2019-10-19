@@ -272,8 +272,11 @@ std::vector<std::vector<int>>FLOYD_WARSHALL_apostrophe_pi(std::vector<std::vecto
         {
             for(int j = 1 ; j < n ;j++)
             {
-                D[i][j] = (D[i][j] < D[i][k] + D[k][j] ?  D[i][j] : D[i][k] + D[k][j]);
-                pi[k][i][j] = (D[i][j] < D[i][k] + D[k][j] ?  pi[k-1][i][j] : pi[k-1][k][j]);
+                if(D[i][j] > D[i][k] + D[k][j])
+                {
+                    D[i][j] = D[i][k] + D[k][j]);
+                    pi[k][i][j] = pi[k-1][k][j]);
+                }
             }
         }
     }

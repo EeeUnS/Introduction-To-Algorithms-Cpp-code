@@ -65,8 +65,10 @@ std::vector<int> MAT_VEC(std::vector<std::vector<int>> &A , std::vector<int> &x)
 
 # 27.3 Multithreaded merge sort
 
+S_1 = Theta(nlogn)
+S_INF = Theta(n)
+parallelism = Theta(lg n)
 ```
-
 void MERGE_SORT_PRIME(int A[], int p, int r)
 {
 	if (p >= r)
@@ -80,4 +82,16 @@ void MERGE_SORT_PRIME(int A[], int p, int r)
 	MERGE(A, p, q, r);
 	return;
 }
+```
+0~n-1
+P_Merge's
+
+S_1 = Theta(n)
+S_INF = Theta((lg n)^2)
+parallelism = Theta(n/(lgn)^2)
+
+https://nms.kcl.ac.uk/colin.cooper/teachingmaterial/PAL-PDA/lectures/6B-parallel-MergeSort.pdf
+```
+
+
 ```

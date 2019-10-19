@@ -31,6 +31,8 @@ void sub_procedure(int i, std::vector< std::vector<int>>& C,
 }
 
 
+
+미작동
 //divide and conquer
 void P_MATRIX_MULTIPLY_RECURSIVE(std::vector< std::vector<int>>& C,
 	std::vector< std::vector<int>>& A,

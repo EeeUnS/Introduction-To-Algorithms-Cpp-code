@@ -1,144 +1,14 @@
 
 //25.1-7
 
-std::vector<std::vector<int>> EXTEND_SHORTEST_PATHS(std::vector<std::vector<int>>& L, std::vector<std::vector<int>>& W,std::vector<std::vector<int>>& pi)
-{
-	const int n = L.size();
-
-
-	std::vector<std::vector<int>> L_prime;
-	L_prime.assign(n, std::vector<int>(n, INF));
-	for(int i = 1; i < n; i++)
-	{
-		for (int j = 1; j < n; j++)
-		{
-
-			for (int k = 1; k < n; k++)
-			{
-                if(L_prime[i][j] > L[i][k] + W[k][j])
-                {
-                    L_prime[i][j] = L[i][k] + W[k][j]);
-                    pi[i][j] = k;
-                }
-			}
-
-		}
-	}
-	return L_prime;
-}
-
-//nxn 1~n
-std::vector<std::vector<int>>SLOW_ALL_PAIRS_SHORTEST_PATHS(std::vector<std::vector<int>>& W,std::vector<std::vector<int>>& pi)
-{
-	const int n = W.size() - 1;
-
-	std::vector<std::vector<std::vector<int>>> L;
-	L.resize(n+1);
-	for (int i = 0 ; i < n+1;i++)
-	{
-		L[i].resize(n+1);
-		for (int j = 0; j < n + 1; j++)
-		{
-			L[i][j].resize(n + 1);
-		}
-	}
-	L[1] = W;
-	for (int m = 2; m < n; m++)
-	{
-		L[m] = EXTEND_SHORTEST_PATHS(L[m - 1], W,pi);
-	}
-	return L[n-1];
-}
-
-
-
 
 //25.1-8 NOT TEST
-space requirement Theta(n^2)
-std::vector<std::vector<int>>FASTER_ALL_PAIRS_SHORTEST_PATHS(std::vector<std::vector<int>>& W)
-{
-	const int n = W.size() - 1;
-
-	std::vector<std::vector<int>>> A,B=W;
-    A.resize(n+1);
-
-    for (int j = 0; j <= n ; j++)
-    {
-        A[j].resize(n + 1);
-    }
-
-	int m = 1;
-    
-    while(m < n -1)
-	{
-        A = EXTEND_SHORTEST_PATHS(B, B);
-        m = m*2;
-        if(m < n -1)
-        {
-            return A;
-        }
-
-		B = EXTEND_SHORTEST_PATHS(A, A);
-		m = m*2;
-	}
-	return  B;
-}
 
 
 
 
 //25.1-9  25.1-8에 이어서.
 no consider overflow;
-std::vector<std::vector<int>>FASTER_ALL_PAIRS_SHORTEST_PATHS(std::vector<std::vector<int>>& W)
-{
-	const int n = W.size();
-
-	std::vector<std::vector<int>>> A,B=W,C;
-    A.resize(n+1);
-    for (int j = 0; j < n ; j++)
-    {
-        A[j].resize(n);
-    }
-
-	int m = 1;
-    
-    while(m < n -2)
-	{
-        A = EXTEND_SHORTEST_PATHS(B, B);
-        m = m*2;
-        if(m < n -2)
-        {
-            C = A;
-            break;
-        }
-
-		B = EXTEND_SHORTEST_PATHS(A, A);
-		m = m*2;
-        if(m < n -2)
-        {
-            C = B;
-            break;
-        }
-	}
-    D = EXTEND_SHORTEST_PATHS(C, C);  
-    bool chk_nwc = 0 ;
-    for(int i = 1; i < n && !chk_nwc;i++)
-    {
-        for(int j = 1 ; j < n  && !chk_nwc ;j++)
-        {
-            if(C[i][j] != D[i][j])
-            {
-                chk_nwc = true;
-            }
-        }
-    }
-
-
-    if(chk_nwc)
-        std::cout << "the input graph contains a negative-weight cycle" <<std::endl;
-
-    return C;
-}
 
 
 
@@ -282,6 +152,28 @@ std::vector<std::vector<int>>FLOYD_WARSHALL_apostrophe_pi(std::vector<std::vecto
     }
 	return  D;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

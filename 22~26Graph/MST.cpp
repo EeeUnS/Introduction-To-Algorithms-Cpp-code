@@ -48,6 +48,8 @@ int FIND_SET(int a)
 }
 
 };
+
+
 void MST_KRUSKAL(std::vector<std::vector<int>> &Graph,std::vector<edge> &W)
 {   
     std::vector<edge> A ;
@@ -107,4 +109,80 @@ void MST_PRIM(std::vector<vertex> &Graph,std::vector<std::vector<int>> &W  ,vert
     r.key = 0;
     
 
+}
+
+
+////////////////////////////////////////////////
+
+struct vertex
+{
+	int number;
+	int key;
+	int pi;
+};
+
+
+//C++11의 priority_queue로 작성하기위해 수정을 가함
+void MST_PRIM(std::vector<std::vector<int>>& Graph, std::vector<std::vector<int>>& W, vertex r)
+{
+	const int n = Graph.size();
+	
+	for(int i = 1 ; i < n ; i++)
+	{
+		Graph[i].key = INF;
+		Graph[i].pi = NIL;
+
+	}
+	r.key = 0;
+	std::priority_queue<vertex, 
+		std::vector<vertex>,  > Q; 
+
+	while (!Q.empty())
+	{
+
+		int u = Q.top();
+		for (int v = 0; v < Graph[i].size(); v++)
+		{
+			if ()
+			{
+				v.pi = u;
+				v.key = W[u][v];
+			}
+		}
+	}
+
+}
+const int MAX = 1000000;
+
+bool visit[MAX];
+
+void prim(int pn,int r) {
+	int ret = 0;
+	for (int i = 1; i <= pn; i++) { // 초기화
+		visit[pn] = false;
+	}
+	std::priority_queue<std::pair<int, int>, std::vector<std::pair<int, int>>
+		, std::greater<std::pair<int, int>> > Q;
+
+	Q.push(std::pair<int,int>(0, r));
+	for (int i = 1; i <= pn; i++) {
+		int now = -1, min_dist = INF;
+		while (!Q.empty()) {
+			int u = Q.top().second;
+			if (!visit[u]) {
+				min_dist = Q.top().first;
+				break;
+			}
+			Q.pop();
+		}
+		if (min_dist == INF) 
+			return ; // 연결 그래프가 아님
+		ret += min_dist;
+		visit[now] = true;
+		for (auto edge : ad[node]) {
+			dist.push(edge);
+		}
+		add_edge(now);
+	}
+	return;
 }

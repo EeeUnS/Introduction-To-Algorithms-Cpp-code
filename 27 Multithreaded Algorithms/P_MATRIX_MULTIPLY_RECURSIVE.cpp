@@ -65,8 +65,6 @@ and T11; T12; T21; T22; respectively
 		_thread[i].join();
 	}
 	//parallel for i = 1 to n
-
-
 }
 
 

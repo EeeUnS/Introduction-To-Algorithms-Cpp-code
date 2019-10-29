@@ -8,11 +8,19 @@ Ch 4 [Divide-and-Conquer](https://github.com/EeeUnS/introduction_to_algorithms/t
 
 CH 10 Data Structures
 
+
+Ch 12 [12 Binary Search Trees](https://github.com/EeeUnS/introduction_to_algorithms/blob/master/12BinarysearchTree/Tree.md)
+
+
+Ch 13 [Red-Black Trees](https://github.com/EeeUnS/introduction_to_algorithms/blob/master/13%20redblacktree/REDBLACKTREE.md)
+
+
 Ch 15 [Dynamic Programming](https://github.com/EeeUnS/introduction_to_algorithms/tree/master/15DP)
 
 Ch 16 [Greedy Algorithms](https://github.com/EeeUnS/introduction_to_algorithms/tree/master/16Greedy)
 
 Ch 17 []
+
 
 
 Graph Algorithms(22~26)

@@ -60,10 +60,18 @@ std::vector<int> MAT_VEC(std::vector<std::vector<int>> &A , std::vector<int> &x)
 
 # 27.2 Multithreaded matrix multiplication
 
+https://en.wikipedia.org/wiki/Matrix_multiplication_algorithm#Parallel_and_distributed_algorithms
+
+
+
 
 
 
 # 27.3 Multithreaded merge sort
+
+Not working
+
+
 
 S_1 = Theta(nlogn)
 S_INF = Theta(n)

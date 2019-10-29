@@ -1,12 +1,99 @@
 # 4.1 The maximum-subarray problem
 
 
+4.1-2 A prute-force solution
+Theta(n^2)
+```
+int FIND_MAX_CROSSING_SUBARRAY(int A[], int n)
+{
+	const int INF = 1000000;
+	int max = -1000000;
+	for (int i = 0; i < n; i++)
+	{
+		int sub_max = A[i];
+		for (int j = i + 1; j < n; j++)
+		{ 
+			sub_max = sub_max + A[j];
+			max = max < sub_max ? sub_max : max;
+		}
+	}
+	return max;
+}
+```
+
+
+daq
+Theta(nlg(n))
+```
+int FIND_MAX_CROSSING_SUBARRAY(int A[], int n)
+{
+	const int INF = 1000000;
+	int max = -1000000;
+	for (int i = 0; i < n; i++)
+	{
+		int sub_max = A[i];
+		for (int j = i + 1; j < n; j++)
+		{ 
+			sub_max = sub_max + A[j];
+			max = max < sub_max ? sub_max : max;
+		}
+	}
+	return max;
+}
+
+std::tuple<int, int, int> FIND_MAX_CROSSING_SUBARRAY(int A[], int low, int mid, int high)
+{
+	const int INF = 1000000;
+	int left_sum = -INF;
+	int sum = 0;
+	int max_left = -1;
+
+	for (int i = mid; i >= low; i--)
+	{
+		sum = sum + A[i];
+		if (sum > left_sum)
+		{
+			left_sum = sum;
+			max_left = i;
+		}
+	}
+	int right_sum = -INF, max_right = -1;
+	sum = 0;
+	for (int j = mid+1; j <= high ; j++)
+	{
+		sum = sum + A[j];
+		if (sum > right_sum)
+		{
+			right_sum = sum;
+			max_right = j;
+		}
+	}
+	return(std::make_tuple(max_left,max_right,left_sum+right_sum));
+
+}
+```
+
+4.1-5
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 
 #4.2 Strassen's algorithms for matrix multiplication
 
+일반
 n^3
 ```
 std::vector<std::vector<int>> SQUARE_MATRIX_MULTIPLY(std::vector<std::vector<int>>& A, std::vector<std::vector<int>>& B)
@@ -203,3 +290,119 @@ SQUARE_MATRIX_MULTIPLY_RECURSIVE(0,0,A,0,0, B,0,0,2);
 ```
 
 스트라센;
+```
+void ADD_MATRIX(std::vector< std::vector<int>>& C,
+	std::vector< std::vector<int>>& A,
+	std::vector< std::vector<int>>& B)
+{
+	const std::size_t n = C.size();
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			C[i][j] = A[i][j] + B[i][j];
+		}
+	}
+}
+
+void SUB_MATRIX(std::vector< std::vector<int>>& C,
+	std::vector< std::vector<int>>& A,
+	std::vector< std::vector<int>>& B)
+{
+	const std::size_t n = C.size();
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			C[i][j] = A[i][j] - B[i][j];
+		}
+	}
+}
+
+std::vector< std::vector<int>> STRASSEN(
+	std::vector< std::vector<int>>& A,
+	std::vector< std::vector<int>>& B
+)
+{
+	const std::size_t n = A.size();
+	std::vector< std::vector<int>> C(n, std::vector<int>(n, 0));
+
+	if (n == 1)
+	{
+		C[0][0] = A[0][0] * B[0][0];
+		return C;
+	}
+	int m = n / 2;
+	std::vector< std::vector<int>> A11(m, std::vector<int>(m, 0)),
+		A12(m, std::vector<int>(m, 0)),
+		A21(m, std::vector<int>(m, 0)),
+		A22(m, std::vector<int>(m, 0));
+	std::vector< std::vector<int>> B11(m, std::vector<int>(m, 0)),
+		B12(m, std::vector<int>(m, 0)),
+		B21(m, std::vector<int>(m, 0)),
+		B22(m, std::vector<int>(m, 0));
+	std::vector< std::vector<int>> S1(m, std::vector<int>(m, 0)),
+		S2(m, std::vector<int>(m, 0)),
+		S3(m, std::vector<int>(m, 0)),
+		S4(m, std::vector<int>(m, 0)),
+		S5(m, std::vector<int>(m, 0)),
+		S6(m, std::vector<int>(m, 0)),
+		S7(m, std::vector<int>(m, 0)),
+		S8(m, std::vector<int>(m, 0)),
+		S9(m, std::vector<int>(m, 0)),
+		S10(m, std::vector<int>(m, 0));
+	std::vector< std::vector<int>> P1(m, std::vector<int>(m, 0)),
+		P2(m, std::vector<int>(m, 0)),
+		P3(m, std::vector<int>(m, 0)),
+		P4(m, std::vector<int>(m, 0)),
+		P5(m, std::vector<int>(m, 0)),
+		P6(m, std::vector<int>(m, 0)),
+		P7(m, std::vector<int>(m, 0));
+
+	for (int i = 0; i < m; i++) {
+		for (int j = 0; j < m; j++) {
+			A11[i][j] = A[i][j];
+			A12[i][j] = A[i][j + m];
+			A21[i][j] = A[i + m][j];
+			A22[i][j] = A[i + m][j + m];
+
+			B11[i][j] = B[i][j];
+			B12[i][j] = B[i][j + m];
+			B21[i][j] = B[i + m][j];
+			B22[i][j] = B[i + m][j + m];
+		}
+	}
+
+	SUB_MATRIX(S1, B12, B22);
+	ADD_MATRIX(S2, A11, A12);
+	ADD_MATRIX(S3, A21, A22);
+
+	SUB_MATRIX(S4, B21, B11);
+	ADD_MATRIX(S5, A11, A22);
+	ADD_MATRIX(S6, B11, B22);
+
+	SUB_MATRIX(S7, A12, A22);
+	ADD_MATRIX(S8, B21, B22);
+	SUB_MATRIX(S9, A11, A21);
+	ADD_MATRIX(S10, B11, B12);
+
+	P1 = STRASSEN(A11, S1);
+	P2 = STRASSEN(S2, B22);
+	P3 = STRASSEN(S3, B11);
+	P4 = STRASSEN(A22, S4);
+	P5 = STRASSEN(S5, S6);
+	P6 = STRASSEN(S7, S8);
+	P7 = STRASSEN(S9, S10);
+
+	for (int i = 0; i < n / 2; i++) {
+		for (int j = 0; j < n / 2; j++) {
+			C[i][j] = P5[i][j] + P4[i][j] - P2[i][j] + P6[i][j];
+			C[i][j + m] = P1[i][j] + P2[i][j];
+			C[i + m][j] = P3[i][j] + P4[i][j];
+			C[i + m][j + m] = P5[i][j] + P1[i][j] - P3[i][j] - P7[i][j];
+		}
+	}
+
+	return C;
+}
+```

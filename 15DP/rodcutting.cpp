@@ -1,21 +1,8 @@
-1. Characterize the structure of an optimal solution
 
-2. Recursively define the value of an optimal solution
+#include<iostream>
+#include<algorithm> // std::max
+#include<vector>
 
-3. Compute the calue of an optimal solution, typically in a bottom-up fashion
-
-4. Construct an optimal solution from computed information
-
-# 15.1 ROD CUTING
-
-
-```
-int p[] ={ 0, 1,5,8,9,10,17,17,20,24,30 };
-```
-
-
-완전 탐색 $O(2^n)$//수식안되네..
-```
 int CUT_ROD(int p[], int n) // p는 index 1부터 저장되어있다.
 {
 	if (n == 0)
@@ -25,31 +12,12 @@ int CUT_ROD(int p[], int n) // p는 index 1부터 저장되어있다.
 	int q = INT32_MIN;
 	for (int i = 1; i <= n; i++)
 	{
-		q = std::max(q, p[i-1] + CUT_ROD(p, n - i));
+		q = std::max(q, p[i - 1] + CUT_ROD(p, n - i));
 	}
 }
-```
-
-O(n)
 
 
-메모이제이션 방법 (top-down with memoization)
-```
-int MEMOIZED_CUT_ROD(int p[], int n)
-{
-	int* r = new int [n + 1];
-	for (int i = 0; i <= n; ++i)
-	{
-		r[i] = INT32_MIN;
-	}
-	int q = MEMOIZED_CUT_ROD_AUX(p, n, r);
-	delete []r;
-	return q;
-}
-```
 
-
-```
 int MEMOIZED_CUT_ROD_AUX(int p[], int n, int r[])
 {
 	int q;
@@ -59,7 +27,7 @@ int MEMOIZED_CUT_ROD_AUX(int p[], int n, int r[])
 	}
 	if (n == 0)
 	{
-		 q = 0;
+		q = 0;
 	}
 	else
 	{
@@ -72,12 +40,19 @@ int MEMOIZED_CUT_ROD_AUX(int p[], int n, int r[])
 	r[n] = q;
 	return q;
 }
-```
 
+int MEMOIZED_CUT_ROD(int p[], int n)
+{
+	int* r = new int[n + 1];
+	for (int i = 0; i <= n; ++i)
+	{
+		r[i] = INT32_MIN;
+	}
+	int q = MEMOIZED_CUT_ROD_AUX(p, n, r);
+	delete[]r;
+	return q;
+}
 
-
-bottm-up method(버튼업 /상향식)
-```
 int BOTTOM_UP_CUT_ROD(int p[], int n)
 {
 	int* r = new int[n + 1];
@@ -94,9 +69,6 @@ int BOTTOM_UP_CUT_ROD(int p[], int n)
 	delete[]r;
 	return r[n];
 }
-```
-
-```
 
 std::vector<std::vector<int>> EXTENDED_BOTTOM_UP_CUT_ROD(int p[], int n)
 {
@@ -133,7 +105,11 @@ void PRINT_CUT_ROD_COLUTION(int p[], int n)
 	std::cout << std::endl;
 }
 
-```
+int p[] ={ 0, 1,5,8,9,10,17,17,20,24,30 };
 
-# 15.2 Matrix_chain_multiplication
-
+int main()
+{
+	int n = sizeof(p)/sizeof(int);
+	
+	PRINT_CUT_ROD_COLUTION(p, n-1);
+}

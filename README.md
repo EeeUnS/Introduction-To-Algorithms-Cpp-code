@@ -27,7 +27,7 @@ Graph Algorithms(22~26)
 
 Elementary Graph Algorithms
 
-Ch 22.2,3 [BFS,DFS]{https://github.com/EeeUnS/introduction_to_algorithms/blob/master/22~26Graph/22.1BFS_DFS.md}
+Ch 22.2,3 [BFS,DFS](https://github.com/EeeUnS/introduction_to_algorithms/blob/master/22~26Graph/22.1BFS_DFS.md)
 
 Ch 22.4 [Topological Sort](https://github.com/EeeUnS/introduction_to_algorithms/blob/master/22~26Graph/22.4_DAG.md)
 

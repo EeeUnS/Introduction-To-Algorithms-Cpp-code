@@ -2,7 +2,7 @@
 ### GCD Euclid's algorithm
 
 O(log b)
-```
+```C++
 int EUCLID(int a, int b)
 {
 	if (b == 0)
@@ -13,7 +13,7 @@ int EUCLID(int a, int b)
 ```
 ### EXTENDED_EUCLID
 
-```
+```C++
 #include<tuple>
 
 std::tuple<int, int, int> EXTENDED_EUCLID(int a, int b)
@@ -35,7 +35,7 @@ std::tuple<int, int, int> EXTENDED_EUCLID(int a, int b)
 ### MODULAR_LINEAR_EQUATION_SOLVER
 
 O(lg n + gcd(a,n))
-```
+```C++
 void MODULAR_LINEAR_EQUATION_SOLVER(int a, int b, int n)//ax = b (mod n)
 {
 	std::tuple<int, int, int> set = EXTENDED_EUCLID(a, n);
@@ -58,7 +58,7 @@ void MODULAR_LINEAR_EQUATION_SOLVER(int a, int b, int n)//ax = b (mod n)
 
 
 ## modulo 연산에대한 역
-```
+```C++
 int extended_Euclid_for_multiple_inverse(const int a, const int mod_n)
 {
 	if (gcd(a, mod_n) != 1)
@@ -96,7 +96,8 @@ CLRS에 소개된 의사코드는 잘 작동하지 않는다.
 코드를 살펴보면 c를 사용하지않음
 d - bit 
 O(d)
-```
+
+````C++
 int MODULAR_EXPONENTIATION(int a, int b, int n)//a^b mod n
 {
 	int x = a, y = 1;
@@ -111,10 +112,10 @@ int MODULAR_EXPONENTIATION(int a, int b, int n)//a^b mod n
 	}
 	return y;
 }
-```
+````
 
 
-```
+```C++
 int EXPONENTIATION(int a, int b)//a^b
 	int x = a, y = 1;
 	while(b != 0)
@@ -135,7 +136,7 @@ int EXPONENTIATION(int a, int b)//a^b
 
 O(sqrt(n))
 
-```
+```C++
 bool trial_division(int n)
 {
 	if (n == 2)
@@ -164,7 +165,7 @@ bool trial_division(int n)
 
 ### PSEUDOPRIME(n)
 Carmichael numbers 561 1105 1729
-```
+```C++
 constexpr bool PRIME = true;
 constexpr bool COMPOSITE = false;
 
@@ -186,7 +187,7 @@ https://www.acmicpc.net/problem/5615
 O(k log^3 n)
 
 
-```
+```C++
 
 bool WITNESS(int a, int n)
 {
@@ -220,7 +221,7 @@ bool WITNESS(int a, int n)
 a = 2,3,5,7,11,13,17, 31,61 ,73
 정도로할때 정수표현가능한 모든 소수를 판ㄴ별할수있다.
 
-```
+```C++
 constexpr bool PRIME = true;
 constexpr bool COMPOSITE = false;
 
@@ -257,7 +258,7 @@ bool MILLER_RABIN(int n, int s)
 https://www.acmicpc.net/problem/4149
 
 
-```
+```C++
 void POLLARED_RHO(int n)
 {
 	int i = 1;
@@ -290,7 +291,7 @@ void POLLARED_RHO(int n)
 
 ### 31-2 Binary gcd algorithm
 
-```
+```C++
 
 unsigned int gcd(unsigned int u, unsigned int v)
 {
@@ -333,7 +334,7 @@ unsigned int gcd(unsigned int u, unsigned int v)
 
 
 (a) O(2^n)
-```
+```C++
 int Fibonacci_numbers(int n)
 {
 	if (n == 1 || n == 2)
@@ -349,7 +350,7 @@ int Fibonacci_numbers(int n)
 memoization
 
 O(n)
-```
+```C++
 int Fibonacci_numbers(int n)
 {
 
@@ -377,7 +378,7 @@ int Fibonacci_numbers(int n)
 (c)
 O(log n)
 
-```
+```C++
 int Fibonacci_numbers(int n)
 {
 	int mat[2][2] = { 0,1,1,1 };

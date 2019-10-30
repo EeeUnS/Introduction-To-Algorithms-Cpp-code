@@ -1,10 +1,16 @@
-# introduction_to_algorithms
+# introduction to algorithms
 
 This is Cpp code from  pseudocode in CLRS
 
-[Sort (Ch 2,4,6,7,8)](https://github.com/EeeUnS/introduction_to_algorithms/tree/master/1~8sort)
+## I Foundations & II Sorting and Order Statistics
+
+Ch 2,4,6,7,8 [Sort](https://github.com/EeeUnS/introduction_to_algorithms/tree/master/1~8sort)
 
 Ch 4 [Divide-and-Conquer](https://github.com/EeeUnS/introduction_to_algorithms/tree/master/4%20Divide%20and%20conquer)
+
+
+
+## III Data Structures 
 
 CH 10 Data Structures
 
@@ -15,15 +21,17 @@ Ch 12 [12 Binary Search Trees](https://github.com/EeeUnS/introduction_to_algorit
 Ch 13 [Red-Black Trees](https://github.com/EeeUnS/introduction_to_algorithms/blob/master/13%20redblacktree/REDBLACKTREE.md)
 
 
+## IV Advanced Design and Analysis Techniques
+
 Ch 15 [Dynamic Programming](https://github.com/EeeUnS/introduction_to_algorithms/tree/master/15DP)
 
 Ch 16 [Greedy Algorithms](https://github.com/EeeUnS/introduction_to_algorithms/tree/master/16Greedy)
 
 Ch 17 []
 
+## V Advanced Data Structures
 
-
-Graph Algorithms(22~26)
+## VI Graph Algorithms(22~26)
 
 Elementary Graph Algorithms
 
@@ -40,7 +48,7 @@ Ch 24 [Single Source Shortest Paths](https://github.com/EeeUnS/introduction_to_a
 Ch 25 [All-Pairs Shortest Paths](https://github.com/EeeUnS/introduction_to_algorithms/blob/master/22~26Graph/25.all_pairs_shortest_paths.md)
 
 
-
+## VII Selected Topics
 
 
 

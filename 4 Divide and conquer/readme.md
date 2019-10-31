@@ -1,9 +1,9 @@
 # 4.1 The maximum-subarray problem
 
 
-4.1-2 A prute-force solution
+4.1-2 A brute-force solution
 Theta(n^2)
-```
+```C++
 int FIND_MAX_CROSSING_SUBARRAY(int A[], int n)
 {
 	const int INF = 1000000;
@@ -24,7 +24,7 @@ int FIND_MAX_CROSSING_SUBARRAY(int A[], int n)
 
 daq
 Theta(nlg(n))
-```
+```C++
 int FIND_MAX_CROSSING_SUBARRAY(int A[], int n)
 {
 	const int INF = 1000000;
@@ -73,8 +73,42 @@ std::tuple<int, int, int> FIND_MAX_CROSSING_SUBARRAY(int A[], int low, int mid, 
 }
 ```
 
-4.1-5
+4.1-5 
 
+
+[Kadane’s Algorithm](https://en.wikipedia.org/wiki/Maximum_subarray_problem#Kadane's_algorithm)
+
+O(n)
+```C++
+std::tuple<int, int, int>KADANE(int A[], int n)
+{
+	std::tuple<int, int, int> current_sum (0,0,0) ;
+	std::tuple<int, int, int> max ;
+	for (int i = 0; i < n; i++)
+	{
+		if ( std::get<2>(current_sum) + A[i] > 0)
+		{
+			if (std::get<2>(current_sum) == 0)
+				std::get<0>(current_sum) = i;
+			std::get<2>(current_sum) = std::get<2>(current_sum) + A[i];
+			std::get<1>(current_sum) = i;
+			
+		}
+		else
+		{
+			std::get<2>(current_sum) = 0;
+		}
+		if (std::get<2>(max) < std::get<2>(current_sum))
+		{
+			std::get<0>(max) = std::get<0>(current_sum);
+			std::get<1>(max) = std::get<1>(current_sum);
+			std::get<2>(max) = std::get<2>(current_sum);
+		}
+		
+	}
+	return max;
+}
+```
 
 
 
@@ -95,7 +129,7 @@ std::tuple<int, int, int> FIND_MAX_CROSSING_SUBARRAY(int A[], int low, int mid, 
 
 일반
 n^3
-```
+```C++
 std::vector<std::vector<int>> SQUARE_MATRIX_MULTIPLY(std::vector<std::vector<int>>& A, std::vector<std::vector<int>>& B)
 {
 	const int n = A.size();
@@ -120,7 +154,7 @@ std::vector<std::vector<int>> SQUARE_MATRIX_MULTIPLY(std::vector<std::vector<int
 divide and conquer
 n = 2^t
 n^3
-```
+```C++
 std::vector< std::vector<int>>SQUARE_MATRIX_MULTIPLY_RECURSIVE(
 	std::vector< std::vector<int>>& A,
 	std::vector< std::vector<int>>& B
@@ -204,7 +238,7 @@ std::vector< std::vector<int>>SQUARE_MATRIX_MULTIPLY_RECURSIVE(
 ```
 
 C이외의 추가적인 공간을 사용하지않음 모두 인덱스로 처리
-```
+```C++
 std::vector< std::vector<int>>SQUARE_MATRIX_MULTIPLY_RECURSIVE(
 	int C_row_index, int C_col_index,
 	std::vector< std::vector<int>> A,
@@ -285,12 +319,12 @@ std::vector< std::vector<int>>SQUARE_MATRIX_MULTIPLY_RECURSIVE(
 }
 ```
 
-```
+```C++
 SQUARE_MATRIX_MULTIPLY_RECURSIVE(0,0,A,0,0, B,0,0,2);
-```
+```C++
 
 스트라센;
-```
+```C++
 void ADD_MATRIX(std::vector< std::vector<int>>& C,
 	std::vector< std::vector<int>>& A,
 	std::vector< std::vector<int>>& B)

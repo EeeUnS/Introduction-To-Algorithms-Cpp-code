@@ -1,4 +1,4 @@
-# introduction to algorithms
+# Introduction To Algorithms
 
 This is Cpp code from  pseudocode in CLRS
 

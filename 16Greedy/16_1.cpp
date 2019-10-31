@@ -1,13 +1,8 @@
-# 16.1활동 선택 문제(activity selection problem)
+#include <iostream>
+#include<algorithm>
+#include<vector>
+//the maximum-subarray
 
-
-
-1. f가 제일작은 f[0]을 선택한다. 이게 a0
-2. 이 앞의 f[0]보다 큰 s[i]를 선택한다. a1
-3. 반복
-
-
-```C++
 void RECURSIVE_ACTIVITY_SELECTOR(int s[], int f[], int k, int n, std::vector<int> &a)
 {
 	int m = k + 1;
@@ -23,9 +18,7 @@ void RECURSIVE_ACTIVITY_SELECTOR(int s[], int f[], int k, int n, std::vector<int
 	return;
 }
 
-```
 
-```C++
 std::vector<int> GREEDY_ACTIVITY_SELECTOR(int s[], int f[],int n)
 {
 	std::vector<int> A;
@@ -41,8 +34,22 @@ std::vector<int> GREEDY_ACTIVITY_SELECTOR(int s[], int f[],int n)
 	}
 	return A;
 }
-```
 
-# 16.2 Elements of the greedy strategy
+int s[] = {0, 1, 3, 0, 5, 3, 5 ,6 ,8, 8, 2, 12 };
+int f[] = {0, 4, 5, 6, 7 ,9 ,9, 10, 11, 12, 14, 16 };
+int main()
+{
+	int n = sizeof(s) / sizeof(int);
+	std::vector<int> a = GREEDY_ACTIVITY_SELECTOR(s,f,n);
 
-# 16.3 Huffman codes
+
+	//RECURSIVE_ACTIVITY_SELECTOR(s, f, 0, n, a);
+	for (int i = 0; i < a.size(); i++)
+	{
+		std::cout << a[i] << ' ';
+	}
+
+
+
+	return 0;
+}

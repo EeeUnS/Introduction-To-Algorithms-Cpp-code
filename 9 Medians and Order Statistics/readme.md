@@ -85,3 +85,27 @@ int RANDOMIZED_SELECT(int A[], int p, int r, int i)
 ```
 
 # 9.3 Selection in worst-case linear time
+
+Median of medians
+https://en.wikipedia.org/wiki/Median_of_medians
+
+1. Divide the n elements of the input array into bn=5c groups of 5 elements each
+and at most one group made up of the remaining n mod 5 elements.
+
+2. Find the median of each of the dn=5e groups by first insertion-sorting the elements
+of each group (of which there are at most 5) and then picking the median
+from the sorted list of group elements.
+
+3. Use SELECT recursively to find the median x of the dn=5e medians found in
+step 2. (If there are an even number of medians, then by our convention, x is
+the lower median.)
+
+4. Partition the input array around the median-of-medians x using the modified
+version of PARTITION. Let k be one more than the number of elements on the
+low side of the partition, so that x is the kth smallest element and there are nk
+elements on the high side of the partition.
+
+5. If i D k, then return x. Otherwise, use SELECT recursively to find the i th
+smallest element on the low side if i < k, or the .i  k/th smallest element on
+the high side if i > k.
+

@@ -1,7 +1,4 @@
 #include <iostream>
-#include<string>
-#include<iostream>
-#include<fstream>
 #include<vector>
 
 typedef std::pair<std::vector<std::vector<int>>,std::vector<std::vector<int>>> Set;

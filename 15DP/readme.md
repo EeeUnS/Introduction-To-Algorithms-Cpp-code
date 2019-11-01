@@ -137,3 +137,60 @@ void PRINT_CUT_ROD_COLUTION(int p[], int n)
 
 # 15.2 Matrix_chain_multiplication
 
+```C++
+typedef std::pair<std::vector<std::vector<int>>,std::vector<std::vector<int>>> Set;
+```
+
+O(n^3)
+```C++
+Set MATRIX_CHAIN_ORDER(std::vector<int> p)
+{
+	const int INF = 1000000000;
+	const int n = p.size()-1;
+	std::vector<std::vector<int>> m(n+1, std::vector<int>(n+1, 0));
+	std::vector<std::vector<int>> s(n+1, std::vector<int>(n+1, 0));
+	for (int l = 2; l <= n; l++)
+	{
+		for (int i = 1; i <= n - l + 1; i++)
+		{
+			int j = i + l - 1;
+			m[i][j] = INF;
+			for (int k = i; k <= j - 1; k++)
+			{
+				int  q = m[i][k] + m[k + 1][j] + p[i - 1] * p[k] * p[j];
+				if (q < m[i][j])
+				{
+
+					m[i][j] = q;
+					s[i][j] = k;
+				}
+			}
+		}
+	}
+	return std::make_pair(m, s);
+}
+```
+
+```C++
+void PRINT_OPTIMAL_PARENS(std::vector<std::vector<int>> s, int i, int j)
+{
+	if (i == j)
+	{
+		std::cout << "A" << i;
+	}
+	else
+	{
+		std::cout << '(';
+		PRINT_OPTIMAL_PARENS(s, i, s[i][j]);
+		PRINT_OPTIMAL_PARENS(s, s[i][j] + 1, j);
+		std::cout << ')';
+	}
+}
+```
+# 15.3 Elements of dynamic programming
+
+
+
+
+
+# 15.4 Longest common subsequence

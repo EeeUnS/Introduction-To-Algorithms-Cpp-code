@@ -9,13 +9,13 @@
 # 15.1 ROD CUTING
 
 
-```
+```C++
 int p[] ={ 0, 1,5,8,9,10,17,17,20,24,30 };
 ```
 
 
 완전 탐색 $O(2^n)$//수식안되네..
-```
+```C++
 int CUT_ROD(int p[], int n) // p는 index 1부터 저장되어있다.
 {
 	if (n == 0)
@@ -34,7 +34,7 @@ O(n)
 
 
 메모이제이션 방법 (top-down with memoization)
-```
+```C++
 int MEMOIZED_CUT_ROD(int p[], int n)
 {
 	int* r = new int [n + 1];
@@ -49,7 +49,7 @@ int MEMOIZED_CUT_ROD(int p[], int n)
 ```
 
 
-```
+```C++
 int MEMOIZED_CUT_ROD_AUX(int p[], int n, int r[])
 {
 	int q;
@@ -77,7 +77,7 @@ int MEMOIZED_CUT_ROD_AUX(int p[], int n, int r[])
 
 
 bottm-up method(버튼업 /상향식)
-```
+```C++
 int BOTTOM_UP_CUT_ROD(int p[], int n)
 {
 	int* r = new int[n + 1];
@@ -96,8 +96,7 @@ int BOTTOM_UP_CUT_ROD(int p[], int n)
 }
 ```
 
-```
-
+```C++
 std::vector<std::vector<int>> EXTENDED_BOTTOM_UP_CUT_ROD(int p[], int n)
 {
 	const int INF = 10000000;
@@ -143,7 +142,7 @@ typedef std::pair<std::vector<std::vector<int>>,std::vector<std::vector<int>>> S
 
 O(n^3)
 ```C++
-Set MATRIX_CHAIN_ORDER(std::vector<int> p)
+Set MATRIX_CHAIN_ORDER(const std::vector<int> &p)
 {
 	const int INF = 1000000000;
 	const int n = p.size()-1;
@@ -172,7 +171,7 @@ Set MATRIX_CHAIN_ORDER(std::vector<int> p)
 ```
 
 ```C++
-void PRINT_OPTIMAL_PARENS(std::vector<std::vector<int>> s, int i, int j)
+void PRINT_OPTIMAL_PARENS(const std::vector<std::vector<int>> &s, int i, int j)
 {
 	if (i == j)
 	{
@@ -187,10 +186,77 @@ void PRINT_OPTIMAL_PARENS(std::vector<std::vector<int>> s, int i, int j)
 	}
 }
 ```
+
 # 15.3 Elements of dynamic programming
 
 
+```C++
+int RECURSIVE_MATRIX_CHAIN(const std::vector<int> &p, int i, int j)
+{
+	const int INF = 1000000000;
+	const int n = p.size() -1 ;
+	std::vector<std::vector<int>> m(n+1, std::vector<int>(n+1, 0));
+	if (i == j)
+	{
+		return 0;
+	}
+	m[i][j] = INF;
+	for (int k = i; k <= j - 1; k++)
+	{
+		int q = RECURSIVE_MATRIX_CHAIN(p, i, k) +
+			RECURSIVE_MATRIX_CHAIN(p, k + 1, j) + p[i - 1] * p[k] * p[j];
+		
+		if (q < m[i][j])
+		{
+			m[i][j] = q;
+		}
+	}
+	return m[i][j];
+}
+```
 
+```C++
+int LOOKUP_CHAIN(std::vector<std::vector<int>> &m,const std::vector<int> &p,int i,int j)
+{
+	const int INF = 1000000000;
+
+	if (m[i][j] < INF)
+	{
+		return m[i][j];
+	}
+	if (i == j)
+	{
+		m[i][j] = 0;
+	}
+	else for (int k = i ; k <= j - 1; k++)
+	{
+		int q = LOOKUP_CHAIN(m, p, i, k)
+			+ LOOKUP_CHAIN(m, p, k + 1, j) + p[i - 1] * p[k] * p[j];
+		if (q < m[i][j])
+		{
+			m[i][j] = q;
+		}
+	}
+	return m[i][j];
+}
+
+int MEMORIZED_MATRIX_CHAIN(const std::vector<int> &p)
+{
+	const int INF = 1000000000;
+	const int n = p.size() - 1;
+	std::vector<std::vector<int>> m(n+1, std::vector<int>(n+1, 0));
+	for (int i = 1; i <= n; i++)
+	{
+
+		for (int j = 1; j <= n; j++)
+		{
+			m[i][j] = INF;
+		}
+	}
+	return LOOKUP_CHAIN(m, p, 1, n);
+}
+```
 
 
 # 15.4 Longest common subsequence
+

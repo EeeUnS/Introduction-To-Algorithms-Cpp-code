@@ -4,7 +4,7 @@ m = T.length
 n = P.length
 
 O((n-m+1)m)
-```
+```C++
 void NAIVE_STRING_MATCHER(char* T, int m , char* P, int n )
 {
 	for (int s = 0; s <= n - m; s++)
@@ -35,7 +35,7 @@ q = prime
 
 d = sigma star
 
-```
+```C++
 void RABIN_KARP_MATCHER(char T[], int n , char P[], int m, int d, int q)
 {
 	int h = MODULAR_EXPONENTIATION(d, n - 1, q);
@@ -84,7 +84,7 @@ Preprocessing time : O(m^3 *sigma)
 뒤의 kmp를 응용해서 해당 복잡도를 O(m*sigma)로 줄일 수 있다.
 
 Matching time O(n)
-```
+```C++
 void FINITE_AUTOMATON_MATCHER(char T[], int n , std::vector<std::vector<int>> equation, int m )
 {
 	int q = 0;
@@ -99,7 +99,7 @@ void FINITE_AUTOMATON_MATCHER(char T[], int n , std::vector<std::vector<int>> eq
 }
 ```
 
-```
+```C++
 std::vector<std::vector<int>> COMPUTE_TRANSITION_FUNCTION(char P[],int sigma, int m)//
 {
 	std::vector<std::vector<int>> transition_function;
@@ -155,7 +155,7 @@ Preprocessing time : O(m)
 
 Matching time O(n)
 
-```
+```C++
 void KMP_MATCHER(char T[], int n, char P[], int m)
 {
 	std::vector<int> pi = COMPUTE_PREFIX_FUNCTION(P, m);
@@ -180,7 +180,7 @@ void KMP_MATCHER(char T[], int n, char P[], int m)
 ```
 
 
-```
+```C++
 std::vector<int> COMPUTE_PREFIX_FUNCTION(char P[], int m)
 {
 	std::vector<int> pi;

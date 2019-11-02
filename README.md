@@ -31,6 +31,8 @@ Ch 17 []
 
 ## V Advanced Data Structures
 
+Ch 21 [Data Structures for Disjoint Sets](https://github.com/EeeUnS/Introduction-To-Algorithms-Cpp-code/tree/master/21%20Data%20Structures%20for%20Disjoint%20Sets)
+
 ## VI Graph Algorithms(22~26)
 
 Elementary Graph Algorithms
@@ -53,6 +55,10 @@ Ch 25 [All-Pairs Shortest Paths](https://github.com/EeeUnS/introduction_to_algor
 
 
 Ch 27 [Multithreaded Algorithms](https://github.com/EeeUnS/introduction_to_algorithms/tree/master/27%20Multithreaded%20Algorithms)
+
+Ch 28 [Matrix Operations]()
+
+Ch 30 [Polynomials and the FFT]()
 
 Ch 31 [Number-Theoretic Algorithms](https://github.com/EeeUnS/introduction_to_algorithms/tree/master/31number_theortic.md)
 

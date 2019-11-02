@@ -1,6 +1,6 @@
 # 27.1 The basics of dynamic multithreading
 
-```
+```c++
 int P_FIB(int n)
 {
 	if (n <= 1)
@@ -16,8 +16,7 @@ int P_FIB(int n)
 ```
 
 
-```
-
+```c++
 void sub_procesure(std::vector<int> &y, std::vector<int> &x, std::vector<std::vector<int>> &A, int i)
 {
 	for (int j = 0; j < A.size(); j++)
@@ -25,7 +24,6 @@ void sub_procesure(std::vector<int> &y, std::vector<int> &x, std::vector<std::ve
 		y[i] = y[i] + A[i][j] * x[j];
 	}
 }
-
 
 std::vector<int> MAT_VEC(std::vector<std::vector<int>> &A , std::vector<int> &x)
 {
@@ -61,10 +59,6 @@ std::vector<int> MAT_VEC(std::vector<std::vector<int>> &A , std::vector<int> &x)
 # 27.2 Multithreaded matrix multiplication
 
 https://en.wikipedia.org/wiki/Matrix_multiplication_algorithm#Parallel_and_distributed_algorithms
-
-
-
-
 
 
 # 27.3 Multithreaded merge sort

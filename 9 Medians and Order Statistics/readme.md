@@ -112,6 +112,7 @@ the high side if i > k.
 
 https://www.geeksforgeeks.org/kth-smallestlargest-element-unsorted-array-set-3-worst-case-linear-time/
 
+```C++
 // C++ implementation of worst case linear time algorithm 
 // to find k'th smallest element 
 #include<iostream> 
@@ -218,3 +219,4 @@ int main()
 		<< kthSmallest(arr, 0, n - 1, k);
 	return 0;
 }
+```

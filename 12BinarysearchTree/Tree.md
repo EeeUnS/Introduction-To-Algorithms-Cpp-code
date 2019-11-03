@@ -1,3 +1,15 @@
+12.1 What is a binary search tree?
+
+
+
+12.2 Querying a binary search tree
+
+
+
+12.3 Insertion and deletion
+
+
+
 ```
 NODE
 {

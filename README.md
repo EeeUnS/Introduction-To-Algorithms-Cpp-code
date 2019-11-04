@@ -34,9 +34,7 @@ Ch 21 [Data Structures for Disjoint Sets](https://github.com/EeeUnS/Introduction
 
 ## VI Graph Algorithms(22~26)
 
-Elementary Graph Algorithms
-
-Ch 22.2,3 [BFS,DFS](https://github.com/EeeUnS/introduction_to_algorithms/blob/master/22~26Graph/22.1BFS_DFS.md)
+Ch 22.1~3 [BFS,DFS](https://github.com/EeeUnS/Introduction-To-Algorithms-Cpp-code/blob/master/22~26Graph/22.123.md)
 
 Ch 22.4 [Topological Sort](https://github.com/EeeUnS/introduction_to_algorithms/blob/master/22~26Graph/22.4_DAG.md)
 

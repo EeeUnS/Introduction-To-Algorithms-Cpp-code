@@ -7,17 +7,17 @@ Theta(n^2)
 int FIND_MAX_CROSSING_SUBARRAY(int A[], int n)
 {
 	const int INF = 1000000;
-	int max = -1000000;
+	int maximum = -1000000;
 	for (int i = 0; i < n; i++)
 	{
 		int sub_max = A[i];
 		for (int j = i + 1; j < n; j++)
 		{ 
 			sub_max = sub_max + A[j];
-			max = max < sub_max ? sub_max : max;
+			maximum =  std::max(maximum , sub_max) ;
 		}
 	}
-	return max;
+	return maximum;
 }
 ```
 
@@ -25,23 +25,8 @@ int FIND_MAX_CROSSING_SUBARRAY(int A[], int n)
 daq
 Theta(nlg(n))
 ```C++
-int FIND_MAX_CROSSING_SUBARRAY(int A[], int n)
-{
-	const int INF = 1000000;
-	int max = -1000000;
-	for (int i = 0; i < n; i++)
-	{
-		int sub_max = A[i];
-		for (int j = i + 1; j < n; j++)
-		{ 
-			sub_max = sub_max + A[j];
-			max = max < sub_max ? sub_max : max;
-		}
-	}
-	return max;
-}
 
-std::tuple<int, int, int> FIND_MAX_CROSSING_SUBARRAY(int A[], int low, int mid, int high)
+std::tuple<int, int, int> FIND_MAX_CROSSING_SUBARRAY(int A[], int low, int mid, int high)///std::tuple<int, int, int> low , high ,sum
 {
 	const int INF = 1000000;
 	int left_sum = -INF;
@@ -80,10 +65,10 @@ std::tuple<int, int, int> FIND_MAX_CROSSING_SUBARRAY(int A[], int low, int mid, 
 
 O(n)
 ```C++
-std::tuple<int, int, int>KADANE(int A[], int n)
+std::tuple<int, int, int>KADANE(int A[], int n)///std::tuple<int, int, int> low , high ,sum
 {
 	std::tuple<int, int, int> current_sum (0,0,0) ;
-	std::tuple<int, int, int> max ;
+	std::tuple<int, int, int> maximum ;
 	for (int i = 0; i < n; i++)
 	{
 		if ( std::get<2>(current_sum) + A[i] > 0)
@@ -98,30 +83,17 @@ std::tuple<int, int, int>KADANE(int A[], int n)
 		{
 			std::get<2>(current_sum) = 0;
 		}
-		if (std::get<2>(max) < std::get<2>(current_sum))
+		if (std::get<2>(maximum) < std::get<2>(current_sum))
 		{
-			std::get<0>(max) = std::get<0>(current_sum);
-			std::get<1>(max) = std::get<1>(current_sum);
-			std::get<2>(max) = std::get<2>(current_sum);
+			std::get<0>(maximum) = std::get<0>(current_sum);
+			std::get<1>(maximum) = std::get<1>(current_sum);
+			std::get<2>(maximum) = std::get<2>(current_sum);
 		}
 		
 	}
-	return max;
+	return maximum;
 }
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

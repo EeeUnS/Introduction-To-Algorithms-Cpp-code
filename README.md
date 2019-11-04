@@ -19,7 +19,7 @@ Ch 12 [12 Binary Search Trees](https://github.com/EeeUnS/introduction_to_algorit
 
 
 Ch 13 [Red-Black Trees](https://github.com/EeeUnS/introduction_to_algorithms/blob/master/13%20redblacktree/REDBLACKTREE.md)
-
+x
 
 ## IV Advanced Design and Analysis Techniques
 
@@ -27,7 +27,6 @@ Ch 15 [Dynamic Programming](https://github.com/EeeUnS/introduction_to_algorithms
 
 Ch 16 [Greedy Algorithms](https://github.com/EeeUnS/introduction_to_algorithms/tree/master/16Greedy)
 
-Ch 17 []
 
 ## V Advanced Data Structures
 
@@ -55,11 +54,11 @@ Ch 25 [All-Pairs Shortest Paths](https://github.com/EeeUnS/introduction_to_algor
 
 
 Ch 27 [Multithreaded Algorithms](https://github.com/EeeUnS/introduction_to_algorithms/tree/master/27%20Multithreaded%20Algorithms)
-
+x
 Ch 28 [Matrix Operations]()
-
+x
 Ch 30 [Polynomials and the FFT]()
-
+x
 Ch 31 [Number-Theoretic Algorithms](https://github.com/EeeUnS/introduction_to_algorithms/tree/master/31number_theortic.md)
 
 Ch 32 [String Matching](https://github.com/EeeUnS/introduction_to_algorithms/tree/master/32string_matching)

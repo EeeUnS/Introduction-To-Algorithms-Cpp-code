@@ -1,5 +1,7 @@
 # 21.1 Disjoint-set operations
 
+
+접근성을 위해서 실제 트리 대신 배열을 사용
 ```C++
 UNION_FIND CONNECTED_COMPONENTS(std::vector< std::vector<int>> &G)
 {

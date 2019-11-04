@@ -19,14 +19,14 @@ Ch 12 [Binary Search Trees](https://github.com/EeeUnS/introduction_to_algorithms
 
 
 Ch 13 [Red-Black Trees](https://github.com/EeeUnS/introduction_to_algorithms/blob/master/13%20redblacktree/REDBLACKTREE.md)
-x
+미완 작동x
 
 ## IV Advanced Design and Analysis Techniques
 
 Ch 15 [Dynamic Programming](https://github.com/EeeUnS/introduction_to_algorithms/tree/master/15DP)
-
+미완
 Ch 16 [Greedy Algorithms](https://github.com/EeeUnS/introduction_to_algorithms/tree/master/16Greedy)
-
+미완
 
 ## V Advanced Data Structures
 
@@ -52,13 +52,13 @@ Ch 25 [All-Pairs Shortest Paths](https://github.com/EeeUnS/introduction_to_algor
 
 
 Ch 27 [Multithreaded Algorithms](https://github.com/EeeUnS/introduction_to_algorithms/tree/master/27%20Multithreaded%20Algorithms)
-x
+미완 작동x
 
 Ch 28 [Matrix Operations]()
-x
+미완 작동x
 
 Ch 30 [Polynomials and the FFT]()
-x
+미완 작동x
 
 Ch 31 [Number-Theoretic Algorithms](https://github.com/EeeUnS/introduction_to_algorithms/tree/master/31number_theortic.md)
 

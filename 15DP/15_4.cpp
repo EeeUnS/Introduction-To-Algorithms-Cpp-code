@@ -12,7 +12,7 @@ enum class arrow
     left
 };
 
-void LCS_LENGTH(const std::vector<int> X,const std::vector<int> Y )
+void LCS_LENGTH(const std::vector<int> &X,const std::vector<int> &Y )
 {
     const int m = X.size();
     const int n = Y.size();
@@ -48,3 +48,26 @@ void LCS_LENGTH(const std::vector<int> X,const std::vector<int> Y )
         }
     }
 }
+
+
+void PRINT_LCS(const std::vector<int> & b , const std::vector<int> &X, int i , int j)
+{
+    if( i == 0 || j == 0 )
+    {
+        return;
+    }
+    if( b[i][j] == arrow::left_up)
+    {
+        PRINT_LCS(b, X, i-1 , j-1);
+        std::cout << x[i] <<' ';
+    }
+    else if(b[i][j] == arrow::up)
+    {
+        PRINT_LCS(b,X,i-1, j);
+    }
+    else
+        PRINT_LCS(b,X,i, j-1);
+}
+
+
+

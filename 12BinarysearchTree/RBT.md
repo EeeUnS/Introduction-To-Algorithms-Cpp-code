@@ -1,9 +1,6 @@
-﻿#ifndef __TREE_H__
-#define __TREE_H__
+12.1 What is a binary search tree?
 
-#include<iostream>
-//using namespace std;
-
+```c++
 struct Node
 {
 	Node* right_large; // key >=
@@ -11,102 +8,23 @@ struct Node
 	Node* left_small; // key < 
 	Node* parent;
 };
+```
 
 
-//트리 노드의 캡슐화가 보장되지않는다.
-class BST //binary search tree
+```c++
+void BST::INORDER_TREE_WALK(Node* x)
 {
-public:
-	BST();
-	BST(int n);
-	~BST();
-	void insert(int n);
-
-	void preorder();//12.1-4
-	void Inorder();//12.1-3
-	void postorder(); //12.1-4
-
-	Node* TREE_MINIMUM(Node* x);
-	Node* TREE_MAXIMUM(Node* x);
-
-	Node* TREE_SUCCESSOR(Node* x);
-	Node* TREE_PREDECESSOR(Node* x);
-
-	void TREE_INSERT(Node* z);
-	void TREE_DELETE(Node* z);
-
-	void INORDER_TREE_WALK(Node* x);
-	Node* TREE_SEARCH(Node* x, int k);
-	Node* ITERATIVE_TREE_SEARCH(Node* x, int k);
-
-private:
-	Node* ROOT;
-	Node* NIL;
-
-	void inorder_procedure(Node* _node);
-	void preorder_procedure(Node* _node);
-	void postorder_procedure(Node* _node);
-	void delete_node(Node* _node);
-	void TRANSPLANT(Node* u, Node* v);
-public: 
-	Node* getter_ROOT() const;
-};
-
-BST::BST()
-{
-	NIL = new Node();
-	ROOT = NIL;
-}
-
-
-BST::BST(int n)
-{
-	NIL = new Node();
-	Node* _ROOT = new Node();
-	_ROOT->key = n;
-	_ROOT->left_small = NIL;
-	_ROOT->right_large = NIL;
-	ROOT = _ROOT;
-}
-
-BST::~BST()
-{
-	delete NIL;
-	delete_node(ROOT);
-}
-
-void BST::delete_node(Node* _node)
-{
-	
-	if (_node->left_small != NIL)
+	if (x != NIL)
 	{
-		delete_node(_node->left_small);
-	}
-
-	if (_node->right_large != NIL)
-	{
-		delete_node(_node->right_large);
-	}
-
-	if (_node->left_small == NIL && _node->right_large == NIL)
-	{
-		delete _node;
+		INORDER_TREE_WALK(x->left_small);
+		std::cout << x->key << ' ';
+		INORDER_TREE_WALK(x->right_large);
 	}
 }
+```
 
 
-
-void BST::insert(int n)
-{
-	
-	Node* _node = new Node();
-	_node->key = n;
-	_node->left_small = NIL;
-	_node->right_large = NIL;
-	TREE_INSERT(_node);
-}
-
-
+```c++
 void BST::preorder() //전위순회
 {
 	if (ROOT == NIL)
@@ -133,11 +51,7 @@ void BST::postorder()	//후위순회
 	std::cout << '\n';
 }
 
-/*
-왼쪽 서브 트리를 중위 순회한다.
-노드를 방문한다.
-오른쪽 서브 트리를 중위 순회한다.
-*/
+
 void BST::inorder_procedure(Node* _node)
 {
 	if (_node->left_small != NIL)
@@ -175,10 +89,54 @@ void BST::postorder_procedure(Node* _node)
 	std::cout << _node->key << " ";
 
 }//recursion -> while 
+```
 
 
 
 
+
+
+
+
+
+12.2 Querying a binary search tree
+
+```c++
+Node* BST::TREE_SEARCH(Node* x, int k)
+{
+	if (x == NIL || k == x->key)
+	{
+		return x;
+	}
+	if (k < x->key)
+	{
+		return TREE_SEARCH(x->left_small, k);
+	}
+	else
+	{
+		return TREE_SEARCH(x->right_large, k);
+	}
+}
+```
+
+```c++
+Node* BST::ITERATIVE_TREE_SEARCH(Node* x, int k)
+{
+	while (x != NIL && k != x->key)
+	{
+		if (k < x->key)
+		{
+			x = x->left_small;
+		}
+		else x = x->right_large;
+	}
+	return x;
+}
+```
+
+
+
+```c++
 
 Node* BST::TREE_MINIMUM(Node* x) // 서브트리의 최솟값 반환
 {
@@ -201,8 +159,10 @@ Node* BST::TREE_MAXIMUM(Node* x)// 서브트리의 최댓값 반환
 
 	return x;
 }
+```
 
 
+```c++
 Node* BST::TREE_SUCCESSOR(Node* x) // 직후노드
 {
 	
@@ -219,7 +179,7 @@ Node* BST::TREE_SUCCESSOR(Node* x) // 직후노드
 	return y;
 }
 
-
+//12.2-3
 Node* BST::TREE_PREDECESSOR(Node* x) //직전노드
 {
 	
@@ -236,6 +196,11 @@ Node* BST::TREE_PREDECESSOR(Node* x) //직전노드
 	return y;
 }
 
+```
+12.3 Insertion and deletion
+
+
+```c++
 
 void BST::TREE_INSERT(Node* z)// 책에 나오는 삽입
 {
@@ -268,8 +233,9 @@ void BST::TREE_INSERT(Node* z)// 책에 나오는 삽입
 		y->right_large = z;
 	}
 }
+```
 
-// _node위치의 노드를 _node의 자식인 replace노드로 대체하고 _node를 버린다.
+```c++
 void BST::TRANSPLANT(Node* u, Node* v)
 {
 	
@@ -319,52 +285,4 @@ void BST::TREE_DELETE(Node* z)
 	delete z;
 }
 
-void BST::INORDER_TREE_WALK(Node* x)
-{
-	if (x != NIL)
-	{
-		INORDER_TREE_WALK(x->left_small);
-		std::cout << x->key << ' ';
-		INORDER_TREE_WALK(x->right_large);
-	}
-	
-}
-
-
-Node* BST::TREE_SEARCH(Node* x, int k)
-{
-	if (x == NIL || k == x->key)
-	{
-		return x;
-	}
-	if (k < x->key)
-	{
-		return TREE_SEARCH(x->left_small, k);
-	}
-	else
-	{
-		return TREE_SEARCH(x->right_large, k);
-	}
-}
-
-
-Node* BST::ITERATIVE_TREE_SEARCH(Node* x, int k)
-{
-	while (x != NIL && k != x->key)
-	{
-		if (k < x->key)
-		{
-			x = x->left_small;
-		}
-		else x = x->right_large;
-	}
-	return x;
-}
-
-Node* BST::getter_ROOT() const
-{
-	// TODO: 여기에 구현 코드 추가.
-	return ROOT;
-}
-
-#endif
+```

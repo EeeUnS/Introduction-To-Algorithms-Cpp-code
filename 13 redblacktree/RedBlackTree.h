@@ -29,7 +29,7 @@ struct RBNode
 };
 
 
-class RBT //binary search tree
+class RBT //Red Black tree
 {
 public:
 	RBT();

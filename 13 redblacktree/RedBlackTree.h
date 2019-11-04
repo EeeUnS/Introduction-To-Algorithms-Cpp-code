@@ -1,5 +1,7 @@
 #ifndef __REDBLACKTREE__
 #define __REDBLACKTREE__
+#include<cassert>
+#include<iostream>
 
 //Red Black Tree
 
@@ -29,6 +31,8 @@ struct RBNode
 };
 
 
+
+//트리 노드의 캡슐화가 보장되지않는다.
 class RBT //Red Black tree
 {
 public:
@@ -36,77 +40,96 @@ public:
 	RBT(int n);
 	~RBT();
 
-	RBNode* TREE_MINIMUM(RBNode* _node);
-	RBNode* TREE_MAXIMUM(RBNode* _node);
-	RBNode* TREE_SUCCESSOR(RBNode* _node);
-	RBNode* TREE_PREDECESSOR(RBNode* _node);
-
 	void insert(int n);
-	void preorder();
-	void Inorder();
-	void postorder();
-	
+	void preorder();//12.1-4
+	void Inorder();//12.1-3
+	void postorder(); //12.1-4
+
+	RBNode* TREE_MINIMUM(RBNode* x);
+	RBNode* TREE_MAXIMUM(RBNode* x);
+	RBNode* TREE_SUCCESSOR(RBNode* x);
+	RBNode* TREE_PREDECESSOR(RBNode* x);
+
 	void RB_INSERT(RBNode* z);
 	void RB_DELETE(RBNode* z);
 
-	void LEFT_ROTATE(RBNode* _node);
-	void RIGHT_ROTATE(RBNode* _node);
+	void LEFT_ROTATE(RBNode* x);
+	void RIGHT_ROTATE(RBNode* x);
+
+
+	void INORDER_TREE_WALK(RBNode* x);
+	RBNode* TREE_SEARCH(RBNode* x, int k);
+	RBNode* ITERATIVE_TREE_SEARCH(RBNode* x, int k);
+
+
+	RBNode* getter_ROOT() const;
 
 private:
 	RBNode* ROOT;
-	RBNode* NIL;
-	
-	void inorder_procedure(RBNode* _node);
-	void preorder_procedure(RBNode* _node);
-	void postorder_procedure(RBNode* _node);
+	RBNode* NIL;// = { NIL, 0 , NIL,NIL, BLACK };
 
-	void delete_node(RBNode* _node);
-	void RB_TRANSPLANT(RBNode* u, RBNode* v);
+	void inorder_procedure(RBNode* _RBNode);
+	void preorder_procedure(RBNode* _RBNode);
+	void postorder_procedure(RBNode* _RBNode);
+	void delete_RBNode(RBNode* _RBNode);
 	
+	void RB_TRANSPLANT(RBNode* u, RBNode* v);
 	void RB_INSERT_FIXUP(RBNode* z);
 	void RB_DELETE_FIXUP(RBNode* x);
 };
 
-RBT::RBT() : ROOT(nullptr)
+RBT::RBT()
 {
 	NIL = new RBNode();
-	NIL->color = BLACK;
+	NIL->color = RBcolor::BLACK;
+	NIL->left_small = NIL;
+	NIL->right_large = NIL;
+	NIL->parent = NIL;
+	NIL->key = -1000000000;
+	ROOT = NIL;
 }
 
 
 RBT::RBT(int n)
 {
 	NIL = new RBNode();
-	NIL->color = BLACK;
+
+	NIL->color = RBcolor::BLACK;
+	NIL->left_small = NIL;
+	NIL->right_large = NIL;
+	NIL->parent = NIL;
+
 	RBNode* _ROOT = new RBNode();
 	_ROOT->key = n;
 	_ROOT->left_small = NIL;
 	_ROOT->right_large = NIL;
+	_ROOT->parent = NIL;
+	_ROOT->color =  RBcolor::BLACK;
 	ROOT = _ROOT;
 }
 
 RBT::~RBT()
 {
 	delete NIL;
-	delete_node(ROOT);
+	delete_RBNode(ROOT);
 }
 
-void RBT::delete_node(RBNode* _node)
+void RBT::delete_RBNode(RBNode* _RBNode)
 {
-	// TODO: 여기에 구현 코드 추가.
-	if (_node->left_small != NIL)
+
+	if (_RBNode->left_small != NIL)
 	{
-		delete_node(_node->left_small);
+		delete_RBNode(_RBNode->left_small);
 	}
 
-	if (_node->right_large != NIL)
+	if (_RBNode->right_large != NIL)
 	{
-		delete_node(_node->right_large);
+		delete_RBNode(_RBNode->right_large);
 	}
 
-	if (_node->left_small == NIL && _node->right_large == NIL)
+	if (_RBNode->left_small == NIL && _RBNode->right_large == NIL)
 	{
-		delete _node;
+		delete _RBNode;
 	}
 }
 
@@ -114,37 +137,13 @@ void RBT::delete_node(RBNode* _node)
 
 void RBT::insert(int n)
 {
-	// TODO: 여기에 구현 코드 추가.
-	RBNode* _node = new RBNode();
-	_node->key = n;
-	if (ROOT == NIL)
-	{
-		ROOT = _node;
-		return;
-	}
 
-	RBNode* pre_node = ROOT;
-	while (1)
-	{
-		if (pre_node->key >= n && pre_node->left_small == NIL)
-		{
-			pre_node->left_small = _node;
-			break;
-		}
-		else if (pre_node->key >= n) //&& pre_node->right_large != NIL)
-		{
-			pre_node = pre_node->left_small;
-		}
-		else if (pre_node->key < n && pre_node->right_large == NIL)
-		{
-			pre_node->right_large = _node;
-			break;
-		}
-		else //if (pre_node->key < n && pre_node->right_large != NIL)
-		{
-			pre_node = pre_node->right_large;
-		}
-	}
+	RBNode* _RBNode = new RBNode();
+	_RBNode->key = n;
+	_RBNode->left_small = NIL;
+	_RBNode->right_large = NIL;
+	_RBNode->parent = NIL;
+	RB_INSERT(_RBNode);
 }
 
 
@@ -153,7 +152,7 @@ void RBT::preorder() //전위순회
 	if (ROOT == NIL)
 		return;
 	preorder_procedure(ROOT);
-
+	std::cout << '\n';
 }
 
 
@@ -162,7 +161,7 @@ void RBT::Inorder() //중위순회
 	if (ROOT == NIL)
 		return;
 	inorder_procedure(ROOT);
-	// TODO: 여기에 구현 코드 추가.
+	std::cout << '\n';
 }
 
 
@@ -171,7 +170,7 @@ void RBT::postorder()	//후위순회
 	if (ROOT == NIL)
 		return;
 	postorder_procedure(ROOT);
-	// TODO: 여기에 구현 코드 추가.
+	std::cout << '\n';
 }
 
 /*
@@ -179,16 +178,22 @@ void RBT::postorder()	//후위순회
 노드를 방문한다.
 오른쪽 서브 트리를 중위 순회한다.
 */
-void RBT::inorder_procedure(RBNode * _node)
+void RBT::inorder_procedure(RBNode* _RBNode)
 {
-
-	// TODO: 여기에 구현 코드 추가.
-	if (_node->right_large == NIL)
-		inorder_procedure(_node->right_large);
-	cout << _node->key << " ";
-	if (_node->left_small == NIL)
-		inorder_procedure(_node->left_small);
-
+	if (_RBNode->left_small != NIL)
+		inorder_procedure(_RBNode->left_small);
+	std::cout << _RBNode->key;
+	if (_RBNode->color == RBcolor::RED)
+	{
+		std::cout << "(R)";
+	}
+	else
+	{
+		std::cout << "(B)";
+	}
+	std::cout <<" ";
+	if (_RBNode->right_large != NIL)
+		inorder_procedure(_RBNode->right_large);
 }
 
 /*
@@ -196,14 +201,22 @@ void RBT::inorder_procedure(RBNode * _node)
 2.왼쪽 서브 트리를 중위 순회한다.
 3.오른쪽 서브 트리를 중위 순회한다.
 */
-void RBT::preorder_procedure(RBNode * _node)
+void RBT::preorder_procedure(RBNode* _RBNode)
 {
-	cout << _node->key << " ";
-	// TODO: 여기에 구현 코드 추가.
-	if (_node->right_large == NIL)
-		preorder_procedure(_node->right_large);
-	if (_node->left_small == NIL)
-		preorder_procedure(_node->left_small);
+	std::cout << _RBNode->key;
+	if (_RBNode->color == RBcolor::RED)
+	{
+		std::cout << "(R)";
+	}
+	else
+	{
+		std::cout << "(B)";
+	}
+	std::cout << " ";
+	if (_RBNode->left_small != NIL)
+		preorder_procedure(_RBNode->left_small);
+	if (_RBNode->right_large != NIL)
+		preorder_procedure(_RBNode->right_large);
 }
 
 /*
@@ -211,85 +224,95 @@ void RBT::preorder_procedure(RBNode * _node)
 오른쪽 서브 트리를 후위 순회한다.
 노드를 방문한다.
 */
-void RBT::postorder_procedure(RBNode * _node)
+void RBT::postorder_procedure(RBNode* _RBNode)
 {
-	// TODO: 여기에 구현 코드 추가.
-	if (_node->right_large == NIL)
-		postorder_procedure(_node->right_large);
-	if (_node->left_small == NIL)
-		postorder_procedure(_node->left_small);
-	cout << _node->key << " ";
+	if (_RBNode->left_small != NIL)
+		postorder_procedure(_RBNode->left_small);
+	if (_RBNode->right_large != NIL)
+		postorder_procedure(_RBNode->right_large);
+	std::cout << _RBNode->key;
+	if (_RBNode->color == RBcolor::RED)
+	{
+		std::cout << "(R)";
+	}
+	else
+	{
+		std::cout << "(B)";
+	}
+	std::cout << " ";
+
 }//recursion -> while 
 
 
 
 
 
-RBNode * RBT::TREE_MINIMUM(RBNode * _node) // 서브트리의 최솟값 반환
+RBNode* RBT::TREE_MINIMUM(RBNode* x) // 서브트리의 최솟값 반환
 {
-	// TODO: 여기에 구현 코드 추가.
-	while (_node->left_small != NIL)
+
+	while (x->left_small != NIL)
 	{
-		_node = _node->left_small;
+		x = x->left_small;
 	}
 
-	return _node;
+	return x;
+}
+
+RBNode* RBT::TREE_MAXIMUM(RBNode* x)// 서브트리의 최댓값 반환
+{
+
+	while (x->right_large != NIL)
+	{
+		x = x->right_large;
+	}
+
+	return x;
 }
 
 
-RBNode* RBT::TREE_MAXIMUM(RBNode * _node)// 서브트리의 최댓값 반환
+RBNode* RBT::TREE_SUCCESSOR(RBNode* x) // 직후노드
 {
-	// TODO: 여기에 구현 코드 추가.
-	while (_node->right_large != NIL)
+
+	if (x->right_large != NIL)
 	{
-		_node = _node->right_large;
+		return TREE_MINIMUM(x->right_large);
 	}
-
-	return _node;
-}
-
-
-RBNode* RBT::TREE_SUCCESSOR(RBNode * _node) // 직후노드
-{
-	// TODO: 여기에 구현 코드 추가.
-	if (_node->right_large != NIL)
+	RBNode* y = x->parent;
+	while (y != NIL && x == y->right_large) //루트가아니고 오른쪽노드이면
 	{
-		return TREE_MINIMUM(_node->right_large);
-	}
-	RBNode* y = _node->parent;
-	while (y != NIL && _node == y->right_large) //루트가아니고 오른쪽노드이면
-	{
-		_node = y;
+		x = y;
 		y = y->parent;
 	}
 	return y;
 }
 
 
-RBNode* RBT::TREE_PREDECESSOR(RBNode * _node) //직전노드
+RBNode* RBT::TREE_PREDECESSOR(RBNode* x) //직전노드
 {
-	// TODO: 여기에 구현 코드 추가.
-	if (_node->left_small != NIL)
+
+	if (x->left_small != NIL)
 	{
-		return TREE_MAXIMUM(_node->left_small);
+		return TREE_MAXIMUM(x->left_small);
 	}
-	RBNode* y = _node->parent;
-	while (y != NIL && _node == y->left_small) //루트가아니고 오른쪽노드이면
+	RBNode* y = x->parent;
+	while (y != NIL && x == y->left_small) //루트가아니고 오른쪽노드이면
 	{
-		_node = y;
+		x = y;
 		y = y->parent;
 	}
 	return y;
 }
 
 
-void RBT::RB_INSERT(RBNode * z)// 책에 나오는 삽입
+
+void RBT::RB_INSERT(RBNode* z)// 책에 나오는 삽입
 {
-	// TODO: 여기에 구현 코드 추가.
+	
 	RBNode* y = NIL;
 	RBNode* x = ROOT;
 	while (x != NIL)
 	{
+		//assert((NIL->color == BLACK));
 		y = x;
 		if (z->key < x->key)
 		{
@@ -316,32 +339,31 @@ void RBT::RB_INSERT(RBNode * z)// 책에 나오는 삽입
 	}
 	z->left_small = NIL;
 	z->right_large = NIL;
+	z->color = RED;
 	RB_INSERT_FIXUP(z);
 }
 
-// _node위치의 노드를 _node의 자식인 replace노드로 대체하고 _node를 버린다.
-
-void RBT::RB_TRANSPLANT(RBNode * _node, RBNode * replace)
+void RBT::RB_TRANSPLANT(RBNode* u, RBNode* v)
 {
-	// TODO: 여기에 구현 코드 추가.
-	if (_node->parent == NIL)
+	
+	if (u->parent == NIL)
 	{
-		ROOT = replace;
+		ROOT = v;
 	}
-	else if (_node == _node->parent->left_small)
+	else if (u == u->parent->left_small)
 	{
-		_node->parent->left_small = replace;
+		u->parent->left_small = v;
 	}
 	else
 	{
-		_node->parent->right_large = replace;
+		u->parent->right_large = v;
 	}
-	replace->parent = _node->parent;
-	
+	v->parent = u->parent;
+
 }
 
 
-void RBT::RB_DELETE(RBNode * z)
+void RBT::RB_DELETE(RBNode* z)
 {
 	RBNode* y = z;
 	RBcolor y_original_color = y->color;
@@ -381,72 +403,73 @@ void RBT::RB_DELETE(RBNode * z)
 	{
 		RB_DELETE_FIXUP(x);
 	}
-
+	delete z;
 }
 
 
 
 
-void RBT::LEFT_ROTATE(RBNode* _node)
+void RBT::LEFT_ROTATE(RBNode* x)
 {
-	// TODO: 여기에 구현 코드 추가.
-	RBNode* snode = _node->right_large;
-	_node->right_large = snode->left_small;
+	
+	RBNode* snode = x->right_large;
+	x->right_large = snode->left_small;
 	if (snode->left_small != NIL)
 	{
-		snode->left_small->parent = _node;
+		snode->left_small->parent = x;
 	}
-	snode->parent = _node->parent;
-	if (_node->parent == NIL)
+	snode->parent = x->parent;
+	if (x->parent == NIL)
 	{
 		ROOT = snode;
 	}
-	else if (_node == _node->parent->left_small)
+	else if (x == x->parent->left_small)
 	{
-		_node->parent->left_small = _node;
+		x->parent->left_small = x;
 	}
 	else
 	{
-		_node->parent->right_large = snode;
+		x->parent->right_large = snode;
 	}
-	snode->left_small = _node;
-	_node->parent = snode;
+	snode->left_small = x;
+	x->parent = snode;
 }
 
 
-void RBT::RIGHT_ROTATE(RBNode* _node)
+void RBT::RIGHT_ROTATE(RBNode* x)
 {
-	// TODO: 여기에 구현 코드 추가.
-	RBNode* snode = _node->left_small;
-	_node->left_small = snode->right_large;
+	
+	RBNode* snode = x->left_small;
+	x->left_small = snode->right_large;
 	if (snode->right_large != NIL)
 	{
-		snode->right_large->parent = _node;
+		snode->right_large->parent = x;
 	}
-	snode->parent = _node->parent;
-	if (_node->parent == NIL)
+	snode->parent = x->parent;
+	if (x->parent == NIL)
 	{
 		ROOT = snode;
 	}
-	else if (_node == _node->parent->right_large)
+	else if (x == x->parent->right_large)
 	{
-		_node->parent->right_large = _node;
+		x->parent->right_large = x;
 	}
 	else
 	{
-		_node->parent->left_small = snode;
+		x->parent->left_small = snode;
 	}
-	snode->right_large = _node;
-	_node->parent = snode;
+	snode->right_large = x;
+	x->parent = snode;
 }
 
 
 
 void RBT::RB_INSERT_FIXUP(RBNode* z)
 {
-	// TODO: 여기에 구현 코드 추가.
+	
 	while (z->parent->color == RED)
 	{
+		assert((NIL->color == BLACK));
 		if (z->parent == z->parent->parent->left_small) //z의 부모가 부모의 부모의 왼쪽자식일때
 		{
 			RBNode* y = z->parent->parent->right_large;
@@ -456,15 +479,19 @@ void RBT::RB_INSERT_FIXUP(RBNode* z)
 				y->color = BLACK;
 				z->parent->parent->color = RED;
 				z = z->parent->parent;
+				if (z == NIL)
+				{
+					break;
+				}
 			}
 			else if (z == z->parent->right_large) //case 2
 			{
 				z = z->parent;
-				z->parent->parent->color = RED;
+				z->parent->parent->color = RED;// 몬다이
 				LEFT_ROTATE(z->parent->parent);
 			} //case 3
 			z->parent->color = BLACK;
-			z->parent->parent->color = RED;
+			z->parent->parent->color = RED; // 몬다이
 			RIGHT_ROTATE(z->parent->parent);
 		}
 		else //z의 부모가 부모의 부모의 오른쪽자식일때
@@ -476,6 +503,10 @@ void RBT::RB_INSERT_FIXUP(RBNode* z)
 				y->color = BLACK;
 				z->parent->parent->color = RED;
 				z = z->parent->parent;
+				if (z == NIL)
+				{
+					break;
+				}
 			}
 			else if (z == z->parent->left_small)
 			{
@@ -490,11 +521,10 @@ void RBT::RB_INSERT_FIXUP(RBNode* z)
 	}
 	ROOT->color = BLACK;
 }
-#endif
 
 void RBT::RB_DELETE_FIXUP(RBNode* x)
 {
-	// TODO: 여기에 구현 코드 추가.
+	
 	while (x != ROOT && x->color == BLACK)
 	{
 		if (x == x->parent->right_large) // 오른쪽 자식
@@ -557,5 +587,56 @@ void RBT::RB_DELETE_FIXUP(RBNode* x)
 	x->color = BLACK;
 }
 
+
+
+
+
+void RBT::INORDER_TREE_WALK(RBNode* x)
+{
+	if (x != NIL)
+	{
+		INORDER_TREE_WALK(x->left_small);
+		std::cout << x->key << ' ';
+		INORDER_TREE_WALK(x->right_large);
+	}
+
+}
+
+
+RBNode* RBT::TREE_SEARCH(RBNode* x, int k)
+{
+	if (x == NIL || k == x->key)
+	{
+		return x;
+	}
+	if (k < x->key)
+	{
+		return TREE_SEARCH(x->left_small, k);
+	}
+	else
+	{
+		return TREE_SEARCH(x->right_large, k);
+	}
+}
+
+
+RBNode* RBT::ITERATIVE_TREE_SEARCH(RBNode* x, int k)
+{
+	while (x != NIL && k != x->key)
+	{
+		if (k < x->key)
+		{
+			x = x->left_small;
+		}
+		else x = x->right_large;
+	}
+	return x;
+}
+
+RBNode* RBT::getter_ROOT() const
+{
+	
+	return ROOT;
+}
 
 #endif

@@ -261,6 +261,7 @@ int MEMORIZED_MATRIX_CHAIN(const std::vector<int> &p)
 # 15.4 Longest common subsequence
 참고 : https://www.acmicpc.net/problem/9251
 
+O(mn)
 ```C++
 const char *X = "ABCBDAB";
 const char *Y = "BDCABA";

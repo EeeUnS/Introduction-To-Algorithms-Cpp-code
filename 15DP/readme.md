@@ -10,7 +10,7 @@
 
 
 ```C++
-int p[] ={ 0, 1,5,8,9,10,17,17,20,24,30 };
+std::vector<int> p ={ 0, 1,5,8,9,10,17,17,20,24,30 };
 ```
 
 
@@ -259,6 +259,14 @@ int MEMORIZED_MATRIX_CHAIN(const std::vector<int> &p)
 
 
 # 15.4 Longest common subsequence
+
+```C++
+const char *X = "ABCBDAB";
+const char *Y = "BDCABA";
+
+const char *X = "ACCGGTCGAGTGCGCGGAAGCCGGCCGAA";
+const char *Y = "GTCGTTCGGAATGCCGTTGCTCTGTAAA";
+```
 
 ```C++
 

@@ -1,5 +1,9 @@
 
 
+double p = { 0 , 0.15 , 0.1,0.05 , 0.1 , 0.2};
+double q = {0.05 , 0,1 ,0.05 , 0.05, 0.05, 0.1};
+
+
 void OPTIMAL_BST(p,q,n)
 {
     e,w,root

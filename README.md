@@ -14,7 +14,7 @@ Ch 9 [Medians and Order Statistics](https://github.com/EeeUnS/Introduction-To-Al
 
 CH 10 Data Structures
 
-Ch 12 [Binary Search Trees](https://github.com/EeeUnS/introduction_to_algorithms/blob/master/12BinarysearchTree/Tree.md)
+Ch 12 [Binary Search Trees](https://github.com/EeeUnS/introduction_to_algorithms/blob/master/12BinarysearchTree)
 
 
 Ch 13 [Red-Black Trees](https://github.com/EeeUnS/introduction_to_algorithms/blob/master/13%20redblacktree/REDBLACKTREE.md)

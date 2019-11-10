@@ -1,4 +1,5 @@
-12.1 
+# 12.1 What is a binary search tree?
+
 ```c++
 struct Node
 {
@@ -98,7 +99,7 @@ void BST::postorder_procedure(Node* _node)
 
 
 
-12.2 Querying a binary search tree
+# 12.2 Querying a binary search tree
 
 ```c++
 Node* BST::TREE_SEARCH(Node* x, int k)
@@ -196,7 +197,7 @@ Node* BST::TREE_PREDECESSOR(Node* x) //직전노드
 }
 
 ```
-12.3 Insertion and deletion
+# 12.3 Insertion and deletion
 
 
 ```c++

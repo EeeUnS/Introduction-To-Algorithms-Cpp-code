@@ -1,5 +1,4 @@
-12.1 What is a binary search tree?
-
+12.1 
 ```c++
 struct Node
 {

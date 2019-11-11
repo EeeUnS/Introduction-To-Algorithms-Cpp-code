@@ -4,7 +4,6 @@
 
 typedef std::vector<std::vector<double>>  matrix;
 typedef std::pair<std::vector< std::vector<double>>, std::vector< std::vector<double>>>  Set;
-//n = n+1
 
 template<typename T, typename D>
 std::vector<std::vector<D>> SQUARE_MATRIX_MULTIPLY(std::vector<std::vector<T>>& A, std::vector<std::vector<D>>& B)

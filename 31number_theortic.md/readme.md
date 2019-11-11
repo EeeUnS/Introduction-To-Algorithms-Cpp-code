@@ -132,6 +132,22 @@ int EXPONENTIATION(int a, int b)//a^b
 ```
 # 31.7 The RSA public-key crytosystem
 
+1. Select at random two large prime numbers p and q such that p != q. The primes
+p and q might be, say, 1024 bits each.
+
+2. Compute n = pq.
+
+3. Select a small odd integer e that is relatively prime to pi(n), which, by equation (31.20), equals (p-1)(q-1)
+
+4. Compute d as the multiplicative inverse of e, modulo pi(n). (Corollary 31.26
+guarantees that d exists and is uniquely defined. We can use the technique of
+Section 31.4 to compute d, given e and pi(n))
+
+5. Publish the pair P = (e,n) as the participant’s RSA public key.
+
+6. Keep secret the pair S = (d, n) as the participant’s RSA secret key.
+
+
 # 31.8 Primality tetsting
 
 O(sqrt(n))

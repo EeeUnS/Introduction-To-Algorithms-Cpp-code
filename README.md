@@ -16,6 +16,7 @@ CH 10 Data Structures
 
 Ch 12 [Binary Search Trees](https://github.com/EeeUnS/introduction_to_algorithms/blob/master/12BinarysearchTree)
 
+CH 11 Hash Tables
 
 Ch 13 [Red-Black Trees](https://github.com/EeeUnS/introduction_to_algorithms/blob/master/13%20redblacktree/REDBLACKTREE.md)
 미완 작동x
@@ -29,6 +30,12 @@ Ch 16 [Greedy Algorithms](https://github.com/EeeUnS/introduction_to_algorithms/t
 미완
 
 ## V Advanced Data Structures
+
+Ch 18 B-Trees
+
+Ch 19 Fibonacci Heaps
+
+Ch 20 van Emde Boas Trees
 
 Ch 21 [Data Structures for Disjoint Sets](https://github.com/EeeUnS/Introduction-To-Algorithms-Cpp-code/tree/master/21%20Data%20Structures%20for%20Disjoint%20Sets)
 
@@ -57,6 +64,8 @@ Ch 27 [Multithreaded Algorithms](https://github.com/EeeUnS/introduction_to_algor
 Ch 28 [Matrix Operations]()
 미완 작동x
 
+29 Linear Programming
+
 Ch 30 [Polynomials and the FFT]()
 미완 작동x
 
@@ -64,3 +73,4 @@ Ch 31 [Number-Theoretic Algorithms](https://github.com/EeeUnS/introduction_to_al
 
 Ch 32 [String Matching](https://github.com/EeeUnS/introduction_to_algorithms/tree/master/32string_matching)
 
+Ch 33 Computational Geometry

@@ -12,6 +12,7 @@ nxn mat
 ## 28.1 Solving systems of linear equations
 
 
+O(n^2)
 ```C++
 std::vector<double>LUP_SOLVE(matrix& L,	matrix& U, std::vector<int>& PI, 
 	std::vector<double> & b)
@@ -45,9 +46,10 @@ std::vector<double>LUP_SOLVE(matrix& L,	matrix& U, std::vector<int>& PI,
 	return x;
 }
 ```
+O(n^3)
 
+singular marix
 ```C++
-
 void LU_DECOMPOSITION(matrix& A)
 {
 	const int n = A.size() - 1;
@@ -80,6 +82,8 @@ void LU_DECOMPOSITION(matrix& A)
 }
 ```
 
+O(n^3)
+nonsingular marix
 ```C++
 //미
 void LUP_DECOMPOSITION(matrix& A)

@@ -74,3 +74,5 @@ Ch 31 [Number-Theoretic Algorithms](https://github.com/EeeUnS/introduction_to_al
 Ch 32 [String Matching](https://github.com/EeeUnS/introduction_to_algorithms/tree/master/32string_matching)
 
 Ch 33 Computational Geometry
+
+Ch 35 Approximation Algorithms

@@ -97,7 +97,7 @@ std::tuple<int, int, int>KADANE(int A[], int n)///std::tuple<int, int, int> low 
 
 
 
-#4.2 Strassen's algorithms for matrix multiplication
+# 4.2 Strassen's algorithms for matrix multiplication
 
 일반
 n^3

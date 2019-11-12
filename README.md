@@ -61,13 +61,12 @@ Ch 25 [All-Pairs Shortest Paths](https://github.com/EeeUnS/introduction_to_algor
 Ch 27 [Multithreaded Algorithms](https://github.com/EeeUnS/introduction_to_algorithms/tree/master/27%20Multithreaded%20Algorithms)
 미완 작동x
 
-Ch 28 [Matrix Operations]()
-미완 작동x
+Ch 28 [Matrix Operations](https://github.com/EeeUnS/Introduction-To-Algorithms-Cpp-code/tree/master/28%20Matrix%20Operations)
 
 29 Linear Programming
 
-Ch 30 [Polynomials and the FFT]()
-미완 작동x
+Ch 30 [Polynomials and the FFT](https://github.com/EeeUnS/Introduction-To-Algorithms-Cpp-code/tree/master/29%20Polynomials%20and%20the%20FFT)
+미완
 
 Ch 31 [Number-Theoretic Algorithms](https://github.com/EeeUnS/introduction_to_algorithms/tree/master/31number_theortic.md)
 

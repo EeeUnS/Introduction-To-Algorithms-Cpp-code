@@ -13,6 +13,7 @@ typedef std::valarray<Complex> CArray;
 
 # 30.2 The DFT and FFT
 
+DFT 를 구하기위해 FFT를 사용한다.
 
 ref
 https://rosettacode.org/wiki/Fast_Fourier_transform

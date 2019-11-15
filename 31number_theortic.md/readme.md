@@ -147,6 +147,7 @@ Section 31.4 to compute d, given e and pi(n))
 
 6. Keep secret the pair S = (d, n) as the participant’s RSA secret key.
 
+go to RSA.h
 
 # 31.8 Primality tetsting
 

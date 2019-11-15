@@ -8,6 +8,7 @@
 %use dfrac
 
 
+\usepackage{xcolor}
 
 \usepackage{listings}
 \definecolor{mGreen}{rgb}{0,0.6,0}
@@ -39,7 +40,7 @@
 
 \title{다항식과 fft}
 
-\author{이윤승}
+\author{EUnS}
 
 \begin{document}
     
@@ -50,7 +51,7 @@
 
 n차 다항식 $A(x)$를 예시로 들라고하면 대부분 이렇게 대답할것이다.
 
-$A(x) = a_0x^0 + a_1x^1 + a_2x^2 + \cdots + a_{n}x^n = \sum_{k=0}^{n} a_kx^k$
+$$A(x) = a_0x^0 + a_1x^1 + a_2x^2 + \cdots + a_{n}x^n = \sum_{k=0}^{n} a_kx^k$$
 
 이는 컴퓨터상에서 크기가 $n+1$인 벡터(배열)에 $\left\{a_0,a_2, ... , a_n \right\}$으로 나타내도 $A(x)$를 확정지을 수 잇다. 이러한 표현 방식을 \textbf{계수 표현(Coefficient representation)}이라고 한다.
 우리 일반적으로 사용하는 다항식을 나타내는 방식이라고 생각하면되는데. 
@@ -67,7 +68,7 @@ n이 큰 경우일때는 어쩔수없이 $A(x)$ 항하나에 $B(x)$를 곱해서
 이를 직접 컴퓨터에서 계산한다고 생각해보자.
 벡터 각요소에 벡터 각요소를 각각 모두 곱하기 때문에 시간복잡도는 $O(n^2)$이 될것이다. 이것이 우리가 일반적으로 생각하는 다항식 곱의 시간복잡도이다
 
-이를 $O(n \log n)$으로 줄여 볼 것이 목표이다.
+이를 $O(n \log n)$으로 줄여 보는 것이 목표이다.
 
 \section{점값 표현}
 
@@ -110,8 +111,8 @@ $C(x) = A(x)B(x)$에 대해서 $A(x_k)*B(x_k) = C(x_k)$가 된다. 따라서 점
 $x$점으로 복소수 근을 가지게 함으로써 변환에 $O(n \log n)$이 걸림을 보일수있다.
 
 \begin{figure}[h!]
-    \centering
-    \includegraphics[scale=0.5]{}
+%    \centering
+    \includegraphics[scale=0.5]{pic1.PNG}
     \caption{다항식곱의 전체 알고리즘 개형도}
 \end{figure}
 
@@ -146,14 +147,15 @@ $\omega_n ^0 = \omega_n^n = 1$
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[scale=0.5]{}
+    \includegraphics[scale=0.3]{pic2.png}
     \caption{단위값의 8번째근}
 \end{figure}
 
 \subsection{DFT}
 
 계수형으로 나타나있는 $A(x) = (a_0,a_1,...,a_n)$를 다음 $y = (y_0,y_1,...,y_n) $벡터를 \textbf{이산 푸리에 변환(DFT : Discrete Fourier Transform)}이라한다.
-$ y_k = A(\omega^k_n) = \sum_{j=0}^{n-1} a_j\omega_{n}^{kj}$
+
+$$ y_k = A(\omega^k_n) = \sum_{j=0}^{n-1} a_j\omega_{n}^{kj}$$
 
 쉽게 나타내면 계수표현으로 나타나 있는 $A(x)$를 n개의 집합이$\left\{\omega_n^1, \omega_n^2 , ... , \omega_n^{n-1}\right\}$인 $x$좌표에 대한 $y$값의 집합입니다.
 
@@ -172,7 +174,7 @@ $A(x) = A_{even}(x^2) + xA_{odd}(x^2) $
 프로시저는 다음과 같다.
 \begin{enumerate}
     \item $A_{even}$과 $A_{odd}$로 나눈다.
-    \item $A_{even}$과 $A_{odd}$를 각각 재귀로 DFT한다.
+    \item $A_{even}$과 $A_{odd}$를 각각 재귀로 FFT한다.
     \item $A(x) = A_{even}(x^2) + xA_{odd}(x^2) $에 따라서 계산한다. 이때의 걸리는 복잡도는 $O(n)$
 \end{enumerate}
 
@@ -198,10 +200,10 @@ return y
 \end{lstlisting}
 
 이 알고리즘은 2로 나눈 재귀를 두번부르고 후에 추가적인 O(n)연산이있다.
-$T(n) = 2T(\frac{n}{2}) + \Theta(n) = \Theta(n \log n)$
+$T(n) = 2T\left(\dfrac{n}{2}\right) + \Theta(n) = \Theta(n \log n)$
 
-\section{DFT^{-1} 역변환}
-
+\section{$DFT^{-1}$ 역변환}
+공부중 아무튼 그럼
 
 
 

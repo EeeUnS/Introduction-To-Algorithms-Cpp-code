@@ -1,0 +1,253 @@
+\section{성능 테스트}
+
+환경
+
+\begin{itemize}
+	\item msvc 14.2
+	\item x86 Release모드
+	\item C++
+	\item Intel i7 7700
+	\item RAM 16 GB
+\end{itemize}
+
+
+\newpage
+\subsection{ HOARE VS LOMUTO }
+
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{|c|c|c|}
+		\hline\hline
+		횟수 & Hoare's partition & lomuto's partition \\ \hline
+		1회 & 0.012 & 0.015 \\ \hline
+		2회 & 0.029 & 0.031 \\ \hline
+		3회 & 0.033 & 0.036 \\ \hline
+		4회 & 0.02 & 0.021 \\ \hline
+		5회 & 0.031 & 0.036 \\ \hline
+		6회 & 0.009 & 0.012 \\ \hline
+		7회 & 0.021 & 0.023 \\ \hline
+		8회 & 0.031 & 0.034 \\ \hline
+		9회 & 0.017 & 0.018 \\ \hline
+		10회 & 0.019 & 0.02 \\ \hline
+		\hline\hline
+	\end{tabular}
+	\caption{n = 10000000 랜덤 순열 partition 수행비교}
+\end{table}
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{|c|c|c|}
+		\hline\hline
+		횟수 & Hoare's quick sort & lomuto's quick sort \\ \hline
+		1회 & 0.719 & 0.759 \\ \hline
+		2회 & 0.704 & 0.77 \\ \hline
+		3회 & 0.712 & 0.764 \\ \hline
+		4회 & 0.69 & 0.761 \\ \hline
+		5회 & 0.698 & 0.758 \\ \hline
+		6회 & 0.696 & 0.759 \\ \hline
+		7회 & 0.696 & 0.769 \\ \hline
+		8회 & 0.692 & 0.761 \\ \hline
+		9회 & 0.697 & 0.765 \\ \hline
+		10회 & 0.695 & 0.755 \\ \hline
+		\hline\hline
+	\end{tabular}
+	\caption{n = 10000000 랜덤 순열 quicksort 수행비교}
+\end{table}
+
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{|c|c|c|}
+		\hline\hline
+		횟수 & Hoare's quick sort & lomuto's quick sort \\ \hline
+		1회 & 0.025 & 0.044 \\ \hline
+		2회 & 0.013 & 0.04 \\ \hline
+		3회 & 0.013 & 0.038 \\ \hline
+		4회 & 0.014 & 0.041 \\ \hline
+		5회 & 0.014 & 0.042 \\ \hline
+		6회 & 0.013 & 0.044 \\ \hline
+		7회 & 0.015 & 0.044 \\ \hline
+		8회 & 0.014 & 0.041 \\ \hline
+		9회 & 0.014 & 0.041 \\ \hline
+		10회 & 0.016 & 0.042 \\ \hline
+		\hline\hline
+	\end{tabular}
+	\caption{n = 10000 역정렬된 순열}
+\end{table}
+
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{|c|c|c|}
+		\hline\hline
+		횟수 & Hoare's quick sort & lomuto's quick sort \\ \hline
+		1회 & 0.023 & 0.035 \\ \hline
+		2회 & 0.015 & 0.032 \\ \hline
+		3회 & 0.019 & 0.037 \\ \hline
+		4회 & 0.017 & 0.033 \\ \hline
+		5회 & 0.012 & 0.031 \\ \hline
+		6회 & 0.015 & 0.036 \\ \hline
+		7회 & 0.016 & 0.036 \\ \hline
+		8회 & 0.014 & 0.035 \\ \hline
+		9회 & 0.015 & 0.034 \\ \hline
+		10회 & 0.02 & 0.036 \\ \hline
+		\hline\hline
+	\end{tabular}
+	\caption{n = 10000 정렬된 순열}
+\end{table}
+
+앞서 살펴본 평균적인 시간복잡도와는 다르게 partition의 실제 차이가 세배가 나지않았다.
+
+\subsection{개선 성능 테스트}
+
+\begin{itemize}
+	\item PARALLELIZATION
+	\item insertion sort 삽입
+	\item 3way partition
+\end{itemize}
+insertion sort와 PARALLELIZATION의 파티션 분할에선 lomuto's partition을 사용했다.
+
+\begin{lstlisting}[style = CStyle]
+    
+\end{lstlisting}
+
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{|c|c|c|}
+		\hline\hline
+		횟수 & PARALLELIZATION quick sort & quick sort + insertion sort(n<=10)\\ \hline
+		1회 & 0.511 & 0.717 \\ \hline
+		2회 & 0.605 & 0.714 \\ \hline
+		3회 & 0.541 & 0.715 \\ \hline
+		4회 & 0.456 & 0.711 \\ \hline
+		5회 & 0.727 & 0.715 \\ \hline
+		6회 & 0.771 & 0.719 \\ \hline
+		7회 & 0.744 & 0.705 \\ \hline
+		8회 & 0.643 & 0.711 \\ \hline
+		9회 & 0.649 & 0.715 \\ \hline
+		10회 & 0.721 & 0.712 \\ \hline
+		\hline\hline
+	\end{tabular}
+	\caption{n = 10000000 랜덤한 임의 순열}
+\end{table}
+
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{|c|c|c|}
+		\hline\hline
+		횟수 & lumoto's quick sort & Dijkstra's\\ \hline
+		1회 & 0.778 & 0.772 \\ \hline
+		2회 & 0.774 & 0.778 \\ \hline
+		3회 & 0.759 & 0.777 \\ \hline
+		4회 & 0.774 & 0.77 \\ \hline
+		5회 & 0.761 & 0.766 \\ \hline
+		6회 & 0.773 & 0.778 \\ \hline
+		7회 & 0.772 & 0.782 \\ \hline
+		8회 & 0.767 & 0.774 \\ \hline
+		9회 & 0.777 & 0.784 \\ \hline
+		10회 & 0.767 & 0.781 \\ \hline
+		\hline\hline
+	\end{tabular}
+	\caption{n = 10000000 랜덤한 비중복 임의 순열}
+\end{table}
+
+
+
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{|c|c|c|}
+		\hline\hline
+		횟수 & lumoto's quick sort &  Dijkstra's  \\ \hline
+		1회 & 0.41 & 0.033 \\ \hline
+		2회 & 0.39 & 0.038 \\ \hline
+		3회 & 0.366 & 0.032 \\ \hline
+		4회 & 0.367 & 0.03 \\ \hline
+		5회 & 0.36 & 0.032 \\ \hline
+		6회 & 0.357 & 0.032 \\ \hline
+		7회 & 0.361 & 0.031 \\ \hline
+		8회 & 0.358 & 0.032 \\ \hline
+		9회 & 0.356 & 0.031 \\ \hline
+		10회 & 0.365 & 0.032 \\ \hline
+		\hline\hline
+	\end{tabular}
+	\caption{n = 10000000   $0 \sim 1000$ 범위의 중복포함한 랜덤 순열}
+\end{table}
+
+
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{|c|c|c|}
+		\hline\hline
+		횟수 & Dijkstra's &  \protect\text{J. Bentley  D. McIlroy}    \\ \hline
+		1회 & 0.036 & 0.032 \\ \hline
+		2회 & 0.037 & 0.034 \\ \hline
+		3회 & 0.036 & 0.031 \\ \hline
+		4회 & 0.038 & 0.036 \\ \hline
+		5회 & 0.04 & 0.035 \\ \hline
+		6회 & 0.036 & 0.034 \\ \hline
+		7회 & 0.043 & 0.031 \\ \hline
+		8회 & 0.036 & 0.033 \\ \hline
+		9회 & 0.038 & 0.036 \\ \hline
+		10회 & 0.036 & 0.031 \\ \hline
+		\hline\hline
+	\end{tabular}
+	\caption{n = 10000000  $0 \sim 1000$ 범위의 중복포함한 랜덤 순열}
+\end{table}
+
+\newpage
+
+\subsection{ std::sort 성능테스트 VS J. Bentley  D. McIlroy}
+std::sort는 J. Bentley  D. McIlroy의 3 way partition과 수행시간이 상당히 유사하다.
+3 way partition에 inertion sort를 삽입했었는데 오버헤드 때문에 전체 수행시간이 오히려 안좋아졌다.
+
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{|c|c|c|c|}
+		\hline\hline
+		횟수 & 비중복 임의 순열 & $0 \sim 1000$ 범위의 중복을 포함한 랜덤 순열 & 모든값이 0 \\ \hline
+		1회 & 0.964 & 0.38 & 0.007 \\ \hline
+		2회 & 0.927 & 0.374 & 0.007 \\ \hline
+		3회 & 0.959 & 0.373 & 0.007 \\ \hline
+		4회 & 0.95 & 0.386 & 0.006 \\ \hline
+		5회 & 0.946 & 0.381 & 0.006 \\ \hline
+		6회 & 0.947 & 0.383 & 0.006 \\ \hline
+		7회 & 0.947 & 0.392 & 0.006 \\ \hline
+		8회 & 0.929 & 0.383 & 0.006 \\ \hline
+		9회 & 0.932 & 0.385 & 0.006 \\ \hline
+		10회 & 0.957 & 0.383 & 0.007 \\ \hline
+		\hline\hline
+	\end{tabular}
+	\caption{n = 10000000 std::sort의 성능 분석}
+\end{table}
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{|c|c|c|c|}
+		\hline\hline
+		횟수 & 비중복 임의 순열 & $0 \sim 1000$ 범위의 중복을 포함한 랜덤 순열 & 모든값이 0 \\ \hline
+		1회 & 0.985 & 0.337 & 0.008 \\ \hline
+		2회 & 1.011 & 0.332 & 0.008 \\ \hline
+		3회 & 0.979 & 0.338 & 0.008 \\ \hline
+		4회 & 0.956 & 0.336 & 0.008 \\ \hline
+		5회 & 1.019 & 0.338 & 0.007 \\ \hline
+		6회 & 0.974 & 0.333 & 0.007 \\ \hline
+		7회 & 0.979 & 0.341 & 0.008 \\ \hline
+		8회 & 0.973 & 0.341 & 0.009 \\ \hline
+		9회 & 0.98 & 0.326 & 0.009 \\ \hline
+		10회 & 0.98 & 0.332 & 0.008 \\ \hline
+		\hline\hline
+	\end{tabular}
+	\caption{n = 10000000  J. Bentley  D. McIlroy의 3 way partition의 성능 분석}
+\end{table}
+
+
+\begin{lstlisting}[style = CStyle]
+    
+\end{lstlisting}
+

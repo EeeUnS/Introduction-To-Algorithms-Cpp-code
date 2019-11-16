@@ -75,3 +75,19 @@ Ch 32 [String Matching](https://github.com/EeeUnS/introduction_to_algorithms/tre
 Ch 33 Computational Geometry
 
 Ch 35 Approximation Algorithms
+
+
+# Tex
+
+개인적으로 책 내용이 너무 어려워 이해하기가 어려웠던 부분을 다시 이해하기 쉽게 만든 pdf파일들입니다.
+
+1. quick sort
+
+2. number theory
+
+예정
+
+3. string matching
+
+4. FFT
+

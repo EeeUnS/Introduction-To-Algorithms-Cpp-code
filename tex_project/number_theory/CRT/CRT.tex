@@ -1,0 +1,36 @@
+
+
+\section{중국인의 나머지 정리(Chinese Remainder Theorem)}
+
+\begin{justbox}
+    $x \equiv a_1 \pmod{m_1}$ , $x \equiv a_2 \pmod{m_2}$ , $\cdots$, 
+
+    $x \equiv a_n \pmod{m_n} ( \forall i,j \gcd(m_{i} ,m_{j}) = 1$\footnote{서로소 아이디얼 (pairwise coprime)}$)$
+    일때, $x$가 $ Z_{m_{1}m_{2} \cdots m_{n}}$에서 유일하게 존재한다.
+\end{justbox}
+
+\begin{proof}
+
+\begin{enumerate}
+    \item {존재성}
+
+$m = m_{1}m_{2} \cdots m_{n}, n_{k} = \frac{m}{n_k}$로 놓자. 
+그러면 $t_{k}m_{k} + s_{k}n_{k} = 1$인 정수 $s_{k}, t_{k}$가 존재한다 $( \because \gcd( m_{k}, n_{k}) = 1 )$ 
+\footnote{베주 항등식}
+$s_{k}n_{k} \equiv 1 \pmod{m_k}$
+$x=a_{1}n_{1}s_{1} + \cdot + a_{n}n_{n}s_{n} = \sum_{k=1}^n a_{k}n_{k}s_{k}$
+$j \ne k \longrightarrow m_{k} \mid n_{j} \longrightarrow x \equiv a_{k}n_{k}s_{k} \equiv a_{k} \pmod{m_{k}}$
+    
+\item{유일성}
+
+귀류법을 사용한다.
+서로다른 $x$, $y$가 $\bmod m$에서 합동식의 해라 하자.
+$x \equiv y\equiv a_1 \pmod{m_1}$
+$x \equiv y\equiv a_2 \pmod{m_2}$
+$x \equiv y\equiv a_n \pmod{m_n}$
+$x - y \equiv 0 \pmod{m_k} ( 1\le k \le n$인 정수 $k )$
+$\operatorname{lcm}(m_1, m_2, \cdots, m_n) \mid (x-y) \longrightarrow m_{1} m_{2} \cdots m_{n}( = m ) \mid (x-y) (\forall i,j \gcd(m_{i} ,m_{j}) = 1)$
+$\therefore x \equiv y \pmod{\operatorname{lcm}(m_1, m_2, \cdots, m_n)}$
+이는 모순이다.    
+\end{enumerate}
+\end{proof}

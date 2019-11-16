@@ -1,0 +1,43 @@
+
+
+\section{RSA시스템의 이해}
+
+\subsection{RSA 공개 키 암호 시스템 
+\protect\footnote{로널드 라이베스트(Ron Rivest), 아디 샤미르(Adi Shamir), 레너드 애들먼(Leonard Adleman)이 세명의 이름 앞글자를 따서 지었다.}
+(RSA public-key cryptosystem)}
+
+이 알고리즘은 보안 기법중 하나로 가장 흔한 예시로서는 공인인증서가 있다.
+    \[A \longrightarrow B\]
+$A$가 $B$에게 숫자를 하나 보낸다고 생각 해보자. $A$에게는 공개키가 필요하며 $B$에게는 개인키가 있어야한다. 공개키는 누가 가져도 상관없는 키이며 개인키는 절대로 노출되어서는 안되는 키이다.\\
+$A$는 $B$에게 $a$를 보낼때 공개키를 이용하여 $a$를 $c$로 암호화 하여 보내며 $B$는 $c$를 공개키와 개인키를 이용하여 $a$로 복호화하여 읽는 방식이다.
+
+
+
+\subsection{공개키, 암호키 생성}
+두 개의 소수 $p,q$를 선택하여 $z=pq$를 계산한다.
+\footnote{그 후 $p ,q$는 버린다. 가지고 있어봤자 개인키가 뚫리는 취약점이 될수가있다.}
+ 그 후 $\phi =(p-1)(q-1)$을 계산하고 $\gcd(n,\phi)=1$인 정수 n을 선택한다. 그후 $z$와 $n$을 공개한다.
+  $ns\bmod \phi =1$이고 $0<s<\phi$를 만족시키는 s를 생성하여 s를 개인키로 사용한다.
+\footnote{s는 위에서 언급한 나머지 연산에서 곱셈에 대한 역원을 구하는 방법으로 효율적으로  구할수있다.}\\
+
+
+\subsection{단계}
+$A$가 $B$에게 정수 $a(0\le a\le z-1)$를 보내기 위해서 $A$는 $c=a^n \bmod z$ 를 계산하여 $c$를 보낸다.
+\footnote{c를 효율적으로 구하는 방법 또한 위에서 다루었다.}
+$B$는 $c^s \bmod z$를 계산하면 이 값이 $a$이다.\\
+
+
+
+
+
+\subsection{복호화 과정}
+
+$ ns\bmod \phi =1 \Longleftrightarrow ns = b\varphi(n)+1$($b$는 어떤 상수)
+\newline 
+$c^s \bmod z=(a^n \bmod z)^s \bmod z = (a^n)^s \bmod z \newline = a^{ns}\bmod z =$
+$a^{b\varphi(n)+1}\bmod z =(a^{\varphi(n)} \bmod z)^{b} a \bmod z =a$ \footnote{오일러정리 사용}
+
+\subsection{이게 과연 안전한가?}
+기본적으로 RSA를 풀기위한 시간복잡도는 np문제와 연결되는데 결론만 말하면 안전하다는 것이다. \\
+이를 구하기위한 해결방법은 결과적으로 소인수분해와 직결되는데 소인수분해를 다항시간내에하는 알고리즘은 개발되지 않았다.\\
+

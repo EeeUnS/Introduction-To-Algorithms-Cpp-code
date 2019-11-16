@@ -1,4 +1,5 @@
 
+완성
 1. quick sort 
 
 진행중 
@@ -7,10 +8,9 @@
 
 예정 
 
-3. Matrix Operations 행렬곱 분할정복, 스트라센,
+3. String Matching
 
-
-String Matching
+4. Matrix Operations 행렬곱 분할정복, 스트라센,
 
 
 중앙의 중앙 뽑기

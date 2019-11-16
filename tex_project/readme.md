@@ -1,6 +1,7 @@
 
 완성
 1. quick sort 
+2. 정수론, RSA ,CRT
 
 2. number theory
 

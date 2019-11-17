@@ -54,7 +54,6 @@ bool BELLMAN_FORD(int s)
 			}
 		}
 	}
-
 	for (std::size_t u = 1; u < Graph.size(); u++)
 	{
 		for (std::size_t j = 0; j < Graph[u].size(); j++)

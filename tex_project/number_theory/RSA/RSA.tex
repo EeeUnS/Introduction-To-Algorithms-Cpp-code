@@ -14,17 +14,17 @@ $A$는 $B$에게 $a$를 보낼때 공개키를 이용하여 $a$를 $c$로 암호
 
 
 \subsection{공개키, 암호키 생성}
-두 개의 소수 $p,q$를 선택하여 $z=pq$를 계산한다.
+두 개의 소수 $p,q$를 선택하여 $n=pq$를 계산한다.
 \footnote{그 후 $p ,q$는 버린다. 가지고 있어봤자 개인키가 뚫리는 취약점이 될수가있다.}
- 그 후 $\phi =(p-1)(q-1)$을 계산하고 $\gcd(n,\phi)=1$인 정수 n을 선택한다. 그후 $z$와 $n$을 공개한다.
-  $ns\bmod \phi =1$이고 $0<s<\phi$를 만족시키는 s를 생성하여 s를 개인키로 사용한다.
-\footnote{s는 위에서 언급한 나머지 연산에서 곱셈에 대한 역원을 구하는 방법으로 효율적으로  구할수있다.}\\
+ 그 후 $\phi =(p-1)(q-1)$을 계산하고 $\gcd(n,\phi)=1$인 정수 $e$을 선택한다. 그후 $n$과 $e$를 공개한다.
+  $ed\bmod \phi =1$이고 $0<d<\phi$를 만족시키는 $d$를 생성하여 $d$를 개인키로 사용한다.
+\footnote{d는 위에서 언급한 나머지 연산에서 곱셈에 대한 역원을 구하는 방법으로 효율적으로 구할수있다.}\\
 
 
 \subsection{단계}
-$A$가 $B$에게 정수 $a(0\le a\le z-1)$를 보내기 위해서 $A$는 $c=a^n \bmod z$ 를 계산하여 $c$를 보낸다.
+$A$가 $B$에게 정수 $a(0\le a\le z-1)$를 보내기 위해서 $A$는 $c=a^e \bmod n$ 를 계산하여 $c$를 보낸다.
 \footnote{c를 효율적으로 구하는 방법 또한 위에서 다루었다.}
-$B$는 $c^s \bmod z$를 계산하면 이 값이 $a$이다.\\
+$B$는 $c^d \bmod n$를 계산하면 이 값이 $a$이다.\\
 
 
 
@@ -32,12 +32,20 @@ $B$는 $c^s \bmod z$를 계산하면 이 값이 $a$이다.\\
 
 \subsection{복호화 과정}
 
-$ ns\bmod \phi =1 \Longleftrightarrow ns = b\varphi(n)+1$($b$는 어떤 상수)
-\newline 
-$c^s \bmod z=(a^n \bmod z)^s \bmod z = (a^n)^s \bmod z \newline = a^{ns}\bmod z =$
-$a^{b\varphi(n)+1}\bmod z =(a^{\varphi(n)} \bmod z)^{b} a \bmod z =a$ \footnote{오일러정리 사용}
+$ \varphi(n) = \phi$
+
+$ ed\bmod \phi =1 \Longleftrightarrow ed = b\varphi(n)+1$($b$는 어떤 상수)
+
+\begin{align*}
+  c^d \bmod n &=(a^e \bmod n)^d \bmod n \\ 
+  &=(a^e)^d \bmod n = a^{ed} \bmod n \\
+  &=  a^{b\varphi(n)+1}\bmod n  \\
+  &= (a^{\varphi(n)} \bmod n)^{b} a \bmod n =a  
+\end{align*}
+
+\footnote{오일러정리 사용}
 
 \subsection{이게 과연 안전한가?}
-기본적으로 RSA를 풀기위한 시간복잡도는 np문제와 연결되는데 결론만 말하면 안전하다는 것이다. \\
-이를 구하기위한 해결방법은 결과적으로 소인수분해와 직결되는데 소인수분해를 다항시간내에하는 알고리즘은 개발되지 않았다.\\
 
+
+이를 구하기위한 해결방법은 결과적으로 소인수분해와 직결되는데 그냥 n을 p와 q로소인수 분해해버리면 끝난다. 그러나 소인수분해를 다항시간내에하는 알고리즘은 개발되지 않았다.

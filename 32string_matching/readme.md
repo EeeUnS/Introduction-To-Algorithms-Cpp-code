@@ -58,6 +58,7 @@ void RABIN_KARP_MATCHER(char T[], int n , char P[], int m, int d, int q)
 				if (T[i + s] != P[i])
 				{
 					matching = false;
+					break;
 				}
 			}
 			if (matching)

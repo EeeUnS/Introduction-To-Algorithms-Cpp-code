@@ -6,9 +6,9 @@
 
 \usepackage{amsmath}
 %use dfrac
-
-
 \usepackage{xcolor}
+
+\usepackage{amsthm}
 
 \usepackage{listings}
 \definecolor{mGreen}{rgb}{0,0.6,0}
@@ -37,6 +37,22 @@
 }
 
 
+\usepackage{thmtools}
+\usepackage{xcolor}
+\declaretheoremstyle[% spaceabove=6pt,spacebelow=6pt, headfont=\color{MainColorOne}\sffamily\bfseries, notefont=\mdseries, notebraces={[}{]}, bodyfont=\normalfont,
+headpunct={},
+postheadspace=1em,
+%qed=▣,
+]{maintheorem}
+
+\declaretheorem[%
+name=정의,
+style=maintheorem,
+numberwithin=section, shaded={%bgcolor=MainColorThree!20,
+margin=.5em}]{dfn}
+% \begin{dfn}[]
+% \end{dfn}
+
 
 \title{String Matching}
 
@@ -47,13 +63,9 @@
 
 \maketitle
 
-\section{The naive string-matching algorithm}
+\tableofcontents
 
-\section{The Rabin-Karp algorithm}
-
-\section{String matching with finite automata}
-
-\section{The Knuth-Morris-Pratt algorithm}
+\include{section}
 
 
 \end{document}

@@ -35,6 +35,8 @@ q = prime
 
 d = sigma star
 
+I'm setting d = 26 (only Letter case)
+
 ```C++
 void RABIN_KARP_MATCHER(char T[], int n , char P[], int m, int d, int q)
 {

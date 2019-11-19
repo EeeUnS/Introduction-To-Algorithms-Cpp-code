@@ -32,15 +32,15 @@ $B$는 $c^d \bmod n$를 계산하면 이 값이 $a$이다.\\
 
 \subsection{복호화 과정}
 
-$ \varphi(n) = \phi$
+$ \phi(n) = \phi$
 
-$ ed\bmod \phi =1 \Longleftrightarrow ed = b\varphi(n)+1$($b$는 어떤 상수)
+$ ed\bmod \phi =1 \Longleftrightarrow ed = b\phi(n)+1$($b$는 어떤 상수)
 
 \begin{align*}
   c^d \bmod n &=(a^e \bmod n)^d \bmod n \\ 
   &=(a^e)^d \bmod n = a^{ed} \bmod n \\
-  &=  a^{b\varphi(n)+1}\bmod n  \\
-  &= (a^{\varphi(n)} \bmod n)^{b} a \bmod n =a  
+  &=  a^{b\phi(n)+1}\bmod n  \\
+  &= (a^{\phi(n)} \bmod n)^{b} a \bmod n =a  
 \end{align*}
 
 \footnote{오일러정리 사용}

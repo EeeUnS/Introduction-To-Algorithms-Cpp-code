@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Nlogn - Introduction-To-Algorithms-Cpp-code</title>
+  <title>nlogn - Introduction-To-Algorithms-Cpp-code</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
@@ -19,7 +19,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Nlogn";
+    var mkdocs_page_name = "nlogn";
     var mkdocs_page_input_path = "sort\\nlogn.md";
     var mkdocs_page_url = null;
   </script>
@@ -67,19 +67,49 @@
           
             <li class="toctree-l1">
 		
-    <span class="caption-text">I Foundations</span>
+    <span class="caption-text">Sort</span>
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../ch4/readme/">4 Divide-and-Conquer</a>
+    <a class="" href="../simple_sort/">simple_sort</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">nlogn</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#merge-sort">merge sort</a></li>
+    
+
+    <li class="toctree-l3"><a href="#quick-sort">quick sort</a></li>
+    
+
+    <li class="toctree-l3"><a href="#shell-sort">shell sort</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#heap-sort">HEAP SORT</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../on/">True</a>
                 </li>
     </ul>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <span class="caption-text">II Sorting and Order Statistics</span>
+    <span class="caption-text">I Foundations && II Sorting and Order Statistics</span>
     <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../ch4/readme/">4 Divide-and-Conquer</a>
+                </li>
                 <li class="">
                     
     <a class="" href="../../ch9/readme/">9 Medians and Order Statistics</a>
@@ -213,8 +243,12 @@
     <li><a href="../..">Docs</a> &raquo;</li>
     
       
+        
+          <li>Sort &raquo;</li>
+        
+      
     
-    <li>Nlogn</li>
+    <li>nlogn</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -224,9 +258,8 @@
           <div role="main">
             <div class="section">
               
-                <h3 id="merge-sort">merge sort</h3>
-<pre class="codehilite"><code class="linenums">
-void MERGE(int A[], int p, int q, int r)
+                <h1 id="merge-sort">merge sort</h1>
+<pre class="codehilite"><code class="language-c++ linenums">void MERGE(int A[], int p, int q, int r)
 {
     int n_1 = q - p + 1;
     int n_2 = r - q;
@@ -270,11 +303,9 @@ void MERGE_SORT(int A[], int p, int r)
         MERGE_SORT(A, q + 1, r);
         MERGE(A, p, q, r);
     }
-}
+}</code></pre>
 
-</code></pre>
-
-<pre class="codehilite"><code class="linenums">#include&lt;queue&gt;
+<pre class="codehilite"><code class="language-c++ linenums">#include&lt;queue&gt;
 
 template&lt;typename T&gt;
 void mergesort(T a[], int low, int high)
@@ -323,9 +354,8 @@ void mergesort(T a[], int low, int high)
     }
 }</code></pre>
 
-<h3 id="quick-sort">quick sort</h3>
-<pre class="codehilite"><code class="linenums">
-template&lt;typename T&gt;
+<h1 id="quick-sort">quick sort</h1>
+<pre class="codehilite"><code class="language-c++ linenums">template&lt;typename T&gt;
 void quicksort(T A[], int start, int end)
 {
     if (start &lt; end)
@@ -350,11 +380,10 @@ void quicksort(T A[], int start, int end)
 }
 </code></pre>
 
-<h3 id="shell-sort">shell sort</h3>
+<h1 id="shell-sort">shell sort</h1>
 <p>삽입 정렬의 응용판
-h = 3h' +1</p>
-<pre class="codehilite"><code class="linenums">
-template&lt;typename T&gt;
+$h = 3h' +1$</p>
+<pre class="codehilite"><code class="language-c++ linenums">template&lt;typename T&gt;
 void shell_sort(T a[], int num)
 {
     int h =1;
@@ -385,7 +414,7 @@ void shell_sort(T a[], int num)
 <h3 id="heap-sort">HEAP SORT</h3>
 <p>parent는 실제로 사용하지는 않음
 실제 과정은 MAX_HEAPIFY와HEAPSORT 두개로 나타낼수있음</p>
-<pre class="codehilite"><code class="linenums">int parent(int i)
+<pre class="codehilite"><code class="language-c++ linenums">int parent(int i)
 {
     return i / 2;
 }
@@ -452,6 +481,15 @@ void HEAPSORT(int A[], int size)
           </div>
           <footer>
   
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../on/" class="btn btn-neutral float-right" title="True">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../simple_sort/" class="btn btn-neutral" title="simple_sort"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
 
   <hr/>
 
@@ -474,6 +512,10 @@ void HEAPSORT(int A[], int size)
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
+        <span><a href="../simple_sort/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../on/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

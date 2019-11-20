@@ -23,7 +23,7 @@ int FIND_MAX_CROSSING_SUBARRAY(int A[], int n)
 
 
 daq
-Theta(nlg(n))
+$\Theta(n\log n)$
 ```C++
 
 std::tuple<int, int, int> FIND_MAX_CROSSING_SUBARRAY(int A[], int low, int mid, int high)///std::tuple<int, int, int> low , high ,sum
@@ -63,7 +63,7 @@ std::tuple<int, int, int> FIND_MAX_CROSSING_SUBARRAY(int A[], int low, int mid, 
 
 [Kadane’s Algorithm](https://en.wikipedia.org/wiki/Maximum_subarray_problem#Kadane's_algorithm)
 
-O(n)
+$O(n)$
 ```C++
 std::tuple<int, int, int>KADANE(int A[], int n)///std::tuple<int, int, int> low , high ,sum
 {
@@ -100,7 +100,7 @@ std::tuple<int, int, int>KADANE(int A[], int n)///std::tuple<int, int, int> low 
 # 4.2 Strassen's algorithms for matrix multiplication
 
 일반
-n^3
+$O(n^3)$
 ```C++
 std::vector<std::vector<int>> SQUARE_MATRIX_MULTIPLY(std::vector<std::vector<int>>& A, std::vector<std::vector<int>>& B)
 {
@@ -124,8 +124,8 @@ std::vector<std::vector<int>> SQUARE_MATRIX_MULTIPLY(std::vector<std::vector<int
 ```
 
 divide and conquer
-n = 2^t
-n^3
+$n = 2^t$
+$O(n^3)$
 ```C++
 std::vector< std::vector<int>>SQUARE_MATRIX_MULTIPLY_RECURSIVE(
 	std::vector< std::vector<int>>& A,

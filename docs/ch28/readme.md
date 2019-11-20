@@ -14,7 +14,7 @@ typedef std::pair<std::vector< std::vector<double>>, std::vector< std::vector<do
 ## 28.1 Solving systems of linear equations
 
 
-O(n^2)
+$O(n^2)$
 ```C++
 //n^2
 std::vector<double>LUP_SOLVE(matrix& L, matrix& U, std::vector<int> &PI,

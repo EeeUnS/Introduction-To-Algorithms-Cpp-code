@@ -1,8 +1,6 @@
+# merge sort
 
-
-### merge sort
-```
-
+```c++
 void MERGE(int A[], int p, int q, int r)
 {
 	int n_1 = q - p + 1;
@@ -48,11 +46,9 @@ void MERGE_SORT(int A[], int p, int r)
 		MERGE(A, p, q, r);
 	}
 }
-
-
 ```
 
-```
+```c++
 #include<queue>
 
 template<typename T>
@@ -103,10 +99,9 @@ void mergesort(T a[], int low, int high)
 }
 ``` 
 
-### quick sort
+# quick sort
 
-```
-
+```c++
 template<typename T>
 void quicksort(T A[], int start, int end)
 {
@@ -132,12 +127,12 @@ void quicksort(T A[], int start, int end)
 }
 
 ```
-### shell sort 
+# shell sort 
+
 삽입 정렬의 응용판
-h = 3h' +1
+$h = 3h' +1$
 
-```
-
+```c++
 template<typename T>
 void shell_sort(T a[], int num)
 {
@@ -171,7 +166,7 @@ void shell_sort(T a[], int num)
 parent는 실제로 사용하지는 않음
 실제 과정은 MAX_HEAPIFY와HEAPSORT 두개로 나타낼수있음
 
-```
+```c++
 int parent(int i)
 {
 	return i / 2;

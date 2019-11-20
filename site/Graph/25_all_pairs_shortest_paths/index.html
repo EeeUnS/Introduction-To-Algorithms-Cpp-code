@@ -67,19 +67,31 @@
           
             <li class="toctree-l1">
 		
-    <span class="caption-text">I Foundations</span>
+    <span class="caption-text">Sort</span>
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../ch4/readme/">4 Divide-and-Conquer</a>
+    <a class="" href="../../sort/simple_sort/">simple_sort</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../sort/nlogn/">nlogn</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../sort/on/">True</a>
                 </li>
     </ul>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <span class="caption-text">II Sorting and Order Statistics</span>
+    <span class="caption-text">I Foundations && II Sorting and Order Statistics</span>
     <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../ch4/readme/">4 Divide-and-Conquer</a>
+                </li>
                 <li class="">
                     
     <a class="" href="../../ch9/readme/">9 Medians and Order Statistics</a>
@@ -294,7 +306,7 @@ void print_matrix(std::vector &lt; std::vector&lt;int&gt;&gt;&amp; m)
 </code></pre>
 
 <h1 id="251-shortest-paths-and-matrix-multiplication">25.1 Shortest paths and matrix multiplication</h1>
-<p>O(V^3)
+<p>$O(V^3)$
 <pre class="codehilite"><code class="language-C++ linenums">std::vector&lt;std::vector&lt;int&gt;&gt; EXTEND_SHORTEST_PATHS(std::vector&lt;std::vector&lt;int&gt;&gt;&amp; L, std::vector&lt;std::vector&lt;int&gt;&gt;&amp; W)
 {
     const int n = L.size();
@@ -316,7 +328,7 @@ void print_matrix(std::vector &lt; std::vector&lt;int&gt;&gt;&amp; m)
     }
     return L_prime;
 }</code></pre></p>
-<p>총 O(V^4)
+<p>총 $O(V^4)$
 <pre class="codehilite"><code class="language-C++ linenums">//nxn 1~n
 std::vector&lt;std::vector&lt;int&gt;&gt;SLOW_ALL_PAIRS_SHORTEST_PATHS(std::vector&lt;std::vector&lt;int&gt;&gt;&amp; W)
 {
@@ -339,7 +351,7 @@ std::vector&lt;std::vector&lt;int&gt;&gt;SLOW_ALL_PAIRS_SHORTEST_PATHS(std::vect
     }
     return L[n-1];
 }</code></pre></p>
-<p>총 O(V^3log(V))
+<p>총 $O(V^3 \log (V))$
 <pre class="codehilite"><code class="language-C++ linenums">std::vector&lt;std::vector&lt;int&gt;&gt;FASTER_ALL_PAIRS_SHORTEST_PATHS(std::vector&lt;std::vector&lt;int&gt;&gt;&amp; W)
 {
     const int n = W.size() - 1;
@@ -605,7 +617,7 @@ no consider overflow;</p>
     return  T[n];
 }</code></pre></p>
 <p>25.2-3 25.2-4에 이어서.</p>
-<p>공간복잡도 O(n^3)
+<p>공간복잡도 $O(n^3)$
 <pre class="codehilite"><code class="language-C++ linenums">std::vector&lt;std::vector&lt;int&gt;&gt;FLOYD_WARSHALL_apostrophe_pi(std::vector&lt;std::vector&lt;int&gt;&gt;&amp; W, std::vector&lt;std::vector&lt;int&gt;&gt;&amp; pi )
 {
     const int n = W.size()-1;
@@ -670,7 +682,7 @@ no consider overflow;</p>
     return  D;
 }
 </code></pre></p>
-<p>공간복잡도 O(n^2)
+<p>공간복잡도 $O(n^2)$
 <pre class="codehilite"><code class="language-C++ linenums">std::vector&lt;std::vector&lt;int&gt;&gt;FLOYD_WARSHALL_apostrophe_pi(std::vector&lt;std::vector&lt;int&gt;&gt;&amp; W, std::vector&lt;std::vector&lt;int&gt;&gt;&amp; pi )
 {
     const int n = W.size()-1;

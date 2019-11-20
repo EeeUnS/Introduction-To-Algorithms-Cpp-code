@@ -67,7 +67,26 @@
           
             <li class="toctree-l1">
 		
-    <span class="caption-text">I Foundations</span>
+    <span class="caption-text">Sort</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../sort/simple_sort/">simple_sort</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../sort/nlogn/">nlogn</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../sort/on/">True</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">I Foundations && II Sorting and Order Statistics</span>
     <ul class="subnav">
                 <li class=" current">
                     
@@ -82,13 +101,6 @@
 
     </ul>
                 </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">II Sorting and Order Statistics</span>
-    <ul class="subnav">
                 <li class="">
                     
     <a class="" href="../../ch9/readme/">9 Medians and Order Statistics</a>
@@ -223,7 +235,7 @@
     
       
         
-          <li>I Foundations &raquo;</li>
+          <li>I Foundations && II Sorting and Order Statistics &raquo;</li>
         
       
     
@@ -256,7 +268,7 @@ $\Theta(n^2)$
     return maximum;
 }</code></pre></p>
 <p>daq
-Theta(nlg(n))
+$\Theta(n\log n)$
 <pre class="codehilite"><code class="language-C++ linenums">
 std::tuple&lt;int, int, int&gt; FIND_MAX_CROSSING_SUBARRAY(int A[], int low, int mid, int high)///std::tuple&lt;int, int, int&gt; low , high ,sum
 {
@@ -290,7 +302,7 @@ std::tuple&lt;int, int, int&gt; FIND_MAX_CROSSING_SUBARRAY(int A[], int low, int
 }</code></pre></p>
 <p>4.1-5 </p>
 <p><a href="https://en.wikipedia.org/wiki/Maximum_subarray_problem#Kadane's_algorithm">Kadane’s Algorithm</a></p>
-<p>O(n)
+<p>$O(n)$
 <pre class="codehilite"><code class="language-C++ linenums">std::tuple&lt;int, int, int&gt;KADANE(int A[], int n)///std::tuple&lt;int, int, int&gt; low , high ,sum
 {
     std::tuple&lt;int, int, int&gt; current_sum (0,0,0) ;
@@ -321,7 +333,7 @@ std::tuple&lt;int, int, int&gt; FIND_MAX_CROSSING_SUBARRAY(int A[], int low, int
 }</code></pre></p>
 <h1 id="42-strassens-algorithms-for-matrix-multiplication">4.2 Strassen's algorithms for matrix multiplication</h1>
 <p>일반
-n^3
+$O(n^3)$
 <pre class="codehilite"><code class="language-C++ linenums">std::vector&lt;std::vector&lt;int&gt;&gt; SQUARE_MATRIX_MULTIPLY(std::vector&lt;std::vector&lt;int&gt;&gt;&amp; A, std::vector&lt;std::vector&lt;int&gt;&gt;&amp; B)
 {
     const int n = A.size();
@@ -342,8 +354,8 @@ n^3
     return C;
 }</code></pre></p>
 <p>divide and conquer
-n = 2^t
-n^3
+$n = 2^t$
+$O(n^3)$
 <pre class="codehilite"><code class="language-C++ linenums">std::vector&lt; std::vector&lt;int&gt;&gt;SQUARE_MATRIX_MULTIPLY_RECURSIVE(
     std::vector&lt; std::vector&lt;int&gt;&gt;&amp; A,
     std::vector&lt; std::vector&lt;int&gt;&gt;&amp; B
@@ -632,7 +644,7 @@ std::vector&lt; std::vector&lt;int&gt;&gt; STRASSEN(
         <a href="../../ch9/readme/" class="btn btn-neutral float-right" title="9 Medians and Order Statistics">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../.." class="btn btn-neutral" title="Preface"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../sort/on/" class="btn btn-neutral" title="True"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -658,7 +670,7 @@ std::vector&lt; std::vector&lt;int&gt;&gt; STRASSEN(
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../.." style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../../sort/on/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
         <span style="margin-left: 15px"><a href="../../ch9/readme/" style="color: #fcfcfc">Next &raquo;</a></span>

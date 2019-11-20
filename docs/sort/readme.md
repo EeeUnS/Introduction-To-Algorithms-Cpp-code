@@ -1,5 +1,5 @@
 
-### [simple sort O(n^2)](https://github.com/EeeUnS/introduction_to_algorithms/blob/master/1~8sort/simple_sort.md)
+### [simple sort $O(n^2)$](https://github.com/EeeUnS/introduction_to_algorithms/blob/master/1~8sort/simple_sort.md)
 
 + bubble (chapter2 Problem)
 
@@ -7,7 +7,7 @@
 
 + insertion (chapter 2.1)
 
-### [O(nlogn)](https://github.com/EeeUnS/introduction_to_algorithms/blob/master/1~8sort/nlogn.md)
+### [$O(n \log n)$](https://github.com/EeeUnS/introduction_to_algorithms/blob/master/1~8sort/nlogn.md)
 
 + merge (chapter 2.3)
 
@@ -17,7 +17,7 @@
 
 + heap (chapter 6)
 
-### [O(n) (chapter 8)](https://github.com/EeeUnS/introduction_to_algorithms/blob/master/1~8sort/radix.md)
+### [$O(n)$ (chapter 8)](https://github.com/EeeUnS/introduction_to_algorithms/blob/master/1~8sort/radix.md)
 
 + radix
 

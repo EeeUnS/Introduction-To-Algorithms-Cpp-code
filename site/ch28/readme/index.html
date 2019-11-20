@@ -67,19 +67,31 @@
           
             <li class="toctree-l1">
 		
-    <span class="caption-text">I Foundations</span>
+    <span class="caption-text">Sort</span>
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../ch4/readme/">4 Divide-and-Conquer</a>
+    <a class="" href="../../sort/simple_sort/">simple_sort</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../sort/nlogn/">nlogn</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../sort/on/">True</a>
                 </li>
     </ul>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <span class="caption-text">II Sorting and Order Statistics</span>
+    <span class="caption-text">I Foundations && II Sorting and Order Statistics</span>
     <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../ch4/readme/">4 Divide-and-Conquer</a>
+                </li>
                 <li class="">
                     
     <a class="" href="../../ch9/readme/">9 Medians and Order Statistics</a>
@@ -248,7 +260,7 @@ nxn mat</p>
 typedef std::pair<std::vector< std::vector<double>&gt;, std::vector&lt; std::vector<double>&gt;&gt;  Set;</p>
 <p>```</p>
 <h2 id="281-solving-systems-of-linear-equations">28.1 Solving systems of linear equations</h2>
-<p>O(n^2)
+<p>$O(n^2)$
 <pre class="codehilite"><code class="language-C++ linenums">//n^2
 std::vector&lt;double&gt;LUP_SOLVE(matrix&amp; L, matrix&amp; U, std::vector&lt;int&gt; &amp;PI,
     std::vector&lt;double&gt;&amp; b)

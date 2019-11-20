@@ -67,19 +67,31 @@
           
             <li class="toctree-l1">
 		
-    <span class="caption-text">I Foundations</span>
+    <span class="caption-text">Sort</span>
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../ch4/readme/">4 Divide-and-Conquer</a>
+    <a class="" href="../../sort/simple_sort/">simple_sort</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../sort/nlogn/">nlogn</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../sort/on/">True</a>
                 </li>
     </ul>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <span class="caption-text">II Sorting and Order Statistics</span>
+    <span class="caption-text">I Foundations && II Sorting and Order Statistics</span>
     <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../ch4/readme/">4 Divide-and-Conquer</a>
+                </li>
                 <li class="">
                     
     <a class="" href="../../ch9/readme/">9 Medians and Order Statistics</a>
@@ -242,9 +254,15 @@
               
                 <h1 id="161-activity-selection-problem">16.1활동 선택 문제(activity selection problem)</h1>
 <ol>
-<li>f가 제일작은 f[0]을 선택한다. 이게 a0</li>
-<li>이 앞의 f[0]보다 큰 s[i]를 선택한다. a1</li>
-<li>반복</li>
+<li>
+<p>f가 제일작은 f[0]을 선택한다. 이게 a0</p>
+</li>
+<li>
+<p>이 앞의 f[0]보다 큰 s[i]를 선택한다. a1</p>
+</li>
+<li>
+<p>반복</p>
+</li>
 </ol>
 <pre class="codehilite"><code class="language-C++ linenums">void RECURSIVE_ACTIVITY_SELECTOR(int s[], int f[], int k, int n, std::vector&lt;int&gt; &amp;a)
 {

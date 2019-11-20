@@ -14,7 +14,7 @@ std::vector<int> p ={ 0, 1,5,8,9,10,17,17,20,24,30 };
 ```
 
 
-완전 탐색 $O(2^n)$//수식안되네..
+완전 탐색 $O(2^n)$
 ```C++
 int CUT_ROD(std::vector<int>& p) // p는 index 1부터 저장되어있다.
 {
@@ -31,7 +31,7 @@ int CUT_ROD(std::vector<int>& p) // p는 index 1부터 저장되어있다.
 }
 ```
 
-O(n)
+$O(n)$
 
 
 메모이제이션 방법 (top-down with memoization)
@@ -140,7 +140,7 @@ void PRINT_CUT_ROD_COLUTION(int p[], int n)
 typedef std::pair<std::vector<std::vector<int>>,std::vector<std::vector<int>>> Set;
 ```
 
-O(n^3)
+$O(n^3)$
 ```C++
 Set MATRIX_CHAIN_ORDER(const std::vector<int> &p)
 {
@@ -261,7 +261,7 @@ int MEMORIZED_MATRIX_CHAIN(const std::vector<int> &p)
 # 15.4 Longest common subsequence
 참고 : https://www.acmicpc.net/problem/9251
 
-O(mn)
+$O(mn)$
 ```C++
 const char *X = "ABCBDAB";
 const char *Y = "BDCABA";

@@ -67,9 +67,9 @@ Not working
 
 
 
-S_1 = Theta(nlogn)
-S_INF = Theta(n)
-parallelism = Theta(lg n)
+$S_1 = \Theta(n\log n)$
+$S_INF = \Theta(n)$
+$parallelism = \Theta(\log n)$
 ```
 void MERGE_SORT_PRIME(int A[], int p, int r)
 {
@@ -88,9 +88,9 @@ void MERGE_SORT_PRIME(int A[], int p, int r)
 0~n-1
 P_Merge's
 
-S_1 = Theta(n)
-S_INF = Theta((lg n)^2)
-parallelism = Theta(n/(lgn)^2)
+$S_1 = \Theta(n)$
+$S_INF = \Theta((\log n)^2)$
+$parallelism = \Theta(n/(\log n)^2)$
 
 https://nms.kcl.ac.uk/colin.cooper/teachingmaterial/PAL-PDA/lectures/6B-parallel-MergeSort.pdf
 ```

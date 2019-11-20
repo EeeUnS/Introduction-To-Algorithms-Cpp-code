@@ -67,19 +67,31 @@
           
             <li class="toctree-l1">
 		
-    <span class="caption-text">I Foundations</span>
+    <span class="caption-text">Sort</span>
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../ch4/readme/">4 Divide-and-Conquer</a>
+    <a class="" href="../../sort/simple_sort/">simple_sort</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../sort/nlogn/">nlogn</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../sort/on/">True</a>
                 </li>
     </ul>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <span class="caption-text">II Sorting and Order Statistics</span>
+    <span class="caption-text">I Foundations && II Sorting and Order Statistics</span>
     <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../ch4/readme/">4 Divide-and-Conquer</a>
+                </li>
                 <li class="">
                     
     <a class="" href="../../ch9/readme/">9 Medians and Order Statistics</a>
@@ -263,7 +275,7 @@
 <h1 id="151-rod-cuting">15.1 ROD CUTING</h1>
 <pre class="codehilite"><code class="language-C++ linenums">std::vector&lt;int&gt; p ={ 0, 1,5,8,9,10,17,17,20,24,30 };</code></pre>
 
-<p>완전 탐색 $O(2^n)$//수식안되네..
+<p>완전 탐색 $O(2^n)$
 <pre class="codehilite"><code class="language-C++ linenums">int CUT_ROD(std::vector&lt;int&gt;&amp; p) // p는 index 1부터 저장되어있다.
 {
     const int n = p.size()-1;
@@ -277,7 +289,7 @@
         q = std::max(q, p[i-1] + CUT_ROD(p, n - i));
     }
 }</code></pre></p>
-<p>O(n)</p>
+<p>$O(n)$</p>
 <p>메모이제이션 방법 (top-down with memoization)
 <pre class="codehilite"><code class="language-C++ linenums">int MEMOIZED_CUT_ROD(std::vector&lt;int&gt; &amp;p)
 {
@@ -368,7 +380,7 @@ void PRINT_CUT_ROD_COLUTION(int p[], int n)
 <h1 id="152-matrix_chain_multiplication">15.2 Matrix_chain_multiplication</h1>
 <pre class="codehilite"><code class="language-C++ linenums">typedef std::pair&lt;std::vector&lt;std::vector&lt;int&gt;&gt;,std::vector&lt;std::vector&lt;int&gt;&gt;&gt; Set;</code></pre>
 
-<p>O(n^3)
+<p>$O(n^3)$
 <pre class="codehilite"><code class="language-C++ linenums">Set MATRIX_CHAIN_ORDER(const std::vector&lt;int&gt; &amp;p)
 {
     const int INF = 1000000000;
@@ -476,7 +488,7 @@ int MEMORIZED_MATRIX_CHAIN(const std::vector&lt;int&gt; &amp;p)
 
 <h1 id="154-longest-common-subsequence">15.4 Longest common subsequence</h1>
 <p>참고 : https://www.acmicpc.net/problem/9251</p>
-<p>O(mn)
+<p>$O(mn)$
 <pre class="codehilite"><code class="language-C++ linenums">const char *X = "ABCBDAB";
 const char *Y = "BDCABA";
 

@@ -29,10 +29,10 @@ markdown_extensions:
 
 nav:
   - Preface: index.md
-  - Sort: sort/readme.md
-    -simple_sort: sort/simple_sort.md
-    -nlogn: sort/nlogn.md
-    -On: sort/on.md
+  - Sort: 
+    - simple_sort: sort/simple_sort.md
+    - nlogn: sort/nlogn.md
+    - On: sort/on.md
   - I Foundations && II Sorting and Order Statistics :
     - 4 Divide-and-Conquer: ch4/readme.md
     - 9 Medians and Order Statistics: ch9/readme.md

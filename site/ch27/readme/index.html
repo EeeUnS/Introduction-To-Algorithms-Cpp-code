@@ -67,19 +67,31 @@
           
             <li class="toctree-l1">
 		
-    <span class="caption-text">I Foundations</span>
+    <span class="caption-text">Sort</span>
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../ch4/readme/">4 Divide-and-Conquer</a>
+    <a class="" href="../../sort/simple_sort/">simple_sort</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../sort/nlogn/">nlogn</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../sort/on/">True</a>
                 </li>
     </ul>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <span class="caption-text">II Sorting and Order Statistics</span>
+    <span class="caption-text">I Foundations && II Sorting and Order Statistics</span>
     <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../ch4/readme/">4 Divide-and-Conquer</a>
+                </li>
                 <li class="">
                     
     <a class="" href="../../ch9/readme/">9 Medians and Order Statistics</a>
@@ -295,9 +307,9 @@ std::vector&lt;int&gt; MAT_VEC(std::vector&lt;std::vector&lt;int&gt;&gt; &amp;A 
 <p>https://en.wikipedia.org/wiki/Matrix_multiplication_algorithm#Parallel_and_distributed_algorithms</p>
 <h1 id="273-multithreaded-merge-sort">27.3 Multithreaded merge sort</h1>
 <p>Not working</p>
-<p>S_1 = Theta(nlogn)
-S_INF = Theta(n)
-parallelism = Theta(lg n)
+<p>$S_1 = \Theta(n\log n)$
+$S_INF = \Theta(n)$
+$parallelism = \Theta(\log n)$
 <pre class="codehilite"><code class="linenums">void MERGE_SORT_PRIME(int A[], int p, int r)
 {
     if (p &gt;= r)
@@ -313,9 +325,9 @@ parallelism = Theta(lg n)
 }</code></pre>
 0~n-1
 P_Merge's</p>
-<p>S_1 = Theta(n)
-S_INF = Theta((lg n)^2)
-parallelism = Theta(n/(lgn)^2)</p>
+<p>$S_1 = \Theta(n)$
+$S_INF = \Theta((\log n)^2)$
+$parallelism = \Theta(n/(\log n)^2)$</p>
 <p>https://nms.kcl.ac.uk/colin.cooper/teachingmaterial/PAL-PDA/lectures/6B-parallel-MergeSort.pdf
 <pre class="codehilite"><code class="linenums">
 </code></pre></p>

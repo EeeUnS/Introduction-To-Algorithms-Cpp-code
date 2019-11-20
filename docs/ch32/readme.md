@@ -3,7 +3,7 @@
 m = T.length
 n = P.length
 
-O((n-m+1)m)
+$O((n-m+1)m)$
 ```C++
 void NAIVE_STRING_MATCHER(char* T, int m , char* P, int n )
 {
@@ -26,9 +26,9 @@ void NAIVE_STRING_MATCHER(char* T, int m , char* P, int n )
 ```
 # 32.2 The Rabin Karp algorighm
 
-Preprocessing time : O(m)
+Preprocessing time : $O(m)$
 
-Matching time O((n-m+1)m)
+Matching time $O((n-m+1)m)$
 평균 O(m)
 
 q = prime
@@ -83,10 +83,10 @@ void RABIN_KARP_MATCHER(char T[], int n , char P[], int m, int d, int q)
 
 https://www.acmicpc.net/problem/1786
 
-Preprocessing time : O(m^3 *sigma) 
-뒤의 kmp를 응용해서 해당 복잡도를 O(m*sigma)로 줄일 수 있다.
+Preprocessing time : $O(m^3 *\Sigma)$
+뒤의 kmp를 응용해서 해당 복잡도를 $O(m*\Sigma)$로 줄일 수 있다.
 
-Matching time O(n)
+Matching time $O(n)$
 ```C++
 void FINITE_AUTOMATON_MATCHER(char T[], int n , std::vector<std::vector<int>> equation, int m )
 {
@@ -154,9 +154,9 @@ std::vector<std::vector<int>> COMPUTE_TRANSITION_FUNCTION(char P[],int sigma, in
 # 32.4 The Knuth-Morris-Pratt algorithm
 
 
-Preprocessing time : O(m) 
+Preprocessing time : $O(m)$
 
-Matching time O(n)
+Matching time $O(n)$
 
 ```C++
 void KMP_MATCHER(char T[], int n, char P[], int m)

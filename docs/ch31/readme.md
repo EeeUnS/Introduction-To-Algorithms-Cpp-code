@@ -1,7 +1,7 @@
 # 31.2
 ### GCD Euclid's algorithm
 
-O(log b)
+$O(log b)$
 ```C++
 int EUCLID(int a, int b)
 {
@@ -34,7 +34,7 @@ std::tuple<int, int, int> EXTENDED_EUCLID(int a, int b)
 
 ### MODULAR_LINEAR_EQUATION_SOLVER
 
-O(lg n + gcd(a,n))
+$O(\log n + \gcd(a,n))$
 ```C++
 void MODULAR_LINEAR_EQUATION_SOLVER(int a, int b, int n)//ax = b (mod n)
 {
@@ -95,7 +95,7 @@ CLRS에 소개된 의사코드는 잘 작동하지 않는다.
 
 코드를 살펴보면 c를 사용하지않음
 d - bit 
-O(d)
+$O(d)$
 
 ````C++
 int MODULAR_EXPONENTIATION(int a, int b, int n)//a^b mod n
@@ -151,7 +151,7 @@ go to RSA.h
 
 # 31.8 Primality tetsting
 
-O(sqrt(n))
+$O(\sqrt{n})$
 
 ```C++
 bool trial_division(int n)

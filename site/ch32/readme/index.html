@@ -67,19 +67,31 @@
           
             <li class="toctree-l1">
 		
-    <span class="caption-text">I Foundations</span>
+    <span class="caption-text">Sort</span>
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../ch4/readme/">4 Divide-and-Conquer</a>
+    <a class="" href="../../sort/simple_sort/">simple_sort</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../sort/nlogn/">nlogn</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../sort/on/">True</a>
                 </li>
     </ul>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <span class="caption-text">II Sorting and Order Statistics</span>
+    <span class="caption-text">I Foundations && II Sorting and Order Statistics</span>
     <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../ch4/readme/">4 Divide-and-Conquer</a>
+                </li>
                 <li class="">
                     
     <a class="" href="../../ch9/readme/">9 Medians and Order Statistics</a>
@@ -246,7 +258,7 @@
                 <h1 id="321-the-naive-string-matching-algorithm">32.1 The naive string matching algorithm</h1>
 <p>m = T.length
 n = P.length</p>
-<p>O((n-m+1)m)
+<p>$O((n-m+1)m)$
 <pre class="codehilite"><code class="language-C++ linenums">void NAIVE_STRING_MATCHER(char* T, int m , char* P, int n )
 {
     for (int s = 0; s &lt;= n - m; s++)
@@ -266,8 +278,8 @@ n = P.length</p>
     }
 }</code></pre></p>
 <h1 id="322-the-rabin-karp-algorighm">32.2 The Rabin Karp algorighm</h1>
-<p>Preprocessing time : O(m)</p>
-<p>Matching time O((n-m+1)m)
+<p>Preprocessing time : $O(m)$</p>
+<p>Matching time $O((n-m+1)m)$
 평균 O(m)</p>
 <p>q = prime</p>
 <p>d = sigma star</p>
@@ -311,9 +323,9 @@ n = P.length</p>
 
 <h1 id="323-string-matching-with-finite-automata">32.3 String matching with finite automata</h1>
 <p>https://www.acmicpc.net/problem/1786</p>
-<p>Preprocessing time : O(m^3 <em>sigma) 
-뒤의 kmp를 응용해서 해당 복잡도를 O(m</em>sigma)로 줄일 수 있다.</p>
-<p>Matching time O(n)
+<p>Preprocessing time : $O(m^3 <em>\Sigma)$
+뒤의 kmp를 응용해서 해당 복잡도를 $O(m</em>\Sigma)$로 줄일 수 있다.</p>
+<p>Matching time $O(n)$
 <pre class="codehilite"><code class="language-C++ linenums">void FINITE_AUTOMATON_MATCHER(char T[], int n , std::vector&lt;std::vector&lt;int&gt;&gt; equation, int m )
 {
     int q = 0;
@@ -372,8 +384,8 @@ n = P.length</p>
 }</code></pre>
 
 <h1 id="324-the-knuth-morris-pratt-algorithm">32.4 The Knuth-Morris-Pratt algorithm</h1>
-<p>Preprocessing time : O(m) </p>
-<p>Matching time O(n)</p>
+<p>Preprocessing time : $O(m)$</p>
+<p>Matching time $O(n)$</p>
 <pre class="codehilite"><code class="language-C++ linenums">void KMP_MATCHER(char T[], int n, char P[], int m)
 {
     std::vector&lt;int&gt; pi = COMPUTE_PREFIX_FUNCTION(P, m);

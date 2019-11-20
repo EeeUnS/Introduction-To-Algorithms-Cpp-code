@@ -102,7 +102,7 @@ bool BELLMAN_FORD(const Graph& G,
 
 ```
 
-Theta(V+E)
+$\Theta (V+E)$
 ```C++
 void DFS_TS(const Graph& G, std::vector<bool> &visit, 
 	stack<int> &S, int x)
@@ -184,7 +184,7 @@ void DAG_SHORTEST_PATHS(const Graph& G,
 참고:
 https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm#Running_time
 
-우선순위큐 사용 O(ElogV)
+우선순위큐 사용 $O(E\log V)$
 
 PQ의 탑 디스턴스값을 갱신시켜야한다 따라서 뽑고 다시넣는다.
 책의 의사코드에 치명적인 문제가 하나있는데

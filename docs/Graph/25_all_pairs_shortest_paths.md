@@ -58,7 +58,7 @@ void print_matrix(std::vector < std::vector<int>>& m)
 
 # 25.1 Shortest paths and matrix multiplication
 
-O(V^3)
+$O(V^3)$
 ```C++
 std::vector<std::vector<int>> EXTEND_SHORTEST_PATHS(std::vector<std::vector<int>>& L, std::vector<std::vector<int>>& W)
 {
@@ -84,7 +84,7 @@ std::vector<std::vector<int>> EXTEND_SHORTEST_PATHS(std::vector<std::vector<int>
 ```
 
 
-총 O(V^4)
+총 $O(V^4)$
 ```C++
 //nxn 1~n
 std::vector<std::vector<int>>SLOW_ALL_PAIRS_SHORTEST_PATHS(std::vector<std::vector<int>>& W)
@@ -112,7 +112,7 @@ std::vector<std::vector<int>>SLOW_ALL_PAIRS_SHORTEST_PATHS(std::vector<std::vect
 
 
 
-총 O(V^3log(V))
+총 $O(V^3 \log (V))$
 ```C++
 std::vector<std::vector<int>>FASTER_ALL_PAIRS_SHORTEST_PATHS(std::vector<std::vector<int>>& W)
 {
@@ -416,7 +416,7 @@ std::vector<std::vector<int>>TRANSITIVE_CLOSURE(std::vector<std::vector<int>>& G
 
 25.2-3 25.2-4에 이어서.
 
-공간복잡도 O(n^3)
+공간복잡도 $O(n^3)$
 ```C++
 std::vector<std::vector<int>>FLOYD_WARSHALL_apostrophe_pi(std::vector<std::vector<int>>& W, std::vector<std::vector<int>>& pi )
 {
@@ -484,7 +484,7 @@ std::vector<std::vector<int>>FLOYD_WARSHALL_apostrophe_pi(std::vector<std::vecto
 
 ```
 
-공간복잡도 O(n^2)
+공간복잡도 $O(n^2)$
 ```C++
 std::vector<std::vector<int>>FLOYD_WARSHALL_apostrophe_pi(std::vector<std::vector<int>>& W, std::vector<std::vector<int>>& pi )
 {

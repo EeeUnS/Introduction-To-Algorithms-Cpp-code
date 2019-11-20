@@ -29,10 +29,13 @@ markdown_extensions:
 
 nav:
   - Preface: index.md
-  - I Foundations :
+  - Sort: sort/readme.md
+    -simple_sort: sort/simple_sort.md
+    -nlogn: sort/nlogn.md
+    -On: sort/on.md
+  - I Foundations && II Sorting and Order Statistics :
     - 4 Divide-and-Conquer: ch4/readme.md
-  - II Sorting and Order Statistics:
-      - 9 Medians and Order Statistics: ch9/readme.md
+    - 9 Medians and Order Statistics: ch9/readme.md
   - III Data Structures:
       - 12 Binary Search Trees: ch12/readme.md
   - IV Advanced Design and Analysis Techniques:

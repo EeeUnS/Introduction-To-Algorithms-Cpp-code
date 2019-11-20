@@ -1,93 +1,69 @@
-# Introduction To Algorithms
+<p align="center">
+  <a href="https://walkccc.github.io/CLRS/"><img src="./docs/assets/cover.png" height="200" title="CLRS" alt="CLRS"></a>
+</p>
 
-This is Cpp code from  pseudocode in CLRS
+<p align="center">
+  <img src="https://img.shields.io/badge/completion-80%25-blue.svg" />
+  <a href="https://github.com/walkccc/CLRS/graphs/contributors" alt="Contributors">
+    <img src="https://img.shields.io/github/contributors/walkccc/CLRS.svg" />
+  </a>
+  <img src="https://img.shields.io/badge/made%20with-Markdown-1f425f.svg" />
+  <img src="https://img.shields.io/badge/made%20with-KaTeX-1f425f.svg" />
+  <img src="https://img.shields.io/badge/PRs-welcome-1abc9c.svg" />
+  <a href="https://github.com/walkccc/CLRS/blob/master/LICENSE" alt="License">
+    <img src="https://img.shields.io/github/license/walkccc/CLRS.svg" />
+  </a>
+</p>
 
-## I Foundations & II Sorting and Order Statistics
+# Solutions to **Introduction to Algorithms** _Third Edition_
 
-Ch 2,4,6,7,8 [Sort](https://github.com/EeeUnS/introduction_to_algorithms/tree/master/1~8sort)
+## Getting Started
 
-Ch 4 [Divide-and-Conquer](https://github.com/EeeUnS/introduction_to_algorithms/tree/master/4%20Divide%20and%20conquer)
+This **[website](https://walkccc.github.io/CLRS/)** contains nearly complete solutions to the bible textbook - [**Introduction to Algorithms** _Third Edition_](https://mitpress.mit.edu/books/introduction-algorithms-third-edition), published by [Thomas H. Cormen](https://mitpress.mit.edu/contributors/thomas-h-cormen), [Charles E. Leiserson](https://mitpress.mit.edu/contributors/charles-e-leiserson), [Ronald L. Rivest](https://mitpress.mit.edu/contributors/ronald-l-rivest), and [Clifford Stein](https://mitpress.mit.edu/contributors/clifford-stein).
 
-Ch 9 [Medians and Order Statistics](https://github.com/EeeUnS/Introduction-To-Algorithms-Cpp-code/tree/master/9%20Medians%20and%20Order%20Statistics)
+Hope to organize solutions to help more people and myself study algorithms. By using [Markdown (.md)](https://en.wikipedia.org/wiki/Markdown) files, it's much more readable on portable devices now.
 
-## III Data Structures 
+_"Many a little makes a mickle."_
 
-CH 10 Data Structures
+## Contributors
 
-Ch 12 [Binary Search Trees](https://github.com/EeeUnS/introduction_to_algorithms/blob/master/12BinarysearchTree)
+Thanks to:
 
-CH 11 Hash Tables
+- The authors of [CLRS Solutions](https://sites.math.rutgers.edu/~ajl213/CLRS/CLRS.html): [Michelle Bodnar](mailto:chellebodnar@gmail.com), who writes the even number problems and [Andrew Lohr](mailto:Andrew.Lohr@gmail.com), who writes the odd number problems.
+- [@skanev](https://github.com/skanev), [@CyberZHG](https://github.com/CyberZHG), [@yinyanghu](https://github.com/yinyanghu), etc.
 
-Ch 13 [Red-Black Trees](https://github.com/EeeUnS/introduction_to_algorithms/blob/master/13%20redblacktree/REDBLACKTREE.md)
-미완 작동x
+Special thanks to [@JeffreyCA](https://github.com/JeffreyCA), who fixed math rendering on iOS Safari in [#26](https://github.com/walkccc/CLRS/pull/26).
 
-## IV Advanced Design and Analysis Techniques
+If I miss your name here, please tell me!
 
-Ch 15 [Dynamic Programming](https://github.com/EeeUnS/introduction_to_algorithms/tree/master/15DP)
+Currently working on removed problems!
 
+## Announcement
 
-Ch 16 [Greedy Algorithms](https://github.com/EeeUnS/introduction_to_algorithms/tree/master/16Greedy)
-미완
+The emergence of this website, from the very beginning, is very simple. I want to provide a website that is easy to read on mobile devices to help everyone learning algorithms.
 
-## V Advanced Data Structures
+Therefore, please don't hesitate to give me your feedback if any adjustment is needed with the sorted solutions or you have the same motivation and want to contribute to this work. You can press the "pencil icon" in the upper right corner to edit the content or [open an issue](https://github.com/walkccc/CLRS/issues/new) in [my repository](https://github.com/walkccc/CLRS/). Your solution will be rebased on this repository after I review and make some form modifications to your pull request.
 
-Ch 18 B-Trees
+Thank you very much, and I hope that everyone will learn algorithms smoothly!
 
-Ch 19 Fibonacci Heaps
+## How I generate this website?
 
-Ch 20 van Emde Boas Trees
+I use the static site generator [MkDocs](http://www.mkdocs.org/) and the beautiful theme [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) to build this website!
 
-Ch 21 [Data Structures for Disjoint Sets](https://github.com/EeeUnS/Introduction-To-Algorithms-Cpp-code/tree/master/21%20Data%20Structures%20for%20Disjoint%20Sets)
+Since [KaTeX](https://katex.org/) is now supporting more functions and is much faster than [MathJax](https://www.mathjax.org/), I've updated all math equations from MathJax to KaTeX.
 
-## VI Graph Algorithms(22~26)
+I also add `overflow-x: auto` to prevent the overflow issue on small screen devices so that you can scroll horizontally in the math display equations.
 
-Ch 22.1~3 [BFS,DFS](https://github.com/EeeUnS/Introduction-To-Algorithms-Cpp-code/blob/master/22~26Graph/22.123.md)
+## More Information
 
-Ch 22.4 [Topological Sort](https://github.com/EeeUnS/introduction_to_algorithms/blob/master/22~26Graph/22.4_DAG.md)
+I rebased my repository regularly for clearer commit histories. Therefore, if you have forked the repository before, consider re-forking it again.
 
-Ch 22.5 [Strongly connected component](https://github.com/EeeUnS/introduction_to_algorithms/blob/master/22~26Graph/22.5_SCC.md)
+For more information, please visit [**my GitHub**](https://github.com/walkccc).
 
-Ch 23 [Minimum Spaning Tree](https://github.com/EeeUnS/introduction_to_algorithms/blob/master/22~26Graph/23.MST.md)
+Updated to this new page on April 13, 2018, at 04:48 [(GMT+8)](https://time.is/GMT+8).
 
-Ch 24 [Single Source Shortest Paths](https://github.com/EeeUnS/introduction_to_algorithms/blob/master/22~26Graph/24.SSSP.md)
+Revised on July 21, 2019.
 
-Ch 25 [All-Pairs Shortest Paths](https://github.com/EeeUnS/introduction_to_algorithms/blob/master/22~26Graph/25.all_pairs_shortest_paths.md)
+## License
 
-
-## VII Selected Topics
-
-
-
-Ch 27 [Multithreaded Algorithms](https://github.com/EeeUnS/introduction_to_algorithms/tree/master/27%20Multithreaded%20Algorithms)
-미완 작동x
-
-Ch 28 [Matrix Operations](https://github.com/EeeUnS/Introduction-To-Algorithms-Cpp-code/tree/master/28%20Matrix%20Operations)
-
-29 Linear Programming
-
-Ch 30 [Polynomials and the FFT](https://github.com/EeeUnS/Introduction-To-Algorithms-Cpp-code/tree/master/29%20Polynomials%20and%20the%20FFT)
-미완
-
-Ch 31 [Number-Theoretic Algorithms](https://github.com/EeeUnS/introduction_to_algorithms/tree/master/31number_theortic.md)
-
-Ch 32 [String Matching](https://github.com/EeeUnS/introduction_to_algorithms/tree/master/32string_matching)
-
-Ch 33 Computational Geometry
-
-Ch 35 Approximation Algorithms
-
-
-# Tex
-
-개인적으로 책 내용이 너무 어려워 이해하기가 어려웠던 부분을 다시 이해하기 쉽게 만든 pdf파일들입니다.
-
-1. quick sort
-
-2. number theory
-
-예정
-
-3. string matching
-
-4. FFT
-
+Licensed under the MIT License.

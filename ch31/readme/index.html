@@ -67,19 +67,31 @@
           
             <li class="toctree-l1">
 		
-    <span class="caption-text">I Foundations</span>
+    <span class="caption-text">Sort</span>
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../ch4/readme/">4 Divide-and-Conquer</a>
+    <a class="" href="../../sort/simple_sort/">simple_sort</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../sort/nlogn/">nlogn</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../sort/on/">True</a>
                 </li>
     </ul>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <span class="caption-text">II Sorting and Order Statistics</span>
+    <span class="caption-text">I Foundations && II Sorting and Order Statistics</span>
     <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../ch4/readme/">4 Divide-and-Conquer</a>
+                </li>
                 <li class="">
                     
     <a class="" href="../../ch9/readme/">9 Medians and Order Statistics</a>
@@ -295,7 +307,7 @@
               
                 <h1 id="312">31.2</h1>
 <h3 id="gcd-euclids-algorithm">GCD Euclid's algorithm</h3>
-<p>O(log b)
+<p>$O(log b)$
 <pre class="codehilite"><code class="language-C++ linenums">int EUCLID(int a, int b)
 {
     if (b == 0)
@@ -321,7 +333,7 @@ std::tuple&lt;int, int, int&gt; EXTENDED_EUCLID(int a, int b)
 
 <h1 id="314">31.4</h1>
 <h3 id="modular_linear_equation_solver">MODULAR_LINEAR_EQUATION_SOLVER</h3>
-<p>O(lg n + gcd(a,n))
+<p>$O(\log n + \gcd(a,n))$
 <pre class="codehilite"><code class="language-C++ linenums">void MODULAR_LINEAR_EQUATION_SOLVER(int a, int b, int n)//ax = b (mod n)
 {
     std::tuple&lt;int, int, int&gt; set = EXTENDED_EUCLID(a, n);
@@ -372,7 +384,7 @@ std::tuple&lt;int, int, int&gt; EXTENDED_EUCLID(int a, int b)
 <p>CLRS에 소개된 의사코드는 잘 작동하지 않는다.</p>
 <p>코드를 살펴보면 c를 사용하지않음
 d - bit 
-O(d)</p>
+$O(d)$</p>
 <pre class="codehilite"><code class="language-C++ linenums">int MODULAR_EXPONENTIATION(int a, int b, int n)//a^b mod n
 {
     int x = a, y = 1;
@@ -428,7 +440,7 @@ Section 31.4 to compute d, given e and pi(n))</p>
 </ol>
 <p>go to RSA.h</p>
 <h1 id="318-primality-tetsting">31.8 Primality tetsting</h1>
-<p>O(sqrt(n))</p>
+<p>$O(\sqrt{n})$</p>
 <pre class="codehilite"><code class="language-C++ linenums">bool trial_division(int n)
 {
     if (n == 2)

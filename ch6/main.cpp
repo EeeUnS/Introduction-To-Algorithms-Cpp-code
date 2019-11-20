@@ -5,7 +5,7 @@ using namespace std;
 
 
 template<typename T>
-class max_priority_queue//int·ÎÇÏÀÚÀÏ´Ü.
+class max_priority_queue//int
 {
 public:
 	max_priority_queue()
@@ -24,7 +24,7 @@ public:
 		capacity = 200;
 	}
 
-	//end´Â ¸Ç³¡ ¿ø¼Ò ¹Ù·ÎµÚ
+	//endï¿½ï¿½ ï¿½Ç³ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ù·Îµï¿½
 	max_priority_queue(const T &item[],int begin ,int end)
 	{
 
@@ -116,8 +116,8 @@ public:
 private:
 	const int INF = 100000000;
 	T* A;
-	std::size_t heap_size;  //µé¾îÀÖ´Â ¿ø¼Ò °¹¼ö.
-	std::size_t heap_capacity; // ¹è¿­ ÀüÃ¼ÀÇ ±æÀÌ
+	std::size_t heap_size;  //ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
+	std::size_t heap_capacity; // ï¿½è¿­ ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
 
 	int PARENT(int i)
@@ -136,7 +136,7 @@ private:
 		return 2 * i + 1;
 	}
 
-	void MAX_HEAPIFY(int i, int heapsize) //IÀÎµ¦½ºÀÇ ³ëµå°¡ ÀÚ½Ä ³ëµåº¸´Ù ÀÛÀ» ¶§ ÀÌ¸¦ ¹ØÀ¸·Î ³»·Á ÈüÆ®¸® ±¸Á¶¸¦ ¸¸µç´Ù
+	void MAX_HEAPIFY(int i, int heapsize) //Iï¿½Îµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½å°¡ ï¿½Ú½ï¿½ ï¿½ï¿½åº¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
 	{
 		int l = LEFT(i);
 		int r = RIGHT(i);
@@ -160,7 +160,7 @@ private:
 		}
 	}
 
-	void BUILD_MAX_HEAP(int A[], int n) //ÀüÃ¼ ¹è¿­À» ÈüÆ®¸®·Î ³ªÅ¸³»±â À§ÇÑ ÇÔ¼ö
+	void BUILD_MAX_HEAP(int A[], int n) //ï¿½ï¿½Ã¼ ï¿½è¿­ï¿½ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½
 	{
 		int heapsize = n;
 		for (int i = n / 2; i >= 1; i--)

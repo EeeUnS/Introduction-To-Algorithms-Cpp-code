@@ -27,7 +27,7 @@ markdown_extensions:
   - pymdownx.superfences
 
 
-pages:
+nav:
   - Preface: index.md
   - I Foundations :
     - 4 Divide-and-Conquer: ch4/readme.md

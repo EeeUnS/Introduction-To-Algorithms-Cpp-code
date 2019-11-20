@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>9 Medians and Order Statistics - Introduction-To-Algorithms-Cpp-code</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="../../css/katex.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "9 Medians and Order Statistics";
+    var mkdocs_page_input_path = "ch9\\readme.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-117404761-1', 'auto');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Introduction-To-Algorithms-Cpp-code</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Preface</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">I Foundations</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../ch4/readme/">4 Divide-and-Conquer</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">II Sorting and Order Statistics</span>
+    <ul class="subnav">
+                <li class=" current">
+                    
+    <a class="current" href="./">9 Medians and Order Statistics</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#91-minimum-and-maximum">9.1 Minimum and maximum</a></li>
+    
+
+    <li class="toctree-l3"><a href="#92-selection-in-expected-linear-time">9.2 Selection in expected linear time</a></li>
+    
+
+    <li class="toctree-l3"><a href="#93-selection-in-worst-case-linear-time">9.3 Selection in worst-case linear time</a></li>
+    
+
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">III Data Structures</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../ch12/readme/">12 Binary Search Trees</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">IV Advanced Design and Analysis Techniques</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../ch15/readme/">15 Dynamic Programming</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ch16/readme/">16 Greedy Algorithms</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">V Advanced Data Structures</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../ch21/readme/">21 Data Structures for Disjoint Sets</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">VI Graph Algorithms</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <span class="caption-text">22 Elementary Graph Algorithms</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../Graph/22.123/">22.1~3 Graph,breadth, Depth search</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../Graph/22.4_DAG/">22.4 Topological sort</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../Graph/22.5_SCC/">22.5 Strongly connected components</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../Graph/23_MST/">23 Minimum Spanning Trees</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../Graph/24_SSSP/">24 Single-Source Shortest Paths</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../Graph/25_all_pairs_shortest_paths/">25 All-Pairs Shortest Paths</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">VII Selected Topics</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../ch27/readme/">27 Multithreaded Algorithms</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ch28/readme/">28 Matrix Operations</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ch29/readme/">29 Linear Programming</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ch30/readme/">30 Polynomials and the FFT</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ch31/readme/">31 Number-Theoretic Algorithms</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ch32/readme/">32 String Matching</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Introduction-To-Algorithms-Cpp-code</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>II Sorting and Order Statistics &raquo;</li>
+        
+      
+    
+    <li>9 Medians and Order Statistics</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="91-minimum-and-maximum">9.1 Minimum and maximum</h1>
+<pre class="codehilite"><code class="language-C++ linenums">int MINIMUM(int A[], int n)
+{
+    int min = A[0];
+    for (int i = 1; i &lt; n; i++)
+    {
+        if (min &gt; A[i])
+        {
+            min = A[i];
+        }
+    }
+    return min;
+}</code></pre>
+
+<pre class="codehilite"><code class="language-C++ linenums">int MAXIMUM(int A[], int n)
+{
+    int max = A[0];
+    for (int i = 1; i &lt; n; i++)
+    {
+        if (max &lt; A[i])
+        {
+            max = A[i];
+        }
+    }
+    return max;
+}</code></pre>
+
+<pre class="codehilite"><code class="language-C++ linenums">int secone_MINIMUM(int A[], int n)
+{
+    int min = A[0];
+    int sub_min = A[0];
+    for (int i = 1; i &lt; n; i++)
+    {
+        if (min &gt; A[i])
+        {
+            sub_min = min;
+            min = A[i];
+        }
+    }
+    return sub_min;
+}</code></pre>
+
+<h1 id="92-selection-in-expected-linear-time">9.2 Selection in expected linear time</h1>
+<pre class="codehilite"><code class="language-C++ linenums">int PARTITION(int A[], int p, int r)
+{
+    int x = A[r]; //pivot
+    int i = p - 1;
+
+    for (int j = p; j &lt; r - 1; j++)
+    {
+        if (A[j] &lt;= x)
+        {
+            i++;
+            std::swap(A[i], A[j]);
+        }
+    }
+    std::swap(A[i + 1], A[r]);
+    return i + 1;
+}
+
+int RANDOMIZED_SELECT(int A[], int p, int r, int i)
+{
+    if (p == r)
+        return A[p];
+    int q = PARTITION(A, p, r);
+    int k = q - p + 1;
+    if (i-1 == k)
+        return A[q];
+    else if (i &lt; k)
+        return RANDOMIZED_SELECT(A, p, q - 1, i);
+    else 
+        return RANDOMIZED_SELECT(A, q + 1, r, i - k);
+}</code></pre>
+
+<h1 id="93-selection-in-worst-case-linear-time">9.3 Selection in worst-case linear time</h1>
+<p>Median of medians
+https://en.wikipedia.org/wiki/Median_of_medians</p>
+<ol>
+<li>
+<p>Divide the n elements of the input array into bn=5c groups of 5 elements each
+and at most one group made up of the remaining n mod 5 elements.</p>
+</li>
+<li>
+<p>Find the median of each of the dn=5e groups by first insertion-sorting the elements
+of each group (of which there are at most 5) and then picking the median
+from the sorted list of group elements.</p>
+</li>
+<li>
+<p>Use SELECT recursively to find the median x of the dn=5e medians found in
+step 2. (If there are an even number of medians, then by our convention, x is
+the lower median.)</p>
+</li>
+<li>
+<p>Partition the input array around the median-of-medians x using the modified
+version of PARTITION. Let k be one more than the number of elements on the
+low side of the partition, so that x is the kth smallest element and there are nk
+elements on the high side of the partition.</p>
+</li>
+<li>
+<p>If i D k, then return x. Otherwise, use SELECT recursively to find the i th
+smallest element on the low side if i &lt; k, or the .i  k/th smallest element on
+the high side if i &gt; k.</p>
+</li>
+</ol>
+<p>https://www.geeksforgeeks.org/kth-smallestlargest-element-unsorted-array-set-3-worst-case-linear-time/</p>
+<pre class="codehilite"><code class="language-C++ linenums">// C++ implementation of worst case linear time algorithm 
+// to find k'th smallest element 
+#include&lt;iostream&gt; 
+#include&lt;algorithm&gt; 
+#include&lt;climits&gt; 
+
+using namespace std;
+
+int partition(int arr[], int l, int r, int k);
+
+// A simple function to find median of arr[].  This is called 
+// only for an array of size 5 in this program. 
+int findMedian(int arr[], int n)
+{
+    sort(arr, arr + n);  // Sort the array 
+    return arr[n / 2];   // Return middle element 
+}
+
+
+// Returns k'th smallest element in arr[l..r] in worst case 
+// linear time. ASSUMPTION: ALL ELEMENTS IN ARR[] ARE DISTINCT 
+int kthSmallest(int arr[], int l, int r, int k)
+{
+    // If k is smaller than number of elements in array 
+    if (k &gt; 0 &amp;&amp; k &lt;= r - l + 1)
+    {
+        int n = r - l + 1; // Number of elements in arr[l..r] 
+
+        // Divide arr[] in groups of size 5, calculate median 
+        // of every group and store it in median[] array. 
+        int i;
+        int *median =  new int[(n + 4) / 5]; // There will be floor((n+4)/5) groups; 
+        for (i = 0; i &lt; n / 5; i++)
+            median[i] = findMedian(arr + l + i * 5, 5);
+        if (i * 5 &lt; n) //For last group with less than 5 elements 
+        {
+            median[i] = findMedian(arr + l + i * 5, n % 5);
+            i++;
+        }
+
+        // Find median of all medians using recursive call. 
+        // If median[] has only one element, then no need 
+        // of recursive call 
+        int medOfMed = (i == 1) ? median[i - 1] :
+            kthSmallest(median, 0, i - 1, i / 2);
+
+        // Partition the array around a random element and 
+        // get position of pivot element in sorted array 
+        int pos = partition(arr, l, r, medOfMed);
+        delete[]median;
+        // If position is same as k 
+        if (pos - l == k - 1)
+            return arr[pos];
+        if (pos - l &gt; k - 1)  // If position is more, recur for left 
+            return kthSmallest(arr, l, pos - 1, k);
+
+        // Else recur for right subarray 
+        return kthSmallest(arr, pos + 1, r, k - pos + l - 1);
+    }
+
+    // If k is more than number of elements in array 
+
+    return INT_MAX;
+}
+
+void swap(int* a, int* b)
+{
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+// It searches for x in arr[l..r], and partitions the array  
+// around x. 
+int partition(int arr[], int l, int r, int x)
+{
+    // Search for x in arr[l..r] and move it to end 
+    int i;
+    for (i = l; i &lt; r; i++)
+        if (arr[i] == x)
+            break;
+    swap(&amp;arr[i], &amp;arr[r]);
+
+    // Standard partition algorithm 
+    i = l;
+    for (int j = l; j &lt;= r - 1; j++)
+    {
+        if (arr[j] &lt;= x)
+        {
+            swap(&amp;arr[i], &amp;arr[j]);
+            i++;
+        }
+    }
+    swap(&amp;arr[i], &amp;arr[r]);
+    return i;
+}
+
+// Driver program to test above methods 
+int main()
+{
+    int arr[] = { 12, 3, 5, 7, 4, 19, 26 };
+    int n = sizeof(arr) / sizeof(arr[0]), k = 5;
+    cout &lt;&lt; "K'th smallest element is "
+        &lt;&lt; kthSmallest(arr, 0, n - 1, k);
+    return 0;
+}</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../ch12/readme/" class="btn btn-neutral float-right" title="12 Binary Search Trees">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../../ch4/readme/" class="btn btn-neutral" title="4 Divide-and-Conquer"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../../ch4/readme/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../../ch12/readme/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../js/katex.js" defer></script>
+      <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" defer></script>
+      <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>

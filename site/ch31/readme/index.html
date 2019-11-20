@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>31 Number-Theoretic Algorithms - Introduction-To-Algorithms-Cpp-code</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="../../css/katex.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "31 Number-Theoretic Algorithms";
+    var mkdocs_page_input_path = "ch31\\readme.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-117404761-1', 'auto');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Introduction-To-Algorithms-Cpp-code</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Preface</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">I Foundations</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../ch4/readme/">4 Divide-and-Conquer</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">II Sorting and Order Statistics</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../ch9/readme/">9 Medians and Order Statistics</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">III Data Structures</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../ch12/readme/">12 Binary Search Trees</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">IV Advanced Design and Analysis Techniques</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../ch15/readme/">15 Dynamic Programming</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ch16/readme/">16 Greedy Algorithms</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">V Advanced Data Structures</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../ch21/readme/">21 Data Structures for Disjoint Sets</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">VI Graph Algorithms</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <span class="caption-text">22 Elementary Graph Algorithms</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../Graph/22.123/">22.1~3 Graph,breadth, Depth search</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../Graph/22.4_DAG/">22.4 Topological sort</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../Graph/22.5_SCC/">22.5 Strongly connected components</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../Graph/23_MST/">23 Minimum Spanning Trees</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../Graph/24_SSSP/">24 Single-Source Shortest Paths</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../Graph/25_all_pairs_shortest_paths/">25 All-Pairs Shortest Paths</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">VII Selected Topics</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../ch27/readme/">27 Multithreaded Algorithms</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ch28/readme/">28 Matrix Operations</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ch29/readme/">29 Linear Programming</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ch30/readme/">30 Polynomials and the FFT</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">31 Number-Theoretic Algorithms</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#312">31.2</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#gcd-euclids-algorithm">GCD Euclid's algorithm</a></li>
+        
+            <li><a class="toctree-l4" href="#extended_euclid">EXTENDED_EUCLID</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#314">31.4</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#modular_linear_equation_solver">MODULAR_LINEAR_EQUATION_SOLVER</a></li>
+        
+            <li><a class="toctree-l4" href="#modulo">modulo 연산에대한 역</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#315-the-chinese-remainder-theorem">31.5 The Chinese remainder theorem</a></li>
+    
+
+    <li class="toctree-l3"><a href="#316">31.6</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#_1">고속 거듭제곱 모듈러 연산</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#317-the-rsa-public-key-crytosystem">31.7 The RSA public-key crytosystem</a></li>
+    
+
+    <li class="toctree-l3"><a href="#318-primality-tetsting">31.8 Primality tetsting</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#pseudoprimen">PSEUDOPRIME(n)</a></li>
+        
+            <li><a class="toctree-l4" href="#miller_rabin_primality_test">MILLER_RABIN_primality_test</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#319-integer-factorization">31.9 Integer factorization</a></li>
+    
+
+    <li class="toctree-l3"><a href="#problems">Problems</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#31-2-binary-gcd-algorithm">31-2 Binary gcd algorithm</a></li>
+        
+            <li><a class="toctree-l4" href="#31-3-three-algorighms-for-fibonacci-numbers">31-3 Three algorighms for Fibonacci numbers</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ch32/readme/">32 String Matching</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Introduction-To-Algorithms-Cpp-code</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>VII Selected Topics &raquo;</li>
+        
+      
+    
+    <li>31 Number-Theoretic Algorithms</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="312">31.2</h1>
+<h3 id="gcd-euclids-algorithm">GCD Euclid's algorithm</h3>
+<p>O(log b)
+<pre class="codehilite"><code class="language-C++ linenums">int EUCLID(int a, int b)
+{
+    if (b == 0)
+        return a;
+    else
+        return EUCLID(b, a % b);
+}</code></pre></p>
+<h3 id="extended_euclid">EXTENDED_EUCLID</h3>
+<pre class="codehilite"><code class="language-C++ linenums">#include&lt;tuple&gt;
+
+std::tuple&lt;int, int, int&gt; EXTENDED_EUCLID(int a, int b)
+{
+    if (b == 0)
+    {
+        std::tuple&lt;int, int, int&gt; x(a, 1, 0);
+        return x;
+    }
+    std::tuple&lt;int, int, int&gt; x = EXTENDED_EUCLID(b, a % b);//d x y
+    std::tuple&lt;int, int, int&gt; y =
+        std::make_tuple(std::get&lt;0&gt;(x), std::get&lt;2&gt;(x), std::get&lt;1&gt;(x) - (a / b) * std::get&lt;2&gt;(x));
+    return y;
+}</code></pre>
+
+<h1 id="314">31.4</h1>
+<h3 id="modular_linear_equation_solver">MODULAR_LINEAR_EQUATION_SOLVER</h3>
+<p>O(lg n + gcd(a,n))
+<pre class="codehilite"><code class="language-C++ linenums">void MODULAR_LINEAR_EQUATION_SOLVER(int a, int b, int n)//ax = b (mod n)
+{
+    std::tuple&lt;int, int, int&gt; set = EXTENDED_EUCLID(a, n);
+    int d = std::get&lt;0&gt;(set);
+    if (b/d)
+    {
+        int x_0 = (((std::get&lt;1&gt;(set) * (b / d))%n) + n)%n;
+        //x_0 %= n;
+        for (int i = 0; i &lt;= d -1; i++)
+        {
+            std::cout &lt;&lt; (x_0 + (i * (n / d))) % n &lt;&lt; ' ';
+        }
+    }
+    else
+    {
+        std::cout &lt;&lt; "no solution";
+    }
+}</code></pre></p>
+<h2 id="modulo">modulo 연산에대한 역</h2>
+<pre class="codehilite"><code class="language-C++ linenums">int extended_Euclid_for_multiple_inverse(const int a, const int mod_n)
+{
+    if (gcd(a, mod_n) != 1)
+        return -1;
+    r1 = a, r2 = mod_n;
+     t1 = 0, t2 = 1;
+    u, r, t;
+    while (r2 &gt; 0)
+    {
+        u = r1 / r2;
+
+        r = r1 % r2;
+        r1 = r2; r2 = r;
+
+        t = t1 - u * t2;
+        t1 = t2; t2 = t;
+    }
+    if (t1 &lt; 0)
+        t1 += mod_n;
+
+    return t1;  //e
+}
+</code></pre>
+
+<h1 id="315-the-chinese-remainder-theorem">31.5 The Chinese remainder theorem</h1>
+<p>https://www.acmicpc.net/problem/1476</p>
+<h1 id="316">31.6</h1>
+<h2 id="_1">고속 거듭제곱 모듈러 연산</h2>
+<p>CLRS에 소개된 의사코드는 잘 작동하지 않는다.</p>
+<p>코드를 살펴보면 c를 사용하지않음
+d - bit 
+O(d)</p>
+<pre class="codehilite"><code class="language-C++ linenums">int MODULAR_EXPONENTIATION(int a, int b, int n)//a^b mod n
+{
+    int x = a, y = 1;
+    while(b != 0)
+    {
+        if (b &amp; 1)
+        {
+            y = (x * y) % n;
+        }
+        x = (x * x) % n;
+        b = b &gt;&gt; 1;
+    }
+    return y;
+}</code></pre>
+
+<pre class="codehilite"><code class="language-C++ linenums">int EXPONENTIATION(int a, int b)//a^b
+    int x = a, y = 1;
+    while(b != 0)
+    {
+        if (b &amp; 1)
+        {
+            y = (x * y);
+        }
+        x = (x * x);
+        b = b &gt;&gt; 1;
+    }
+    return y;
+}</code></pre>
+
+<h1 id="317-the-rsa-public-key-crytosystem">31.7 The RSA public-key crytosystem</h1>
+<ol>
+<li>
+<p>Select at random two large prime numbers p and q such that p != q. The primes
+p and q might be, say, 1024 bits each.</p>
+</li>
+<li>
+<p>Compute n = pq.</p>
+</li>
+<li>
+<p>Select a small odd integer e that is relatively prime to pi(n), which, by equation (31.20), equals (p-1)(q-1)</p>
+</li>
+<li>
+<p>Compute d as the multiplicative inverse of e, modulo pi(n). (Corollary 31.26
+guarantees that d exists and is uniquely defined. We can use the technique of
+Section 31.4 to compute d, given e and pi(n))</p>
+</li>
+<li>
+<p>Publish the pair P = (e,n) as the participant’s RSA public key.</p>
+</li>
+<li>
+<p>Keep secret the pair S = (d, n) as the participant’s RSA secret key.</p>
+</li>
+</ol>
+<p>go to RSA.h</p>
+<h1 id="318-primality-tetsting">31.8 Primality tetsting</h1>
+<p>O(sqrt(n))</p>
+<pre class="codehilite"><code class="language-C++ linenums">bool trial_division(int n)
+{
+    if (n == 2)
+    {
+        return true;
+    }
+
+    if ((n % 2 == 0) | (n == 1))
+    {
+        return false;
+    }
+    for(int i = 3; i*i &lt;= n ; i += 2)
+    {
+        if(n%i == 0)
+        {
+            return false;
+        }
+    }
+    return true;
+}
+</code></pre>
+
+<h3 id="pseudoprimen">PSEUDOPRIME(n)</h3>
+<p>Carmichael numbers 561 1105 1729
+<pre class="codehilite"><code class="language-C++ linenums">constexpr bool PRIME = true;
+constexpr bool COMPOSITE = false;
+
+bool PSEUDOPRIME(int n)
+{
+    if (MODULAR_EXPONENTIATION(2, n - 1, n) != 1)
+    {
+        return COMPOSITE;
+    }
+    return PRIME;
+}</code></pre></p>
+<h2 id="miller_rabin_primality_test">MILLER_RABIN_primality_test</h2>
+<p>https://casterian.net/archives/396</p>
+<p>https://www.acmicpc.net/problem/5615</p>
+<p>O(k log^3 n)</p>
+<pre class="codehilite"><code class="language-C++ linenums">
+bool WITNESS(int a, int n)
+{
+    int t = 1;
+    int et = 2;
+    while ((n - 1)%et == 0)
+    {
+        et *= 2;
+        t++;
+    }
+    et /= 2;
+    t--;
+    int u = (n-1) / et;
+    int x_pre = MODULAR_EXPONENTIATION(a, u, n);
+    int x = x_pre;
+    for (int i = 0; i &lt; t; i++)
+    {
+        x = (x_pre * x_pre) % n;
+        if (x == 1 &amp;&amp; x_pre != 1 &amp;&amp; x_pre != n - 1)
+        {
+            return true;
+        }
+        x_pre = x;
+    }
+    if (x != 1)
+        return true;
+    return false;
+}</code></pre>
+
+<p>a = 2,3,5,7,11,13,17, 31,61 ,73
+정도로할때 정수표현가능한 모든 소수를 판ㄴ별할수있다.</p>
+<p><pre class="codehilite"><code class="language-C++ linenums">constexpr bool PRIME = true;
+constexpr bool COMPOSITE = false;
+
+bool MILLER_RABIN(int n, int s)
+{
+    if (n == 2)
+    {
+        return PRIME;
+    }
+    if (n == 1 || n%2 == 0)
+    {
+        return COMPOSITE;
+
+    }
+    int a = 1;
+    for (int j = 0; j &lt; (n-1)/2 ; j++)
+    {
+        a++;
+        if (WITNESS(a, n)) //합성수일시 true 반환
+        {
+            return COMPOSITE;
+        }
+    }
+    return PRIME; //probably
+}
+</code></pre>
+전체적으로 소수들을 구할때는 에라토스테네스의 체가 효율적이라고 생각.</p>
+<h1 id="319-integer-factorization">31.9 Integer factorization</h1>
+<p>https://www.acmicpc.net/problem/4149</p>
+<pre class="codehilite"><code class="language-C++ linenums">void POLLARED_RHO(int n)
+{
+    int i = 1;
+    int x = 2;// random n
+    int y = x;
+    int k = 2;
+    int x_n = 0;
+    int d = 0;
+    while (1)
+    {
+        i++;
+        x_n = (x * x - 1) % n;
+        d = EUCLID(abs(y - x_n), n); 
+        if (d != 1 &amp;&amp; d != n)
+        {
+            std::cout &lt;&lt; d &lt;&lt; '\n';
+        }
+        if (i == k)
+        {
+            y = x_n;
+            k = 2 * k;
+        }
+        x = x_n;
+    }
+}</code></pre>
+
+<h1 id="problems">Problems</h1>
+<h3 id="31-2-binary-gcd-algorithm">31-2 Binary gcd algorithm</h3>
+<pre class="codehilite"><code class="language-C++ linenums">
+unsigned int gcd(unsigned int u, unsigned int v)
+{
+    if (u == 0)
+    {
+        return v;
+    }
+    if (v == 0)
+    {
+        return u;
+    }
+
+    if (((u &amp; v) &amp; 1) == 0) // 짝수
+    {
+        return (gcd(u &gt;&gt; 1, v &gt;&gt; 1)) &lt;&lt; 1;
+    }
+    if ((u &amp; 1) == 0) // 짝수
+    {
+        return gcd(u &gt;&gt; 1, v );
+    }
+    if((v &amp; 1) == 0)
+    {
+        return gcd(u, v &gt;&gt; 1);
+    }
+    if (v &gt; u)
+    {
+        int a = v;
+        v = u;
+        u = a;
+    }
+
+    else
+    {
+        return gcd((u-v)&gt;&gt;1, v);
+    }
+}</code></pre>
+
+<h3 id="31-3-three-algorighms-for-fibonacci-numbers">31-3 Three algorighms for Fibonacci numbers</h3>
+<p>(a) O(2^n)
+<pre class="codehilite"><code class="language-C++ linenums">int Fibonacci_numbers(int n)
+{
+    if (n == 1 || n == 2)
+    {
+        return 1;
+    }
+    return Fibonacci_numbers(n - 1) + Fibonacci_numbers(n - 2);
+}</code></pre></p>
+<p>(b)
+memoization</p>
+<p>O(n)
+<pre class="codehilite"><code class="language-C++ linenums">int Fibonacci_numbers(int n)
+{
+
+    if (n == 1 || n == 2)
+    {
+        return 1;
+    }
+    int x = 1, y = 1;
+
+    int Fibonacci = 1;
+        for (int i = 3; i &lt;= n; i++)
+        {
+
+            Fibonacci = x + y;
+            x = y;
+            y = Fibonacci;
+
+        }
+    return Fibonacci;
+}
+</code></pre></p>
+<p>(c)
+O(log n)</p>
+<pre class="codehilite"><code class="language-C++ linenums">int Fibonacci_numbers(int n)
+{
+    int mat[2][2] = { 0,1,1,1 };
+    int y[2][2] = { 0,1,1,1 };
+    int z[2][2] = { 0,1,1,1 };
+    if (n == 1 || n == 2)
+    {
+        return 1;
+    }
+    int a = n - 1;
+    while (a != 0)
+    {
+        if (a &amp; 1)
+        {
+            y[0][0] = z[0][0];
+            y[0][1] = z[0][1];
+            y[1][0] = z[1][0];
+            y[1][1] = z[1][1];
+            z[0][0] = y[0][0] * mat[0][0] + y[1][0] * mat[0][1];
+            z[0][1] = y[0][0] * mat[0][1] + y[0][1] * mat[1][1];
+            z[1][0] = y[1][0] * mat[0][0] + y[1][1] * mat[1][0];
+            z[1][1] = y[1][0] * mat[0][1] + y[1][1] * mat[1][1];
+        }
+        y[0][0] = mat[0][0];
+        y[0][1] = mat[0][1];
+        y[1][0] = mat[1][0];
+        y[1][1] = mat[1][1];
+        mat[0][0] = y[0][0] * y[0][0] + y[1][0] * y[0][1];
+        mat[0][1] = y[0][0] * y[0][1] + y[0][1] * y[1][1];
+        mat[1][0] = y[0][0] * y[1][0] + y[1][0] * y[1][1];
+        mat[1][1] = y[1][0] * y[0][1] + y[1][1] * y[1][1];
+        a = a &gt;&gt; 1;
+    }
+    return z[1][0];
+}</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../ch32/readme/" class="btn btn-neutral float-right" title="32 String Matching">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../../ch30/readme/" class="btn btn-neutral" title="30 Polynomials and the FFT"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../../ch30/readme/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../../ch32/readme/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../js/katex.js" defer></script>
+      <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" defer></script>
+      <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>

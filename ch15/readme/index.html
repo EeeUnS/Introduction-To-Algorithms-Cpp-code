@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>15 Dynamic Programming - Introduction-To-Algorithms-Cpp-code</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="../../css/katex.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "15 Dynamic Programming";
+    var mkdocs_page_input_path = "ch15\\readme.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-117404761-1', 'auto');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Introduction-To-Algorithms-Cpp-code</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Preface</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">I Foundations</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../ch4/readme/">4 Divide-and-Conquer</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">II Sorting and Order Statistics</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../ch9/readme/">9 Medians and Order Statistics</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">III Data Structures</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../ch12/readme/">12 Binary Search Trees</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">IV Advanced Design and Analysis Techniques</span>
+    <ul class="subnav">
+                <li class=" current">
+                    
+    <a class="current" href="./">15 Dynamic Programming</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#151-rod-cuting">15.1 ROD CUTING</a></li>
+    
+
+    <li class="toctree-l3"><a href="#152-matrix_chain_multiplication">15.2 Matrix_chain_multiplication</a></li>
+    
+
+    <li class="toctree-l3"><a href="#153-elements-of-dynamic-programming">15.3 Elements of dynamic programming</a></li>
+    
+
+    <li class="toctree-l3"><a href="#154-longest-common-subsequence">15.4 Longest common subsequence</a></li>
+    
+
+    <li class="toctree-l3"><a href="#155-optimal-binary-search-trees">15.5 Optimal binary search trees</a></li>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ch16/readme/">16 Greedy Algorithms</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">V Advanced Data Structures</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../ch21/readme/">21 Data Structures for Disjoint Sets</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">VI Graph Algorithms</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <span class="caption-text">22 Elementary Graph Algorithms</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../Graph/22.123/">22.1~3 Graph,breadth, Depth search</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../Graph/22.4_DAG/">22.4 Topological sort</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../Graph/22.5_SCC/">22.5 Strongly connected components</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../Graph/23_MST/">23 Minimum Spanning Trees</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../Graph/24_SSSP/">24 Single-Source Shortest Paths</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../Graph/25_all_pairs_shortest_paths/">25 All-Pairs Shortest Paths</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">VII Selected Topics</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../ch27/readme/">27 Multithreaded Algorithms</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ch28/readme/">28 Matrix Operations</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ch29/readme/">29 Linear Programming</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ch30/readme/">30 Polynomials and the FFT</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ch31/readme/">31 Number-Theoretic Algorithms</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ch32/readme/">32 String Matching</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Introduction-To-Algorithms-Cpp-code</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>IV Advanced Design and Analysis Techniques &raquo;</li>
+        
+      
+    
+    <li>15 Dynamic Programming</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <ol>
+<li>
+<p>Characterize the structure of an optimal solution</p>
+</li>
+<li>
+<p>Recursively define the value of an optimal solution</p>
+</li>
+<li>
+<p>Compute the calue of an optimal solution, typically in a bottom-up fashion</p>
+</li>
+<li>
+<p>Construct an optimal solution from computed information</p>
+</li>
+</ol>
+<h1 id="151-rod-cuting">15.1 ROD CUTING</h1>
+<pre class="codehilite"><code class="language-C++ linenums">std::vector&lt;int&gt; p ={ 0, 1,5,8,9,10,17,17,20,24,30 };</code></pre>
+
+<p>완전 탐색 $O(2^n)$//수식안되네..
+<pre class="codehilite"><code class="language-C++ linenums">int CUT_ROD(std::vector&lt;int&gt;&amp; p) // p는 index 1부터 저장되어있다.
+{
+    const int n = p.size()-1;
+    if (n == 0)
+    {
+        return 0;
+    }
+    int q = INT32_MIN;
+    for (int i = 1; i &lt;= n; i++)
+    {
+        q = std::max(q, p[i-1] + CUT_ROD(p, n - i));
+    }
+}</code></pre></p>
+<p>O(n)</p>
+<p>메모이제이션 방법 (top-down with memoization)
+<pre class="codehilite"><code class="language-C++ linenums">int MEMOIZED_CUT_ROD(std::vector&lt;int&gt; &amp;p)
+{
+    const int n = p.size()-1;
+    std::vector&lt;int&gt; r(n+1, 0);
+    for (int i = 0; i &lt;= n; ++i)
+    {
+        r[i] = INT32_MIN;
+    }
+    int q = MEMOIZED_CUT_ROD_AUX(p, n, r);
+    return q;
+}</code></pre></p>
+<pre class="codehilite"><code class="language-C++ linenums">int MEMOIZED_CUT_ROD_AUX(std::vector&lt;int&gt; &amp;p,std::vector&lt;int&gt; &amp;r)
+{
+    const int n = p.size()-1;
+    int q;
+    if (r[n] &gt;= 0)
+    {
+        return r[n];
+    }
+    if (n == 0)
+    {
+         q = 0;
+    }
+    else
+    {
+        q = INT32_MIN;
+        for (int i = 1; i &lt;= n; ++i)
+        {
+            q = std::max(q, p[i] + MEMOIZED_CUT_ROD_AUX(p, n - i, r));
+        }
+    }
+    r[n] = q;
+    return q;
+}</code></pre>
+
+<p>bottm-up method(버튼업 /상향식)
+<pre class="codehilite"><code class="language-C++ linenums">int BOTTOM_UP_CUT_ROD(std::vector&lt;int&gt; &amp;p)
+{
+    const int n = p.size()-1;
+    std::vector&lt;int&gt; r(n+1, 0);
+    r[0] = 0;
+    for (int j = 1; j &lt;= n; j++)
+    {
+        int q = INT32_MIN;
+        for (int i = 1; i &lt;= j; i++)
+        {
+            q = std::max(q, p[i] + r[j - i]);
+        }
+        r[j] = q;
+    }
+    return r[n];
+}</code></pre></p>
+<pre class="codehilite"><code class="language-C++ linenums">std::vector&lt;std::vector&lt;int&gt;&gt; EXTENDED_BOTTOM_UP_CUT_ROD(std::vector&lt;int&gt; &amp;p)
+{
+    const int n = p.size()-1;
+    const int INF = 10000000;
+    std::vector&lt;std::vector&lt;int&gt;&gt;rs(2, std::vector&lt;int&gt;(n+1, 0)); // r, s
+    rs[0][0] = 0;
+    for (int j = 1; j &lt;= n; j++)
+    {
+        int q = -INF;
+        for (int i = 1; i &lt;= j; i++)
+        {
+            if (q &lt; p[i] + rs[0][j - i])
+            {
+                q = p[i] + rs[0][j - i];
+                rs[1][j] = i;
+            }
+        }
+        rs[0][j] = q;
+    }
+    return rs;
+}
+
+void PRINT_CUT_ROD_COLUTION(int p[], int n)
+{
+    std::vector&lt;std::vector&lt;int&gt;&gt; rs = EXTENDED_BOTTOM_UP_CUT_ROD(p, n);
+    while (n &gt; 0)
+    {
+        std::cout &lt;&lt; rs[1][n] &lt;&lt;' ';
+        n = n - rs[1][n];
+    }
+    std::cout &lt;&lt; std::endl;
+}
+</code></pre>
+
+<h1 id="152-matrix_chain_multiplication">15.2 Matrix_chain_multiplication</h1>
+<pre class="codehilite"><code class="language-C++ linenums">typedef std::pair&lt;std::vector&lt;std::vector&lt;int&gt;&gt;,std::vector&lt;std::vector&lt;int&gt;&gt;&gt; Set;</code></pre>
+
+<p>O(n^3)
+<pre class="codehilite"><code class="language-C++ linenums">Set MATRIX_CHAIN_ORDER(const std::vector&lt;int&gt; &amp;p)
+{
+    const int INF = 1000000000;
+    const int n = p.size()-1;
+    std::vector&lt;std::vector&lt;int&gt;&gt; m(n+1, std::vector&lt;int&gt;(n+1, 0));
+    std::vector&lt;std::vector&lt;int&gt;&gt; s(n+1, std::vector&lt;int&gt;(n+1, 0));
+    for (int l = 2; l &lt;= n; l++)
+    {
+        for (int i = 1; i &lt;= n - l + 1; i++)
+        {
+            int j = i + l - 1;
+            m[i][j] = INF;
+            for (int k = i; k &lt;= j - 1; k++)
+            {
+                int  q = m[i][k] + m[k + 1][j] + p[i - 1] * p[k] * p[j];
+                if (q &lt; m[i][j])
+                {
+
+                    m[i][j] = q;
+                    s[i][j] = k;
+                }
+            }
+        }
+    }
+    return std::make_pair(m, s);
+}</code></pre></p>
+<pre class="codehilite"><code class="language-C++ linenums">void PRINT_OPTIMAL_PARENS(const std::vector&lt;std::vector&lt;int&gt;&gt; &amp;s, int i, int j)
+{
+    if (i == j)
+    {
+        std::cout &lt;&lt; "A" &lt;&lt; i;
+    }
+    else
+    {
+        std::cout &lt;&lt; '(';
+        PRINT_OPTIMAL_PARENS(s, i, s[i][j]);
+        PRINT_OPTIMAL_PARENS(s, s[i][j] + 1, j);
+        std::cout &lt;&lt; ')';
+    }
+}</code></pre>
+
+<h1 id="153-elements-of-dynamic-programming">15.3 Elements of dynamic programming</h1>
+<pre class="codehilite"><code class="language-C++ linenums">int RECURSIVE_MATRIX_CHAIN(const std::vector&lt;int&gt; &amp;p, int i, int j)
+{
+    const int INF = 1000000000;
+    const int n = p.size() -1 ;
+    std::vector&lt;std::vector&lt;int&gt;&gt; m(n+1, std::vector&lt;int&gt;(n+1, 0));
+    if (i == j)
+    {
+        return 0;
+    }
+    m[i][j] = INF;
+    for (int k = i; k &lt;= j - 1; k++)
+    {
+        int q = RECURSIVE_MATRIX_CHAIN(p, i, k) +
+            RECURSIVE_MATRIX_CHAIN(p, k + 1, j) + p[i - 1] * p[k] * p[j];
+
+        if (q &lt; m[i][j])
+        {
+            m[i][j] = q;
+        }
+    }
+    return m[i][j];
+}</code></pre>
+
+<pre class="codehilite"><code class="language-C++ linenums">int LOOKUP_CHAIN(std::vector&lt;std::vector&lt;int&gt;&gt; &amp;m,const std::vector&lt;int&gt; &amp;p,int i,int j)
+{
+    const int INF = 1000000000;
+
+    if (m[i][j] &lt; INF)
+    {
+        return m[i][j];
+    }
+    if (i == j)
+    {
+        m[i][j] = 0;
+    }
+    else for (int k = i ; k &lt;= j - 1; k++)
+    {
+        int q = LOOKUP_CHAIN(m, p, i, k)
+            + LOOKUP_CHAIN(m, p, k + 1, j) + p[i - 1] * p[k] * p[j];
+        if (q &lt; m[i][j])
+        {
+            m[i][j] = q;
+        }
+    }
+    return m[i][j];
+}
+
+int MEMORIZED_MATRIX_CHAIN(const std::vector&lt;int&gt; &amp;p)
+{
+    const int INF = 1000000000;
+    const int n = p.size() - 1;
+    std::vector&lt;std::vector&lt;int&gt;&gt; m(n+1, std::vector&lt;int&gt;(n+1, 0));
+    for (int i = 1; i &lt;= n; i++)
+    {
+
+        for (int j = 1; j &lt;= n; j++)
+        {
+            m[i][j] = INF;
+        }
+    }
+    return LOOKUP_CHAIN(m, p, 1, n);
+}</code></pre>
+
+<h1 id="154-longest-common-subsequence">15.4 Longest common subsequence</h1>
+<p>참고 : https://www.acmicpc.net/problem/9251</p>
+<p>O(mn)
+<pre class="codehilite"><code class="language-C++ linenums">const char *X = "ABCBDAB";
+const char *Y = "BDCABA";
+
+const char *X = "ACCGGTCGAGTGCGCGGAAGCCGGCCGAA";
+const char *Y = "GTCGTTCGGAATGCCGTTGCTCTGTAAA";</code></pre></p>
+<pre class="codehilite"><code class="language-C++ linenums">
+#include&lt;string.h&gt;
+enum class arrow
+{
+    left_up ,
+    up ,
+    left
+};
+
+typedef std::pair&lt;std::vector&lt;std::vector&lt;int&gt;&gt;,std::vector&lt;std::vector&lt;arrow&gt;&gt;&gt; Set;
+
+Set LCS_LENGTH(const char* XX,const char* YY , const int m, const int n)
+{
+    const char * X = XX-1;
+    const char * Y = YY-1;
+    std::vector&lt;std::vector&lt;arrow&gt;&gt; b(m+1,std::vector&lt;arrow&gt;(n+1,arrow::left_up)) ;
+    std::vector&lt;std::vector&lt;int&gt;&gt; c(m+1,std::vector&lt;int&gt;(n+1,0)) ;
+    for(int i = 1 ; i &lt;= m ; i++)
+    {
+        c[i][0] = 0;
+    }
+    for(int j = 0 ; j &lt;= n; j++)
+    {
+        c[0][j] = 0;
+    }
+
+    for(int i = 1 ; i &lt;= m; i++)
+    {
+
+        for(int j = 1; j &lt;= n;j++)
+        {
+            if(X[i] == Y[j])
+            {
+                c[i][j] = c[i-1][j-1] +1;
+                b[i][j] = arrow::left_up;
+            }else if(c[i-1][j] &gt;= c[i][j-1])
+            {
+                c[i][j] = c[i-1][j];
+                b[i][j] = arrow::up;
+            }
+            else
+            {
+                c[i][j] = c[i][j-1];
+                b[i][j] = arrow::left;
+            }
+        }
+    }
+    return std::make_pair(c,b);
+}
+
+
+void PRINT_LCS(const std::vector&lt;std::vector&lt;arrow&gt;&gt; b ,const char* XX, int i , int j)
+{
+    const char * X = XX-1;
+    if( i == 0 || j == 0 )
+    {
+        return;
+    }
+    if( b[i][j] == arrow::left_up)
+    {
+        PRINT_LCS(b, X+1, i-1 , j-1);
+        std::cout &lt;&lt; X[i] &lt;&lt;' ';
+    }
+    else if(b[i][j] == arrow::up)
+    {
+        PRINT_LCS(b,X+1,i-1, j);
+    }
+    else
+        PRINT_LCS(b,X+1,i, j-1);
+}</code></pre>
+
+<h1 id="155-optimal-binary-search-trees">15.5 Optimal binary search trees</h1>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../ch16/readme/" class="btn btn-neutral float-right" title="16 Greedy Algorithms">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../../ch12/readme/" class="btn btn-neutral" title="12 Binary Search Trees"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../../ch12/readme/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../../ch16/readme/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../js/katex.js" defer></script>
+      <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" defer></script>
+      <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>

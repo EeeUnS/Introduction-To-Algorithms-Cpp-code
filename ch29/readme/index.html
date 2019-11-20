@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>29 Linear Programming - Introduction-To-Algorithms-Cpp-code</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="../../css/katex.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "29 Linear Programming";
+    var mkdocs_page_input_path = "ch29\\readme.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-117404761-1', 'auto');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Introduction-To-Algorithms-Cpp-code</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Preface</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">I Foundations</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../ch4/readme/">4 Divide-and-Conquer</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">II Sorting and Order Statistics</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../ch9/readme/">9 Medians and Order Statistics</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">III Data Structures</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../ch12/readme/">12 Binary Search Trees</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">IV Advanced Design and Analysis Techniques</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../ch15/readme/">15 Dynamic Programming</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ch16/readme/">16 Greedy Algorithms</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">V Advanced Data Structures</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../ch21/readme/">21 Data Structures for Disjoint Sets</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">VI Graph Algorithms</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <span class="caption-text">22 Elementary Graph Algorithms</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../Graph/22.123/">22.1~3 Graph,breadth, Depth search</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../Graph/22.4_DAG/">22.4 Topological sort</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../Graph/22.5_SCC/">22.5 Strongly connected components</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../Graph/23_MST/">23 Minimum Spanning Trees</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../Graph/24_SSSP/">24 Single-Source Shortest Paths</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../Graph/25_all_pairs_shortest_paths/">25 All-Pairs Shortest Paths</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">VII Selected Topics</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../ch27/readme/">27 Multithreaded Algorithms</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ch28/readme/">28 Matrix Operations</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">29 Linear Programming</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#302-the-dft-and-fft">30.2 The DFT and FFT</a></li>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ch30/readme/">30 Polynomials and the FFT</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ch31/readme/">31 Number-Theoretic Algorithms</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ch32/readme/">32 String Matching</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Introduction-To-Algorithms-Cpp-code</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>VII Selected Topics &raquo;</li>
+        
+      
+    
+    <li>29 Linear Programming</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <pre class="codehilite"><code class="language-C++ linenums">#include &lt;complex&gt;
+#include &lt;valarray&gt;
+
+constexpr double PI = 3.141592653589793238460;
+typedef std::complex&lt;double&gt; Complex;
+typedef std::valarray&lt;Complex&gt; CArray;</code></pre>
+
+<h1 id="302-the-dft-and-fft">30.2 The DFT and FFT</h1>
+<p>DFT 를 구하기위해 FFT를 사용한다.</p>
+<p>ref
+https://rosettacode.org/wiki/Fast_Fourier_transform</p>
+<pre class="codehilite"><code class="language-C++ linenums">CArray RECURSIVE_FFT(CArray&amp; a)
+{
+
+    const std::size_t n = a.size();
+    if (n &lt;= 1)
+        return a;
+    //w = cos(x) + i * sin(x)
+    // w_n = e^{(2pi/n)*i }
+    Complex wn = std::polar(1.0, 2 * PI / n);
+    Complex w = 1;
+
+    // divide
+    //even
+    CArray a0 = a[std::slice(0, n / 2, 2)];
+    //odd
+    CArray a1 = a[std::slice(1, n / 2, 2)];
+
+    // conquer
+    CArray y0 = RECURSIVE_FFT(a0);
+    CArray y1 = RECURSIVE_FFT(a1);
+
+    CArray y(Complex(0), n);
+    // combine
+    for (size_t k = 0; k &lt; n / 2; ++k)
+    {
+        y[k] = y0[k] + w * y1[k];
+        y[k + n / 2] = y0[k] - w * y1[k];
+        w = w * wn;
+    }
+    return y;
+}</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../ch30/readme/" class="btn btn-neutral float-right" title="30 Polynomials and the FFT">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../../ch28/readme/" class="btn btn-neutral" title="28 Matrix Operations"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../../ch28/readme/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../../ch30/readme/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../js/katex.js" defer></script>
+      <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" defer></script>
+      <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>

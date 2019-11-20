@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>24 Single-Source Shortest Paths - Introduction-To-Algorithms-Cpp-code</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="../../css/katex.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "24 Single-Source Shortest Paths";
+    var mkdocs_page_input_path = "Graph\\24_SSSP.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-117404761-1', 'auto');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Introduction-To-Algorithms-Cpp-code</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Preface</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">I Foundations</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../ch4/readme/">4 Divide-and-Conquer</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">II Sorting and Order Statistics</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../ch9/readme/">9 Medians and Order Statistics</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">III Data Structures</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../ch12/readme/">12 Binary Search Trees</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">IV Advanced Design and Analysis Techniques</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../ch15/readme/">15 Dynamic Programming</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ch16/readme/">16 Greedy Algorithms</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">V Advanced Data Structures</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../ch21/readme/">21 Data Structures for Disjoint Sets</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">VI Graph Algorithms</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <span class="caption-text">22 Elementary Graph Algorithms</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../22.123/">22.1~3 Graph,breadth, Depth search</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../22.4_DAG/">22.4 Topological sort</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../22.5_SCC/">22.5 Strongly connected components</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../23_MST/">23 Minimum Spanning Trees</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">24 Single-Source Shortest Paths</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#single-source-shortest-paths">Single Source Shortest Paths</a></li>
+    
+
+    <li class="toctree-l3"><a href="#241-bellman-ford">24.1 BELLMAN FORD</a></li>
+    
+
+    <li class="toctree-l3"><a href="#242-single-source-shortest-paths-in-directed-acyclic-graphs">24.2 Single-source shortest paths in directed acyclic graphs</a></li>
+    
+
+    <li class="toctree-l3"><a href="#243-dijkstras-algorithm">24.3 Dijkstra's algorithm</a></li>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../25_all_pairs_shortest_paths/">25 All-Pairs Shortest Paths</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">VII Selected Topics</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../ch27/readme/">27 Multithreaded Algorithms</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ch28/readme/">28 Matrix Operations</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ch29/readme/">29 Linear Programming</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ch30/readme/">30 Polynomials and the FFT</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ch31/readme/">31 Number-Theoretic Algorithms</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ch32/readme/">32 String Matching</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Introduction-To-Algorithms-Cpp-code</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>VI Graph Algorithms &raquo;</li>
+        
+      
+    
+    <li>24 Single-Source Shortest Paths</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="single-source-shortest-paths">Single Source Shortest Paths</h1>
+<p>기본 프로시저
+<pre class="codehilite"><code class="language-C++ linenums">const int NIL = 0;
+const int INF = 100000000;
+
+int predecessor_subgraph[MAX];//직전원소 그래프 v.pi
+
+void PRINT_PATH(int s, int v)
+{
+    if (v == s)
+        ;
+    /*else if (predecessor_subgraph[v] == 0) //최단경로 v가 보장되어있고 start가 0일때는 해당 주석을 뗀다
+    {
+        return;
+    }*/
+    else
+        PRINT_PATH(s, predecessor_subgraph[v]);
+    cout &lt;&lt; v &lt;&lt; ' ';
+}</code></pre></p>
+<pre class="codehilite"><code class="language-C++ linenums">void INITIALIZE_SINGLE_SOURCE(const Graph&amp; G,
+    std::vector&lt;int&gt;&amp; Distance, int s)
+{
+    for (std::size_t i = 1; i &lt; G.size(); i++)
+    {
+        Distance[i] = INF;
+    }
+    Distance[s] = 0;
+}</code></pre>
+
+<p>완화에서 다음 프로시저를 실행하고 하면된다. predecessor_subgraph[v] = u;</p>
+<h1 id="241-bellman-ford">24.1 BELLMAN FORD</h1>
+<pre class="codehilite"><code class="language-C++ linenums">void BF_RELAX(int u, int v, int w, std::vector&lt;int&gt;&amp; Distance)
+{
+    if ((Distance[u] != INF) &amp;&amp; Distance[v] &gt; Distance[u] + w)
+    {
+        Distance[v] = Distance[u] + w;
+        //predecessor_subgraph[v] = u;
+    }
+}</code></pre>
+
+<pre class="codehilite"><code class="language-C++ linenums">bool BELLMAN_FORD(const Graph&amp; G, 
+    std::vector&lt;std::vector&lt;int&gt;&gt;&amp; W,
+    std::vector&lt;int&gt; &amp;Distance, int s)
+{
+    INITIALIZE_SINGLE_SOURCE(G, Distance, s);
+    const std::size_t n = G.size() - 1;
+
+    for (std::size_t i = 1; i &lt;= n; i++)// 간선 u v w = G[v][]
+    {
+        for (std::size_t u = 0; u &lt;= n; u++)
+        {
+            const std::size_t sub_size = G[u].size();
+            for (std::size_t j = 0; j &lt; sub_size; j++)
+            {
+                int v = G[u][j];
+                int w = W[u][v];
+                BF_RELAX(u, v, w, Distance);
+            }
+        }
+    }
+
+    for (std::size_t u = 1; u &lt;= n ; u++)
+    {
+        const std::size_t sub_size = G[u].size();
+        for (std::size_t j = 0; j &lt; sub_size; j++)
+        {
+            int v = G[u][j];
+            if ((Distance[v] &gt; Distance[u] + W[u][v]) &amp;&amp; Distance[u] != INF)
+            {
+                Distance[v] = -1;
+                return false;
+            }
+        }
+    }
+    return true;
+}</code></pre>
+
+<h1 id="242-single-source-shortest-paths-in-directed-acyclic-graphs">24.2 Single-source shortest paths in directed acyclic graphs</h1>
+<pre class="codehilite"><code class="language-C++ linenums">    W[1][2] = 5;
+    W[2][3] = 2;
+    W[2][4] = 6;
+    W[3][4] = 7;
+    W[3][5] = 4;
+    W[3][6] = 2;
+    W[4][5] = -1;
+    W[4][6] = 1;
+    W[5][6] = -2;
+</code></pre>
+
+<p>Theta(V+E)
+<pre class="codehilite"><code class="language-C++ linenums">void DFS_TS(const Graph&amp; G, std::vector&lt;bool&gt; &amp;visit, 
+    stack&lt;int&gt; &amp;S, int x)
+{
+    visit[x] = true;
+    //std::cout &lt;&lt; x &lt;&lt; ' '; // 순회출력
+
+    for (std::size_t i = 0; i &lt; G[x].size(); i++)
+    {
+        int next = G[x][i];
+        if (visit[next] != true)
+        {
+            DFS_TS(G,visit,S,next);
+
+        }
+    }
+    S.push(x);
+}
+
+std::stack&lt;int&gt; topologicalsort(const Graph&amp; G)
+{
+    const int n = G.size();
+    std::vector&lt;bool&gt; visit;
+    visit.resize(n);
+    stack&lt;int&gt; S; // 실제 정렬된값이 역순으로 들어가있다.
+    for (std::size_t i = 1; i &lt; n; i++)
+    {
+        if (visit[i] != true)
+        {
+            DFS_TS(G,visit,S, i);
+        }
+    }
+    return  S;
+}
+
+void INITIALIZE_SINGLE_SOURCE(const Graph&amp; G,
+    std::vector&lt;int&gt;&amp; Distance, int s)
+{
+    for (std::size_t i = 1; i &lt; G.size(); i++)
+    {
+        Distance[i] = INF;
+    }
+    Distance[s] = 0;
+}
+
+void RELAX(int u, int v, int w, std::vector&lt;int&gt;&amp; Distance)
+{
+    if (Distance[v] &gt; Distance[u] + w)
+    {
+        Distance[v] = Distance[u] + w;
+        //predecessor_subgraph[v] = u;
+    }
+}
+
+
+void DAG_SHORTEST_PATHS(const Graph&amp; G,
+    std::vector&lt;std::vector&lt;int&gt;&gt;&amp; W,
+    std::vector&lt;int&gt;&amp; Distance, int s)
+{
+    std::stack&lt;int&gt; S = topologicalsort(G);
+    INITIALIZE_SINGLE_SOURCE(G, Distance, s);
+
+    while(!S.empty())
+    {
+        int u =S.top();
+        S.pop();
+        for (std::size_t i = 0; i &lt; G[u].size(); i++)
+        {
+            int v = G[u][i];
+            RELAX(u, v, W[u][v], Distance);
+        }
+    }
+}</code></pre></p>
+<h1 id="243-dijkstras-algorithm">24.3 Dijkstra's algorithm</h1>
+<p>참고:
+https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm#Running_time</p>
+<p>우선순위큐 사용 O(ElogV)</p>
+<p>PQ의 탑 디스턴스값을 갱신시켜야한다 따라서 뽑고 다시넣는다.
+책의 의사코드에 치명적인 문제가 하나있는데
+완화에서 Q.decrease_priority로 key 거리값을 갱신 시켜줘야한다.</p>
+<pre class="codehilite"><code class="language-C++ linenums">void DIJK_RELAX(int u, int v, int w, std::vector&lt;int &gt;&amp; Distance,
+    std::priority_queue&lt;std::pair&lt;int, int&gt;,
+    std::vector&lt;std::pair&lt;int, int&gt;&gt;,
+    std::greater&lt;std::pair&lt;int, int&gt;&gt; &gt;&amp; PQ)
+{
+    if ((Distance[u] != INF) &amp;&amp; (Distance[v] &gt; Distance[u] + w))
+    {
+        Distance[v] = Distance[u] + w;
+        //predecessor_subgraph[v] = u;
+        PQ.push(std::make_pair(Distance[v], v));
+    }
+}</code></pre>
+
+<pre class="codehilite"><code class="language-C++ linenums">void DIJKSTRA(const Graph&gt;&amp; G,
+    std::vector&lt;std::vector&lt;int&gt;&gt;&amp; W,
+    std::vector&lt;int&gt; &amp;Distance, int s)
+{
+    INITIALIZE_SINGLE_SOURCE(G,Distance, s );
+    std::priority_queue&lt;std::pair&lt;int, int&gt;, std::vector&lt;std::pair&lt;int, int&gt;&gt;, std::greater&lt;std::pair&lt;int, int&gt;&gt; &gt; PQ; //정점의 거리, 정점
+    for (std::size_t i = 1; i &lt; G.size(); i++)
+    {
+        PQ.push(std::make_pair(Distance[i], i));
+    }
+
+    while (!PQ.empty())
+    {
+        int u = PQ.top().second;
+        PQ.pop();
+        for (std::size_t i = 0; i &lt; G[u].size(); i++)
+        {
+            int v = G[u][i];
+            DIJK_RELAX(u, v, W[u][v], Distance,PQ);
+        }
+    }
+}
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../25_all_pairs_shortest_paths/" class="btn btn-neutral float-right" title="25 All-Pairs Shortest Paths">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../23_MST/" class="btn btn-neutral" title="23 Minimum Spanning Trees"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../23_MST/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../25_all_pairs_shortest_paths/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../js/katex.js" defer></script>
+      <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" defer></script>
+      <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>

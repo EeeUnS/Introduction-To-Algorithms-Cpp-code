@@ -1,0 +1,106 @@
+\RequirePackage{tikz,tabu}
+\RequirePackage[tikz]{mdframed} 
+
+%%%%%%%%%%%%%%%%%%%%%% 수능형 답안 설정 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% 합답형 %%%%%
+
+\setlength{\tabcolsep}{0pt}
+
+\newenvironment{selection}[1]{\vskip 5pt\mdfsetup{%
+frametitle={%
+\tikz[baseline=(current bounding box.west),outer sep=0pt]
+\node[anchor=east,rectangle,fill=white]
+{\normalfont\mbox{<보\,\,기>}};}}
+\mdfsetup{innertopmargin=0pt,linecolor=black,linewidth=0.5pt,topline=true,frametitlealignment=\center,frametitleaboveskip=\dimexpr-\ht\strutbox+2pt\relax,}
+\begin{mdframed}[]\relax%
+\begin{enumerate}[#1]\tightlist\lineskip=5pt}{\end{enumerate}\end{mdframed}}
+
+\newenvironment{condition}[1]{\vskip 5pt
+\mdfsetup{linecolor=black,linewidth=0.5pt,topline=true}
+\begin{mdframed}[]\relax%
+\begin{enumerate}[#1]\tightlist\lineskip=5pt}{\end{enumerate}\end{mdframed}}
+
+\newenvironment{justbox}{\vskip 5pt
+\mdfsetup{linecolor=black,linewidth=0.5pt,topline=true}
+\begin{mdframed}[]\relax%
+\setlength{\parindent}{0em}
+\displayindent=-\leftskip
+}{\end{mdframed}}
+
+%%%%%% 단답형 %%%%%%
+
+\newcommand{\ansone}[5]{%
+\vskip 3pt\noindent\begin{tabu}{X[1,m]X[1,m]X[1,m]X[1,m]X[1,m]}\lineskip=5pt
+①\: $#1$ &②\: $#2$ &③\: $#3$ &④\: $#4$ &⑤\: $#5$
+\end{tabu}%
+}
+
+\newcommand{\anstwo}[5]{%
+\vskip 3pt\noindent\begin{tabu}{X[1,m] X[1,m ]X[1,m]}\lineskip=5pt%
+①\: $#1$ &②\: $#2$ &③\: $#3$ \\
+④\: $#4$ &⑤\: $#5$ & \\
+\end{tabu}%
+}
+
+\newcommand{\ansthree}[5]{%
+\vskip 3pt\noindent\begin{tabu}{X[1] X[1]}\lineskip=5pt%
+①\: $#1$ &②\: $#2$ \\
+③\: $#3$ &④\: $#4$ \\
+⑤\: $#5$ &
+\end{tabu}%
+}
+
+\newcommand{\ansfive}[5]{%
+\vskip 3pt\noindent\begin{tabu}{X[1,m]}\lineskip=5pt%
+①\:$#1$ \\ ②\:$#2$ \\ ③\:$#3$ \\ ④\:$#4$ \\ ⑤\:$#5$
+\end{tabu}%
+}
+
+%\newcommand{\ansone}[5]{\vskip 3pt\noindent\begin{tabu}{X[1] X[5,$] X[1] X[5,$] X[1] X[5,$] X[1] X[5,$] X[1] X[5,$]}\lineskip=5pt
+%	①&\: #1 &②&\: #2 &③&\: #3 &④&\: #4 &⑤&\: #5
+%	\end{tabu}}
+	
+%\newcommand{\anstwo}[5]{\vskip 3pt\noindent\begin{tabu}{X[0.7,m] X[5,$,m] X[0.7,m] X[5,$,m] X[0.7,m] X[5,$,m]}\lineskip=5pt
+%①&\: #1 &②&\: #2 &③&\: #3 \\
+%④&\: #4 &⑤&\: #5 & &\\
+%\end{tabu}}
+%\newcommand{\ansthree}[5]{\vskip 3pt\noindent\begin{tabu}{X[1] X[3,$] X[1] X[3,$]}\lineskip=5pt
+%①&\: #1 &②&\: #2 \\
+%③&\: #3 &④&\: #4 \\
+%⑤&\: #5 & &
+%\end{tabu}}
+%\newcommand{\ansfive}[5]{\vskip 3pt\noindent\begin{tabu}{X[1] X[14,$]}\lineskip=5pt
+%①&#1 \\ ②&#2 \\ ③&#3 \\ ④&#4 \\ ⑤&#5
+%\end{tabu}}
+
+\RequirePackage{expl3,xparse}
+\ExplSyntaxOn
+\cs_new:Npn \answermap:n #1
+{
+ & #1
+}
+
+\NewDocumentCommand \ansgainput {m}
+{
+	\clist_set:Nn \arg_clist {#1}
+	\clist_map_function:NN \arg_clist \answermap:n
+}
+\ExplSyntaxOff
+
+\newcommand{\ansganada}[5]{\vskip 3pt\noindent\begin{tabu}{X[0.7] X[5,c,$] X[5,c,$] X[5,c,$]}\lineskip=5pt
+&(가)&(나)&(다)\\
+①\ansgainput{#1}\\
+②\ansgainput{#2}\\
+③\ansgainput{#3}\\
+④\ansgainput{#4}\\
+⑤\ansgainput{#5}\\
+\end{tabu}}
+
+\newcommand{\ansgana}[5]{\vskip 3pt\noindent\begin{tabu}{X[0.7] X[5,c,$] X[5,c,$] }\lineskip=5pt
+&(가)&(나)\\
+①\ansgainput{#1}\\
+②\ansgainput{#2}\\
+③\ansgainput{#3}\\
+④\ansgainput{#4}\\
+⑤\ansgainput{#5}\\
+\end{tabu}}

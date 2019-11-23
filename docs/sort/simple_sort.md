@@ -1,5 +1,4 @@
 
-### c++
 
 swap함수는 있는걸 씁니다
 swap 함수는 다음 라이브러리에 있습니다.
@@ -73,8 +72,9 @@ void insertion_sort(T a[], int num)
 
 ```
 실제 삽입을 했을때,
-```
 
+
+```c++
 template<typename T>
 int sorting_insertion(T a[], int num, T item)
 {

@@ -1,7 +1,7 @@
 # 31.2
 ### GCD Euclid's algorithm
 
-$O(log b)$
+$O(\log b)$
 ```C++
 int EUCLID(int a, int b)
 {
@@ -201,7 +201,7 @@ https://casterian.net/archives/396
 https://www.acmicpc.net/problem/5615
 
 
-O(k log^3 n)
+$O(k \log^3 n)$
 
 
 ```C++
@@ -350,7 +350,7 @@ unsigned int gcd(unsigned int u, unsigned int v)
 ### 31-3 Three algorighms for Fibonacci numbers
 
 
-(a) O(2^n)
+(a) $O(2^n)$
 ```C++
 int Fibonacci_numbers(int n)
 {
@@ -366,7 +366,7 @@ int Fibonacci_numbers(int n)
 (b)
 memoization
 
-O(n)
+$O(n)$
 ```C++
 int Fibonacci_numbers(int n)
 {
@@ -393,7 +393,7 @@ int Fibonacci_numbers(int n)
 
 
 (c)
-O(log n)
+$O(\log n)$
 
 ```C++
 int Fibonacci_numbers(int n)

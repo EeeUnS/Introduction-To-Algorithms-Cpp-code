@@ -1,0 +1,149 @@
+%%%%%%%%%%%%%% ikps flavored LaTeX (Ver 0.4) %%%%%%%%%%%%%%
+
+%%%%%%% Packages
+
+\RequirePackage{amsmath,amssymb}
+\RequirePackage{stmaryrd} %%%%%%%% added for better-looking parallel symbol (Ver 0.2)
+\RequirePackage{tikz}
+\RequirePackage[tikz]{mdframed}
+\RequirePackage{ulem} %% for better-looking stirke
+\RequirePackage[c]{esvect} %%%%%%% for better-looking vector arrow
+\renewcommand{\vec}[1]{\vv{#1}}
+\let\nvec\vec
+\let\nsqrt\sqrt
+\def\vec#1{\nvec{\vphantom A\smash{#1}}} %%%% 낮추려면 vphantom t
+\def\SQRT#1{\nsqrt{\vphantom{B^2}\smash{#1}}} %%%% 낮추려면 vphantom t
+
+\newcommand{\VEC}[1]{\vv{#1}}
+\let\nVEC\VEC
+\def\VEC#1{\nVEC{\vphantom A\hspace{1pt}\smash{#1}\hspace{.5pt}}}
+
+
+%%%%%%% displaystyle option
+
+\everydisplay\expandafter{\the\everydisplay\def\baselinestretch{1.1}\selectfont}
+\everymath{\displaystyle}
+
+%%%%%%% Elementry & Middle school Mathematics
+\newcommand{\mrm}[1]{\mathrm{#1}}
+\renewcommand{\mit}[1]{\mathit{#1}}
+\newcommand{\ovl}[1]{\overline{#1}}
+\newcommand{\ovr}[1]{\overline{\mathrm{#1}}}
+\renewcommand{\bot}{\mkern-3mu\perp\mkern-3mu}
+\newcommand{\ppd}{\bot}
+\newcommand{\prl}{{\mkern3mu\mathrel{\raisebox{1pt}[\height][0pt]{$\sslash$}}\mkern3mu}}
+\newcommand{\plr}{\prl}
+\newcommand{\parallelsum}{\prl}
+
+
+%%%%%%%%% Arc symbol
+\makeatletter
+\DeclareFontFamily{U}{tipa}{}
+\DeclareFontShape{U}{tipa}{m}{n}{<->tipa10}{}
+\newcommand{\arc@char}{{\usefont{U}{tipa}{m}{n}\symbol{62}}}%
+
+\newcommand{\arc}[1]{\mathpalette\arc@arc{\mrm{#1}}}
+
+\newcommand{\arc@arc}[2]{%
+  \sbox0{$\m@th#1#2$}%
+  \vbox{
+    \hbox{\resizebox{\wd0}{\height}{\arc@char}}
+    \nointerlineskip
+    \box0
+  }%
+}
+\makeatother
+
+
+%%%%%%% High school Mathematics I
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\idp}[4]{\dfrac{#3\cdot#2+#4\cdot#1}{#3+#4}}
+\newcommand{\tidp}[4]{\tfrac{#3\cdot#2+#4\cdot#1}{#3+#4}}
+\newcommand{\edp}[4]{\dfrac{#3\cdot#2-#4\cdot#1}{#3-#4}}
+\newcommand{\tedp}[4]{\tfrac{#3\cdot#2-#4\cdot#1}{#3-#4}}
+\newcommand{\IDP}[4]{\dfrac{#3#2+#4#1}{#3+#4}}
+\newcommand{\TIDP}[4]{\tfrac{#3#2+#4#1}{#3+#4}}
+\newcommand{\EDP}[4]{\dfrac{#3#2-#4#1}{#3-#4}}
+\newcommand{\TEDP}[4]{\tfrac{#3#2-#4#1}{#3-#4}}
+
+%%%%%%% High school Mathematics II
+\newcommand{\comp}[2]{#1 \circ #2}
+\newcommand{\COMP}[3]{\left( #1 \circ #2 \right)\left(#3\right)}
+
+%%%%%%% High school Calculus
+\newcommand{\intg}[3]{\int_{#1}^{#2}{#3}}
+
+
+%%%%%%% High school Probability & Statistics
+\newcommand{\perm}[2]{{}_{#1}\mathrm{P}_{#2}}
+\newcommand{\comb}[2]{{}_{#1}\mathrm{C}_{#2}}
+\newcommand{\homo}[2]{{}_{#1}\mathrm{H}_{#2}}
+\newcommand{\PROD}[2]{{}_{#1}\Pi_{#2}} %% Modified from \prod to \PROD (ver 0.2)
+\newcommand{\PERM}[2]{{}_{#1}\mathrm{P}_{#2}} %% Added for perfect match with \PROD (ver 0.2)
+\newcommand{\COMB}[2]{{}_{#1}\mathrm{C}_{#2}} %% So was it
+\newcommand{\HOMO}[2]{{}_{#1}\mathrm{H}_{#2}} %% So was it
+\newcommand{\SNK}[2]{\mathrm{S}\left(#1,\:#2\right)}
+\newcommand{\PNK}[2]{\mathrm{P}\left(#1,\:#2\right)}
+\renewcommand{\P}[2]{{}_{#1}\mathrm{P}_{#2}}
+%\renewcommand{\C}[2]{{}_{#1}\mathrm{C}_{#2}}
+\renewcommand{\H}[2]{{}_{#1}\mathrm{H}_{#2}}
+
+\newcommand{\E}[1]{\mathrm{E}\left(#1\right)}
+\newcommand{\V}[1]{\mathrm{V}\left(#1\right)}
+\newcommand{\SIG}[1]{\sigma\left(#1\right)}
+\newcommand{\PR}[1]{\mathrm{P}\left(#1\right)}
+\newcommand{\ND}[2]{\mathrm{N}\left(#1,\:#2\right)}
+\newcommand{\BD}[2]{\mathrm{B}\left(#1,\:#2\right)}
+\newcommand{\pr}[1]{\mathrm{P}(#1)}
+\newcommand{\pn}[2]{\mathrm{P}(#1\cap#2)}
+\newcommand{\pu}[2]{\mathrm{P}(#1\cup#2)}
+
+
+
+
+%%%%%%% High school Geometry & Vector
+
+\newcommand{\abv}[1]{\abvsign\vec{\mathrm{#1}}\abvsign} %%% Modified (Ver 0.4) Not Recommend
+
+\newcommand{\abvsign}[1][1pt]{\raisebox{#1}{\big|}} %%%% Added (Ver 0.4)
+
+\newcommand{\avi}[2][-1pt]{\raisebox{#1}{$\abvsign\vec{#2}\abvsign$}}
+\newcommand{\avr}[2][-1pt]{\raisebox{#1}{$\abvsign\VEC{\mathrm{#2}}\abvsign$}} %%% Modified (Ver 0.4)
+\newcommand{\av}[2][-1pt]{\raisebox{#1}{$\abvsign#2\abvsign$}} %%% Modified (Ver 0.4)
+\newcommand{\vrm}[1]{\VEC{\mathrm{#1}}}
+
+%%%%%%% Special symbols for LaTeX (Ver 0.3)
+\newcommand{\ccirc}{\mathbin{\mathchoice{\xcirc\scriptstyle}{\xcirc\scriptstyle}{\xcirc\scriptscriptstyle}{\xcirc\scriptscriptstyle}}}
+\newcommand{\xcirc}[1]{\vcenter{\hbox{$#1\circ$}}}%% for define \comp and \COMP
+\renewcommand{\comp}[2]{#1 \ccirc #2}
+\renewcommand{\COMP}[3]{\left( #1 \ccirc #2 \right)\left(#3\right)}
+\newcommand\expo[2][3pt]{\rule{0pt}{\dimexpr#1+1.4ex\relax}^{#2}}
+
+
+%%%%%%% High school Geometry & Vector for LaTeX
+\makeatletter
+\newcommand*\bigcdot@[2]{\mathbin{\vcenter{\hbox{\scalebox{#2}{$\m@th#1\bullet$}}}}}
+\newcommand*\bigcdot{\mathpalette\bigcdot@{.5}}
+\newcommand*\bcd@[2]{\mathbin{\vcenter{\hbox{\scalebox{#2}{$\m@th#1\bullet$}}}}}
+\newcommand*\bcd{\mathpalette\bigcdot@{.5}}
+\makeatother
+%%%%%%%% for backward-compatibility
+\newcommand{\boxsep}{\lineskiplimit=6pt
+\lineskip=6pt}
+\newcommand\sfrac[3][3pt]{\rule{0pt}{\dimexpr#1+1.4ex\relax}^\frac{#2}{#3}}
+\newcommand\upfrac[3][3pt]{\rule{0pt}{\dimexpr#1+1.4ex\relax}^{#2}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%% maximun and mininum (Ver 0.4)
+\newcommand{\mdot}{^^b7}
+\newcommand{\MM}{최대\mdot최소}
+
+
+%%%%%%%%% cartesian orderd pair (Ver 0.4)
+\newcommand{\xy}[3][]{\mathrm{#1}\left(#2,\:#3\right)}
+\newcommand{\xyz}[4][]{\mathrm{#1}\left(#2,\:#3,\:#4\right)}
+
+
+
+%\renewcommand{\qedhere}{\hfill$\blacksquare$}

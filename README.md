@@ -77,17 +77,19 @@ Ch 33 Computational Geometry
 Ch 35 Approximation Algorithms
 
 
-# Tex
+# [Tex](./tex_project/readme.md)
 
 개인적으로 책 내용이 너무 어려워 이해하기가 어려웠던 부분을 다시 이해하기 쉽게 만든 pdf파일들입니다.
 
-1. quick sort
+1. [quick sort](./tex_project/introduction_to_quicksort/quick_sort.pdf)
 
-2. number theory
+2. [number theory](./tex_project/number_theory/number_theory.pdf)
+
+3. [string matching](./tex_project/string_matching/stringmatch.pdf)
+
+3.1 [string matching ppt](./tex_project/string_matching_ppt/string.pdf)
 
 예정
-
-3. string matching
 
 4. FFT
 

@@ -1,0 +1,37 @@
+\section{advanced RSA}
+
+It is possible to strengthen Euler's theorem slightly to the form
+
+$a^{\lambda(n)} \equiv 1 (\mod n)$ for all $a \in \mathbb Z_n^*$,
+
+where $n = p_1^{e_1} \cdots p_r^{e_r}$ and $\lambda(n)$ is defined by
+
+$$\lambda(n) = \text{lcm}(\phi(p_1^{e_1}), \ldots, \phi\phi(p_r^{e_r})). $$
+
+Prove that $\lambda(n) \mid \phi(n)$. A composite number $n$ is a Carmichael number if $\lambda(n) \mid n - 1$. The smallest Carmichael number is $561 = 3 \cdot 11 \cdot 17$; here, $\lambda(n) = \text{lcm}(2, 10, 16) = 80$, which divides $560$. Prove that Carmichael numbers must be both "square-free" (not divisible by the square of any prime) and the product of at least three primes. (For this reason, they are not very common.)
+
+
+Carmichael function
+
+
+$\lambda(n)$ 다음을 만족하는 가장 작은 양의 정수 $m$
+
+$a^m \equiv 1 \pmod{n}$
+
+$n = p_1^{e_1} \cdots p_r^{e_r}$
+
+$\lambda(n) = \text{lcm}(\phi(p_1^{e_1}), \ldots,\phi(p_r^{e_r}))$
+
+
+Prove that $\lambda(n) \mid \phi(n)$.
+
+
+Prove that Carmichael numbers must be both “square-free” (not divisible by the square of any prime) and the
+product of at least three primes. (For this reason, they are not very common.)
+
+
+
+https://en.wikipedia.org/wiki/RSA_(cryptosystem)
+https://simple.wikipedia.org/wiki/RSA_algorithm
+https://en.wikipedia.org/wiki/Carmichael_function
+http://www.gutenberg.org/files/13693/13693-pdf.pdf

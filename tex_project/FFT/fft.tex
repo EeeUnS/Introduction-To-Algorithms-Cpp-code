@@ -175,7 +175,7 @@ $A(x) = A_{even}(x^2) + xA_{odd}(x^2) $
 \begin{enumerate}
     \item $A_{even}$과 $A_{odd}$로 나눈다.
     \item $A_{even}$과 $A_{odd}$를 각각 재귀로 FFT한다.
-    \item $A(x) = A_{even}(x^2) + xA_{odd}(x^2) $에 따라서 계산한다. 이때의 걸리는 복잡도는 $O(n)$
+    \item $A(x) = A_{even}(x^2) + xA_{odd}(x^2) $에 따라서 계산한다. 이때 걸리는 복잡도는 $O(n)$
 \end{enumerate}
 
 
@@ -203,11 +203,72 @@ return y
 $T(n) = 2T\left(\dfrac{n}{2}\right) + \Theta(n) = \Theta(n \log n)$
 
 \section{$DFT^{-1}$ 역변환}
-공부중 아무튼 그럼
 
+점값표현에 대해서 다음의 식이 성립이 한다.
+\begin{pmatrix}
+    y_0 \\ 
+    y_1 \\
+    y_2 \\
+    \vdots \\
+    y_n-1 
+\end{pmatrix}
+$=$
+\begin{pmatrix}
+    1 & 1 & 1 & 1 & \cdots & 1 \\
+    1 & \omega_n & \omega_n^2 & \omega_n^3 & \cdots & \omega_n^{n-1} \\
+    1 & \omega_n^2 & \omega_n^4 & \omega_n^6 & \cdots & \omega_n^{2(n-1)} \\
+    1 & \omega_n^3 & \omega_n^6 & \omega_n^9 & \cdots & \omega_n^{3(n-1)} \\
+    \vdots & \vdots & \vdots & \vdots & \ddots & \vdots \\
+    1 & \omega_n^{n-1} & \omega_n^{2(n-1)} & \omega_n^{3(n-1)} & \cdots & \omega_n^{(n-1)(n-1)} 
+\end{pmatrix}
+\begin{pmatrix}
+    a_0 \\ 
+    a_1 \\
+    a_2 \\
+    \vdots \\
+    a_n-1 
+\end{pmatrix}
+
+역행렬이 존재하며, 역변환에 대해서 다음의 식이 성립이 한다.
+
+\begin{pmatrix}
+    a_0 \\ 
+    a_1 \\
+    a_2 \\
+    \vdots \\
+    a_n-1 
+\end{pmatrix}
+$= \dfrac{1}{n}$
+\begin{pmatrix}
+    1 & 1 & 1 & 1 & \cdots & 1 \\
+    1 & \omega_n^{-1} & \omega_n^{-2} & \omega_n^{-3} & \cdots & \omega_n^{-(n-1)} \\
+    1 & \omega_n^{-2} & \omega_n^{-4} & \omega_n^{-6} & \cdots & \omega_n^{-2(n-1)} \\
+    1 & \omega_n^{-3} & \omega_n^{-6} & \omega_n^{-9} & \cdots & \omega_n^{-3(n-1)} \\
+    \vdots & \vdots & \vdots & \vdots & \ddots & \vdots \\
+    1 & \omega_n^{-(n-1)} & \omega_n^{-2(n-1)} & \omega_n^{-3(n-1)} & \cdots & \omega_n^{-(n-1)(n-1)} 
+\end{pmatrix}
+\begin{pmatrix}
+    y_0 \\ 
+    y_1 \\
+    y_2 \\
+    \vdots \\
+    y_n-1 
+\end{pmatrix}
 
 
 \section{성능 개선}
+
+첫번째로 반복계산되는것을 임시변수로 만들어서 계산을 줄이는 방법이 있다.
+
+\begin{lstlisting}[style = CStyle]
+y[k] = y_even[k] + wy_odd[k]
+y[k+(n/2)] = y_even[k] - wy_odd[k]
+\end{lstlisting}
+
+두번째로 루프풀기가 있다.
+
+fft의 루프풀기는 꽤 복잡하다.
+
 
 
 \begin{thebibliography}{}
@@ -216,3 +277,148 @@ $T(n) = 2T\left(\dfrac{n}{2}\right) + \Theta(n) = \Theta(n \log n)$
 \end{thebibliography}
 
 \end{document}
+
+
+
+
+
+
+% using namespace std;
+
+% typedef complex<double> base;
+% void fft(vector<base> &a, bool inv)
+% {
+%     int n = a.size(), j = 0;
+%     vector<base> roots(n/2);
+
+%     for(int i=1; i<n; i++)
+%     {
+%         int bit = (n >> 1);
+%         while(j >= bit)
+%         {
+%             j -= bit;
+%             bit >>= 1;
+%         }
+%         j += bit;
+%         if(i < j)
+%             swap(a[i], a[j]);
+%     }
+
+%     double ang = 2 * acos(-1) / n * (inv ? -1 : 1);
+%     for(int i=0; i<n/2; i++)
+%     {
+%         roots[i] = base(cos(ang * i), sin(ang * i));
+%     }
+%     /* In NTT, let prr = primitive root. Then,
+%     int ang = ipow(prr, (mod - 1) / n);
+%     if(inv) ang = ipow(ang, mod - 2);
+%     for(int i=0; i<n/2; i++){
+%     roots[i] = (i ? (1ll * roots[i-1] * ang % mod) : 1);
+%     }
+%     XOR Convolution : set roots[*] = 1.
+%     OR Convolution : set roots[*] = 1, and do following:
+%     if (!inv) {
+%     a[j + k] = u + v;
+%     a[j + k + i/2] = u;
+%     } else {
+%     a[j + k] = v;
+%     a[j + k + i/2] = u - v;
+%     }
+%     */
+%     for(int i=2; i<=n; i<<=1)
+%     {
+%         int step = n / i;
+%         for(int j=0; j<n; j+=i)
+%         {
+%             for(int k=0; k<i/2; k++)
+%             {
+%                 base u = a[j+k],
+%                      v = a[j+k+i/2] * roots[step * k];
+%                 a[j+k] = u+v;
+%                 a[j+k+i/2] = u-v;
+%             }
+%         }
+%     }
+%     if(inv)
+%         for(int i=0; i<n; i++)
+%             a[i] /= n; // skip for OR convolution.
+% }
+
+
+% vector<lint> multiply(vector<lint> &v, vector<lint> &w)
+% {
+%     vector<base> fv(v.begin(), v.end()), fw(w.begin(), w.end());
+%     int n =2;
+%     while(n < v.size() + w.size())
+%         n <<=1;
+%     fv.resize(n);
+%     fw.resize(n);
+%     fft(fv,0);
+%     fft(fw,0);
+%     for(int i=0; i<n; i++)
+%         fv[i] *= fw[i];
+%     fft(fv,1);
+%     vector<lint> ret(n);
+%     for(int i=0; i<n; i++)
+%         ret[i] = (lint)round(fv[i].real());
+%     return ret;
+% }
+
+% vector<lint> multiply(vector<lint> &v, vector<lint> &w, lint mod)
+% {
+%     int n =2;
+%     while(n < v.size() + w.size())
+%         n <<=1s;
+%     vector<base> v1(n), v2(n), r1(n), r2(n);
+%     for(int i=0; i<v.size(); i++)
+%     {
+%         v1[i] = base(v[i] >> 15, v[i] & 32767);
+%     }
+%     for(int i=0; i<w.size(); i++)
+%     {
+%         v2[i] = base(w[i] >> 15, w[i] & 32767);
+%     }
+%     fft(v1,0);
+%     fft(v2,0);
+%     for(int i=0; i<n; i++)
+%     {
+%         int j = (i ? (n - i) : i);
+%         base ans1 = (v1[i] + conj(v1[j])) * base(0.5
+%                     ,
+%                     0);
+%         base ans2 = (v1[i] - conj(v1[j])) * base(
+%                         0, -0.5);
+%         base ans3 = (v2[i] + conj(v2[j])) * base(0.5
+%                     ,
+%                     0);
+%         base ans4 = (v2[i] - conj(v2[j])) * base(
+%                         0, -0.5);
+%         r1[i] = (ans1 * ans3) + (ans1 * ans4) * base(
+%                     0
+%                     ,
+%                     1);
+%         r2[i] = (ans2 * ans3) + (ans2 * ans4) * base(
+%                     0
+%                     ,
+%                     1);
+%     }
+%     fft(r1,
+%         1);
+%     fft(r2,
+%         1);
+%     vector<lint> ret(n);
+%     for
+%     (int i=
+%                 0; i<n; i++)
+%     {
+%         lint av = (lint)round(r1[i].real());
+%         lint bv = (lint)round(r1[i].imag()) + (lint)round(r2[i].real());
+%         lint cv = (lint)round(r2[i].imag());
+%         av %= mod, bv %= mod, cv %= mod;
+%         ret[i] = (av << 30) + (bv << 15) + cv;
+%         ret[i] %= mod;
+%         ret[i] += mod;
+%         ret[i] %= mod;
+%     }
+%     return ret;
+% }

@@ -1,98 +1,5 @@
 \section{advanced RSA}
 
-It is possible to strengthen Euler's theorem slightly to the form
-
-$a^{\lambda(n)} \equiv 1 (\mod n)$ for all $a \in \mathbb Z_n^*$,
-
-where $n = p_1^{e_1} \cdots p_r^{e_r}$ and $\lambda(n)$ is defined by
-
-$$\lambda(n) = \text{lcm}(\phi(p_1^{e_1}), \ldots, \phi\phi(p_r^{e_r})). $$
-
-Prove that $\lambda(n) \mid \phi(n)$. A composite number $n$ is a Carmichael number if $\lambda(n) \mid n - 1$. The smallest Carmichael number is $561 = 3 \cdot 11 \cdot 17$; here, $\lambda(n) = \text{lcm}(2, 10, 16) = 80$, which divides $560$. Prove that Carmichael numbers must be both "square-free" (not divisible by the square of any prime) and the product of at least three primes. (For this reason, they are not very common.)
-
-
-
-
-Prove that $\lambda(n) \mid \phi(n)$.
-
-\begin{proof}
-    $n = p_1^{e_1} \cdots p_r^{e_r}$
-
-    $ \phi(n) = \phi(p_1^{e_1})* \ldots*\phi(p_r^{e_r})$
-
-    $\text{lcm}(\phi(p_1^{e_1}, \ldots, \phi(p_r^{e_r})) | (\phi(p_1^{e_1})* \ldots*\phi(p_r^{e_r}))$
-    
-    $\lambda(n) \mid \phi(n)$
-\end{proof}
-
-
-
-
-2. Prove that Carmichael numbers must be both “square-free” (not divisible by the square of any prime) and 
-
-https://math.stackexchange.com/questions/1764812/carmichael-number-square-free
-
-
-\begin{proof}
-카마이클 수 $n = p^\alpha m( \alpha \ge 2 ,  p \nmid m )$라 하자
-정의에 따라 다음이 성립한다. 
-$a^{n} \equiv a \pmod{n}$.
-
-$ a \equiv 1 + p \pmod{p^\alpha}$ 라 하자.
-
-$(p+1)^{n} \equiv p+1 \pmod{m}$이 되는데. 
-$m$의 인자인 $p^2$와에 대해서도 다음이 성립한다.
-$(p+1)^{n} \equiv (p+1)^{p^\alpha m} \equiv (p+1)^{p^2 p^{\alpha-2} m}  \equiv p+1 \pmod{p^2}$
-그러나 $\gcd(a,n) = 1$ 이라서 $\gcd(a, p^2) = 1$이다.
-$(p+1)^{n} \equiv p+1  \equiv 1 \pmod{p^2}$이며 이는 모순이다.
-\end{proof}
-
-let Carmichael number $n = p^\alpha m( \alpha \ge 2 ,  p \nmid m )$
-$a^{n-1} \equiv 1 \pmod{n} (\gcd(a,n) = 1)$
-
-set $a = p+1 $ then $(p+1)^{n} \equiv p+1 \pmod{n}$
-
-and $gcd(p^2,a) = 1$
-
-$(p+1)^{n} \equiv (p+1)^{p^2 p^{\alpha-2} \equiv p+1 \pmod{p^2}$
-
-but $gcd(p^2,a) = 1$,  $ a \equiv 1 \pmod{p^2}$
-
-$p+1 \equiv 1 \pmod{p^2}$ This is impossible
-
-
-3. the product of at least three primes. 
-
-Assume that $n=pq$, with $p<q$ two distinct primes, is a Carmichael number. 
-Then we have 
-$q≡1 \pmod{q−1} )\rightarrow n \equiv pq \equiv p \pmod{q−1}  \rightarrow n−1 \equiv p−1 \pmod{q−1}$
-Here $0 < p−1 < q−1$ , so $n−1$ is not divisible by $q−1$.
-
-
-
-https://artofproblemsolving.com/wiki/index.php/Carmichael_function
-https://en.wikipedia.org/wiki/RSA_(cryptosystem)
-https://simple.wikipedia.org/wiki/RSA_algorithm
-https://en.wikipedia.org/wiki/Carmichael_function
-http://www.gutenberg.org/files/13693/13693-pdf.pdf
-
-
-
-
-Carmichael function
-
-
-$\lambda(n)$ 다음을 만족하는 가장 작은 양의 정수 $m$
-
-$a^m \equiv 1 \pmod{n}$
-
-$n = p_1^{e_1} \cdots p_r^{e_r}$
-
-$\lambda(n) = \text{lcm}(\phi(p_1^{e_1}), \ldots,\phi(p_r^{e_r}))$
-
-
-
-
 \section{오일러의 $\phi$함수(Euler’s phi (totient) function)}
 \begin{dfn}[phi function]
     양의 정수 $n$에 대해서 
@@ -330,4 +237,118 @@ $\phi(m)$,
                \phi(p_n^{\alpha_n}).
 \end{equation*}
 
-\begin{center}
+
+
+
+    
+
+\textbf{31.8-2(CLRS)}
+
+It is possible to strengthen Euler's theorem slightly to the form
+
+$a^{\lambda(n)} \equiv 1 (\mod n)$ for all $a \in \mathbb Z_n^*$,
+
+where $n = p_1^{e_1} \cdots p_r^{e_r}$ and $\lambda(n)$ is defined by
+
+$$\lambda(n) = \text{lcm}(\phi(p_1^{e_1}), \ldots, \phi\phi(p_r^{e_r})). $$
+
+Prove that $\lambda(n) \mid \phi(n)$. A composite number $n$ is a Carmichael number if $\lambda(n) \mid n - 1$. The smallest Carmichael number is $561 = 3 \cdot 11 \cdot 17$; here, $\lambda(n) = \text{lcm}(2, 10, 16) = 80$, which divides $560$. Prove that Carmichael numbers must be both "square-free" (not divisible by the square of any prime) and the product of at least three primes. (For this reason, they are not very common.)
+
+ENG
+
+\begin{enumerate}
+    \item  Prove that $\lambda(n) \mid \phi(n)$.
+    
+    $n = p_1^{e_1} \cdots p_r^{e_r}$
+
+    $ \phi(n) = \phi(p_1^{e_1})* \ldots*\phi(p_r^{e_r})$
+
+    $\text{lcm}(\phi(p_1^{e_1}, \ldots, \phi(p_r^{e_r})) | (\phi(p_1^{e_1})* \ldots*\phi(p_r^{e_r}))$
+    
+    $\lambda(n) \mid \phi(n)$
+
+    \item  Prove that Carmichael numbers must be both “square-free” (not divisible by the square of any prime) 
+
+    let Carmichael number $n = p^\alpha m( \alpha \ge 2 ,  p \nmid m )$
+    $a^{n-1} \equiv 1 \pmod{n} (\gcd(a,n) = 1)$
+    
+    set $a = p+1 $ then $(p+1)^{n} \equiv p+1 \pmod{n}$
+    
+    and $gcd(p^2,a) = 1$
+    
+    $(p+1)^{n} \equiv (p+1)^{p^2 p^{\alpha-2}} \equiv p+1 \pmod{p^2}$
+    
+    but $\gcd(p^2,a) = 1$,  $ a \equiv 1 \pmod{p^2}$
+    
+    $p+1 \equiv 1 \pmod{p^2}$ This is impossible
+    
+    https://math.stackexchange.com/questions/1764812/carmichael-number-square-free
+
+
+    
+    \item  the product of at least three primes. 
+    
+    Assume that $n=pq$, with $p<q$ two distinct primes, is a Carmichael number. 
+    Then we have 
+    $q≡1 \pmod{q−1} )\rightarrow n \equiv pq \equiv p \pmod{q−1}  \rightarrow n−1 \equiv p−1 \pmod{q−1}$
+    Here $0 < p−1 < q−1$ , so $n−1$ is not divisible by $q−1$.
+
+    
+    https://math.stackexchange.com/questions/432162/carmichael-proof-of-at-least-3-factors
+
+\end{enumerate}
+
+
+
+KR
+
+2. Prove that Carmichael numbers must be both “square-free” (not divisible by the square of any prime) 
+
+https://math.stackexchange.com/questions/1764812/carmichael-number-square-free
+
+
+\begin{proof}
+카마이클 수 $n = p^\alpha m( \alpha \ge 2 ,  p \nmid m )$라 하자
+정의에 따라 다음이 성립한다. 
+$a^{n} \equiv a \pmod{n}$.
+
+$ a \equiv 1 + p \pmod{p^\alpha}$ 라 하자.
+
+$(p+1)^{n} \equiv p+1 \pmod{m}$이 되는데. 
+$m$의 인자인 $p^2$와에 대해서도 다음이 성립한다.
+$(p+1)^{n} \equiv (p+1)^{p^\alpha m} \equiv (p+1)^{p^2 p^{\alpha-2} m}  \equiv p+1 \pmod{p^2}$
+그러나 $\gcd(a,n) = 1$ 이라서 $\gcd(a, p^2) = 1$이다.
+$(p+1)^{n} \equiv p+1  \equiv 1 \pmod{p^2}$이며 이는 모순이다.
+\end{proof}
+
+
+
+3. the product of at least three primes. 
+
+https://math.stackexchange.com/questions/432162/carmichael-proof-of-at-least-3-factors
+
+
+Assume that $n=pq$, with $p<q$ two distinct primes, is a Carmichael number. 
+Then we have 
+$q≡1 \pmod{q−1} )\rightarrow n \equiv pq \equiv p \pmod{q−1}  \rightarrow n−1 \equiv p−1 \pmod{q−1}$
+Here $0 < p−1 < q−1$ , so $n−1$ is not divisible by $q−1$.
+
+
+http://www.gutenberg.org/files/13693/13693-pdf.pdf
+
+
+
+
+\section{Carmichael function}
+
+
+$\lambda(n)$ 다음을 만족하는 가장 작은 양의 정수 $m$
+
+$a^m \equiv 1 \pmod{n}$
+
+$n = p_1^{e_1} \cdots p_r^{e_r}$
+
+$\lambda(n) = \text{lcm}(\phi(p_1^{e_1}), \ldots,\phi(p_r^{e_r}))$
+
+
+%---------------------------------------------------------------------------------------------------------------------------

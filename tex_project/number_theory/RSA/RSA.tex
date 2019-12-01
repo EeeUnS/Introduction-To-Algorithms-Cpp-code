@@ -49,3 +49,16 @@ $ ed\bmod \phi =1 \Longleftrightarrow ed = b\phi(n)+1$($b$는 어떤 상수)
 
 
 이를 구하기위한 해결방법은 결과적으로 소인수분해와 직결되는데 그냥 n을 p와 q로소인수 분해해버리면 끝난다. 그러나 소인수분해를 다항시간내에하는 알고리즘은 개발되지 않았다.
+
+
+
+\subsection{advanced RSA}
+
+%https://crypto.stackexchange.com/questions/26751/rsa-with-lambdan-or-varphin
+
+오리지널은 위와 같지만  PKCS$\#$1 (en) v2.0에 표준 RSA 알고리즘 방식이 바뀌었다.
+$\phi$ 대신 $\lambda$를 사용하는 방법이다. $\lambda$를 사용했을때, $\phi$일때보다 개인키의 범위가 작아지기 때문에 큰값을 가지지 않아도 되기때문이다.
+
+\url{https://en.wikipedia.org/wiki/RSA_(cryptosystem)}
+
+%https://simple.wikipedia.org/wiki/RSA_algorithm

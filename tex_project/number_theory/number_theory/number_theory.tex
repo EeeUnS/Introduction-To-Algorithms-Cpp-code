@@ -231,26 +231,82 @@ $n\cdot s'\bmod  \phi =1$에서 $s= s'\bmod  \phi$라 하면 $0 \le s <\phi$가 
 
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
 \section{오일러의 $\phi$함수(Euler’s phi (totient) function)}
 \begin{dfn}[phi function]
     양의 정수 $n$에 대해서 
 
     $\phi (n)$ : 1부터 n까지의 양의 정수 중에 n과 서로소인 것의 개수를 나타내는 함수.    
 \end{dfn}
+
 $\phi (n)$은 다음의 성질이 있다.
 
 \begin{theorem}
+    
     \begin{itemize}
         \item{소수 $p$에 대해서  $\phi (p)=p-1$}
-        \item{ m, n이 서로소인 정수일 때, 다음이 성립한다. \[\phi (mn)=\phi (m)\phi (n)\]}
+        
+        \item{ m, n이 서로소인 양의 정수일 때, 다음이 성립한다. \[\phi (mn)=\phi (m)\phi (n)\]}
+        
+        \item 소수 $p$와 양의 정수 $\alpha$에 대해 다음이 성립한다.
+        $$\phi(p^\alpha) = p^\alpha \left ( 1 - \frac{1}{p} \right )$$
         \end{itemize}
 \end{theorem}
-성질이 몇 개 더 있지만 RSA에서 필요한것만을 다루기위해서 생략하였다.
+
 \begin{proof}
-첫번째 성질은 어찌보면 당연하다 $p$는 소수이니 자기 자신을 제외한 모든 수와 서로소이다 (여기서 1도 세야한다.)\\
-두번째 성질은 두수의 곱 mn은 각각 m에대해서 나눠지는 수가 n개이고 n에 대해서 나눠지는 수가 m개 이며 mn으로 나눠지는 수가 한 개이므로 
+
+첫번째 성질은 어찌보면 당연하다 $p$는 소수이니 자기 자신을 제외한 모든 수와 서로소이다 (여기서 1도 세야한다.)
+
+
+두번째 성질은 두수의 곱 $mn$은 각각 $m$에대해서 나눠지는 수가 $n$개이고 n에 대해서 나눠지는 수가 $m$개 이며 $mn$으로 나눠지는 수가 한 개이므로 
 $mn -\dfrac{mn}{m}-\dfrac{mn}{n}+\dfrac{mn}{mn} =mn -m -n +1=(m-1)(n-1)=\phi (m)\phi(n)$가 된다.
+
+세번째 성질 $p^\alpha$보다 같거나 작은 $p$의 배수가 되는것은 다음이 있다.
+$$p , 2p , 3p , ... , p^{\alpha-1}p$$
+따라서 총 $p^{\alpha-1}$개가 있고 
+$ \phi(p^\alpha) =p^{\alpha} -  p^{\alpha-1} = p^\alpha \left ( 1 - \frac{1}{p} \right )$
+
 \end{proof}
+
+\begin{corollary}
+
+    \emph{If $m_1, m_2, \ldots, m_k$ are $k$ positive
+    integers which are prime each to each, then}
+    \begin{equation*}
+    \phi(m_1 m_2 \ldots m_k) = \phi(m_1) \phi(m_2) \ldots \phi(m_k).
+    \end{equation*}
+\end{corollary}
+
+
+\emph{If $m = p_1^{\alpha_1} p_2^{\alpha_2} \ldots p_n^{\alpha_n}$
+where $p_1, p_2, \ldots, p_n$ are different primes and $\alpha_1,
+\alpha_2, \ldots, \alpha_n$ are positive integers, then}
+\begin{equation*}
+\phi(m) = m \left ( 1-\frac{1}{p_1} \right )
+            \left ( 1-\frac{1}{p_2} \right )
+            \ldots
+            \left ( 1-\frac{1}{p_n} \right ).
+\end{equation*}
+
+For,
+\begin{align*}
+\phi(m) &= \phi(p_1^{\alpha_1}) \phi(p_2^{\alpha_2}) \ldots
+             \phi(p_n^{\alpha_n}) \\
+        &= p_1^{\alpha_1} \left ( 1-\frac{1}{p_1} \right )
+             p_2^{\alpha_2} \left ( 1-\frac{1}{p_2} \right )
+             \ldots
+             p_n^{\alpha_n} \left ( 1-\frac{1}{p_n} \right ) \\
+        &= m \left ( 1-\frac{1}{p_1} \right )
+             \left ( 1-\frac{1}{p_2} \right )
+             \ldots
+             \left ( 1-\frac{1}{p_n} \right ).
+\end{align*}
+
+
 
 \section{오일러 정리(Euler's theorem)\protect\footnote{페르마의 소정리는 오일러 정리에서의 특수한 경우이다.}}
 
@@ -266,7 +322,7 @@ $mn -\dfrac{mn}{m}-\dfrac{mn}{n}+\dfrac{mn}{mn} =mn -m -n +1=(m-1)(n-1)=\phi (m)
 정수 n에 대해서 1부터 n까지의 양의 정수 중에 n과 서로소인 것의 집합을 생각해보자.
 그러면 이는 집합
 \begin{center}
-    $A = \{ r_1 ,r_2,r_3, \cdots ,r_{\phi(n)}\}$\footnote{이러한 집합을 기약잉여계라고 부른다. 또한 집합 A의 원소의 갯수는 $\phi(n)$dl다.}
+    $A = \{ r_1 ,r_2,r_3, \cdots ,r_{\phi(n)}\}$\footnote{이러한 집합을 기약잉여계 $\mathbb Z_n^*$라고 부른다. 또한 집합 A의 원소의 갯수는 $\phi(n)$dl다.}
 \end{center}
 으로 나타낼 수 있다. 이 집합은 A라하고 이 각 원소에 n과 서로소인 a를 곱한 집합을 B집합이라 하자.
 \[B = \{ ar_1 ,ar_2,ar_3, \cdots ,ar_{\phi(n)}\} \]
@@ -281,10 +337,17 @@ $mn -\dfrac{mn}{m}-\dfrac{mn}{n}+\dfrac{mn}{mn} =mn -m -n +1=(m-1)(n-1)=\phi (m)
 
 
 \begin{corollary}
-    페르마의 소정리 소수 $p$에 대해 다음이 성립한다.
+    페르마의 소정리 :  소수 $p$에 대해 다음이 성립한다.
     $$ a^{p-1} \equiv 1 \pmod{p}$$
 \end{corollary}
 
 \begin{proof}
-    $\phi(p)  = p-1 $이므로 오일러 정리에 도출된다.
+    $\phi(p)  = p-1 $이므로 오일러 정리에의해 성립합을 알 수 있다.
 \end{proof}
+
+
+\begin{equation*}
+    a^{p-1} \equiv 1 \bmod p.
+\end{equation*}
+    
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

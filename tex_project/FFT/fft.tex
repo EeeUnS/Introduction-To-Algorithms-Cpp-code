@@ -47,6 +47,9 @@
 
 \maketitle
 
+\tableofcontents
+
+
 \section{개론}
 
 n차 다항식 $A(x)$를 예시로 들라고하면 대부분 이렇게 대답할것이다.
@@ -205,14 +208,20 @@ $T(n) = 2T\left(\dfrac{n}{2}\right) + \Theta(n) = \Theta(n \log n)$
 \section{$DFT^{-1}$ 역변환}
 
 점값표현에 대해서 다음의 식이 성립이 한다.
+
+$$ a_j = \dfrac{1}{n}\sum_{k=0}^{n-1} y_k\omega_{n}^{-kj}$$
+
+$DFT$는 다음의 행렬 곱셈 식을 이용했다.
+
+$
 \begin{pmatrix}
     y_0 \\ 
     y_1 \\
     y_2 \\
     \vdots \\
-    y_n-1 
+    y_{n-1}
 \end{pmatrix}
-$=$
+=
 \begin{pmatrix}
     1 & 1 & 1 & 1 & \cdots & 1 \\
     1 & \omega_n & \omega_n^2 & \omega_n^3 & \cdots & \omega_n^{n-1} \\
@@ -226,19 +235,21 @@ $=$
     a_1 \\
     a_2 \\
     \vdots \\
-    a_n-1 
+    a_{n-1}
 \end{pmatrix}
+$
 
-역행렬이 존재하며, 역변환에 대해서 다음의 식이 성립이 한다.
+역행렬이 존재하며, 역변환에 대해서 다음의 식을 통해 원래의 값이 나온다.
 
+$
 \begin{pmatrix}
     a_0 \\ 
     a_1 \\
     a_2 \\
     \vdots \\
-    a_n-1 
+    a_{n-1}
 \end{pmatrix}
-$= \dfrac{1}{n}$
+= \dfrac{1}{n}
 \begin{pmatrix}
     1 & 1 & 1 & 1 & \cdots & 1 \\
     1 & \omega_n^{-1} & \omega_n^{-2} & \omega_n^{-3} & \cdots & \omega_n^{-(n-1)} \\
@@ -252,11 +263,11 @@ $= \dfrac{1}{n}$
     y_1 \\
     y_2 \\
     \vdots \\
-    y_n-1 
+    y_{n-1}
 \end{pmatrix}
+$
 
-
-\section{n = 4 일때 수행}
+\section{n = 4 일때 수행 예시}
 
 $e^{i\theta} = \cos \theta + i \sin \theta$
 
@@ -268,10 +279,10 @@ $e^{i\theta} = \cos \theta + i \sin \theta$
 $
 \omega^j = \left\{
 \begin{array}{rl}
-    1 & \text{( j = 0, \theta = 0 )} \\
-    i & \text{( j = 1, \theta = {1 \ over 2}\pi)} \\
-    -1 & \text{( j = 2, \theta = \pi )} \\
-    -i & \text{( j = 3, \theta = {3 \ over 2}\pi } \\
+    1 & ( j = 0, \theta = 0 ) \\
+    i & ( j = 1, \theta = \dfrac{1}{2}\pi) \\
+    -1 & ( j = 2, \theta = \pi )\\
+    -i & ( j = 3, \theta = \dfrac{3}{2}\pi) \\
 \end{array}
 \right.
 $
@@ -288,20 +299,21 @@ $
 
 계수벡터에 $1, \omega ,\omega^2 , \omega^3 $을 넣었을때의 결과와 동일하다.
 
+$
 \begin{pmatrix}
     y_0 \\ 
     y_1 \\
     y_2 \\
     y_3 
 \end{pmatrix}
-$=$
+=
 \begin{pmatrix}
     a_0 + a_1 + a_2 + a_3 \\ 
     a_0 + \omega a_1 - a_2 -\omega a_3 \\
     a_0 - a_1 + a_2 - a_3 \\
     a_0 - \omega a_1 - a_2 + \omega a_3
 \end{pmatrix}
-
+$
 
 
 \subsection{$DFT^{-1}$수행}
@@ -309,15 +321,17 @@ $=$
 $
 \omega^j = \left\{
 \begin{array}{rl}
-    1 & \text{( j = 0, \theta = 0 )} \\
-    -i & \text{( j = -1, \theta = -{1 \ over 2}\pi)} \\
-    -1 & \text{( j = -2, \theta = -\pi )} \\
-    i & \text{( j = -3, \theta = -{3 \ over 2}\pi } \\
+    1 & ( j = 0, \theta = 0 ) \\
+    -i & ( j = -1, \theta = -\dfrac{1}{2}\pi) \\
+    -1 & ( j = -2, \theta = -\pi ) \\
+    i & ( j = -3, \theta = -\dfrac{3}{2}\pi ) \\
 \end{array}
 \right.
+$
+
 
 $-\omega = \omega^{-1}$
-$\footnote{참고: $\cos$은 우함수(y축 대칭) $\sin$은 기함수(원점대칭)이다. }
+\footnote{참고: $\cos$은 우함수(y축 대칭) $\sin$은 기함수(원점대칭)이다. }
 
 \begin{enumerate}
     \item 분할: $\left\{y_0, y_2 \right\}$, $\left\{y_1, y_3\right\}$
@@ -326,20 +340,22 @@ $\footnote{참고: $\cos$은 우함수(y축 대칭) $\sin$은 기함수(원점�
     \item 결합: $\left\{(y_0 +y_1 + y_2 + y_3), (y_0 - \omega y_1 + y_2 +\omega y_3) , \\(y_0 - y_1 +y_2 - y_3), (y_0 + \omega y_1 - y_2 - \omega y_3) \right\}$
 \end{enumerate}
 
-
+$
 \begin{pmatrix}
     a_0 \\ 
     a_1 \\
     a_2 \\
     a_3 
 \end{pmatrix}
-$= \dfrac{1}{n}$
+= \dfrac{1}{n}
 \begin{pmatrix}
     y_0 + y_1 + y_2 + y_3 \\ 
     y_0 - \omega y_1 - y_2 +\omega y_3 \\
     y_0 - y_1 + y_2 - y_3 \\
     y_0 + \omega y_1 - y_2 - \omega y_3
 \end{pmatrix}
+$
+
 
 각$y_n$에 곱해지는 계수와 $a_n$ 계수벡터를 풀어써서 행렬에 나타내면
 
@@ -347,43 +363,45 @@ $= \dfrac{1}{n}$
 \begin{itemize}
     \item $a_1$
     
-    \begin{pmatrix}
-        1 & -\omega & -1 & \omega
-    \end{pmatrix}
+    $
+        \begin{pmatrix}
+            1 & -\omega & -1 & \omega
+        \end{pmatrix}
+        \begin{pmatrix}
+            1 & 1 & 1 & 1 \\
+            1 & \omega & -1 & -\omega \\
+            1 & -1 & 1 & -1 \\
+            1 & -\omega & -1 & \omega 
+        \end{pmatrix}
+    $
     
-    \begin{pmatrix}
-        1 & 1 & 1 & 1 \\
-        1 & \omega & -1 & -\omega \\
-        1 & -1 & 1 & -1 \\
-        1 & -\omega & -1 & \omega 
-    \end{pmatrix}
-
     \item $a_2$
     
+    $
     \begin{pmatrix}
         1 & -1 & 1 & -1
     \end{pmatrix}
-    
     \begin{pmatrix}
         1 & 1 & 1 & 1 \\
         1 & \omega & -1 & -\omega \\
         1 & -1 & 1 & -1 \\
         1 & -\omega & -1 & \omega 
     \end{pmatrix}
-
+    $
     \item $a_3$
+    
 
+    $
     \begin{pmatrix}
         1 & \omega & -1 & -\omega
     \end{pmatrix}
-    
     \begin{pmatrix}
         1 & 1 & 1 & 1 \\
         1 & \omega & -1 & -\omega \\
         1 & -1 & 1 & -1 \\
         1 & -\omega & -1 & \omega 
     \end{pmatrix}
-
+    $
 \end{itemize}
 
 
@@ -407,15 +425,22 @@ conquer시에 임시 배열로 할달되어 나뉘어져있던 짝수 홀수를 
 
 분할의 상태를 만들어 놓기위해 임의 위치 이동이 행해진다.
 
+
 \begin{figure}[h!]
     \centering
-    \includegraphics[scale=0.5]{pic1.PNG}
+    \includegraphics[scale=0.4]{pic3.PNG}
+    \caption{n = 8 일때,recursive시 분할되는 원소들}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.5]{pic4.PNG}
 \end{figure}
 
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[scale=0.5]{pic1.PNG}
+    \includegraphics[scale=0.5]{pic5.PNG}
     \caption{n = 8의 iterative-FFT 수행}
 \end{figure}
 

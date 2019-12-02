@@ -256,7 +256,140 @@ $= \dfrac{1}{n}$
 \end{pmatrix}
 
 
+\section{n = 4 일때 수행}
+
+$e^{i\theta} = \cos \theta + i \sin \theta$
+
+% https://tex.stackexchange.com/questions/34902/what-does-right-do?rq=1
+
+
+\subsection{$DFT$ 수행}
+
+$
+\omega^j = \left\{
+\begin{array}{rl}
+    1 & \text{( j = 0, \theta = 0 )} \\
+    i & \text{( j = 1, \theta = {1 \ over 2}\pi)} \\
+    -1 & \text{( j = 2, \theta = \pi )} \\
+    -i & \text{( j = 3, \theta = {3 \ over 2}\pi } \\
+\end{array}
+\right.
+$
+
+
+계수 벡터 $A = \left\{a_0, a_1, a_2, a_3 \right\}$인 경우를 생각해보자. 이를 점값표현으로 변환, 역변환해 본다.
+
+\begin{enumerate}
+    \item 분할: $\left\{a_0, a_2 \right\}$, $\left\{a_1, a_3\right\}$
+    \item 분할: $\left\{a_0\right\}, \left\{a_2\right\}, \left\{a_1\right\}, \left\{a_3\right\}$
+    \item 결합: $\left\{a_0 + a_2, a_0 - a_2 \right\}\left\{a_1 + a_3, a_1 - a_3\right\}$
+    \item 결합: $\left\{(a_0 + a_1 + a_2 + a_3), (a_0 + \omega a_1 - a_2 -\omega a_3) , \\(a_0 - a_1 + a_2 - a_3), (a_0 - \omega a_1 - a_2 + \omega a_3) \right\}$
+\end{enumerate}
+
+계수벡터에 $1, \omega ,\omega^2 , \omega^3 $을 넣었을때의 결과와 동일하다.
+
+\begin{pmatrix}
+    y_0 \\ 
+    y_1 \\
+    y_2 \\
+    y_3 
+\end{pmatrix}
+$=$
+\begin{pmatrix}
+    a_0 + a_1 + a_2 + a_3 \\ 
+    a_0 + \omega a_1 - a_2 -\omega a_3 \\
+    a_0 - a_1 + a_2 - a_3 \\
+    a_0 - \omega a_1 - a_2 + \omega a_3
+\end{pmatrix}
+
+
+
+\subsection{$DFT^{-1}$수행}
+
+$
+\omega^j = \left\{
+\begin{array}{rl}
+    1 & \text{( j = 0, \theta = 0 )} \\
+    -i & \text{( j = -1, \theta = -{1 \ over 2}\pi)} \\
+    -1 & \text{( j = -2, \theta = -\pi )} \\
+    i & \text{( j = -3, \theta = -{3 \ over 2}\pi } \\
+\end{array}
+\right.
+
+$-\omega = \omega^{-1}$
+$\footnote{참고: $\cos$은 우함수(y축 대칭) $\sin$은 기함수(원점대칭)이다. }
+
+\begin{enumerate}
+    \item 분할: $\left\{y_0, y_2 \right\}$, $\left\{y_1, y_3\right\}$
+    \item 분할: $\left\{y_0\right\}, \left\{y_2\right\}, \left\{y_1\right\}, \left\{y_3\right\}$
+    \item 결합: $\left\{y_0 + y_2, y_0 - y_2 \right\}\left\{y_1 + y_3, y_1 - y_3\right\}$
+    \item 결합: $\left\{(y_0 +y_1 + y_2 + y_3), (y_0 - \omega y_1 + y_2 +\omega y_3) , \\(y_0 - y_1 +y_2 - y_3), (y_0 + \omega y_1 - y_2 - \omega y_3) \right\}$
+\end{enumerate}
+
+
+\begin{pmatrix}
+    a_0 \\ 
+    a_1 \\
+    a_2 \\
+    a_3 
+\end{pmatrix}
+$= \dfrac{1}{n}$
+\begin{pmatrix}
+    y_0 + y_1 + y_2 + y_3 \\ 
+    y_0 - \omega y_1 - y_2 +\omega y_3 \\
+    y_0 - y_1 + y_2 - y_3 \\
+    y_0 + \omega y_1 - y_2 - \omega y_3
+\end{pmatrix}
+
+각$y_n$에 곱해지는 계수와 $a_n$ 계수벡터를 풀어써서 행렬에 나타내면
+
+
+\begin{itemize}
+    \item $a_1$
+    
+    \begin{pmatrix}
+        1 & -\omega & -1 & \omega
+    \end{pmatrix}
+    
+    \begin{pmatrix}
+        1 & 1 & 1 & 1 \\
+        1 & \omega & -1 & -\omega \\
+        1 & -1 & 1 & -1 \\
+        1 & -\omega & -1 & \omega 
+    \end{pmatrix}
+
+    \item $a_2$
+    
+    \begin{pmatrix}
+        1 & -1 & 1 & -1
+    \end{pmatrix}
+    
+    \begin{pmatrix}
+        1 & 1 & 1 & 1 \\
+        1 & \omega & -1 & -\omega \\
+        1 & -1 & 1 & -1 \\
+        1 & -\omega & -1 & \omega 
+    \end{pmatrix}
+
+    \item $a_3$
+
+    \begin{pmatrix}
+        1 & \omega & -1 & -\omega
+    \end{pmatrix}
+    
+    \begin{pmatrix}
+        1 & 1 & 1 & 1 \\
+        1 & \omega & -1 & -\omega \\
+        1 & -1 & 1 & -1 \\
+        1 & -\omega & -1 & \omega 
+    \end{pmatrix}
+
+\end{itemize}
+
+
+
 \section{성능 개선}
+
 
 첫번째로 반복계산되는것을 임시변수로 만들어서 계산을 줄이는 방법이 있다.
 
@@ -268,7 +401,53 @@ y[k+(n/2)] = y_even[k] - wy_odd[k]
 두번째로 루프풀기가 있다.
 
 fft의 루프풀기는 꽤 복잡하다.
+분할정복기법에서 분할의 상태를 만들어놓고 반복문으로 conquer를 행한다.
+conquer시에 임시 배열로 할달되어 나뉘어져있던 짝수 홀수를 기존 하나의 큰 배열에 그대로 사용한다.
 
+
+분할의 상태를 만들어 놓기위해 임의 위치 이동이 행해진다.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.5]{pic1.PNG}
+\end{figure}
+
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.5]{pic1.PNG}
+    \caption{n = 8의 iterative-FFT 수행}
+\end{figure}
+
+
+
+\begin{lstlisting}[style = CStyle]
+ITERATIVE-FFT(a)
+    BIT-REVERSE-COPY(a, A)
+    n = a.length // n is a power of 2
+    for s = 1 to lg n
+        m = 2^s
+        w_m = e^{2pi i/m}
+        for k = 0 to n-1 by m
+            w = 1
+            for j = 0 to m/2 -1
+                t = w A[k+ j + m /2]
+                u = A[k + j]
+                A[k + j] = u + t
+                A[k+ j + m /2] = u - t
+                w = w_m
+    return A
+\end{lstlisting}
+
+\begin{lstlisting}[style = CStyle]
+BIT-REVERSE-COPY(a, A)
+    n = a.length
+    for k = 0 to n - 1
+        A[rev(k)] = a_k
+\end{lstlisting}
+
+
+마지막으로 parallel 알고리즘으로 바꾸는것이다.
 
 
 \begin{thebibliography}{}

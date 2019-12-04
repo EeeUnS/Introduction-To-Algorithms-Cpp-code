@@ -91,6 +91,22 @@ Ch 35 Approximation Algorithms
 
 4. [FFT]((./tex_project/FFT/FFT.pdf)
 
-# test code
+# Test code & header file
 
 [Graph](./docs/Graph/testcode)
+
+[Tree header](./docs/ch12/)
+
+[ch 15](./docs/ch15)
+
+[ch 16](./docs/ch16)
+
+[ch 28](./docs/ch28/28.cpp)
+
+[ch 31 RSA](./docs/ch31)
+
+[ch 6]()   not complete
+
+[ch 4](./docs/ch4)
+
+[ch 30 FFT]() not complete

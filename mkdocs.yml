@@ -1,7 +1,7 @@
 site_name: Introduction-To-Algorithms-Cpp-code
 
-theme: readthedocs
-
+theme:
+    name: 'material'
 extra_css:
   - 'css/katex.css'
   - 'https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css'
@@ -45,9 +45,9 @@ nav:
       - 21 Data Structures for Disjoint Sets: ch21/readme.md
   - VI Graph Algorithms:
       - 22 Elementary Graph Algorithms:
-        - 22.1~3 Graph,breadth, Depth search  : Graph/22.123.md
-        - 22.4 Topological sort: Graph/22.4_DAG.md
-        - 22.5 Strongly connected components: Graph/22.5_SCC.md
+        - 22.1~3 Graph,breadth, Depth search  : Graph/22_123.md
+        - 22.4 Topological sort: Graph/22_4_DAG.md
+        - 22.5 Strongly connected components: Graph/22_5_SCC.md
       - 23 Minimum Spanning Trees: Graph/23_MST.md
       - 24 Single-Source Shortest Paths: Graph/24_SSSP.md
       - 25 All-Pairs Shortest Paths: Graph/25_all_pairs_shortest_paths.md
@@ -58,3 +58,7 @@ nav:
       - 30 Polynomials and the FFT: ch30/readme.md
       - 31 Number-Theoretic Algorithms: ch31/readme.md
       - 32 String Matching: ch32/readme.md
+
+
+
+      

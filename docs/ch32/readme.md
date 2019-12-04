@@ -84,8 +84,8 @@ void RABIN_KARP_MATCHER(char T[], int n , char P[], int m, int d, int q)
 https://www.acmicpc.net/problem/1786
 
 
-Preprocessing time : $O(m^{3} |\Sigma|)$
-뒤의 kmp를 응용해서 해당 복잡도를 $O(m|\Sigma|)$로 줄일 수 있다.
+Preprocessing time : $O(m^{3} |\Sigma|) $
+뒤의 kmp를 응용해서 해당 복잡도를 $O(m|\Sigma|) $ 로 줄일 수 있다.
 
 Matching time $O(n)$
 ```C++

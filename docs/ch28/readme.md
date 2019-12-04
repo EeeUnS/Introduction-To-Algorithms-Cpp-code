@@ -5,11 +5,10 @@
 I'm setting matrix index 0 ~ n-1
 nxn mat
 
-  ```C++
-  typedef std::vector<std::vector<double>>  matrix;
+```C++
+typedef std::vector<std::vector<double>>  matrix;
 typedef std::pair<std::vector< std::vector<double>>, std::vector< std::vector<double>>>  Set;
-
-  ```
+```
   
 ## 28.1 Solving systems of linear equations
 

@@ -87,4 +87,4 @@ int sorting_insertion(T a[], int num, T item)
 
 	return num+1;
 }
-
+```

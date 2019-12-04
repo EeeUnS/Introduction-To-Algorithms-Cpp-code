@@ -107,6 +107,6 @@ Ch 35 Approximation Algorithms
 
 [ch 6]()   not complete
 
-[ch 4](./docs/ch4)
+[ch 4](./docs/ch4/4_1_testcode.cpp)
 
 [ch 30 FFT]() not complete

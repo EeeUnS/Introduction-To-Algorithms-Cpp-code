@@ -4,7 +4,7 @@ This is Cpp code from  pseudocode in CLRS
 
 ## I Foundations & II Sorting and Order Statistics
 
-Ch 2,4,6,7,8 [Sort](./1~8sort)
+Ch 2,4,6,7,8 [Sort](./docs/sort/)
 
 Ch 4 [Divide-and-Conquer](./docs/ch4/readme.md)
 
@@ -77,7 +77,7 @@ Ch 33 Computational Geometry
 Ch 35 Approximation Algorithms
 
 
-# [Tex](./tex_project/readme.md)
+# [Tex](https://github.com/EeeUnS/Introduction-To-Algorithms-Cpp-code/tree/master/tex_project)
 
 개인적으로 책 내용이 너무 어려워 이해하기가 어려웠던 부분을 다시 이해하기 쉽게 만든 pdf파일들입니다.
 

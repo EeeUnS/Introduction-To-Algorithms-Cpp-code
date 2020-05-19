@@ -1,39 +1,31 @@
 # 4.1 The maximum-subarray problem
 
+[boj](https://www.acmicpc.net/problem/1912)
 
 4.1-2 A brute-force solution
 $\Theta(n^2)$
-```C++
-int FIND_MAX_CROSSING_SUBARRAY(int A[], int n)
-{
-	const int INF = 1000000;
-	int maximum = -1000000;
-	for (int i = 0; i < n; i++)
-	{
-		int sub_max = A[i];
-		for (int j = i + 1; j < n; j++)
-		{ 
-			sub_max = sub_max + A[j];
-			maximum =  std::max(maximum , sub_max) ;
-		}
-	}
-	return maximum;
-}
-```
-
 
 daq
 $\Theta(n\log n)$
 ```C++
-
-std::tuple<int, int, int> FIND_MAX_CROSSING_SUBARRAY(int A[], int low, int mid, int high)///std::tuple<int, int, int> low , high ,sum
+struct subset
 {
-	const int INF = 1000000;
-	int left_sum = -INF;
-	int sum = 0;
-	int max_left = -1;
+	long long low;
+	long long high;
+	long long sum;
+};
 
-	for (int i = mid; i >= low; i--)
+subset FIND_MAX_CROSSING_SUBARRAY(long long A[], long long low, long long mid, long long high)
+{
+	long long left_sum = A[mid]-1;
+	long long sum = 0;
+
+	long long max_left = 0 ;
+	long long max_right = 0;
+	long long right_sum = 0;
+	
+
+	for (long long i = mid; i >= low; i--)
 	{
 		sum = sum + A[i];
 		if (sum > left_sum)
@@ -42,19 +34,47 @@ std::tuple<int, int, int> FIND_MAX_CROSSING_SUBARRAY(int A[], int low, int mid, 
 			max_left = i;
 		}
 	}
-	int right_sum = -INF, max_right = -1;
+
+	right_sum = A[mid + 1] -1;
+	
 	sum = 0;
-	for (int j = mid+1; j <= high ; j++)
+	for (long long j = mid + 1; j <= high; j++)
 	{
 		sum = sum + A[j];
 		if (sum > right_sum)
-		{
+		{ 
 			right_sum = sum;
 			max_right = j;
 		}
 	}
-	return(std::make_tuple(max_left,max_right,left_sum+right_sum));
+	return { max_left, max_right, left_sum + right_sum };
+ }
 
+subset FIND_MAXIMUM_SUBARRAY(long long A[], long long low, long long high)
+{
+	if (high == low)
+	{
+		return { low, high, A[low] }; // base case: only one element
+	}
+	else
+	{
+		long long mid = (low + high) / 2;
+		subset LEFT = FIND_MAXIMUM_SUBARRAY(A, low, mid);
+		subset RIGHT = FIND_MAXIMUM_SUBARRAY(A, mid + 1, high);
+		subset CROSS = FIND_MAX_CROSSING_SUBARRAY(A, low, mid, high);
+		if (LEFT.sum >= RIGHT.sum && LEFT.sum >= CROSS.sum)
+		{
+			return LEFT;
+		}
+		else if( RIGHT.sum >= LEFT.sum && RIGHT.sum >= CROSS.sum)
+		{ 
+			return RIGHT;
+		}
+		else
+		{
+			return CROSS;
+		}
+	}
 }
 ```
 
@@ -65,31 +85,38 @@ std::tuple<int, int, int> FIND_MAX_CROSSING_SUBARRAY(int A[], int low, int mid, 
 
 $O(n)$
 ```C++
-std::tuple<int, int, int>KADANE(int A[], int n)///std::tuple<int, int, int> low , high ,sum
+
+struct subset
 {
-	std::tuple<int, int, int> current_sum (0,0,0) ;
-	std::tuple<int, int, int> maximum ;
-	for (int i = 0; i < n; i++)
+	long long low;
+	long long high;
+	long long sum;
+};
+
+subset KADANE(int A[], int n)
+{
+	subset current_sum = { 0, 0, A[0] };
+	subset maximum = { 0, 0, A[0] };
+	for (int i = 1; i < n; i++)
 	{
-		if ( std::get<2>(current_sum) + A[i] > 0)
+		if (current_sum.sum + A[i] > A[i])
 		{
-			if (std::get<2>(current_sum) == 0)
-				std::get<0>(current_sum) = i;
-			std::get<2>(current_sum) = std::get<2>(current_sum) + A[i];
-			std::get<1>(current_sum) = i;
-			
+			if (current_sum.sum  == 0)
+				current_sum.low = i;
+			current_sum.sum  = current_sum.sum  + A[i];
+			current_sum.high = i;
 		}
 		else
 		{
-			std::get<2>(current_sum) = 0;
+			current_sum.sum  = A[i];
 		}
-		if (std::get<2>(maximum) < std::get<2>(current_sum))
+
+		if (maximum.sum < current_sum.sum )
 		{
-			std::get<0>(maximum) = std::get<0>(current_sum);
-			std::get<1>(maximum) = std::get<1>(current_sum);
-			std::get<2>(maximum) = std::get<2>(current_sum);
+			maximum.low = current_sum.low;
+			maximum.high = current_sum.high;
+			maximum.sum = current_sum.sum ;
 		}
-		
 	}
 	return maximum;
 }

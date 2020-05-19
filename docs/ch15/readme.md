@@ -16,9 +16,8 @@ std::vector<int> p ={ 0, 1,5,8,9,10,17,17,20,24,30 };
 
 완전 탐색 $O(2^n)$
 ```C++
-int CUT_ROD(std::vector<int>& p) // p는 index 1부터 저장되어있다.
+nt CUT_ROD(int p[], int n) // p는 index 1부터 저장되어있다.
 {
-	const int n = p.size()-1;
 	if (n == 0)
 	{
 		return 0;
@@ -26,7 +25,7 @@ int CUT_ROD(std::vector<int>& p) // p는 index 1부터 저장되어있다.
 	int q = INT32_MIN;
 	for (int i = 1; i <= n; i++)
 	{
-		q = std::max(q, p[i-1] + CUT_ROD(p, n - i));
+		q = std::max(q, p[i - 1] + CUT_ROD(p, n - i));
 	}
 }
 ```
@@ -36,24 +35,26 @@ $O(n)$
 
 메모이제이션 방법 (top-down with memoization)
 ```C++
-int MEMOIZED_CUT_ROD(std::vector<int> &p)
+
+int MEMOIZED_CUT_ROD(int p[], int n)
 {
-	const int n = p.size()-1;
-	std::vector<int> r(n+1, 0);
+	int* r = new int[n + 1];
 	for (int i = 0; i <= n; ++i)
 	{
 		r[i] = INT32_MIN;
 	}
 	int q = MEMOIZED_CUT_ROD_AUX(p, n, r);
+	delete[]r;
 	return q;
 }
+
 ```
 
 
 ```C++
-int MEMOIZED_CUT_ROD_AUX(std::vector<int> &p,std::vector<int> &r)
+
+int MEMOIZED_CUT_ROD_AUX(int p[], int n, int r[])
 {
-	const int n = p.size()-1;
 	int q;
 	if (r[n] >= 0)
 	{
@@ -61,7 +62,7 @@ int MEMOIZED_CUT_ROD_AUX(std::vector<int> &p,std::vector<int> &r)
 	}
 	if (n == 0)
 	{
-		 q = 0;
+		q = 0;
 	}
 	else
 	{
@@ -80,10 +81,9 @@ int MEMOIZED_CUT_ROD_AUX(std::vector<int> &p,std::vector<int> &r)
 
 bottm-up method(버튼업 /상향식)
 ```C++
-int BOTTOM_UP_CUT_ROD(std::vector<int> &p)
+int BOTTOM_UP_CUT_ROD(int p[], int n)
 {
-	const int n = p.size()-1;
-	std::vector<int> r(n+1, 0);
+	int* r = new int[n + 1];
 	r[0] = 0;
 	for (int j = 1; j <= n; j++)
 	{
@@ -94,16 +94,20 @@ int BOTTOM_UP_CUT_ROD(std::vector<int> &p)
 		}
 		r[j] = q;
 	}
+	delete[]r;
 	return r[n];
 }
 ```
 
 ```C++
-std::vector<std::vector<int>> EXTENDED_BOTTOM_UP_CUT_ROD(std::vector<int> &p)
+
+std::vector<std::vector<int>> EXTENDED_BOTTOM_UP_CUT_ROD(int p[], int n)
 {
-	const int n = p.size()-1;
 	const int INF = 10000000;
-	std::vector<std::vector<int>>rs(2, std::vector<int>(n+1, 0)); // r, s
+	std::vector<std::vector<int>>rs; // r, s
+	rs.resize(2);
+	rs[0].resize(n + 1);
+	rs[1].resize(n + 1);
 	rs[0][0] = 0;
 	for (int j = 1; j <= n; j++)
 	{

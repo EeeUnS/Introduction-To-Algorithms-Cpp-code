@@ -30,10 +30,10 @@ nt CUT_ROD(int p[], int n) // p는 index 1부터 저장되어있다.
 }
 ```
 
-$O(n)$
 
 
 메모이제이션 방법 (top-down with memoization)
+$O(n^2)$
 ```C++
 
 int MEMOIZED_CUT_ROD(int p[], int n)

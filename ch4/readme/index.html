@@ -11,10 +11,6 @@
       <meta http-equiv="x-ua-compatible" content="ie=edge">
       
       
-        <link rel="canonical" href="https://eeeuns.github.io/Introduction-To-Algorithms-Cpp-code/ch4/readme/">
-      
-      
-        <meta name="author" content="eeeuns">
       
       
         <meta name="lang:clipboard.copy" content="Copy to clipboard">
@@ -117,7 +113,7 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="https://eeeuns.github.io/Introduction-To-Algorithms-Cpp-code" title="Introduction-To-Algorithms-Cpp-code" class="md-header-nav__button md-logo">
+        <a href="../.." title="Introduction-To-Algorithms-Cpp-code" class="md-header-nav__button md-logo">
           
             <i class="md-icon"></i>
           
@@ -187,7 +183,7 @@
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="https://eeeuns.github.io/Introduction-To-Algorithms-Cpp-code" title="Introduction-To-Algorithms-Cpp-code" class="md-nav__button md-logo">
+    <a href="../.." title="Introduction-To-Algorithms-Cpp-code" class="md-nav__button md-logo">
       
         <i class="md-icon"></i>
       
@@ -693,39 +689,9 @@
                 
                 
                 <h1 id="41-the-maximum-subarray-problem">4.1 The maximum-subarray problem</h1>
+<p><a href="https://www.acmicpc.net/problem/1912">boj</a></p>
 <p>4.1-2 A brute-force solution
-$\Theta(n^2)$
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">int</span> <span class="nf">FIND_MAX_CROSSING_SUBARRAY</span><span class="p">(</span><span class="kt">int</span> <span class="n">A</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="k">const</span> <span class="kt">int</span> <span class="n">INF</span> <span class="o">=</span> <span class="mi">1000000</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="n">maximum</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1000000</span><span class="p">;</span>
-    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="kt">int</span> <span class="n">sub_max</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
-        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
-        <span class="p">{</span> 
-            <span class="n">sub_max</span> <span class="o">=</span> <span class="n">sub_max</span> <span class="o">+</span> <span class="n">A</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
-            <span class="n">maximum</span> <span class="o">=</span>  <span class="n">std</span><span class="o">::</span><span class="n">max</span><span class="p">(</span><span class="n">maximum</span> <span class="p">,</span> <span class="n">sub_max</span><span class="p">)</span> <span class="p">;</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="n">maximum</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-</td></tr></table></p>
+$\Theta(n^2)$</p>
 <p>daq
 $\Theta(n\log n)$
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
@@ -757,14 +723,62 @@ $\Theta(n\log n)$
 27
 28
 29
-30</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">tuple</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">FIND_MAX_CROSSING_SUBARRAY</span><span class="p">(</span><span class="kt">int</span> <span class="n">A</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">low</span><span class="p">,</span> <span class="kt">int</span> <span class="n">mid</span><span class="p">,</span> <span class="kt">int</span> <span class="n">high</span><span class="p">)</span><span class="c1">///std::tuple&lt;int, int, int&gt; low , high ,sum</span>
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">struct</span> <span class="n">subset</span>
 <span class="p">{</span>
-    <span class="k">const</span> <span class="kt">int</span> <span class="n">INF</span> <span class="o">=</span> <span class="mi">1000000</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="n">left_sum</span> <span class="o">=</span> <span class="o">-</span><span class="n">INF</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="n">max_left</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="kt">long</span> <span class="kt">long</span> <span class="n">low</span><span class="p">;</span>
+    <span class="kt">long</span> <span class="kt">long</span> <span class="n">high</span><span class="p">;</span>
+    <span class="kt">long</span> <span class="kt">long</span> <span class="n">sum</span><span class="p">;</span>
+<span class="p">};</span>
 
-    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">mid</span><span class="p">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="n">low</span><span class="p">;</span> <span class="n">i</span><span class="o">--</span><span class="p">)</span>
+<span class="n">subset</span> <span class="nf">FIND_MAX_CROSSING_SUBARRAY</span><span class="p">(</span><span class="kt">long</span> <span class="kt">long</span> <span class="n">A</span><span class="p">[],</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">low</span><span class="p">,</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">mid</span><span class="p">,</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">high</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">long</span> <span class="kt">long</span> <span class="n">left_sum</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="kt">long</span> <span class="kt">long</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="kt">long</span> <span class="kt">long</span> <span class="n">max_left</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">;</span>
+    <span class="kt">long</span> <span class="kt">long</span> <span class="n">max_right</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">long</span> <span class="kt">long</span> <span class="n">right_sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+
+    <span class="k">for</span> <span class="p">(</span><span class="kt">long</span> <span class="kt">long</span> <span class="n">i</span> <span class="o">=</span> <span class="n">mid</span><span class="p">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="n">low</span><span class="p">;</span> <span class="n">i</span><span class="o">--</span><span class="p">)</span>
     <span class="p">{</span>
         <span class="n">sum</span> <span class="o">=</span> <span class="n">sum</span> <span class="o">+</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">sum</span> <span class="o">&gt;</span> <span class="n">left_sum</span><span class="p">)</span>
@@ -773,19 +787,47 @@ $\Theta(n\log n)$
             <span class="n">max_left</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
         <span class="p">}</span>
     <span class="p">}</span>
-    <span class="kt">int</span> <span class="n">right_sum</span> <span class="o">=</span> <span class="o">-</span><span class="n">INF</span><span class="p">,</span> <span class="n">max_right</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+
+    <span class="n">right_sum</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+
     <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">mid</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">high</span> <span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">long</span> <span class="kt">long</span> <span class="n">j</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">high</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
     <span class="p">{</span>
         <span class="n">sum</span> <span class="o">=</span> <span class="n">sum</span> <span class="o">+</span> <span class="n">A</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">sum</span> <span class="o">&gt;</span> <span class="n">right_sum</span><span class="p">)</span>
-        <span class="p">{</span>
+        <span class="p">{</span> 
             <span class="n">right_sum</span> <span class="o">=</span> <span class="n">sum</span><span class="p">;</span>
             <span class="n">max_right</span> <span class="o">=</span> <span class="n">j</span><span class="p">;</span>
         <span class="p">}</span>
     <span class="p">}</span>
-    <span class="k">return</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">make_tuple</span><span class="p">(</span><span class="n">max_left</span><span class="p">,</span><span class="n">max_right</span><span class="p">,</span><span class="n">left_sum</span><span class="o">+</span><span class="n">right_sum</span><span class="p">));</span>
+    <span class="k">return</span> <span class="p">{</span> <span class="n">max_left</span><span class="p">,</span> <span class="n">max_right</span><span class="p">,</span> <span class="n">left_sum</span> <span class="o">+</span> <span class="n">right_sum</span> <span class="p">};</span>
+ <span class="p">}</span>
 
+<span class="n">subset</span> <span class="nf">FIND_MAXIMUM_SUBARRAY</span><span class="p">(</span><span class="kt">long</span> <span class="kt">long</span> <span class="n">A</span><span class="p">[],</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">low</span><span class="p">,</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">high</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">high</span> <span class="o">==</span> <span class="n">low</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="p">{</span> <span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">A</span><span class="p">[</span><span class="n">low</span><span class="p">]</span> <span class="p">};</span> <span class="c1">// base case: only one element</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="kt">long</span> <span class="kt">long</span> <span class="n">mid</span> <span class="o">=</span> <span class="p">(</span><span class="n">low</span> <span class="o">+</span> <span class="n">high</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+        <span class="n">subset</span> <span class="n">LEFT</span> <span class="o">=</span> <span class="n">FIND_MAXIMUM_SUBARRAY</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">mid</span><span class="p">);</span>
+        <span class="n">subset</span> <span class="n">RIGHT</span> <span class="o">=</span> <span class="n">FIND_MAXIMUM_SUBARRAY</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">high</span><span class="p">);</span>
+        <span class="n">subset</span> <span class="n">CROSS</span> <span class="o">=</span> <span class="n">FIND_MAX_CROSSING_SUBARRAY</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">mid</span><span class="p">,</span> <span class="n">high</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">LEFT</span><span class="p">.</span><span class="n">sum</span> <span class="o">&gt;=</span> <span class="n">RIGHT</span><span class="p">.</span><span class="n">sum</span> <span class="o">&amp;&amp;</span> <span class="n">LEFT</span><span class="p">.</span><span class="n">sum</span> <span class="o">&gt;=</span> <span class="n">CROSS</span><span class="p">.</span><span class="n">sum</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="n">LEFT</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="k">if</span><span class="p">(</span> <span class="n">RIGHT</span><span class="p">.</span><span class="n">sum</span> <span class="o">&gt;=</span> <span class="n">LEFT</span><span class="p">.</span><span class="n">sum</span> <span class="o">&amp;&amp;</span> <span class="n">RIGHT</span><span class="p">.</span><span class="n">sum</span> <span class="o">&gt;=</span> <span class="n">CROSS</span><span class="p">.</span><span class="n">sum</span><span class="p">)</span>
+        <span class="p">{</span> 
+            <span class="k">return</span> <span class="n">RIGHT</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">else</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="n">CROSS</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </td></tr></table></p>
@@ -819,31 +861,43 @@ $\Theta(n\log n)$
 25
 26
 27
-28</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">tuple</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span><span class="n">KADANE</span><span class="p">(</span><span class="kt">int</span> <span class="n">A</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span><span class="c1">///std::tuple&lt;int, int, int&gt; low , high ,sum</span>
+28
+29
+30
+31
+32
+33
+34</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">struct</span> <span class="n">subset</span>
 <span class="p">{</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">tuple</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">current_sum</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="p">;</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">tuple</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">maximum</span> <span class="p">;</span>
-    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="n">get</span><span class="o">&lt;</span><span class="mi">2</span><span class="o">&gt;</span><span class="p">(</span><span class="n">current_sum</span><span class="p">)</span> <span class="o">+</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">get</span><span class="o">&lt;</span><span class="mi">2</span><span class="o">&gt;</span><span class="p">(</span><span class="n">current_sum</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
-                <span class="n">std</span><span class="o">::</span><span class="n">get</span><span class="o">&lt;</span><span class="mi">0</span><span class="o">&gt;</span><span class="p">(</span><span class="n">current_sum</span><span class="p">)</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
-            <span class="n">std</span><span class="o">::</span><span class="n">get</span><span class="o">&lt;</span><span class="mi">2</span><span class="o">&gt;</span><span class="p">(</span><span class="n">current_sum</span><span class="p">)</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">get</span><span class="o">&lt;</span><span class="mi">2</span><span class="o">&gt;</span><span class="p">(</span><span class="n">current_sum</span><span class="p">)</span> <span class="o">+</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
-            <span class="n">std</span><span class="o">::</span><span class="n">get</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">(</span><span class="n">current_sum</span><span class="p">)</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+    <span class="kt">long</span> <span class="kt">long</span> <span class="n">low</span><span class="p">;</span>
+    <span class="kt">long</span> <span class="kt">long</span> <span class="n">high</span><span class="p">;</span>
+    <span class="kt">long</span> <span class="kt">long</span> <span class="n">sum</span><span class="p">;</span>
+<span class="p">};</span>
 
+<span class="n">subset</span> <span class="nf">KADANE</span><span class="p">(</span><span class="kt">int</span> <span class="n">A</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">subset</span> <span class="n">current_sum</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">};</span>
+    <span class="n">subset</span> <span class="n">maximum</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">};</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">current_sum</span><span class="p">.</span><span class="n">sum</span> <span class="o">+</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">current_sum</span><span class="p">.</span><span class="n">sum</span>  <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+                <span class="n">current_sum</span><span class="p">.</span><span class="n">low</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+            <span class="n">current_sum</span><span class="p">.</span><span class="n">sum</span>  <span class="o">=</span> <span class="n">current_sum</span><span class="p">.</span><span class="n">sum</span>  <span class="o">+</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+            <span class="n">current_sum</span><span class="p">.</span><span class="n">high</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
         <span class="p">}</span>
         <span class="k">else</span>
         <span class="p">{</span>
-            <span class="n">std</span><span class="o">::</span><span class="n">get</span><span class="o">&lt;</span><span class="mi">2</span><span class="o">&gt;</span><span class="p">(</span><span class="n">current_sum</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-        <span class="p">}</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">get</span><span class="o">&lt;</span><span class="mi">2</span><span class="o">&gt;</span><span class="p">(</span><span class="n">maximum</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">get</span><span class="o">&lt;</span><span class="mi">2</span><span class="o">&gt;</span><span class="p">(</span><span class="n">current_sum</span><span class="p">))</span>
-        <span class="p">{</span>
-            <span class="n">std</span><span class="o">::</span><span class="n">get</span><span class="o">&lt;</span><span class="mi">0</span><span class="o">&gt;</span><span class="p">(</span><span class="n">maximum</span><span class="p">)</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">get</span><span class="o">&lt;</span><span class="mi">0</span><span class="o">&gt;</span><span class="p">(</span><span class="n">current_sum</span><span class="p">);</span>
-            <span class="n">std</span><span class="o">::</span><span class="n">get</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">(</span><span class="n">maximum</span><span class="p">)</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">get</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">(</span><span class="n">current_sum</span><span class="p">);</span>
-            <span class="n">std</span><span class="o">::</span><span class="n">get</span><span class="o">&lt;</span><span class="mi">2</span><span class="o">&gt;</span><span class="p">(</span><span class="n">maximum</span><span class="p">)</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">get</span><span class="o">&lt;</span><span class="mi">2</span><span class="o">&gt;</span><span class="p">(</span><span class="n">current_sum</span><span class="p">);</span>
+            <span class="n">current_sum</span><span class="p">.</span><span class="n">sum</span>  <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
         <span class="p">}</span>
 
+        <span class="k">if</span> <span class="p">(</span><span class="n">maximum</span><span class="p">.</span><span class="n">sum</span> <span class="o">&lt;</span> <span class="n">current_sum</span><span class="p">.</span><span class="n">sum</span> <span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">maximum</span><span class="p">.</span><span class="n">low</span> <span class="o">=</span> <span class="n">current_sum</span><span class="p">.</span><span class="n">low</span><span class="p">;</span>
+            <span class="n">maximum</span><span class="p">.</span><span class="n">high</span> <span class="o">=</span> <span class="n">current_sum</span><span class="p">.</span><span class="n">high</span><span class="p">;</span>
+            <span class="n">maximum</span><span class="p">.</span><span class="n">sum</span> <span class="o">=</span> <span class="n">current_sum</span><span class="p">.</span><span class="n">sum</span> <span class="p">;</span>
+        <span class="p">}</span>
     <span class="p">}</span>
     <span class="k">return</span> <span class="n">maximum</span><span class="p">;</span>
 <span class="p">}</span>

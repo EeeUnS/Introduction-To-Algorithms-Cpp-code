@@ -350,11 +350,11 @@ std::vector<std::vector<int>>FLOYD_WARSHALL(std::vector<std::vector<int>>& W)
 		}
 	}
 	D[0] = W;
-    for(int k = 1 ; k< n  ;k++)
+    for(int k = 1 ; k <= n  ;k++)
     {
-        for(int i = 1 ; i < n ; i++)
+        for(int i = 1 ; i <= n ; i++)
         {
-            for(int j = 1 ; j < n ;j++)
+            for(int j = 1 ; j <= n ;j++)
             {
                 D[k][i][j] = (D[k-1][i][j] < D[k-1][i][k] + D[k-1][k][j] ?  D[k-1][i][j] : D[k-1][i][k] + D[k-1][k][j]);
             }
@@ -531,12 +531,9 @@ std::vector<std::vector<int>>FLOYD_WARSHALL_apostrophe_pi(std::vector<std::vecto
 ```
 
 
-
-
-
-
 25.2-4
-```C++
+
+```c++
 std::vector<std::vector<int>>FLOYD_WARSHALL_apostrophe(std::vector<std::vector<int>>& W)
 {
 	const int n = W.size();
@@ -562,14 +559,13 @@ std::vector<std::vector<int>>FLOYD_WARSHALL_apostrophe(std::vector<std::vector<i
 ```
 
 # 25.3 Johnson's algorithm for sparse graphs
+
 인접리스트 Graph+W행렬과 인접리스트 가중치 그래프 각각으로 짜여져있다
 
 
-
-
 O(VElgV)
-```C++
 
+```c++
 void INITIALIZE_SINGLE_SOURCE(std::vector<std::vector<int>>& Graph,
 	std::vector<int>& Distance, int s)
 {
@@ -728,6 +724,7 @@ std::vector<std::vector<int>> JOHNSON(std::vector<std::vector<int>>& Graph,
 
 
 pair(정점,가중치) 가중치 인접그래프,
+
 ```C++
 void INITIALIZE_SINGLE_SOURCE(std::vector<std::vector<std::pair<int, int>>>& Graph,
 	std::vector<int>& Distance, int s)
@@ -820,7 +817,6 @@ void DIJKSTRA(std::vector<std::vector<std::pair<int, int>>>& Graph,
 	}
 }
 
-
 //graph pair(정점,가중치)
 std::vector<std::vector<int>> JOHNSON(std::vector<std::vector<std::pair<int, int>>>& Graph
 )
@@ -877,5 +873,4 @@ std::vector<std::vector<int>> JOHNSON(std::vector<std::vector<std::pair<int, int
 
 	return D;
 }
-
-
+```

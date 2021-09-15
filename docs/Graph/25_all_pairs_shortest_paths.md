@@ -34,7 +34,7 @@ void PRINT_ALL_PAIRS_SHORTEST_PATH(std::vector<std::vector<int>> pi, int i, int 
 
 ```C++
 #include<iomanip>
-void print_matrix(std::vector < std::vector<int>>& m)
+void print_matrix(std::vector<std::vector<int>>& m)
 {
 	const int n = m.size();
 
@@ -52,21 +52,19 @@ void print_matrix(std::vector < std::vector<int>>& m)
 	}
 	std::cout << '\n' << '\n';
 }
-
 ```
 
 
 # 25.1 Shortest paths and matrix multiplication
 
 $O(V^3)$
+
 ```C++
 std::vector<std::vector<int>> EXTEND_SHORTEST_PATHS(std::vector<std::vector<int>>& L, std::vector<std::vector<int>>& W)
 {
 	const int n = L.size();
 
-
-	std::vector<std::vector<int>> L_prime;
-	L_prime.assign(n, std::vector<int>(n, INF));
+	std::vector<std::vector<int>> L_prime(n, std::vector<int>(n, INF));
 	for(int i = 1; i < n; i++)
 	{
 		for (int j = 1; j < n; j++)
@@ -89,18 +87,9 @@ std::vector<std::vector<int>> EXTEND_SHORTEST_PATHS(std::vector<std::vector<int>
 //nxn 1~n
 std::vector<std::vector<int>>SLOW_ALL_PAIRS_SHORTEST_PATHS(std::vector<std::vector<int>>& W)
 {
-	const int n = W.size() - 1;
+	const int n = W.size();
 
-	std::vector<std::vector<std::vector<int>>> L;
-	L.resize(n+1);
-	for (int i = 0 ; i < n+1;i++)
-	{
-		L[i].resize(n+1);
-		for (int j = 0; j < n + 1; j++)
-		{
-			L[i][j].resize(n + 1);
-		}
-	}
+	std::vector<std::vector<std::vector<int>>> L(n, std::vector<std::vector<int>>(n, std::vector<int>(n)));
 	L[1] = W;
 	for (int m = 2; m < n; m++)
 	{
@@ -113,31 +102,22 @@ std::vector<std::vector<int>>SLOW_ALL_PAIRS_SHORTEST_PATHS(std::vector<std::vect
 
 
 총 $O(V^3 \log (V))$
+
 ```C++
 std::vector<std::vector<int>>FASTER_ALL_PAIRS_SHORTEST_PATHS(std::vector<std::vector<int>>& W)
 {
 	const int n = W.size() - 1;
 
-	std::vector<std::vector<std::vector<int>>> L;
 	int a = 1;
 	while (a < n)
 	{
 		a = a * 2;
 	}
-
-
-	L.resize(a+1);
-	for (int i = 0; i <= a ; i++)
-	{
-		L[i].resize(n+1);
-		for (int j = 0; j <= n ; j++)
-		{
-			L[i][j].resize(n + 1);
-		}
-	}
+	std::vector<std::vector<std::vector<int>>> L(a+1, std::vector<std::vector<int>>(n, std::vector<int>(n)));
 	L[1] = W;
+
 	int m = 1;
-	while(m < n -1)
+	while(m < n - 1)
 	{
 		L[2*m] = EXTEND_SHORTEST_PATHS(L[m], L[m]);
 		m = m*2;
@@ -339,16 +319,7 @@ n = n+1
 std::vector<std::vector<int>>FLOYD_WARSHALL(std::vector<std::vector<int>>& W)
 {
     const int n = W.size();
-    std::vector<std::vector<std::vector<int>>> D;
-    D.resize(n);
-    for (int i = 0; i < n ; i++)
-	{
-		D[i].resize(n);
-		for (int j = 0; j < n ; j++)
-		{
-			D[i][j].resize(n);
-		}
-	}
+    std::vector<std::vector<std::vector<int>>> D(n, std::vector<std::vector<int>>(n, std::vector<int>(n)));
 	D[0] = W;
     for(int k = 1 ; k <= n  ;k++)
     {
@@ -370,22 +341,12 @@ Graph is nxn matrix
 ```C++
 std::vector<std::vector<int>>TRANSITIVE_CLOSURE(std::vector<std::vector<int>>& G)
 {
-	const int n = G.size() - 1;
-	std::vector<std::vector<std::vector<int>>> T;
+	const int n = G.size();
+    std::vector<std::vector<std::vector<int>>> T(n, std::vector<std::vector<int>>(n, std::vector<int>(n)));
 
-	T.resize(n + 1);
-	for (int i = 0; i <= n; i++)
+	for (int i = 1; i < n; i++)
 	{
-		T[i].resize(n + 1);
-		for (int j = 0; j <= n; j++)
-		{
-			T[i][j].resize(n + 1);
-		}
-	}
-
-	for (int i = 1; i <= n; i++)
-	{
-		for (int j = 1; j <= n; j++)
+		for (int j = 1; j < n; j++)
 		{
 			if ((i == j) || (G[i][j] != 0))
 			{
@@ -398,17 +359,17 @@ std::vector<std::vector<int>>TRANSITIVE_CLOSURE(std::vector<std::vector<int>>& G
 			}
 		}
 	}
-	for (int k = 1; k <= n; k++)
+	for (int k = 1; k < n; k++)
 	{
-		for (int i = 1; i <= n; i++)
+		for (int i = 1; i < n; i++)
 		{
-			for (int j = 1; j <= n; j++)
+			for (int j = 1; j < n; j++)
 			{
 				T[k][i][j] = T[k - 1][i][j] | (T[k - 1][i][k] & T[k - 1][k][j]);
 			}
 		}
 	}
-	return  T[n];
+	return  T[n - 1];
 }
 ```
 
@@ -420,19 +381,15 @@ std::vector<std::vector<int>>TRANSITIVE_CLOSURE(std::vector<std::vector<int>>& G
 ```C++
 std::vector<std::vector<int>>FLOYD_WARSHALL_apostrophe_pi(std::vector<std::vector<int>>& W, std::vector<std::vector<int>>& pi )
 {
-	const int n = W.size()-1;
+	const int n = W.size() - 1;
 	std::vector<std::vector<int>> D = W;
 	std::vector<std::vector<std::vector<int>>> pi_prime;
-
-	pi_prime.resize(n + 1);
-
+    std::vector<std::vector<std::vector<int>>> pi_prime(n + 1, std::vector<std::vector<int>>(n + 1, std::vector<int>(n + 1)));
 
 	for (int k = 0; k <= n; k++)
 	{
-		pi_prime[k].resize(n + 1);
 		for (int i = 0; i <= n; i++)
 		{
-			pi_prime[k][i].resize(n + 1);
 			for (int j = 0; j <= n; j++)
 			{
 				if ((i == j) || (pi_prime[k][i][j] == INF))
@@ -481,7 +438,6 @@ std::vector<std::vector<int>>FLOYD_WARSHALL_apostrophe_pi(std::vector<std::vecto
 	pi.swap(pi_prime[n]);
 	return  D;
 }
-
 ```
 
 공간복잡도 $O(n^2)$
@@ -490,14 +446,7 @@ std::vector<std::vector<int>>FLOYD_WARSHALL_apostrophe_pi(std::vector<std::vecto
 {
 	const int n = W.size()-1;
 	std::vector<std::vector<int>> D = W;
-	std::vector<std::vector<int>> pi_prime;
-
-	pi_prime.resize(n + 1);
-	for (int i = 1; i <= n; i++)
-	{
-		pi_prime[i].resize(n + 1);
-	}
-
+	std::vector<std::vector<int>> pi_prime(n + 1, std::vector<int>(n + 1));
 
 	for (int i = 1; i <= n; i++)
 	{
@@ -537,13 +486,8 @@ std::vector<std::vector<int>>FLOYD_WARSHALL_apostrophe_pi(std::vector<std::vecto
 std::vector<std::vector<int>>FLOYD_WARSHALL_apostrophe(std::vector<std::vector<int>>& W)
 {
 	const int n = W.size();
-	std::vector<std::vector<int>> D;
-	D.resize(n);
-	for (int i = 0; i < n; i++)
-	{
-		D[i].resize(n);
-	}
-	D = W;
+	std::vector<std::vector<int>> D(W);
+
 	for (int k = 1; k < n; k++)
 	{
 		for (int i = 1; i < n; i++)

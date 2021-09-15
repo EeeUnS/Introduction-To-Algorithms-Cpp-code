@@ -49,13 +49,14 @@ Ch 22.5 [Strongly connected component](./docs/Graph/22_5_SCC.md)
 
 Ch 23 [Minimum Spaning Tree](./docs/Graph/23_MST.md)
 
-Ch 24 [Single Source Shortest Paths](./docs/Graph/24_SSSP.md.md)
+Ch 24 [Single Source Shortest Paths](./docs/Graph/24_SSSP.md)
 
-Ch 25 [All-Pairs Shortest Paths](./docs/Graph/25_all_pairs_shortest_paths.md.md)
+Ch 25 [All-Pairs Shortest Paths](./docs/Graph/25_all_pairs_shortest_paths.md)
+
+Ch 26 [Maximum Flow](./docs/Graph/26_maximum_flow.md)
 
 
 ## VII Selected Topics
-
 
 
 Ch 27 [Multithreaded Algorithms](./docs/ch27/readme.md)
@@ -72,7 +73,7 @@ Ch 31 [Number-Theoretic Algorithms](./docs/ch31/readme.md)
 
 Ch 32 [String Matching](./docs/ch32/readme.md)
 
-Ch 33 Computational Geometry
+Ch 33 [Computational Geometry](./docs/ch33/readme.md)
 
 Ch 35 Approximation Algorithms
 

@@ -4,7 +4,6 @@
 #include <iostream>
 #include <valarray>
 
-
 using namespace std;
 
 typedef complex<double> base;

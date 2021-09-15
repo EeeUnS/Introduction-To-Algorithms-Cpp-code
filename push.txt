@@ -1,0 +1,3 @@
+git bash
+mkdocs gh-deploy
+mkdocs serve

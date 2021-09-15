@@ -20,6 +20,10 @@ void PRINT_PATH(int s, int v)
 }
 ```
 
+- 2차 vector G
+- s 정점으로부터 출발
+- distance는 정점 s로부터의 거리 
+
 ```C++
 void INITIALIZE_SINGLE_SOURCE(const Graph& G,
 	std::vector<int>& Distance, int s)
@@ -33,9 +37,12 @@ void INITIALIZE_SINGLE_SOURCE(const Graph& G,
 ```
 
 
-완화에서 다음 프로시저를 실행하고 하면된다. predecessor_subgraph[v] = u;
+완화에서 다음 프로시저를 실행하고 하면된다. 
+predecessor_subgraph[v] = u;
 
 # 24.1 BELLMAN FORD
+
+- u -> v : 가중치 w
 
 ```C++
 void BF_RELAX(int u, int v, int w, std::vector<int>& Distance)
@@ -99,10 +106,9 @@ bool BELLMAN_FORD(const Graph& G,
 	W[4][5] = -1;
 	W[4][6] = 1;
 	W[5][6] = -2;
-
 ```
 
-$\Theta (V+E)$
+$\Theta(V+E)$
 ```C++
 void DFS_TS(const Graph& G, std::vector<bool> &visit, 
 	stack<int> &S, int x)
@@ -116,7 +122,6 @@ void DFS_TS(const Graph& G, std::vector<bool> &visit,
 		if (visit[next] != true)
 		{
 			DFS_TS(G,visit,S,next);
-
 		}
 	}
 	S.push(x);
@@ -194,9 +199,11 @@ PQ의 탑 디스턴스값을 갱신시켜야한다 따라서 뽑고 다시넣는
 
 ```C++
 void DIJK_RELAX(int u, int v, int w, std::vector<int >& Distance,
-	std::priority_queue<std::pair<int, int>,
-	std::vector<std::pair<int, int>>,
-	std::greater<std::pair<int, int>> >& PQ)
+	
+	std::priority_queue<
+	std::pair<int, int>,	
+	std::vector<std::pair<int, int>>,	std::greater<std::pair<int, int>> 
+	>& PQ)
 {
 	if ((Distance[u] != INF) && (Distance[v] > Distance[u] + w))
 	{
@@ -208,7 +215,7 @@ void DIJK_RELAX(int u, int v, int w, std::vector<int >& Distance,
 ```
 
 ```C++
-void DIJKSTRA(const Graph>& G,
+void DIJKSTRA(const Graph& G,
 	std::vector<std::vector<int>>& W,
 	std::vector<int> &Distance, int s)
 {
@@ -230,6 +237,5 @@ void DIJKSTRA(const Graph>& G,
 		}
 	}
 }
-
 ```
 

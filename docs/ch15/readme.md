@@ -140,6 +140,8 @@ void PRINT_CUT_ROD_COLUTION(int p[], int n)
 
 # 15.2 Matrix_chain_multiplication
 
+https://www.acmicpc.net/problem/11049
+
 ```C++
 typedef std::pair<std::vector<std::vector<int>>,std::vector<std::vector<int>>> Set;
 ```
@@ -263,7 +265,9 @@ int MEMORIZED_MATRIX_CHAIN(const std::vector<int> &p)
 
 
 # 15.4 Longest common subsequence
-참고 : https://www.acmicpc.net/problem/9251
+참고 : 
+https://www.acmicpc.net/problem/9251
+https://www.acmicpc.net/problem/9252
 
 $O(mn)$
 ```C++
@@ -346,6 +350,68 @@ void PRINT_LCS(const std::vector<std::vector<arrow>> b ,const char* XX, int i , 
         PRINT_LCS(b,X+1,i, j-1);
 }
 ```
+
+
+```
+int table[1001][1001];
+char arr[1002];
+char brr[1002];
+
+
+const int asize = strlen(arr);
+const int bsize = strlen(brr);
+for (int i = 1; i < asize + 1; i++)
+{
+	for (int j = 1; j < bsize + 1; j++)
+	{
+		if (arr[i - 1] == brr[j - 1])
+		{
+			table[i][j] = table[i - 1][j - 1] + 1;
+		}
+		else if (table[i - 1][j] > table[i][j - 1])
+		{
+			table[i][j] = table[i - 1][j];
+		}
+		else
+		{
+			table[i][j] = table[i][j - 1];
+		}
+	}
+}
+
+
+stack<char> stk;
+int i = asize, j = bsize;
+while(!(j == 0 || i == 0))
+{
+	if (arr[i-1] == brr[j-1])
+	{
+		i--; j--;
+		stk.push(arr[i]);
+	}
+	else if (table[i-1][j] >= table[i][j-1])
+	{
+		i--;
+	}
+	else
+	{
+		j--;
+	}
+}
+
+while(!stk.empty())
+{
+	cout << stk.top();
+	stk.pop();
+}
+```
+
+- table[asize][bsize]
+- stk
+
+
+https://www.acmicpc.net/problem/9252
+
 # 15.5 Optimal binary search trees 
 
 

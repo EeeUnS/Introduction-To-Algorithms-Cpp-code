@@ -205,36 +205,24 @@ $O(k \log^3 n)$
 
 
 ```C++
-
-bool WITNESS(int a, int n)
+bool WITNESS(ull a, ull n, ull u, ull t)
 {
-	int t = 1;
-	int et = 2;
-	while ((n - 1)%et == 0)
-	{
-		et *= 2;
-		t++;
-	}
-	et /= 2;
-	t--;
-	int u = (n-1) / et;
-	int x_pre = MODULAR_EXPONENTIATION(a, u, n);
-	int x = x_pre;
-	for (int i = 0; i < t; i++)
-	{
-		x = (x_pre * x_pre) % n;
-		if (x == 1 && x_pre != 1 && x_pre != n - 1)
-		{
-			return true;
-		}
-		x_pre = x;
-	}
-	if (x != 1)
-		return true;
-	return false;
+    ull x_pre = MODULAR_EXPONENTIATION(a, u, n);
+    ull x = x_pre;
+    for (int i = 0; i < t; i++)
+    {
+        x = (x_pre * x_pre) % n;
+        if (x == 1 && x_pre != 1 && x_pre != n - 1)
+        {
+            return true;
+        }
+        x_pre = x;
+    }
+    if (x != 1)
+        return true;
+    return false;
 }
 ```
-
 a = 2,3,5,7,11,13,17, 31,61 ,73
 정도로할때 정수표현가능한 모든 소수를 판ㄴ별할수있다.
 
@@ -242,29 +230,45 @@ a = 2,3,5,7,11,13,17, 31,61 ,73
 constexpr bool PRIME = true;
 constexpr bool COMPOSITE = false;
 
-bool MILLER_RABIN(int n, int s)
+
+constexpr bool PRIME = true;
+constexpr bool COMPOSITE = false;
+
+bool MILLER_RABIN(ull n)
 {
-	if (n == 2)
-	{
-		return PRIME;
-	}
-	if (n == 1 || n%2 == 0)
-	{
-		return COMPOSITE;
+    if (n == 2)
+    {
+        return PRIME;
+    }
+    if (n == 1 || n % 2 == 0)
+    {
+        return COMPOSITE;
+    }
 
-	}
-	int a = 1;
-	for (int j = 0; j < (n-1)/2 ; j++)
+    ull t = 0;
+    ull u = n - 1;
+    while (u % 2 == 0) 
 	{
-		a++;
-		if (WITNESS(a, n)) //합성수일시 true 반환
-		{
-			return COMPOSITE;
-		}
-	}
-	return PRIME; //probably
+        t++;
+        u = u >> 1;
+    }
+
+    //, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 61, 73
+    ull test[] = { 2, 3};
+
+    for(auto a : test)
+    {
+        if (n == a)
+        {
+            return PRIME;
+        }
+        if (WITNESS(a, n, u, t)) //합성수일시 true 반환
+        {
+            return COMPOSITE;
+        }
+    }
+    return PRIME; //probably
 }
-
 ```
 전체적으로 소수들을 구할때는 에라토스테네스의 체가 효율적이라고 생각.
 

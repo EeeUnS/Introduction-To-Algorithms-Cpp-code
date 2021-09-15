@@ -154,6 +154,7 @@ std::vector<std::vector<int>> COMPUTE_TRANSITION_FUNCTION(char P[],int sigma, in
 
 # 32.4 The Knuth-Morris-Pratt algorithm
 
+https://www.acmicpc.net/problem/1786
 
 Preprocessing time : $O(m)$
 
@@ -193,7 +194,7 @@ std::vector<int> COMPUTE_PREFIX_FUNCTION(char P[], int m)
 	int k = -1; 
 	for (int q = 1; q < m; q++)
 	{
-		while (k >= 0 && P[k+1] != P[q])
+		while (k > 0 && P[k+1] != P[q])
 		{
 			k = pi[k];
 		}

@@ -51,6 +51,7 @@ nav:
       - 23 Minimum Spanning Trees: Graph/23_MST.md
       - 24 Single-Source Shortest Paths: Graph/24_SSSP.md
       - 25 All-Pairs Shortest Paths: Graph/25_all_pairs_shortest_paths.md
+      - 26 Maximum Flow: Graph/26_maximum_flow.md
   - VII Selected Topics:
       - 27 Multithreaded Algorithms: ch27/readme.md
       - 28 Matrix Operations: ch28/readme.md
@@ -58,6 +59,7 @@ nav:
       - 30 Polynomials and the FFT: ch30/readme.md
       - 31 Number-Theoretic Algorithms: ch31/readme.md
       - 32 String Matching: ch32/readme.md
+      - 33 Computational Geometry: ch33/readme.md
 
 
 

@@ -766,7 +766,7 @@
 </td></tr></table>
 
 <h2 id="222breath-first-search">22.2Breath first search</h2>
-<p>$O(V+E)$
+<p>$O(V+E)$</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
@@ -817,7 +817,8 @@
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
-</td></tr></table></p>
+</td></tr></table>
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">void</span> <span class="n">PRINT_PATH</span><span class="p">(</span><span class="kt">int</span> <span class="n">s</span><span class="p">,</span><span class="kt">int</span> <span class="n">v</span><span class="p">)</span>
 <span class="c1">// go to testcode PRINT_PATH.cpp</span>
@@ -866,7 +867,7 @@
     <span class="p">{</span>
         <span class="kt">int</span> <span class="n">next</span> <span class="o">=</span> <span class="n">G</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">i</span><span class="p">];</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">visit</span><span class="p">[</span><span class="n">next</span><span class="p">]</span> <span class="o">!=</span> <span class="nb">true</span><span class="p">)</span>
-            <span class="n">DFS_VISIT</span><span class="p">(</span> <span class="n">G</span><span class="p">,</span> <span class="n">next</span><span class="p">,</span><span class="n">visit</span><span class="p">);</span>
+            <span class="n">DFS_VISIT</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">next</span><span class="p">,</span><span class="n">visit</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -901,8 +902,7 @@
 26
 27
 28
-29
-30</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">void</span> <span class="nf">DFS</span><span class="p">(</span><span class="k">const</span> <span class="n">Graph</span> <span class="o">&amp;</span><span class="n">G</span><span class="p">,</span> <span class="kt">int</span> <span class="n">x</span><span class="p">)</span>
+29</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">void</span> <span class="nf">DFS</span><span class="p">(</span><span class="k">const</span> <span class="n">Graph</span> <span class="o">&amp;</span><span class="n">G</span><span class="p">,</span> <span class="kt">int</span> <span class="n">x</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span> <span class="n">visit</span><span class="p">(</span><span class="n">G</span><span class="p">.</span><span class="n">size</span><span class="p">(),</span> <span class="nb">false</span><span class="p">);</span>
     <span class="n">visit</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
@@ -914,7 +914,7 @@
     <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">sub_s</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span>
     <span class="p">{</span>
         <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sub_s</span><span class="p">.</span><span class="n">top</span><span class="p">();</span>
-        <span class="n">std</span><span class="o">::</span><span class="kt">size_t</span> <span class="n">G_size</span> <span class="o">=</span> <span class="n">G</span><span class="p">[</span><span class="n">y</span><span class="p">].</span><span class="n">size</span><span class="p">();</span>
+        <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="kt">size_t</span> <span class="n">G_size</span> <span class="o">=</span> <span class="n">G</span><span class="p">[</span><span class="n">y</span><span class="p">].</span><span class="n">size</span><span class="p">();</span>
         <span class="k">for</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">G_size</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
         <span class="p">{</span>
             <span class="kt">int</span> <span class="n">next</span> <span class="o">=</span> <span class="n">G</span><span class="p">[</span><span class="n">y</span><span class="p">][</span><span class="n">i</span><span class="p">];</span>
@@ -927,7 +927,6 @@
                 <span class="n">y</span> <span class="o">=</span> <span class="n">sub_s</span><span class="p">.</span><span class="n">top</span><span class="p">();</span>
                 <span class="n">G_size</span> <span class="o">=</span> <span class="n">G</span><span class="p">[</span><span class="n">y</span><span class="p">].</span><span class="n">size</span><span class="p">();</span>
             <span class="p">}</span>
-
         <span class="p">}</span>
         <span class="n">sub_s</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
     <span class="p">}</span>

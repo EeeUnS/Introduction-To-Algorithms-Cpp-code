@@ -927,6 +927,7 @@ n = P.length</p>
 </td></tr></table>
 
 <h1 id="324-the-knuth-morris-pratt-algorithm">32.4 The Knuth-Morris-Pratt algorithm</h1>
+<p>https://www.acmicpc.net/problem/1786</p>
 <p>Preprocessing time : $O(m)$</p>
 <p>Matching time $O(n)$</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
@@ -1000,7 +1001,7 @@ n = P.length</p>
     <span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span> 
     <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">q</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">q</span> <span class="o">&lt;</span> <span class="n">m</span><span class="p">;</span> <span class="n">q</span><span class="o">++</span><span class="p">)</span>
     <span class="p">{</span>
-        <span class="k">while</span> <span class="p">(</span><span class="n">k</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">P</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="n">P</span><span class="p">[</span><span class="n">q</span><span class="p">])</span>
+        <span class="k">while</span> <span class="p">(</span><span class="n">k</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">P</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="n">P</span><span class="p">[</span><span class="n">q</span><span class="p">])</span>
         <span class="p">{</span>
             <span class="n">k</span> <span class="o">=</span> <span class="n">pi</span><span class="p">[</span><span class="n">k</span><span class="p">];</span>
         <span class="p">}</span>

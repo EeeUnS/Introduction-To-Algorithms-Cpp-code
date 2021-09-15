@@ -1047,7 +1047,7 @@ Section 31.4 to compute d, given e and pi(n))</p>
 <p>https://casterian.net/archives/396</p>
 <p>https://www.acmicpc.net/problem/5615</p>
 <p>$O(k \log^3 n)$</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -1063,30 +1063,10 @@ Section 31.4 to compute d, given e and pi(n))</p>
 14
 15
 16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">bool</span> <span class="nf">WITNESS</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span>
+17</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">bool</span> <span class="nf">WITNESS</span><span class="p">(</span><span class="n">ull</span> <span class="n">a</span><span class="p">,</span> <span class="n">ull</span> <span class="n">n</span><span class="p">,</span> <span class="n">ull</span> <span class="n">u</span><span class="p">,</span> <span class="n">ull</span> <span class="n">t</span><span class="p">)</span>
 <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">t</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="n">et</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
-    <span class="k">while</span> <span class="p">((</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span><span class="o">%</span><span class="n">et</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="n">et</span> <span class="o">*=</span> <span class="mi">2</span><span class="p">;</span>
-        <span class="n">t</span><span class="o">++</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="n">et</span> <span class="o">/=</span> <span class="mi">2</span><span class="p">;</span>
-    <span class="n">t</span><span class="o">--</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="n">u</span> <span class="o">=</span> <span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">et</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="n">x_pre</span> <span class="o">=</span> <span class="n">MODULAR_EXPONENTIATION</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">n</span><span class="p">);</span>
-    <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x_pre</span><span class="p">;</span>
+    <span class="n">ull</span> <span class="n">x_pre</span> <span class="o">=</span> <span class="n">MODULAR_EXPONENTIATION</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">n</span><span class="p">);</span>
+    <span class="n">ull</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x_pre</span><span class="p">;</span>
     <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">t</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
     <span class="p">{</span>
         <span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="n">x_pre</span> <span class="o">*</span> <span class="n">x_pre</span><span class="p">)</span> <span class="o">%</span> <span class="n">n</span><span class="p">;</span>
@@ -1102,8 +1082,7 @@ Section 31.4 to compute d, given e and pi(n))</p>
 <span class="p">}</span>
 </pre></div>
 </td></tr></table>
-
-<p>a = 2,3,5,7,11,13,17, 31,61 ,73
+a = 2,3,5,7,11,13,17, 31,61 ,73
 정도로할때 정수표현가능한 모든 소수를 판ㄴ별할수있다.</p>
 <p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
@@ -1129,25 +1108,59 @@ Section 31.4 to compute d, given e and pi(n))</p>
 22
 23
 24
-25</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">constexpr</span> <span class="kt">bool</span> <span class="n">PRIME</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">constexpr</span> <span class="kt">bool</span> <span class="n">PRIME</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
 <span class="k">constexpr</span> <span class="kt">bool</span> <span class="n">COMPOSITE</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
 
-<span class="kt">bool</span> <span class="nf">MILLER_RABIN</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">s</span><span class="p">)</span>
+
+<span class="k">constexpr</span> <span class="kt">bool</span> <span class="n">PRIME</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+<span class="k">constexpr</span> <span class="kt">bool</span> <span class="n">COMPOSITE</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+
+<span class="kt">bool</span> <span class="nf">MILLER_RABIN</span><span class="p">(</span><span class="n">ull</span> <span class="n">n</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span>
     <span class="p">{</span>
         <span class="k">return</span> <span class="n">PRIME</span><span class="p">;</span>
     <span class="p">}</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">||</span> <span class="n">n</span><span class="o">%</span><span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">||</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
     <span class="p">{</span>
         <span class="k">return</span> <span class="n">COMPOSITE</span><span class="p">;</span>
-
     <span class="p">}</span>
-    <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span> <span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+
+    <span class="n">ull</span> <span class="n">t</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">ull</span> <span class="n">u</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">u</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> 
     <span class="p">{</span>
-        <span class="n">a</span><span class="o">++</span><span class="p">;</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">WITNESS</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span> <span class="c1">//합성수일시 true 반환</span>
+        <span class="n">t</span><span class="o">++</span><span class="p">;</span>
+        <span class="n">u</span> <span class="o">=</span> <span class="n">u</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">//, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 61, 73</span>
+    <span class="n">ull</span> <span class="n">test</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">};</span>
+
+    <span class="k">for</span><span class="p">(</span><span class="k">auto</span> <span class="nl">a</span> <span class="p">:</span> <span class="n">test</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="n">a</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="n">PRIME</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">WITNESS</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">t</span><span class="p">))</span> <span class="c1">//합성수일시 true 반환</span>
         <span class="p">{</span>
             <span class="k">return</span> <span class="n">COMPOSITE</span><span class="p">;</span>
         <span class="p">}</span>

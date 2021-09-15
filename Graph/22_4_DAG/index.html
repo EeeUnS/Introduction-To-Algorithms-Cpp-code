@@ -709,12 +709,10 @@
 11
 12
 13
-14
-15</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">stack</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">topologicalsort</span><span class="p">(</span><span class="k">const</span> <span class="n">Graph</span><span class="o">&amp;</span> <span class="n">G</span><span class="p">)</span>
+14</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">stack</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">topologicalsort</span><span class="p">(</span><span class="k">const</span> <span class="n">Graph</span><span class="o">&amp;</span> <span class="n">G</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="k">const</span> <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">G</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span> <span class="n">visit</span><span class="p">;</span>
-    <span class="n">visit</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span> <span class="n">visit</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
     <span class="n">stack</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">S</span><span class="p">;</span> <span class="c1">// 실제 정렬된값이 역순으로 들어가있다.</span>
     <span class="k">for</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
     <span class="p">{</span>
@@ -879,11 +877,9 @@ https://www.acmicpc.net/source/14193108 </p>
 40
 41
 42
-43
-44</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">topologicalsort</span><span class="p">(</span><span class="k">const</span> <span class="n">Graph</span> <span class="o">&amp;</span><span class="n">G</span><span class="p">,</span> <span class="kt">int</span> <span class="n">v</span><span class="p">)</span>
+43</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">topologicalsort</span><span class="p">(</span><span class="k">const</span> <span class="n">Graph</span> <span class="o">&amp;</span><span class="n">G</span><span class="p">,</span> <span class="kt">int</span> <span class="n">v</span><span class="p">)</span>
 <span class="p">{</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">indegree</span><span class="p">;</span>
-    <span class="n">indegree</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span><span class="n">v</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">indegree</span><span class="p">(</span><span class="n">v</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
     <span class="n">std</span><span class="o">::</span><span class="n">queue</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">qu</span><span class="p">;</span>
     <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span> <span class="o">&gt;</span> <span class="n">DAG</span><span class="p">;</span>
     <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">v</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
@@ -906,7 +902,7 @@ https://www.acmicpc.net/source/14193108 </p>
     <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">qu</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span>
         <span class="p">{</span>
-            <span class="k">return</span><span class="p">;</span>
+            <span class="k">return</span> <span class="n">DAG</span><span class="p">;</span>
         <span class="p">}</span>
         <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">qu</span><span class="p">.</span><span class="n">front</span><span class="p">();</span>
         <span class="n">qu</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>

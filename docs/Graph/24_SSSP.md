@@ -67,10 +67,8 @@ bool BELLMAN_FORD(const Graph& G,
 	{
 		for (std::size_t u = 0; u <= n; u++)
 		{
-			const std::size_t sub_size = G[u].size();
-			for (std::size_t j = 0; j < sub_size; j++)
+			for(int v : G[u])
 			{
-				int v = G[u][j];
 				int w = W[u][v];
 				BF_RELAX(u, v, w, Distance);
 			}
@@ -79,10 +77,8 @@ bool BELLMAN_FORD(const Graph& G,
 
 	for (std::size_t u = 1; u <= n ; u++)
 	{
-		const std::size_t sub_size = G[u].size();
-		for (std::size_t j = 0; j < sub_size; j++)
+		for (int v : G[u])
 		{
-			int v = G[u][j];
 			if ((Distance[v] > Distance[u] + W[u][v]) && Distance[u] != INF)
 			{
 				Distance[v] = -1;
@@ -114,11 +110,11 @@ void DFS_TS(const Graph& G, std::vector<bool> &visit,
 	stack<int> &S, int x)
 {
 	visit[x] = true;
+
 	//std::cout << x << ' '; // 순회출력
 
-	for (std::size_t i = 0; i < G[x].size(); i++)
+	for (int next : G[x])
 	{
-		int next = G[x][i];
 		if (visit[next] != true)
 		{
 			DFS_TS(G,visit,S,next);
@@ -146,10 +142,7 @@ std::stack<int> topologicalsort(const Graph& G)
 void INITIALIZE_SINGLE_SOURCE(const Graph& G,
 	std::vector<int>& Distance, int s)
 {
-	for (std::size_t i = 1; i < G.size(); i++)
-	{
-		Distance[i] = INF;
-	}
+	std::fill(Distance.begin(), Distance.begin() + Graph.size(), INF);
 	Distance[s] = 0;
 }
 
@@ -174,9 +167,8 @@ void DAG_SHORTEST_PATHS(const Graph& G,
 	{
 		int u =S.top();
 		S.pop();
-		for (std::size_t i = 0; i < G[u].size(); i++)
+		for (int v : G[u])
 		{
-			int v = G[u][i];
 			RELAX(u, v, W[u][v], Distance);
 		}
 	}
@@ -199,11 +191,10 @@ PQ의 탑 디스턴스값을 갱신시켜야한다 따라서 뽑고 다시넣는
 
 ```C++
 void DIJK_RELAX(int u, int v, int w, std::vector<int >& Distance,
-	
 	std::priority_queue<
-	std::pair<int, int>,	
-	std::vector<std::pair<int, int>>,	std::greater<std::pair<int, int>> 
-	>& PQ)
+		std::pair<int, int>,	
+		std::vector<std::pair<int, int>>,	
+		std::greater<std::pair<int, int>>>& PQ)
 {
 	if ((Distance[u] != INF) && (Distance[v] > Distance[u] + w))
 	{
@@ -230,9 +221,8 @@ void DIJKSTRA(const Graph& G,
 	{
 		int u = PQ.top().second;
 		PQ.pop();
-		for (std::size_t i = 0; i < G[u].size(); i++)
+		for (int v : G[u])
 		{
-			int v = G[u][i];
 			DIJK_RELAX(u, v, W[u][v], Distance,PQ);
 		}
 	}

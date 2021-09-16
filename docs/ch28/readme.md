@@ -2,11 +2,11 @@
 
 # 28 Matrix Operations
 
-I'm setting matrix index 0 ~ n-1
+I'm setting Matrix index 0 ~ n-1
 nxn mat
 
 ```C++
-typedef std::vector<std::vector<double>>  matrix;
+typedef std::vector<std::vector<double>>  Matrix;
 typedef std::pair<std::vector< std::vector<double>>, std::vector< std::vector<double>>>  Set;
 ```
   
@@ -16,7 +16,7 @@ typedef std::pair<std::vector< std::vector<double>>, std::vector< std::vector<do
 $O(n^2)$
 ```C++
 //n^2
-std::vector<double>LUP_SOLVE(matrix& L, matrix& U, std::vector<int> &PI,
+std::vector<double>LUP_SOLVE(Matrix& L, Matrix& U, std::vector<int> &PI,
 	std::vector<double>& b)
 {
 	const int n = L.size();
@@ -49,11 +49,11 @@ std::vector<double>LUP_SOLVE(matrix& L, matrix& U, std::vector<int> &PI,
 
 ```C++
 // n^3
-Set LU_DECOMPOSITION(matrix& A)
+Set LU_DECOMPOSITION(Matrix& A)
 {
 	const int n = A.size();
-	matrix L(n, std::vector<double>(n, 0));
-	matrix U(n, std::vector<double>(n, 0));
+	Matrix L(n, std::vector<double>(n, 0));
+	Matrix U(n, std::vector<double>(n, 0));
 	for (int i = 0; i < n; i++)
 	{
 		L[i][i] = 1;
@@ -82,7 +82,7 @@ Set LU_DECOMPOSITION(matrix& A)
 figure28.2 ex is wrong ex
 
 ```C++
-std::vector<int> LUP_DECOMPOSITION(matrix& A)
+std::vector<int> LUP_DECOMPOSITION(Matrix& A)
 {
 	const int n = A.size();
 	std::vector<int> pi(n , 0);
@@ -106,7 +106,7 @@ std::vector<int> LUP_DECOMPOSITION(matrix& A)
 		if (p == 0)
 		{
 			
-			std::cout << "singular matrix" << std::endl;
+			std::cout << "singular Matrix" << std::endl;
 		}
 		//swap
 		int sub = pi[k];

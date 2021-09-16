@@ -227,10 +227,7 @@ a = 2,3,5,7,11,13,17, 31,61 ,73
 정도로할때 정수표현가능한 모든 소수를 판ㄴ별할수있다.
 
 ```C++
-constexpr bool PRIME = true;
-constexpr bool COMPOSITE = false;
-
-
+typedef unsigned long long ull;
 constexpr bool PRIME = true;
 constexpr bool COMPOSITE = false;
 
@@ -270,8 +267,6 @@ bool MILLER_RABIN(ull n)
     return PRIME; //probably
 }
 ```
-전체적으로 소수들을 구할때는 에라토스테네스의 체가 효율적이라고 생각.
-
 
 
 # 31.9 Integer factorization

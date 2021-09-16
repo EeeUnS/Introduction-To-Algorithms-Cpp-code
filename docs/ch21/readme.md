@@ -3,7 +3,7 @@
 
 접근성을 위해서 실제 트리 대신 배열을 사용
 ```C++
-UNION_FIND CONNECTED_COMPONENTS(std::vector< std::vector<int>> &G)
+UNION_FIND CONNECTED_COMPONENTS(std::vector<std::vector<int>> &G)
 {
 	const int n = G.size() -1;
 	UNION_FIND set;

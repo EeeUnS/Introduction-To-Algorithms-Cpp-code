@@ -41,7 +41,7 @@ Ch 21 [Data Structures for Disjoint Sets](./docs/Graph/readme.md)
 
 ## VI Graph Algorithms(22~26)
 
-Ch 22.1~3 [BFS,DFS](./docs/Graph/22_123.md)
+Ch 22.1~3 [BFS,DFS](./docs/Graph/22_1_2_3.md.md)
 
 Ch 22.4 [Topological Sort](./docs/Graph/22_4_DAG.md)
 

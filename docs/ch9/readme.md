@@ -33,7 +33,7 @@ int MAXIMUM(int A[], int n)
 
 
 ```C++
-int secone_MINIMUM(int A[], int n)
+int second_MINIMUM(int A[], int n)
 {
 	int min = A[0];
 	int sub_min = A[0];

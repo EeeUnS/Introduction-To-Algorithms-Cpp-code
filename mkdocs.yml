@@ -45,7 +45,7 @@ nav:
       - 21 Data Structures for Disjoint Sets: ch21/readme.md
   - VI Graph Algorithms:
       - 22 Elementary Graph Algorithms:
-        - 22.1~3 Graph,breadth, Depth search  : Graph/22_123.md
+        - 22.1~3 Graph,breadth, Depth search  : Graph/22_1_2_3.md.md
         - 22.4 Topological sort: Graph/22_4_DAG.md
         - 22.5 Strongly connected components: Graph/22_5_SCC.md
       - 23 Minimum Spanning Trees: Graph/23_MST.md

@@ -12,11 +12,16 @@
 
 ```
 
+```
+typedef std::vector<std::vector<int>>  Matrix;
+// must NxN
+```
+
 ```C++
 const int NIL = 0;
 const int INF = 100000000;
 
-void PRINT_ALL_PAIRS_SHORTEST_PATH(std::vector<std::vector<int>> pi, int i, int j)
+void PRINT_ALL_PAIRS_SHORTEST_PATH(Matrix pi, int i, int j)
 {
 	if (i == j)
 		std::cout << ' ' << i << ' ';
@@ -34,7 +39,7 @@ void PRINT_ALL_PAIRS_SHORTEST_PATH(std::vector<std::vector<int>> pi, int i, int 
 
 ```C++
 #include<iomanip>
-void print_matrix(std::vector<std::vector<int>>& m)
+void print_matrix(Matrix& m)
 {
 	const int n = m.size();
 
@@ -60,11 +65,11 @@ void print_matrix(std::vector<std::vector<int>>& m)
 $O(V^3)$
 
 ```C++
-std::vector<std::vector<int>> EXTEND_SHORTEST_PATHS(std::vector<std::vector<int>>& L, std::vector<std::vector<int>>& W)
+Matrix EXTEND_SHORTEST_PATHS(Matrix& L, Matrix& W)
 {
 	const int n = L.size();
 
-	std::vector<std::vector<int>> L_prime(n, std::vector<int>(n, INF));
+	Matrix L_prime(n, std::vector<int>(n, INF));
 	for(int i = 1; i < n; i++)
 	{
 		for (int j = 1; j < n; j++)
@@ -85,11 +90,11 @@ std::vector<std::vector<int>> EXTEND_SHORTEST_PATHS(std::vector<std::vector<int>
 총 $O(V^4)$
 ```C++
 //nxn 1~n
-std::vector<std::vector<int>>SLOW_ALL_PAIRS_SHORTEST_PATHS(std::vector<std::vector<int>>& W)
+MatrixSLOW_ALL_PAIRS_SHORTEST_PATHS(Matrix& W)
 {
 	const int n = W.size();
 
-	std::vector<std::vector<std::vector<int>>> L(n, std::vector<std::vector<int>>(n, std::vector<int>(n)));
+	std::vector<Matrix> L(n, Matrix(n, std::vector<int>(n)));
 	L[1] = W;
 	for (int m = 2; m < n; m++)
 	{
@@ -104,7 +109,7 @@ std::vector<std::vector<int>>SLOW_ALL_PAIRS_SHORTEST_PATHS(std::vector<std::vect
 총 $O(V^3 \log (V))$
 
 ```C++
-std::vector<std::vector<int>>FASTER_ALL_PAIRS_SHORTEST_PATHS(std::vector<std::vector<int>>& W)
+MatrixFASTER_ALL_PAIRS_SHORTEST_PATHS(Matrix& W)
 {
 	const int n = W.size() - 1;
 
@@ -113,7 +118,7 @@ std::vector<std::vector<int>>FASTER_ALL_PAIRS_SHORTEST_PATHS(std::vector<std::ve
 	{
 		a = a * 2;
 	}
-	std::vector<std::vector<std::vector<int>>> L(a+1, std::vector<std::vector<int>>(n, std::vector<int>(n)));
+	std::vector<Matrix> L(a+1, Matrix(n, std::vector<int>(n)));
 	L[1] = W;
 
 	int m = 1;
@@ -132,7 +137,7 @@ std::vector<std::vector<int>>FASTER_ALL_PAIRS_SHORTEST_PATHS(std::vector<std::ve
 
 //25.1-6
 ```C++
-void set_pi(std::vector<std::vector<int>> &W, std::vector<std::vector<int >> &L, std::vector<std::vector<int>>& pi)
+void set_pi(Matrix &W, std::vector<std::vector<int >> &L, Matrix& pi)
 {
 	const int n = L.size();
 	for (int i = 1; i < n; i++)
@@ -158,13 +163,13 @@ void set_pi(std::vector<std::vector<int>> &W, std::vector<std::vector<int >> &L,
 전체 다시 짜기
 ```C++
 //25.1-7
-void EXTEND_SHORTEST_PATHS_pi(std::vector<std::vector<int>>& L, 
-	std::vector<std::vector<int>>& W, std::vector<std::vector<int>>& pi,
-	std::vector<std::vector<int>>* __L , std::vector<std::vector<int>> *___pi
+void EXTEND_SHORTEST_PATHS_pi(Matrix& L, 
+	Matrix& W, Matrix& pi,
+	Matrix* __L , Matrix *___pi
 )
 {
 	const int n = L.size();
-	//std::vector<std::vector<int>> L_prime;
+	//Matrix L_prime;
 	//L_prime.assign(n, std::vector<int>(n, INF));
 	for (int i = 1; i < n; i++)
 	{
@@ -186,46 +191,34 @@ void EXTEND_SHORTEST_PATHS_pi(std::vector<std::vector<int>>& L,
 }
 
 //nxn 1~n
-void SLOW_ALL_PAIRS_SHORTEST_PATHS_pi(std::vector<std::vector<int>>& W, 
-	std::vector<std::vector<int>> *__pi, std::vector<std::vector<int>> *__L)
+void SLOW_ALL_PAIRS_SHORTEST_PATHS_pi(const Matrix& W, 
+	Matrix *out_pi, Matrix *out_L)
 {
 	const int n = W.size() - 1;
 
-	std::vector<std::vector<std::vector<int>>> L;
-	std::vector<std::vector<std::vector<int>>> pi;
-	L.resize(n + 1);
-	pi.resize(n + 1);
-	for (int i = 0; i < n + 1; i++)
-	{
-		pi[i].assign(n + 1, std::vector<int>(n + 1, INF));
-		L[i].assign(n + 1, std::vector<int>(n + 1, INF));
-	}
+	std::vector<Matrix> L(n + 1, Matrix(n + 1, std::vector<int>(n + 1, INF)));
+	std::vector<Matrix> pi(n + 1, Matrix(n + 1, std::vector<int>(n + 1, INF)));
+
 	L[1] = W;
 	for (int m = 2; m < n; m++)
 	{
 		EXTEND_SHORTEST_PATHS_pi(L[m - 1], W, pi[m - 1], &L[m], &pi[m]);
 	}
-	__L->swap(L[n - 1]);
-	__pi->swap(pi[n - 1]);
+	out_L->swap(L[n - 1]);
+	out_pi->swap(pi[n - 1]);
 }
-
 ```
 
 
 25.1-8
 space requirement Theta(n^2)
 ```C++
-std::vector<std::vector<int>>FASTER_ALL_PAIRS_SHORTEST_PATHS(std::vector<std::vector<int>>& W)
+Matrix FASTER_ALL_PAIRS_SHORTEST_PATHS(Matrix& W)
 {
 	const int n = W.size() - 1;
 
-	std::vector<std::vector<int>> A, B = W;
-	A.resize(n + 1);
-
-	for (int j = 0; j <= n; j++)
-	{
-		A[j].resize(n + 1);
-	}
+	Matrix A(n + 1, std::vector<int>(n + 1))
+	Matrix B(W);
 
 	int m = 1;
 
@@ -250,16 +243,11 @@ std::vector<std::vector<int>>FASTER_ALL_PAIRS_SHORTEST_PATHS(std::vector<std::ve
 no consider overflow;
 
 ```C++
-std::vector<std::vector<int>>FASTER_ALL_PAIRS_SHORTEST_PATHS(std::vector<std::vector<int>>& W)
+Matrix FASTER_ALL_PAIRS_SHORTEST_PATHS(const Matrix& W)
 {
 	const int n = W.size() - 1;
 
-	std::vector<std::vector<int>> A = W, B = W, C = W ,D = W;
-	A.resize(n + 1);
-	for (int j = 0; j <= n; j++)
-	{
-		A[j].resize(n + 1);
-	}
+	Matrix A = W, B = W, C = W ,D = W;
 
 	int m = 1;
 
@@ -306,20 +294,16 @@ std::vector<std::vector<int>>FASTER_ALL_PAIRS_SHORTEST_PATHS(std::vector<std::ve
 }
 ```
 
-
-
-
-
 # 25.2 The Floyd-Warshall algorithm
 
 
 
 n = n+1
 ```C++
-std::vector<std::vector<int>>FLOYD_WARSHALL(std::vector<std::vector<int>>& W)
+MatrixFLOYD_WARSHALL(const Matrix& W)
 {
     const int n = W.size();
-    std::vector<std::vector<std::vector<int>>> D(n, std::vector<std::vector<int>>(n, std::vector<int>(n)));
+    std::vector<Matrix> D(n, Matrix(n, std::vector<int>(n)));
 	D[0] = W;
     for(int k = 1 ; k <= n  ;k++)
     {
@@ -339,10 +323,10 @@ std::vector<std::vector<int>>FLOYD_WARSHALL(std::vector<std::vector<int>>& W)
 
 Graph is nxn matrix
 ```C++
-std::vector<std::vector<int>>TRANSITIVE_CLOSURE(std::vector<std::vector<int>>& G)
+Matrix TRANSITIVE_CLOSURE(Matrix& G)
 {
 	const int n = G.size();
-    std::vector<std::vector<std::vector<int>>> T(n, std::vector<std::vector<int>>(n, std::vector<int>(n)));
+    std::vector<Matrix> T(n, Matrix(n, std::vector<int>(n)));
 
 	for (int i = 1; i < n; i++)
 	{
@@ -379,12 +363,11 @@ std::vector<std::vector<int>>TRANSITIVE_CLOSURE(std::vector<std::vector<int>>& G
 
 공간복잡도 $O(n^3)$
 ```C++
-std::vector<std::vector<int>>FLOYD_WARSHALL_apostrophe_pi(std::vector<std::vector<int>>& W, std::vector<std::vector<int>>& pi )
+Matrix FLOYD_WARSHALL_apostrophe_pi(cosnt Matrix &W, Matrix & out_pi )
 {
 	const int n = W.size() - 1;
-	std::vector<std::vector<int>> D = W;
-	std::vector<std::vector<std::vector<int>>> pi_prime;
-    std::vector<std::vector<std::vector<int>>> pi_prime(n + 1, std::vector<std::vector<int>>(n + 1, std::vector<int>(n + 1)));
+	Matrix D(W);
+    std::vector<Matrix> pi_prime(n + 1, Matrix(n + 1, std::vector<int>(n + 1)));
 
 	for (int k = 0; k <= n; k++)
 	{
@@ -415,6 +398,7 @@ std::vector<std::vector<int>>FLOYD_WARSHALL_apostrophe_pi(std::vector<std::vecto
 			}
 		}
 	}
+
 	print_matrix(pi_prime[0]);
 
 	for (int k = 1; k <= n; k++)
@@ -435,18 +419,18 @@ std::vector<std::vector<int>>FLOYD_WARSHALL_apostrophe_pi(std::vector<std::vecto
 			}
 		}
 	}
-	pi.swap(pi_prime[n]);
-	return  D;
+	out_pi.swap(pi_prime[n]);
+	return D;
 }
 ```
 
 공간복잡도 $O(n^2)$
 ```C++
-std::vector<std::vector<int>>FLOYD_WARSHALL_apostrophe_pi(std::vector<std::vector<int>>& W, std::vector<std::vector<int>>& pi )
+Matrix FLOYD_WARSHALL_apostrophe_pi(const Matrix& W, Matrix& out_pi )
 {
 	const int n = W.size()-1;
-	std::vector<std::vector<int>> D = W;
-	std::vector<std::vector<int>> pi_prime(n + 1, std::vector<int>(n + 1));
+	Matrix D = W;
+	Matrix pi_prime(n + 1, std::vector<int>(n + 1));
 
 	for (int i = 1; i <= n; i++)
 	{
@@ -474,7 +458,7 @@ std::vector<std::vector<int>>FLOYD_WARSHALL_apostrophe_pi(std::vector<std::vecto
 			}
 		}
 	}
-	pi.swap(pi_prime);
+	out_pi.swap(pi_prime);
 	return  D;
 }
 ```
@@ -483,10 +467,10 @@ std::vector<std::vector<int>>FLOYD_WARSHALL_apostrophe_pi(std::vector<std::vecto
 25.2-4
 
 ```c++
-std::vector<std::vector<int>>FLOYD_WARSHALL_apostrophe(std::vector<std::vector<int>>& W)
+Matrix FLOYD_WARSHALL_apostrophe(const Matrix& W)
 {
 	const int n = W.size();
-	std::vector<std::vector<int>> D(W);
+	Matrix D(W);
 
 	for (int k = 1; k < n; k++)
 	{
@@ -510,13 +494,10 @@ std::vector<std::vector<int>>FLOYD_WARSHALL_apostrophe(std::vector<std::vector<i
 O(VElgV)
 
 ```c++
-void INITIALIZE_SINGLE_SOURCE(std::vector<std::vector<int>>& Graph,
+void INITIALIZE_SINGLE_SOURCE(const Graph& Graph,
 	std::vector<int>& Distance, int s)
 {
-	for (std::size_t i = 1; i < Graph.size(); i++)
-	{
-		Distance[i] = INF;
-	}
+	std::fill(Distance.begin(), Distance.begin() + Graph.size(), INF);
 	Distance[s] = 0;
 }
 
@@ -530,8 +511,8 @@ void BF_RELAX(int u, int v, int w, std::vector<int>& Distance)
 }
 
 //for johnson's alg
-bool BELLMAN_FORD(std::vector<std::vector<int>>& Graph, 
-	std::vector<std::vector<int>>& W,
+bool BELLMAN_FORD(const Graph& Graph, 
+	const Matrix& W,
 	std::vector<int> &Distance, int s)
 {
 	INITIALIZE_SINGLE_SOURCE(Graph, Distance, s);
@@ -541,10 +522,8 @@ bool BELLMAN_FORD(std::vector<std::vector<int>>& Graph,
 	{
 		for (std::size_t u = 0; u <= n; u++)
 		{
-			const std::size_t sub_size = Graph[u].size();
-			for (std::size_t j = 0; j < sub_size; j++)
+			for (int v : Graph[u])
 			{
-				int v = Graph[u][j];
 				int w = W[u][v];
 				BF_RELAX(u, v, w, Distance);
 			}
@@ -553,10 +532,8 @@ bool BELLMAN_FORD(std::vector<std::vector<int>>& Graph,
 
 	for (std::size_t u = 1; u <= n ; u++)
 	{
-		const std::size_t sub_size = Graph[u].size();
-		for (std::size_t j = 0; j < sub_size; j++)
+		for (int v : Graph[u])
 		{
-			int v = Graph[u][j];
 			if ((Distance[v] > Distance[u] + W[u][v]) && Distance[u] != INF)
 			{
 				Distance[v] = -1;
@@ -568,9 +545,10 @@ bool BELLMAN_FORD(std::vector<std::vector<int>>& Graph,
 }
 
 void DIJK_RELAX(int u, int v, int w, std::vector<int >& Distance,
-	std::priority_queue<std::pair<int, int>,
-	std::vector<std::pair<int, int>>,
-	std::greater<std::pair<int, int>> >& PQ)
+	std::priority_queue<
+		std::pair<int, int>,
+		std::vector<std::pair<int, int>>,
+		std::greater<std::pair<int, int>> >& PQ)
 {
 	if ((Distance[u] != INF) && (Distance[v] > Distance[u] + w))
 	{
@@ -580,11 +558,11 @@ void DIJK_RELAX(int u, int v, int w, std::vector<int >& Distance,
 	}
 }
 
-void DIJKSTRA(std::vector<std::vector<int>>& Graph,
-	std::vector<std::vector<int>>& W,
+void DIJKSTRA(const Graph& Graph,
+	Matrix& W,
 	std::vector<int> &Distance, int s)
 {
-	INITIALIZE_SINGLE_SOURCE(Graph,Distance, s );
+	INITIALIZE_SINGLE_SOURCE(Graph,Distance, s);
 	std::priority_queue<std::pair<int, int>, std::vector<std::pair<int, int>>, std::greater<std::pair<int, int>> > PQ; //정점의 거리, 정점
 	for (std::size_t i = 1; i < Graph.size(); i++)
 	{
@@ -595,33 +573,29 @@ void DIJKSTRA(std::vector<std::vector<int>>& Graph,
 	{
 		int u = PQ.top().second;
 		PQ.pop();
-		for (std::size_t i = 0; i < Graph[u].size(); i++)
+		for (int v : Graph[u])
 		{
-			int v = Graph[u][i];
 			DIJK_RELAX(u, v, W[u][v], Distance,PQ);
 		}
 	}
 }
 
 
-std::vector<std::vector<int>> JOHNSON(std::vector<std::vector<int>>& Graph,
-	std::vector<std::vector<int>>& W
+Matrix JOHNSON(const Matrix& Graph,
+	Matrix& W
 )
 {//
-	std::vector<std::vector<int>> D;
-	std::vector<std::vector<int>> G_apostrophe = Graph;
-	const std::size_t n = Graph.size()-1;
+	Matrix D(n + 1, std::vector<int>(n + 1));
+	Matrix G_apostrophe(Graph);
+	const std::size_t n = Graph.size() - 1;
 	
-	D.resize(n + 1);
 	for (std::size_t i = 1; i <= n; i++)
 	{
 		W[0].resize(n + 1);
 		G_apostrophe[0].push_back(i);
-		D[i].resize(n + 1);
 	}
 	
-	std::vector<int > Distance; // and h(x)
-	Distance.resize(n + 1);
+	std::vector<int > Distance(n + 1); // and h(x)
 
 	if (BELLMAN_FORD(G_apostrophe,W ,Distance,0) == false)
 	{
@@ -631,22 +605,13 @@ std::vector<std::vector<int>> JOHNSON(std::vector<std::vector<int>>& Graph,
 	{
 		
 		std::vector<int> h = Distance;
-		std::vector < std::vector<int>> W_het = W;		
-		std::vector < std::vector<int>> D_het;
-		D_het.resize(n + 1);
-		for (std::size_t i = 1; i <= n; i++)
-		{
-			D_het[i].resize(n + 1);
-		}
-
-		
+		Matrix W_het(W);		
+		Matrix D_het(n + 1 std::vector<int>(n + 1));
 
 		for (std::size_t u = 1; u <= n; u++)
 		{
-			const int sub_size = Graph[u].size();
-			for (int j = 0; j < sub_size; j++)
+			for(int v : Graph[u])
 			{
-				int v = Graph[u][j];
 				W_het[u][v] += (h[u] - h[v]);
 			}
 		}
@@ -654,7 +619,6 @@ std::vector<std::vector<int>> JOHNSON(std::vector<std::vector<int>>& Graph,
 		{
 			DIJKSTRA(Graph, W_het, D_het[u], u );
 			
-			const int sub_size = Graph[u].size();
 			for (std::size_t v = 1; v <= n; v++)
 			{
 				D[u][v] = D_het[u][v] + h[v] - h[u];
@@ -727,10 +691,11 @@ bool BELLMAN_FORD(std::vector<std::vector<std::pair<int, int>>>& Graph,
 }
 
 
-void DIJK_RELAX(int u, int v, int w, std::vector<int > &Distance, 
-	std::priority_queue<std::pair<int, int>, 
-	std::vector<std::pair<int, int>>, 
-	std::greater<std::pair<int, int>> > &PQ)
+void DIJK_RELAX(int u, int v, int w, std::vector<int> &Distance, 
+	std::priority_queue<
+		std::pair<int, int>, 
+		std::vector<std::pair<int, int>>, 
+		std::greater<std::pair<int, int>> > &PQ)
 {
 	if ((Distance[u] != INF) && (Distance[v] > Distance[u] + w))
 	{
@@ -762,22 +727,19 @@ void DIJKSTRA(std::vector<std::vector<std::pair<int, int>>>& Graph,
 }
 
 //graph pair(정점,가중치)
-std::vector<std::vector<int>> JOHNSON(std::vector<std::vector<std::pair<int, int>>>& Graph
+Matrix JOHNSON(std::vector<std::vector<std::pair<int, int>>>& Graph
 )
-{//std::vector<std::vector<int>> &W
-	std::vector<std::vector<int>> D;
-	std::vector<std::vector<std::pair<int, int>>> G_apostrophe = Graph;
-	int n = Graph.size()-1;
+{//Matrix &W
+	Matrix D(n + 1, std::vector<int>(n + 1));
+	std::vector<std::vector<std::pair<int, int>>> G_apostrophe(Graph);
+	const int n = Graph.size()-1;
 	
-	D.resize(n + 1);
 	for (int i = 1; i <= n; i++)
 	{
 		G_apostrophe[0].push_back(std::make_pair(i, 0));
-		D[i].resize(n + 1);
 	}
 
-	std::vector<int > Distance; // and h(x)
-	Distance.resize(n + 1);
+	std::vector<int > Distance(n + 1); // and h(x)
 
 	if (BELLMAN_FORD(G_apostrophe, Distance,0) == false)
 	{
@@ -785,16 +747,10 @@ std::vector<std::vector<int>> JOHNSON(std::vector<std::vector<std::pair<int, int
 	}
 	else
 	{
-		std::vector<int> h = Distance;
+		std::vector<int> h(Distance);
 		std::vector<std::vector<std::pair<int, int>>> Graph_het = Graph;
 		
-		std::vector < std::vector<int>> D_het;
-		D_het.resize(n + 1);
-		
-		for (int i = 1; i <= n; i++)
-		{
-			D_het[i].resize(n + 1);
-		}
+		Matrix D_het(n + 1, std::vector<int>(n + 1));
 
 		for (int i = 1; i <= n; i++)
 		{

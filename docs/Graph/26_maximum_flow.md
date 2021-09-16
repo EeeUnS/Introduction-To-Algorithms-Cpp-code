@@ -7,11 +7,11 @@
 
 Edmonds Karp
 $O(VE^2)$
-```
+```cpp
 constexpr long long INF = 0x7FFF'FFFF;// 'FFFF'FFFF;
 constexpr int MAX_V = 1002;
 
-vector<int> adj[MAX_V];
+std::vector<int> adj[MAX_V];
 int c[MAX_V][MAX_V];
 int f[MAX_V][MAX_V];
 int p[MAX_V];

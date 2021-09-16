@@ -481,7 +481,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../22_123/" title="22.1~3 Graph,breadth, Depth search" class="md-nav__link">
+    <a href="../22_1_2_3.md.md" title="22.1~3 Graph,breadth, Depth search" class="md-nav__link">
       22.1~3 Graph,breadth, Depth search
     </a>
   </li>
@@ -736,7 +736,7 @@
 14</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">stack</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">topologicalsort</span><span class="p">(</span><span class="k">const</span> <span class="n">Graph</span><span class="o">&amp;</span> <span class="n">G</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="k">const</span> <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">G</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span> <span class="n">visit</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span> <span class="n">visit</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="nb">false</span><span class="p">);</span>
     <span class="n">stack</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">S</span><span class="p">;</span> <span class="c1">// 실제 정렬된값이 역순으로 들어가있다.</span>
     <span class="k">for</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
     <span class="p">{</span>
@@ -745,7 +745,7 @@
             <span class="n">DFS_TS</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">visit</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
-    <span class="k">return</span>  <span class="n">S</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">S</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 </td></tr></table>
@@ -802,18 +802,17 @@
 <span class="p">{</span>
     <span class="n">visit</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
     <span class="c1">//std::cout &lt;&lt; x &lt;&lt; &#39; &#39;; // 순회출력</span>
-    <span class="k">for</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">G</span><span class="p">[</span><span class="n">x</span><span class="p">].</span><span class="n">size</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="nl">next</span> <span class="p">:</span> <span class="n">G</span><span class="p">[</span><span class="n">x</span><span class="p">])</span>
     <span class="p">{</span>
-        <span class="kt">int</span> <span class="n">next</span> <span class="o">=</span> <span class="n">G</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">i</span><span class="p">];</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">visit</span><span class="p">[</span><span class="n">next</span><span class="p">]</span> <span class="o">!=</span> <span class="nb">true</span><span class="p">)</span>
         <span class="p">{</span>
             <span class="n">DFS_TS</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">visit</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">next</span><span class="p">);</span>
-
         <span class="p">}</span>
     <span class="p">}</span>
     <span class="n">S</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
 <span class="p">}</span>
-<span class="c1">//for</span>
+
+<span class="c1">//for with stack</span>
 <span class="kt">void</span> <span class="nf">DFS_TS</span><span class="p">(</span><span class="n">Graph</span><span class="o">&amp;</span> <span class="n">G</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;&amp;</span> <span class="n">visit</span><span class="p">,</span>
     <span class="n">stack</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">S</span><span class="p">,</span> <span class="kt">int</span> <span class="n">x</span><span class="p">)</span>
 <span class="p">{</span>
@@ -821,6 +820,7 @@
 
     <span class="n">std</span><span class="o">::</span><span class="n">stack</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">sub_s</span><span class="p">;</span>
     <span class="n">sub_s</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+
     <span class="c1">//std::cout &lt;&lt; sub_s.top() &lt;&lt; &#39; &#39;; // 순회출력</span>
 
     <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">sub_s</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span>
@@ -899,19 +899,16 @@ https://www.acmicpc.net/source/14193108 </p>
 38
 39
 40
-41
-42
-43</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">topologicalsort</span><span class="p">(</span><span class="k">const</span> <span class="n">Graph</span> <span class="o">&amp;</span><span class="n">G</span><span class="p">,</span> <span class="kt">int</span> <span class="n">v</span><span class="p">)</span>
+41</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">topologicalsort</span><span class="p">(</span><span class="k">const</span> <span class="n">Graph</span> <span class="o">&amp;</span><span class="n">G</span><span class="p">,</span> <span class="kt">int</span> <span class="n">v</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">indegree</span><span class="p">(</span><span class="n">v</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
     <span class="n">std</span><span class="o">::</span><span class="n">queue</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">qu</span><span class="p">;</span>
     <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span> <span class="o">&gt;</span> <span class="n">DAG</span><span class="p">;</span>
     <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">v</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
     <span class="p">{</span>
-        <span class="kt">int</span> <span class="n">e</span> <span class="o">=</span> <span class="n">G</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">size</span><span class="p">();</span>
-        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">e</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="nl">j</span> <span class="p">:</span> <span class="n">G</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
         <span class="p">{</span>
-            <span class="n">indegree</span><span class="p">[</span><span class="n">G</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]]</span><span class="o">++</span><span class="p">;</span>
+            <span class="n">indegree</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">++</span><span class="p">;</span>
         <span class="p">}</span>
     <span class="p">}</span>
 
@@ -931,10 +928,9 @@ https://www.acmicpc.net/source/14193108 </p>
         <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">qu</span><span class="p">.</span><span class="n">front</span><span class="p">();</span>
         <span class="n">qu</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
         <span class="n">DAG</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
-        <span class="kt">int</span> <span class="n">x_size</span> <span class="o">=</span> <span class="n">G</span><span class="p">[</span><span class="n">x</span><span class="p">].</span><span class="n">size</span><span class="p">();</span>
-        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">x_size</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="nl">y</span> <span class="p">:</span> <span class="n">G</span><span class="p">[</span><span class="n">x</span><span class="p">])</span>
         <span class="p">{</span>
-            <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="n">G</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">i</span><span class="p">];</span>
             <span class="n">indegree</span><span class="p">[</span><span class="n">y</span><span class="p">]</span><span class="o">--</span><span class="p">;</span>
             <span class="k">if</span> <span class="p">(</span><span class="n">indegree</span><span class="p">[</span><span class="n">y</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
             <span class="p">{</span>
@@ -966,7 +962,7 @@ https://www.acmicpc.net/source/14193108 </p>
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../22_123/" title="22.1~3 Graph,breadth, Depth search" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../../ch21/readme/" title="21 Data Structures for Disjoint Sets" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -975,7 +971,7 @@ https://www.acmicpc.net/source/14193108 </p>
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                22.1~3 Graph,breadth, Depth search
+                21 Data Structures for Disjoint Sets
               </span>
             </div>
           </a>

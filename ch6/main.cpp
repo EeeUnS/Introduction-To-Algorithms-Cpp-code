@@ -5,7 +5,7 @@ using namespace std;
 
 
 template<typename T>
-class max_priority_queue//int
+class max_priority_queue
 {
 public:
 	max_priority_queue()
@@ -24,7 +24,7 @@ public:
 		capacity = 200;
 	}
 
-	//end�� �ǳ� ���� �ٷε�
+	
 	max_priority_queue(const T &item[],int begin ,int end)
 	{
 
@@ -116,8 +116,8 @@ public:
 private:
 	const int INF = 100000000;
 	T* A;
-	std::size_t heap_size;  //����ִ� ���� ����.
-	std::size_t heap_capacity; // �迭 ��ü�� ����
+	std::size_t heap_size;  
+	std::size_t heap_capacity; 
 
 
 	int PARENT(int i)
@@ -136,7 +136,7 @@ private:
 		return 2 * i + 1;
 	}
 
-	void MAX_HEAPIFY(int i, int heapsize) //I�ε����� ��尡 �ڽ� ��庸�� ���� �� �̸� ������ ���� ��Ʈ�� ������ �����
+	void MAX_HEAPIFY(int i, int heapsize)
 	{
 		int l = LEFT(i);
 		int r = RIGHT(i);
@@ -160,7 +160,7 @@ private:
 		}
 	}
 
-	void BUILD_MAX_HEAP(int A[], int n) //��ü �迭�� ��Ʈ���� ��Ÿ���� ���� �Լ�
+	void BUILD_MAX_HEAP(int A[], int n)
 	{
 		int heapsize = n;
 		for (int i = n / 2; i >= 1; i--)

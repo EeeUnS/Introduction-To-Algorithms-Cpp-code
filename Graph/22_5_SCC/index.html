@@ -481,7 +481,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../22_123/" title="22.1~3 Graph,breadth, Depth search" class="md-nav__link">
+    <a href="../22_1_2_3.md.md" title="22.1~3 Graph,breadth, Depth search" class="md-nav__link">
       22.1~3 Graph,breadth, Depth search
     </a>
   </li>
@@ -814,8 +814,7 @@ https://jason9319.tistory.com/98</p>
 31
 32
 33
-34
-35</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">Graph</span> <span class="nf">STRONGLY_CONNECTED_COMPONENTS</span><span class="p">(</span><span class="k">const</span> <span class="n">Graph</span> <span class="o">&amp;</span><span class="n">G</span><span class="p">)</span>
+34</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">Graph</span> <span class="nf">STRONGLY_CONNECTED_COMPONENTS</span><span class="p">(</span><span class="k">const</span> <span class="n">Graph</span> <span class="o">&amp;</span><span class="n">G</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="k">const</span> <span class="kt">int</span> <span class="n">v</span> <span class="o">=</span> <span class="n">G</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
 
@@ -830,10 +829,9 @@ https://jason9319.tistory.com/98</p>
     <span class="n">Graph</span> <span class="n">TG</span><span class="p">(</span><span class="n">v</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">()));</span><span class="c1">//G^T</span>
     <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">v</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
     <span class="p">{</span>
-        <span class="k">const</span> <span class="kt">int</span> <span class="n">sub_size</span> <span class="o">=</span> <span class="n">G</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">size</span><span class="p">();</span>
-        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">sub_size</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="nl">j</span> <span class="p">:</span> <span class="n">G</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
         <span class="p">{</span>
-            <span class="n">TG</span><span class="p">[</span><span class="n">G</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]].</span><span class="n">push_back</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+            <span class="n">TG</span><span class="p">[</span><span class="n">j</span><span class="p">].</span><span class="n">push_back</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 
@@ -899,8 +897,8 @@ https://jason9319.tistory.com/98</p>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
-</td></tr></table>
-with recursion
+</td></tr></table></p>
+<p>with recursion
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
@@ -918,11 +916,11 @@ with recursion
 15</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">void</span> <span class="nf">DFS</span><span class="p">(</span><span class="k">const</span> <span class="n">Graph</span><span class="o">&amp;</span> <span class="n">G</span><span class="p">,</span> <span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">stack</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">DFSf</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;&amp;</span> <span class="n">visit</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="n">visit</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+
     <span class="c1">//std::cout &lt;&lt; x &lt;&lt; &#39; &#39;; // 순회출력</span>
 
-    <span class="k">for</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">G</span><span class="p">[</span><span class="n">x</span><span class="p">].</span><span class="n">size</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="nl">next</span> <span class="p">:</span> <span class="n">G</span><span class="p">[</span><span class="n">x</span><span class="p">])</span>
     <span class="p">{</span>
-        <span class="kt">int</span> <span class="n">next</span> <span class="o">=</span> <span class="n">G</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">i</span><span class="p">];</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">visit</span><span class="p">[</span><span class="n">next</span><span class="p">]</span> <span class="o">!=</span> <span class="nb">true</span><span class="p">)</span>
         <span class="p">{</span>
             <span class="n">DFS</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">next</span><span class="p">,</span> <span class="n">DFSf</span><span class="p">,</span><span class="n">visit</span><span class="p">);</span>
@@ -962,12 +960,14 @@ with for
 27
 28
 29
-30</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">void</span> <span class="nf">TDFS</span><span class="p">(</span><span class="n">Graph</span> <span class="o">&amp;</span><span class="n">TG</span><span class="p">,</span> <span class="kt">int</span> <span class="n">x</span><span class="p">,</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">SSC</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">visit</span><span class="p">)</span><span class="c1">//G^T탐색</span>
+30
+31</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">void</span> <span class="nf">TDFS</span><span class="p">(</span><span class="n">Graph</span> <span class="o">&amp;</span><span class="n">TG</span><span class="p">,</span> <span class="kt">int</span> <span class="n">x</span><span class="p">,</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">SSC</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">visit</span><span class="p">)</span><span class="c1">//G^T탐색</span>
 <span class="p">{</span>
     <span class="n">visit</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
 
     <span class="n">std</span><span class="o">::</span><span class="n">stack</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">sub_s</span><span class="p">;</span>
     <span class="n">sub_s</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+
     <span class="c1">//std::cout &lt;&lt; sub_s.top() &lt;&lt; &#39; &#39;; // 순회출력</span>
 
     <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">sub_s</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span>
@@ -980,16 +980,16 @@ with for
             <span class="p">{</span>
                 <span class="n">visit</span><span class="p">[</span><span class="n">next</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
                 <span class="n">sub_s</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">next</span><span class="p">);</span>
+
                 <span class="c1">//std::cout &lt;&lt; sub_s.top() &lt;&lt; &#39; &#39;; // 순회출력</span>
+
                 <span class="n">i</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
                 <span class="n">y</span> <span class="o">=</span> <span class="n">sub_s</span><span class="p">.</span><span class="n">top</span><span class="p">();</span>
             <span class="p">}</span>
 
         <span class="p">}</span>
         <span class="n">SSC</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">sub_s</span><span class="p">.</span><span class="n">top</span><span class="p">());</span>
-
         <span class="n">sub_s</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
-
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -1008,22 +1008,18 @@ with recursion
 11
 12
 13
-14
-15
-16</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1">//SSC[] 1D vector</span>
+14</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1">//SSC[] 1D vector</span>
 <span class="kt">void</span> <span class="nf">TDFS</span><span class="p">(</span><span class="n">Graph</span><span class="o">&amp;</span> <span class="n">TG</span><span class="p">,</span> <span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">SSC</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;&amp;</span> <span class="n">visit</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="n">visit</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
     <span class="c1">//std::cout &lt;&lt; x &lt;&lt; &#39; &#39;; // 순회출력</span>
-    <span class="n">std</span><span class="o">::</span><span class="kt">size_t</span> <span class="n">x_size</span> <span class="o">=</span> <span class="n">TG</span><span class="p">[</span><span class="n">x</span><span class="p">].</span><span class="n">size</span><span class="p">();</span>
-        <span class="k">for</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">x_size</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="nl">next</span> <span class="p">:</span> <span class="n">TG</span><span class="p">[</span><span class="n">x</span><span class="p">])</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">visit</span><span class="p">[</span><span class="n">next</span><span class="p">]</span> <span class="o">!=</span> <span class="nb">true</span><span class="p">)</span>
         <span class="p">{</span>
-            <span class="kt">int</span> <span class="n">next</span> <span class="o">=</span> <span class="n">TG</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">i</span><span class="p">];</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">visit</span><span class="p">[</span><span class="n">next</span><span class="p">]</span> <span class="o">!=</span> <span class="nb">true</span><span class="p">)</span>
-            <span class="p">{</span>
-                <span class="n">TDFS</span><span class="p">(</span><span class="n">TG</span><span class="p">,</span> <span class="n">next</span><span class="p">,</span> <span class="n">SSC</span><span class="p">,</span><span class="n">visit</span><span class="p">);</span>
-            <span class="p">}</span>
+            <span class="n">TDFS</span><span class="p">(</span><span class="n">TG</span><span class="p">,</span> <span class="n">next</span><span class="p">,</span> <span class="n">SSC</span><span class="p">,</span><span class="n">visit</span><span class="p">);</span>
         <span class="p">}</span>
+    <span class="p">}</span>
     <span class="n">SSC</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
@@ -1147,14 +1143,14 @@ https://blog.naver.com/PostView.nhn?blogId=ndb796&amp;logNo=221236952158&amp;par
     <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">TARJAN_ALG</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;&amp;</span> <span class="n">adj</span><span class="p">)</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">TARJAN_ALG</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;&amp;</span> <span class="n">adj</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="k">const</span> <span class="kt">int</span> <span class="n">V</span> <span class="o">=</span> <span class="n">adj</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
 
-    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span>  <span class="n">dfsn</span><span class="p">(</span><span class="n">V</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
-    <span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">SCC</span><span class="p">;</span>
-    <span class="n">stack</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">S</span><span class="p">;</span>
-    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span> <span class="n">finished</span><span class="p">(</span><span class="n">V</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span> <span class="c1">// SCC 분리가 끝난 정점만 true</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span>  <span class="n">dfsn</span><span class="p">(</span><span class="n">V</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">SCC</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">stack</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">S</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span> <span class="n">finished</span><span class="p">(</span><span class="n">V</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span> <span class="c1">// SCC 분리가 끝난 정점만 true</span>
     <span class="kt">int</span> <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">;</span>
 
     <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">V</span> <span class="o">-</span> <span class="mi">1</span> <span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>

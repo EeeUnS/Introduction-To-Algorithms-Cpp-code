@@ -36,7 +36,7 @@
     
     
       
-        <title>22.1~3 Graph,breadth, Depth search - Introduction-To-Algorithms-Cpp-code</title>
+        <title>22 1 2 3 - Introduction-To-Algorithms-Cpp-code</title>
       
     
     
@@ -130,7 +130,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                22.1~3 Graph,breadth, Depth search
+                22 1 2 3
               
             </span>
           
@@ -437,12 +437,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
     
     <label class="md-nav__link" for="nav-7">
       VI Graph Algorithms
@@ -458,12 +456,10 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-1" type="checkbox" id="nav-7-1" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-1" type="checkbox" id="nav-7-1">
     
     <label class="md-nav__link" for="nav-7-1">
       22 Elementary Graph Algorithms
@@ -479,59 +475,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        22.1~3 Graph,breadth, Depth search
-      </label>
-    
-    <a href="./" title="22.1~3 Graph,breadth, Depth search" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../22_1_2_3.md.md" title="22.1~3 Graph,breadth, Depth search" class="md-nav__link">
       22.1~3 Graph,breadth, Depth search
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-  
-    <label class="md-nav__title" for="__toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#221-representations-of-graphs" class="md-nav__link">
-    22.1 Representations of graphs
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#222breath-first-search" class="md-nav__link">
-    22.2Breath first search
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#223-depth-first-search" class="md-nav__link">
-    22.3 Depth first search
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -781,14 +729,14 @@
               
                 
                 
-                  <h1>22.1~3 Graph,breadth, Depth search</h1>
+                  <h1>22 1 2 3</h1>
                 
                 <h2 id="221-representations-of-graphs">22.1 Representations of graphs</h2>
 <p>An adjacency-list representation of G.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">Graph</span><span class="p">;</span>
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">Graph</span><span class="p">;</span>
 </pre></div>
 </td></tr></table>
-
+Graph는 인접 리스트로 표현</p>
 <h2 id="222breath-first-search">22.2Breath first search</h2>
 <p>$O(V+E)$</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
@@ -813,9 +761,7 @@
 20
 21
 22
-23
-24
-25</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">void</span> <span class="nf">BFS</span><span class="p">(</span><span class="k">const</span> <span class="n">Graph</span> <span class="o">&amp;</span><span class="n">G</span><span class="p">,</span> <span class="kt">int</span> <span class="n">x</span><span class="p">)</span>
+23</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">void</span> <span class="nf">BFS</span><span class="p">(</span><span class="k">const</span> <span class="n">Graph</span> <span class="o">&amp;</span><span class="n">G</span><span class="p">,</span> <span class="kt">int</span> <span class="n">x</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="n">std</span><span class="o">::</span><span class="n">queue</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">Q</span><span class="p">;</span>
     <span class="n">Q</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
@@ -827,11 +773,9 @@
         <span class="kt">int</span> <span class="n">here</span> <span class="o">=</span> <span class="n">Q</span><span class="p">.</span><span class="n">front</span><span class="p">();</span>
         <span class="n">Q</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
         <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">here</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39; &#39;</span><span class="p">;</span><span class="c1">// 순회 출력</span>
-        <span class="n">std</span><span class="o">::</span><span class="kt">size_t</span> <span class="n">G_size</span> <span class="o">=</span> <span class="n">G</span><span class="p">[</span><span class="n">here</span><span class="p">].</span><span class="n">size</span><span class="p">();</span>
 
-        <span class="k">for</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">G_size</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="nl">next</span> <span class="p">:</span> <span class="n">G</span><span class="p">[</span><span class="n">here</span><span class="p">])</span>
         <span class="p">{</span>
-            <span class="kt">int</span> <span class="n">next</span> <span class="o">=</span> <span class="n">G</span><span class="p">[</span><span class="n">here</span><span class="p">][</span><span class="n">i</span><span class="p">];</span>
             <span class="k">if</span> <span class="p">(</span><span class="n">visit</span><span class="p">[</span><span class="n">next</span><span class="p">]</span> <span class="o">!=</span> <span class="nb">true</span><span class="p">)</span>
             <span class="p">{</span>
                 <span class="n">visit</span><span class="p">[</span><span class="n">next</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
@@ -872,8 +816,7 @@
 17
 18
 19
-20
-21</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">void</span> <span class="nf">DFS</span><span class="p">(</span><span class="k">const</span> <span class="n">Graph</span><span class="o">&amp;</span> <span class="n">G</span><span class="p">,</span> <span class="kt">int</span> <span class="n">s</span><span class="p">)</span>
+20</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">void</span> <span class="nf">DFS</span><span class="p">(</span><span class="k">const</span> <span class="n">Graph</span><span class="o">&amp;</span> <span class="n">G</span><span class="p">,</span> <span class="kt">int</span> <span class="n">s</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span> <span class="n">visit</span><span class="p">(</span><span class="n">G</span><span class="p">.</span><span class="n">size</span><span class="p">(),</span> <span class="nb">false</span><span class="p">);</span>
 
@@ -883,13 +826,12 @@
 
 <span class="kt">void</span> <span class="nf">DFS_VISIT</span><span class="p">(</span><span class="k">const</span> <span class="n">Graph</span> <span class="o">&amp;</span><span class="n">G</span><span class="p">,</span> <span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">visit</span><span class="p">)</span>
 <span class="p">{</span>
-    <span class="kt">bool</span> <span class="n">visit</span><span class="p">[</span><span class="mi">1010</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span><span class="p">,</span> <span class="p">};</span>
     <span class="n">visit</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+
     <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">x</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39; &#39;</span><span class="p">;</span> <span class="c1">// 순회출력</span>
 
-    <span class="k">for</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">G</span><span class="p">[</span><span class="n">x</span><span class="p">].</span><span class="n">size</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="nl">next</span> <span class="p">:</span> <span class="n">G</span><span class="p">[</span><span class="n">x</span><span class="p">])</span>
     <span class="p">{</span>
-        <span class="kt">int</span> <span class="n">next</span> <span class="o">=</span> <span class="n">G</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">i</span><span class="p">];</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">visit</span><span class="p">[</span><span class="n">next</span><span class="p">]</span> <span class="o">!=</span> <span class="nb">true</span><span class="p">)</span>
             <span class="n">DFS_VISIT</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">next</span><span class="p">,</span><span class="n">visit</span><span class="p">);</span>
     <span class="p">}</span>
@@ -925,23 +867,21 @@
 25
 26
 27
-28
-29</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">void</span> <span class="nf">DFS</span><span class="p">(</span><span class="k">const</span> <span class="n">Graph</span> <span class="o">&amp;</span><span class="n">G</span><span class="p">,</span> <span class="kt">int</span> <span class="n">x</span><span class="p">)</span>
+28</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">void</span> <span class="nf">DFS</span><span class="p">(</span><span class="k">const</span> <span class="n">Graph</span> <span class="o">&amp;</span><span class="n">G</span><span class="p">,</span> <span class="kt">int</span> <span class="n">x</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span> <span class="n">visit</span><span class="p">(</span><span class="n">G</span><span class="p">.</span><span class="n">size</span><span class="p">(),</span> <span class="nb">false</span><span class="p">);</span>
     <span class="n">visit</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
 
     <span class="n">std</span><span class="o">::</span><span class="n">stack</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">sub_s</span><span class="p">;</span>
     <span class="n">sub_s</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+
     <span class="c1">//std::cout &lt;&lt; sub_s.top() &lt;&lt; &#39; &#39;; // 순회출력</span>
 
     <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">sub_s</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span>
     <span class="p">{</span>
         <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sub_s</span><span class="p">.</span><span class="n">top</span><span class="p">();</span>
-        <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="kt">size_t</span> <span class="n">G_size</span> <span class="o">=</span> <span class="n">G</span><span class="p">[</span><span class="n">y</span><span class="p">].</span><span class="n">size</span><span class="p">();</span>
-        <span class="k">for</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">G_size</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="nl">next</span> <span class="p">:</span> <span class="n">G</span><span class="p">[</span><span class="n">y</span><span class="p">])</span>
         <span class="p">{</span>
-            <span class="kt">int</span> <span class="n">next</span> <span class="o">=</span> <span class="n">G</span><span class="p">[</span><span class="n">y</span><span class="p">][</span><span class="n">i</span><span class="p">];</span>
             <span class="k">if</span> <span class="p">(</span><span class="n">visit</span><span class="p">[</span><span class="n">next</span><span class="p">]</span> <span class="o">!=</span> <span class="nb">true</span><span class="p">)</span>
             <span class="p">{</span>
                 <span class="n">visit</span><span class="p">[</span><span class="n">next</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
@@ -973,41 +913,6 @@
       
         
 <footer class="md-footer">
-  
-    <div class="md-footer-nav">
-      <nav class="md-footer-nav__inner md-grid">
-        
-          <a href="../../ch21/readme/" title="21 Data Structures for Disjoint Sets" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
-            </div>
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
-                <span class="md-footer-nav__direction">
-                  Previous
-                </span>
-                21 Data Structures for Disjoint Sets
-              </span>
-            </div>
-          </a>
-        
-        
-          <a href="../22_4_DAG/" title="22.4 Topological sort" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
-                <span class="md-footer-nav__direction">
-                  Next
-                </span>
-                22.4 Topological sort
-              </span>
-            </div>
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
-            </div>
-          </a>
-        
-      </nav>
-    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
